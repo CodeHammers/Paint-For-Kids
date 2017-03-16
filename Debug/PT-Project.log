@@ -5,21 +5,21 @@
   mousequeue.cpp
   keyqueue.cpp
   image.cpp
-e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\image.cpp(115): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\cmugraphicslib\image.cpp(115): warning C4018: '<': signed/unsigned mismatch
   CMUgraphics.cpp
-e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\cmugraphics.cpp(257): warning C4101: 'iX': unreferenced local variable
-e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\cmugraphics.cpp(257): warning C4101: 'iY': unreferenced local variable
-e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\cmugraphics.cpp(751): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\paint-for-kids\cmugraphicslib\cmugraphics.cpp(257): warning C4101: 'iX': unreferenced local variable
+e:\paint-for-kids\cmugraphicslib\cmugraphics.cpp(257): warning C4101: 'iY': unreferenced local variable
+e:\paint-for-kids\cmugraphicslib\cmugraphics.cpp(751): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\cmugraphics.cpp(1164): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\paint-for-kids\cmugraphicslib\cmugraphics.cpp(1164): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
-e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\cmugraphics.cpp(1171): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\paint-for-kids\cmugraphicslib\cmugraphics.cpp(1171): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
-e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\cmugraphics.cpp(1202): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\paint-for-kids\cmugraphicslib\cmugraphics.cpp(1202): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
-e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\cmugraphics.cpp(1210): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\paint-for-kids\cmugraphicslib\cmugraphics.cpp(1210): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
-e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\cmugraphics.cpp(1357): warning C4018: '>': signed/unsigned mismatch
+e:\paint-for-kids\cmugraphicslib\cmugraphics.cpp(1357): warning C4018: '>': signed/unsigned mismatch
   auxil.cpp
   Generating Code...
   jutils.c
@@ -27,18 +27,18 @@ e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\cmugraph
   jquant1.c
   jmemnobs.c
   jmemmgr.c
-e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\jpeg\jmemmgr.c(1103): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\paint-for-kids\cmugraphicslib\jpeg\jmemmgr.c(1103): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdlib.h(1183): note: see declaration of 'getenv'
-e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\jpeg\jmemmgr.c(1106): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\paint-for-kids\cmugraphicslib\jpeg\jmemmgr.c(1106): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(2254): note: see declaration of 'sscanf'
   jidctred.c
   jidctint.c
   jidctfst.c
   jidctflt.c
   jerror.c
-e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\jpeg\jerror.c(169): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\paint-for-kids\cmugraphicslib\jpeg\jerror.c(169): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
-e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\jpeg\jerror.c(171): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\paint-for-kids\cmugraphicslib\jpeg\jerror.c(171): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
   jdtrans.c
   jdsample.c
@@ -61,9 +61,10 @@ e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\jpeg\jer
   jcparam.c
   jcomapi.c
   jpegload.c
-e:\software_development\c++\paint for kids\phase1 - code\cmugraphicslib\jpegload.c(23): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\paint-for-kids\cmugraphicslib\jpegload.c(23): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
   Generating Code...
+  LINK : .\Debug/PT Project.exe not found or not built by the last incremental link; performing full link
 auxil.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-  PT-Project.vcxproj -> E:\Software_Development\C++\Paint For Kids\Phase1 - Code\.\Debug\PT Project.exe
+  PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)
