@@ -42,9 +42,9 @@ ActionType Input::GetUserAction() const
 		//[1] If user clicks on the Toolbar
 		if ( y >= 0 && y < UI.ToolBarHeight)
 		{	
-			//Check whick Menu item was clicked
+			//Check which Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
-			int ClickedItemOrder = (x / UI.MenuItemWidth);
+			int ClickedItemOrder = (x / UI.MenuItemWidthLeft);
 			//Divide x coord of the point clicked by the menu item width (int division)
 			//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
 
@@ -54,6 +54,8 @@ ActionType Input::GetUserAction() const
 			case ITM_CIRC: return DRAW_CIRC;
 			case ITM_EXIT: return EXIT;	
 			
+			///TODO: Add the rest of user actions here.
+
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}

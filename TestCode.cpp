@@ -127,7 +127,7 @@ int main()
 
 	///TODO: Add code here to 
 	// 1- Read a string from the user on the status bar
-	// 2- After reading the stirng clear the status bar
+	// 2- After reading the string clear the status bar
 	// 3- print on the status bar "You Entered" then print the string
 
 
@@ -189,7 +189,7 @@ int main()
 
 		case TO_DRAW:
 				pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
-				pOut->CreateDrawToolBar();
+				pOut->CreateDrawToolBarLeft();
 				break;
 
 		case TO_PLAY:
@@ -213,5 +213,3 @@ int main()
 	delete pOut;	
 	return 0;
 }
-
-

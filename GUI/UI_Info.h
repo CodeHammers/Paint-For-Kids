@@ -13,19 +13,78 @@ enum GUI_MODE	//Graphical user interface mode
 	MODE_PLAY	//Playing mode
 };
 
-enum DrawMenuItem //The items of the Draw menu (you should add more items)
+enum DrawMenuItemLeft //The items of the Draw menu (you should add more items)
 {
 	//Note: Items are ordered here as they appear in menu
 	//If you want to change the menu items order, change the order here
+	
+	/*Here we construct our menus, we have 3 menus, up, left and right*/
+
+	//Items for the left menu (edit related icons)
+	ITM_RESIZE,	
+	ITM_MOVE,
+	ITM_COPY,
+	ITM_CUT,
+	ITM_PASTE,
+	ITM_DELETE,
+	ITM_UNDO,
+	ITM_REDO,
+	ITM_SELECT,
+	ITM_LOAD,
+	ITM_SAVE,       //save icon (for testing)
+	ITM_SAVEAS,
+	ITM_COLLAPSERIGHT,
+
+	//to be deleted later and move elsewhere
+	ITM_EXIT,		//Exit item
 	ITM_RECT,		//Recangle item in menu
 	ITM_CIRC,		//Circle item in menu
-	
-	//TODO: Add more items names here
+	/////////////////////////////////////////
 
-	ITM_EXIT,		//Exit item
+	DRAW_ITM_COUNT_LEFT		//no. of menu items ==> This should be the last line in this enum
 	
-	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
-	
+};
+
+
+enum DrawMenuItemUp  //enumeration for icons on the upper menu
+{
+	ITM_CIRCLE,
+	ITM_RECTANGLE,
+	ITM_TRIANGLE,
+	ITM_LINE,
+	DRAW_ITEM_COUNT_UP
+};
+
+
+enum DrawMenuItemRightBrush  //enumeration for icons on the right menu
+{
+	ITM_BRUSH1,
+	ITM_BRUSH2,
+	ITM_BRUSH3,
+	ITM_BRUSH4,
+	ITM_BRUSH5,
+	ITM_BRUSH6,
+	ITM_BRUSH7,
+	ITM_BRUSH8,
+	ITM_BRUSH10,
+	ITM_BRUSH11,
+	ITM_COLLAPSELEFT,
+	DRAW_ITEM_COUNT_RIGHTBRUSH
+};
+
+enum DrawMenuItemRightBrushFill
+{
+	ITM_BRUSHFILL1,
+	ITM_BRUSHFILL2,
+	ITM_BRUSHFILL3,
+	ITM_BRUSHFILL4,
+	ITM_BRUSHFILL5,
+	ITM_BRUSHFILL6,
+	ITM_BRUSHFILL7,
+	ITM_BRUSHFILL8,
+	ITM_BRUSHFILL10,
+	ITM_BRUSHFILL11,
+	DRAW_ITEM_COUNT_RIGHTBRUSHFILL
 };
 
 enum PlayMenuItem //The items of the Play menu (you should add more items)
@@ -33,7 +92,7 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 	//Note: Items are ordered here as they appear in menu
 	//If you want to change the menu items order, change the order here
 	
-	//TODO: Add more items names here
+	///TODO: Add more items names here
 
 	PLAY_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 	
@@ -50,11 +109,12 @@ struct UI_Info	//User Interface Info.
 	GUI_MODE InterfaceMode;
 	
 	int	width, height,	//Window width and height
-		wx , wy,			//Window starting coordinates
+		wx, wy,			//Window starting coordinates
 		StatusBarHeight,	//Status Bar Height
 		ToolBarHeight,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
-		MenuItemWidth;		//Width of each item in toolbar menu
-	
+		MenuItemWidthLeft,		//Width of each item in toolbar menu
+		MenuItemWidthRight,
+		MenuItemWidthUp;
 
 	color DrawColor;		//Drawing color
 	color FillColor;		//Filling color

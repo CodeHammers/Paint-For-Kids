@@ -10,7 +10,9 @@ public:
 	Output();		
 
 	window* CreateWind(int, int, int , int) const; //creates the application window
-	void CreateDrawToolBar() const;	//creates Draw mode toolbar & menu
+	void CreateDrawToolBarLeft() const;	//creates Draw mode left toolbar 
+	void CreateDrawToolBarUp() const;	//creates Draw mode upper toolbar 
+	void CreateDrawToolBarRight() const;//creates Draw mode right toolbar 
 	void CreatePlayToolBar() const;	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
 
