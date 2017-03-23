@@ -12,6 +12,7 @@ types, colors, sizes … etc.
 Purpose:
 --------
 This application will be submitted as a semester project for an object oriented programming course, it will also be our OOP learning space.  
+
 Language:
 ---------
 We will be using object oriented C++ to core of this application, we will be using CMU graphics library to create the user interface
