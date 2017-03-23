@@ -155,6 +155,7 @@ int main()
 
 		case TO_PLAY:
 			pOut->PrintMessage("Action: Switch to Play Mode, creating Design tool bar");
+			pOut->CreatePlayToolBar();
 			break;
 
 			// The First Column //
@@ -323,11 +324,6 @@ int main()
 		case ITM_COLLAPSERIGHT_Clicked:
 			pOut->PrintMessage("Action: COLLAPSERIGHT Button Clicked");
 			break;
-
-
-
-
-
 
 		case CHNG_DRAW_CLR:
 			pOut->PrintMessage("Action: Change the drawing color , Click anywhere");

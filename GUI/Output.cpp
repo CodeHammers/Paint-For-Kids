@@ -79,12 +79,12 @@ void Output::CreateDrawToolBarLeft() const
 {
 	UI.InterfaceMode = MODE_DRAW;  //Setting the current mode.
 
-								   //You can draw the tool bar icons in any way you want.
-								   //Below is one possible way
+	//You can draw the tool bar icons in any way you want.
+	//Below is one possible way
 
-								   //First prepare List of images for each menu item
-								   //To control the order of these images in the menu, 
-								   //reoder them in UI_Info.h ==> enum DrawMenuItem
+	//First prepare List of images for each menu item
+	//To control the order of these images in the menu, 
+	//reoder them in UI_Info.h ==> enum DrawMenuItem
 
 	/*Adding two parallel icons for zooming in and out*/;
 	string zoomControls[CounterZoom];
@@ -126,19 +126,19 @@ void Output::CreateDrawToolBarRight() const
 {
 	UI.InterfaceMode = MODE_DRAW;   //Setting the current mode.
 
-									//You can draw the tool bar icons in any way you want.
-									//Below is one possible way
+	//You can draw the tool bar icons in any way you want.
+	//Below is one possible way
 
-									//First prepare List of images for each menu item
-									//To control the order of these images in the menu, 
-									//reoder them in UI_Info.h ==> enum DrawMenuItem
+	//First prepare List of images for each menu item
+	//To control the order of these images in the menu, 
+	//reoder them in UI_Info.h ==> enum DrawMenuItem
 
-									/*Here we draw two menus side-by-side, the first menu contains brush
-									colors the control the draw color of the outerline of a figure, the second
-									menu shows the fill colors to control the fill color of a figure*/
+	/*Here we draw two menus side-by-side, the first menu contains brush
+	colors the control the draw color of the outerline of a figure, the second
+	menu shows the fill colors to control the fill color of a figure*/
 
 
-									//Loading the icons for the first menu of the right toolbar.
+	//Loading the icons for the first menu of the right toolbar.
 	string MenuItemImages1[DRAW_ITEM_COUNT_RIGHTBRUSH];
 	MenuItemImages1[ITM_BRUSH1] = "images\\MenuItems\\ICONS\\RED.jpg";
 	MenuItemImages1[ITM_BRUSH2] = "images\\MenuItems\\ICONS\\GREEN.jpg";
@@ -183,14 +183,14 @@ void Output::CreateDrawToolBarUp() const
 {
 	UI.InterfaceMode = MODE_DRAW;   //Setting the current mode.
 
-									//You can draw the tool bar icons in any way you want.
-									//Below is one possible way
+	//You can draw the tool bar icons in any way you want.
+	//Below is one possible way
 
-									//First prepare List of images for each menu item
-									//To control the order of these images in the menu, 
-									//reoder them in UI_Info.h ==> enum DrawMenuItem
+	//First prepare List of images for each menu item
+	//To control the order of these images in the menu, 
+	//reoder them in UI_Info.h ==> enum DrawMenuItem
 
-									//Loading the icons for the upper toolbar.
+	//Loading the icons for the upper toolbar.
 	string MenuItemImages[DRAW_ITEM_COUNT_UP];
 	MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\ICONS\\CIRCULE.jpg";
 	MenuItemImages[ITM_RECTANGLE] = "images\\MenuItems\\ICONS\\RECTANGLE.jpg";
@@ -208,7 +208,24 @@ void Output::CreateDrawToolBarUp() const
 void Output::CreatePlayToolBar() const
 {
 	UI.InterfaceMode = MODE_PLAY;
-	///TODO: write code to create Play mode menu
+
+	//Collapse the left toolbar.
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->DrawRectangle(0, 0, 120, 660); 
+
+	//Collapse the upper toolbar.
+	pWind->DrawRectangle(500, 0, 900, 100);
+
+	//temporary images.
+	string MenuItemImages[PLAY_ITM_COUNT];
+	MenuItemImages[ITM_SCRAMBLE] = "images\\MenuItems\\ICONS\\CIRCULE.jpg";
+	MenuItemImages[ITM_FIND] = "images\\MenuItems\\ICONS\\RECTANGLE.jpg";
+	MenuItemImages[ITEM_TODRAW] = "images\\MenuItems\\ICONS\\TRIANGLE.jpg";
+
+	for (int i = 0; i<PLAY_ITM_COUNT; i++)
+		pWind->DrawImage(MenuItemImages[i], 500 + (i - 5)*UI.MenuItemWidthUp, 0, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 

@@ -1,7 +1,5 @@
-﻿  TestCode.cpp
-  Output.cpp
+﻿  Output.cpp
   Input.cpp
   Generating Code...
-c:\users\moamen hassan\documents\github\paint-for-kids\gui\input.cpp(155): warning C4715: 'Input::GetUserAction': not all control paths return a value
-  PT-Project.vcxproj -> C:\Users\Moamen Hassan\Documents\GitHub\Paint-For-Kids\.\Debug\PT Project.exe
+  PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

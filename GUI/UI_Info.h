@@ -41,7 +41,7 @@ enum DrawMenuItemLeft //The items of the Draw menu (you should add more items)
 	ITM_CIRC,		//Circle item in menu
 					/////////////////////////////////////////
 
-					DRAW_ITM_COUNT_LEFT		//no. of menu items ==> This should be the last line in this enum
+	DRAW_ITM_COUNT_LEFT		//no. of menu items ==> This should be the last line in this enum
 
 };
 enum zoomControls
@@ -100,13 +100,12 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 	//If you want to change the menu items order, change the order here
 
 	///TODO: Add more items names here
+	ITM_SCRAMBLE,
+	ITM_FIND,
+	ITEM_TODRAW,
 	PLAY_ITM_COUNT
 	//no. of menu items ==> This should be the last line in this enum
-
 };
-
-
-
 
 
 __declspec(selectany) //This line to prevent "redefinition error"

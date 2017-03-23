@@ -37,11 +37,18 @@ ActionType Input::GetUserAction() const
 	int x, y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 
+	//special hadling for mode switching
+	if (x >= 60 && x <= 120 && y >= 600 && y <= 660 && UI.InterfaceMode == MODE_DRAW) //click on the play mode
+		UI.InterfaceMode = MODE_PLAY;
+	else if(x >= 60 && x <= 120 && y >= 600 && y <= 660 && UI.InterfaceMode == MODE_PLAY)
+		UI.InterfaceMode = MODE_DRAW;
+
+
 	if (UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
 		// Edited .. UI Tool Bar Width =60*2 ;; 
 		UI.ToolBarWidth = 60 * 2;  // 60 refers to The first column ,, 2 refers to double columns ;; 
-								   //[1] If user clicks on the Toolbar
+        //[1] If user clicks on the Toolbar
 		if (x >= 60 && x < UI.ToolBarWidth && y >= 600 && y < 660) {
 			//perform checks similar to Draw mode checks above
 			//and return the correspoding action
@@ -133,15 +140,7 @@ ActionType Input::GetUserAction() const
 			case	ITM_COLLAPSERIGHT:		return ITM_COLLAPSERIGHT_Clicked;
 
 			}
-
-
-
-
-
 		}
-
-
-
 
 		//[2] User clicks on the drawing area
 		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
@@ -151,7 +150,10 @@ ActionType Input::GetUserAction() const
 		//[3] User clicks on the status bar
 		return STATUS;
 	}
-
+	else {
+		///TODO: do the same as above :V 27la copy-paste
+		return TO_PLAY;
+	}
 }
 /////////////////////////////////
 
