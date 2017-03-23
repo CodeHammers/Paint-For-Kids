@@ -4,12 +4,12 @@
 
 class Output	//The application manager should have a pointer to this class
 {
-private:	
+private:
 	window* pWind;	//Pointer to the Graphics Window
 public:
-	Output();		
+	Output();
 
-	window* CreateWind(int, int, int , int) const; //creates the application window
+	window* CreateWind(int, int, int, int) const; //creates the application window
 	void CreateDrawToolBarLeft() const;	//creates Draw mode left toolbar 
 	void CreateDrawToolBarUp() const;	//creates Draw mode upper toolbar 
 	void CreateDrawToolBarRight() const;//creates Draw mode right toolbar 
@@ -19,19 +19,19 @@ public:
 	Input* CreateInput() const; //creates a pointer to the Input object	
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
-	
-	// -- Figures Drawing functions
-	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected=false) const;  //Draw a rectangle
-	
-	///Make similar functions for drawing all other figures.
-	
+
+								// -- Figures Drawing functions
+	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a rectangle
+
+																						  ///Make similar functions for drawing all other figures.
+
 	void PrintMessage(string msg) const;	//Print a message on Status bar
 
 	color getCrntDrawColor() const;	//get current drwawing color
 	color getCrntFillColor() const;	//get current filling color
 	int getCrntPenWidth() const;		//get current pen width
 
-	
+
 	~Output();
 };
 

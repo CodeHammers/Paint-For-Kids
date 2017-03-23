@@ -17,11 +17,11 @@ enum DrawMenuItemLeft //The items of the Draw menu (you should add more items)
 {
 	//Note: Items are ordered here as they appear in menu
 	//If you want to change the menu items order, change the order here
-	
+
 	/*Here we construct our menus, we have 3 menus, up, left and right*/
 
 	//Items for the left menu (edit related icons)
-	ITM_RESIZE,	
+	ITM_RESIZE = 1,
 	ITM_MOVE,
 	ITM_COPY,
 	ITM_CUT,
@@ -39,16 +39,23 @@ enum DrawMenuItemLeft //The items of the Draw menu (you should add more items)
 	ITM_EXIT,		//Exit item
 	ITM_RECT,		//Recangle item in menu
 	ITM_CIRC,		//Circle item in menu
-	/////////////////////////////////////////
+					/////////////////////////////////////////
 
-	DRAW_ITM_COUNT_LEFT		//no. of menu items ==> This should be the last line in this enum
-	
+					DRAW_ITM_COUNT_LEFT		//no. of menu items ==> This should be the last line in this enum
+
 };
+enum zoomControls
+{
+	ITM_ZOOM_IN,
+	ITM_ZOOM_OUT,
 
+	CounterZoom
+
+};
 
 enum DrawMenuItemUp  //enumeration for icons on the upper menu
 {
-	ITM_CIRCLE,
+	ITM_CIRCLE = 5,
 	ITM_RECTANGLE,
 	ITM_TRIANGLE,
 	ITM_LINE,
@@ -91,11 +98,11 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 {
 	//Note: Items are ordered here as they appear in menu
 	//If you want to change the menu items order, change the order here
-	
-	///TODO: Add more items names here
 
-	PLAY_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
-	
+	///TODO: Add more items names here
+	PLAY_ITM_COUNT
+	//no. of menu items ==> This should be the last line in this enum
+
 };
 
 
@@ -107,11 +114,13 @@ __declspec(selectany) //This line to prevent "redefinition error"
 struct UI_Info	//User Interface Info.
 {
 	GUI_MODE InterfaceMode;
-	
+
 	int	width, height,	//Window width and height
 		wx, wy,			//Window starting coordinates
 		StatusBarHeight,	//Status Bar Height
 		ToolBarHeight,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
+		ToolBarWidth,      // Tool Bar Width
+		MenuItemHeight,  // menuitem icon height .. we defined it as 60
 		MenuItemWidthLeft,		//Width of each item in toolbar menu
 		MenuItemWidthRight,
 		MenuItemWidthUp;
@@ -124,8 +133,8 @@ struct UI_Info	//User Interface Info.
 	color StatusBarColor;	//Status bar color
 	int PenWidth;			//width of the pen that draws shapes
 
-	/// Add more members if needed
-	
+							/// Add more members if needed
+
 }UI;	//create a global object UI
 
 #endif
