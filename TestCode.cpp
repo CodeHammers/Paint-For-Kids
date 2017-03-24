@@ -35,7 +35,7 @@ int main()
 
 	GfxInfo gfxInfo;//to be used with draw function of the class Ouput
 	Point P1, P2, P3;
-
+	
 	pOut->PrintMessage("TEST2: Now we will show that Output class can draw any figure in any state, Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
@@ -207,7 +207,7 @@ int main()
 	pOut->PrintMessage("Drawing a Circle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->ClearDrawArea();
-
+	
 
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 3: 
@@ -217,14 +217,14 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	pOut->PrintMessage("Testing Input ability to read strings");
-
-	///TODO: Add code here to 
-	// 1- Read a string from the user on the status bar
-	// 2- After reading the string clear the status bar
-	// 3- print on the status bar "You Entered" then print the string
-
-
 	pIn->GetPointClicked(x, y);	//Wait for any click
+
+	pOut->PrintMessage("Testing the ability to read strings, enter your name");
+	string name = pIn->GetSrting(pOut);
+
+	pOut->PrintMessage("Hello!, "+name+" ,Click anywhere to continue");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+
 	pOut->ClearDrawArea();
 
 	///////////////////////////////////////////////////////////////////////////////////
@@ -462,7 +462,6 @@ int main()
 	/// Exiting
 	pOut->PrintMessage("Action: EXIT, test is finished, click anywhere to exit");
 	pIn->GetPointClicked(x, y);
-
 
 	delete pIn;
 	delete pOut;
