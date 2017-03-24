@@ -78,7 +78,6 @@ int main()
 	pOut->DrawRect(P1, P2, gfxInfo, true);
 
 
-
 	pOut->PrintMessage("Drawing a Rectangle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->ClearDrawArea();
@@ -174,35 +173,46 @@ int main()
 	pOut->PrintMessage("Drawing a Circle, normal, non-filled, click to position the center");
 	pIn->GetPointClicked(P1.x, P1.y);
 
+	pOut->PrintMessage("Drawing a Circle, normal, filled, click to position the end point of the radius");
+	pIn->GetPointClicked(P2.x, P2.y);
+
+	//calculate the radius
+	int dist = sqrt(pow(P1.x - P2.x, 2) + pow(P1.y - P2.y, 2));
+
 	gfxInfo.BorderWdth = 3;
 	gfxInfo.DrawClr = BLACK;	//any color for border
 	gfxInfo.isFilled = false;	//Figure is NOT filled
 
-	pOut->DrawCircle(P1, 50, gfxInfo, false);
+	pOut->DrawCircle(P1, dist, gfxInfo, false);
 
 	//Drawing non-filled, highlighted
 	pOut->PrintMessage("Drawing a Circle, highlighted, non-filled, click to highlight");
 	pIn->GetPointClicked(x, y);
 
-	pOut->DrawCircle(P1, 50, gfxInfo, true);
+	pOut->DrawCircle(P1, dist, gfxInfo, true);
 
 	//Drawing filled, non-highlighted
 	pOut->PrintMessage("Drawing a Circle, normal, filled, click to position the center");
 	pIn->GetPointClicked(P1.x, P1.y);
 
+	pOut->PrintMessage("Drawing a Circle, normal, filled, click to position the end point of the radius");
+	pIn->GetPointClicked(P2.x, P2.y);
+
+	//calculate the radius
+	dist = sqrt(pow(P1.x - P2.x, 2) + pow(P1.y - P2.y, 2));
+	
 	gfxInfo.BorderWdth = 4;
 	gfxInfo.DrawClr = BLUE;	//any color for border
 	gfxInfo.FillClr = GREEN;//any color for filling
 	gfxInfo.isFilled = true;//Figure is filled
 
-	pOut->DrawCircle(P1, 70, gfxInfo, false);
+	pOut->DrawCircle(P1, dist, gfxInfo, false);
 
 	//Drawing filled highlighted.
 	pOut->PrintMessage("Drawing a Circle, filled, highlighted, click to highlight");
 	pIn->GetPointClicked(x,y);
 
-	pOut->DrawCircle(P1, 70, gfxInfo, true);
-
+	pOut->DrawCircle(P1, dist, gfxInfo, true);
 
 	pOut->PrintMessage("Drawing a Circle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click

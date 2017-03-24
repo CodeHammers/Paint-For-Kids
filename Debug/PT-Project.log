@@ -1,3 +1,5 @@
 ﻿  TestCode.cpp
+e:\paint-for-kids\testcode.cpp(180): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\testcode.cpp(202): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)
