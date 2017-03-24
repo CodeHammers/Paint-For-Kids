@@ -79,25 +79,28 @@ void Output::CreateDrawToolBarLeft() const
 {
 	UI.InterfaceMode = MODE_DRAW;  //Setting the current mode.
 
-	//You can draw the tool bar icons in any way you want.
-	//Below is one possible way
+								   //You can draw the tool bar icons in any way you want.
+								   //Below is one possible way
 
-	//First prepare List of images for each menu item
-	//To control the order of these images in the menu, 
-	//reoder them in UI_Info.h ==> enum DrawMenuItem
+								   //First prepare List of images for each menu item
+								   //To control the order of these images in the menu, 
+								   //reoder them in UI_Info.h ==> enum DrawMenuItem
 
 	/*Adding two parallel icons for zooming in and out*/;
 	string zoomControls[CounterZoom];
 	zoomControls[ITM_ZOOM_IN] = "images\\MenuItems\\ICONS\\TOOLS\\ZOOMIN.jpg";
 	zoomControls[ITM_ZOOM_OUT] = "images\\MenuItems\\ICONS\\TOOLS\\ZOOMOUT.jpg";
-	pWind->DrawImage(zoomControls[ITM_ZOOM_IN], 1385, 0, 50, 50);
-	pWind->DrawImage(zoomControls[ITM_ZOOM_OUT], 1435, 0, 50, 50);
+	pWind->DrawImage(zoomControls[ITM_ZOOM_IN], 1385, 13 * 50, 50, 50);
+	pWind->DrawImage(zoomControls[ITM_ZOOM_OUT], 1435, 13 * 50, 50, 50);
+
+
+
 
 	/*Loading the icons for the left toolbar.*/
 	string MenuItemImages[DRAW_ITM_COUNT_LEFT];
 	MenuItemImages[ITM_COLLAPSERIGHT] = "images\\MenuItems\\ICONS\\TOOLS\\COLLAPSE.jpg";
 	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\ICONS\\TOOLS\\LOAD.jpg";
-	MenuItemImages[ITM_MOVE] = "images\\MenuItems\\ICONS\\TOOLS\\LOAD.jpg";
+	MenuItemImages[ITM_MOVE] = "images\\MenuItems\\ICONS\\TOOLS\\MOVE.jpg";
 	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\ICONS\\TOOLS\\SELECT.jpg";
 	MenuItemImages[ITM_RESIZE] = "images\\MenuItems\\ICONS\\TOOLS\\RESIZE1.jpg";
 	MenuItemImages[ITM_RECT] = "images\\MenuItems\\Menu_Rect.jpg";
@@ -109,13 +112,14 @@ void Output::CreateDrawToolBarLeft() const
 	MenuItemImages[ITM_UNDO] = "images\\MenuItems\\ICONS\\TOOLS\\UNDO11.jpg";
 	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\ICONS\\TOOLS\\DELETE.jpg";
 	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\ICONS\\TOOLS\\SAVE.jpg";
-	MenuItemImages[ITM_SAVEAS] = "images\\MenuItems\\ICONS\\TOOLS\\LOAD.jpg";
-	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Close.jpg";
+	MenuItemImages[ITM_SAVEAS] = "images\\MenuItems\\ICONS\\TOOLS\\SAVEAS.jpg";
+	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\ICONS\\TOOLS\\EXIT.jpg";
 
 	//Drawing the left toolbar, excluding the last three icons(not needed now)
 	for (int i = 1; i<DRAW_ITM_COUNT_LEFT - 4; i++)  //the -3 is temp, change later.
 		pWind->DrawImage(MenuItemImages[i], 1435, ((i) * 50), UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
-	pWind->DrawImage(MenuItemImages[13], 1435, (13 * 50), UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+	pWind->DrawImage(MenuItemImages[ITM_COLLAPSERIGHT], 1385, 0, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+	pWind->DrawImage(MenuItemImages[ITM_EXIT], 1435, 0, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
 	/*NOTE: When we finish the input class, I shall remove the last three items,
 	I have left the for the time being to be able to test without changing
 	the main function*/
@@ -126,16 +130,21 @@ void Output::CreateDrawToolBarRight() const
 {
 	UI.InterfaceMode = MODE_DRAW;   //Setting the current mode.
 
-	//You can draw the tool bar icons in any way you want.
-	//Below is one possible way
+									//You can draw the tool bar icons in any way you want.
+									//Below is one possible way
 
-	//First prepare List of images for each menu item
-	//To control the order of these images in the menu, 
-	//reoder them in UI_Info.h ==> enum DrawMenuItem
+									//First prepare List of images for each menu item
+									//To control the order of these images in the menu, 
+									//reoder them in UI_Info.h ==> enum DrawMenuItem
 
-	/*Here we draw two menus side-by-side, the first menu contains brush
-	colors the control the draw color of the outerline of a figure, the second
-	menu shows the fill colors to control the fill color of a figure*/
+									/*Here we draw two menus side-by-side, the first menu contains brush
+									colors the control the draw color of the outerline of a figure, the second
+									menu shows the fill colors to control the fill color of a figure*/
+
+									//Collapse the GAME_MODE UPPER toolbar.
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->DrawRectangle(0, 0, PLAY_ITM_COUNT * 100, 100);
 
 
 	//Loading the icons for the first menu of the right toolbar.
@@ -183,14 +192,14 @@ void Output::CreateDrawToolBarUp() const
 {
 	UI.InterfaceMode = MODE_DRAW;   //Setting the current mode.
 
-	//You can draw the tool bar icons in any way you want.
-	//Below is one possible way
+									//You can draw the tool bar icons in any way you want.
+									//Below is one possible way
 
-	//First prepare List of images for each menu item
-	//To control the order of these images in the menu, 
-	//reoder them in UI_Info.h ==> enum DrawMenuItem
+									//First prepare List of images for each menu item
+									//To control the order of these images in the menu, 
+									//reoder them in UI_Info.h ==> enum DrawMenuItem
 
-	//Loading the icons for the upper toolbar.
+									//Loading the icons for the upper toolbar.
 	string MenuItemImages[DRAW_ITEM_COUNT_UP];
 	MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\ICONS\\CIRCULE.jpg";
 	MenuItemImages[ITM_RECTANGLE] = "images\\MenuItems\\ICONS\\RECTANGLE.jpg";
@@ -212,16 +221,16 @@ void Output::CreatePlayToolBar() const
 	//Collapse the left toolbar.
 	pWind->SetBrush(UI.BkGrndColor);
 	pWind->SetPen(UI.BkGrndColor, 1);
-	pWind->DrawRectangle(0, 0, 120, 660); 
+	pWind->DrawRectangle(0, 0, 120, 660);
 
 	//Collapse the upper toolbar.
 	pWind->DrawRectangle(500, 0, 900, 100);
 
 	//temporary images.
 	string MenuItemImages[PLAY_ITM_COUNT];
-	MenuItemImages[ITM_SCRAMBLE] = "images\\MenuItems\\ICONS\\CIRCULE.jpg";
-	MenuItemImages[ITM_FIND] = "images\\MenuItems\\ICONS\\RECTANGLE.jpg";
-	MenuItemImages[ITEM_TODRAW] = "images\\MenuItems\\ICONS\\TRIANGLE.jpg";
+	MenuItemImages[ITM_SCRAMBLE] = "images\\MenuItems\\ICONS\\TOOLS\\SCRAMBLE.jpg";
+	MenuItemImages[ITM_FIND] = "images\\MenuItems\\ICONS\\TOOLS\\FIND.jpg";
+	MenuItemImages[ITEM_TODRAW] = "images\\MenuItems\\ICONS\\TOOLS\\TODRAW1.jpg";
 
 	for (int i = 0; i<PLAY_ITM_COUNT; i++)
 		pWind->DrawImage(MenuItemImages[i], 500 + (i - 5)*UI.MenuItemWidthUp, 0, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
@@ -233,7 +242,7 @@ void Output::ClearDrawArea() const
 {
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
-	pWind->DrawRectangle(120, 100, UI.width - 65, UI.height - UI.StatusBarHeight);
+	pWind->DrawRectangle(120, 100, UI.width - 115, UI.height - UI.StatusBarHeight);
 	//I changed the clear function to only clear the area enclosed by all 4 toolbars
 }
 //////////////////////////////////////////////////////////////////////////////////////////

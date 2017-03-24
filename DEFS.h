@@ -52,6 +52,14 @@ enum ActionType //The actions supported (you can add more if needed)
 	ITM_SAVEAS_Clicked,
 	ITM_COLLAPSERIGHT_Clicked,
 
+	// GAME MODE ITEMS \\
+
+	ITM_SCRAMBLE_Clicked,
+	ITM_FIND_Clicked,
+	ITEM_TODRAW_Clicked,
+
+
+
 	CHNG_DRAW_CLR,	//Change the drawing color
 	CHNG_FILL_CLR,	//Change the filling color
 	CHNG_BK_CLR,	//Change background color

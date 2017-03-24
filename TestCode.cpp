@@ -325,6 +325,15 @@ int main()
 			pOut->PrintMessage("Action: COLLAPSERIGHT Button Clicked");
 			break;
 
+			// GAME_MODE ICONS //
+		case ITM_SCRAMBLE_Clicked:
+			pOut->PrintMessage("Action: SCRAMBLE Button Clicked");
+			break;
+
+		case ITM_FIND_Clicked:
+			pOut->PrintMessage("Action: FIND Button Clicked");
+			break;
+
 		case CHNG_DRAW_CLR:
 			pOut->PrintMessage("Action: Change the drawing color , Click anywhere");
 			break;
@@ -347,12 +356,13 @@ int main()
 
 		case TO_DRAW:
 			pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
-			pOut->CreateDrawToolBarLeft();
+			pOut->CreateDrawToolBarRight();
+			pOut->CreateDrawToolBarUp();
 			break;
 
 
 		case EXIT:
-			break;
+			exit(0);
 		}
 	} while (ActType != EXIT);
 

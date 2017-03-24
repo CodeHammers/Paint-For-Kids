@@ -41,7 +41,7 @@ enum DrawMenuItemLeft //The items of the Draw menu (you should add more items)
 	ITM_CIRC,		//Circle item in menu
 					/////////////////////////////////////////
 
-	DRAW_ITM_COUNT_LEFT		//no. of menu items ==> This should be the last line in this enum
+					DRAW_ITM_COUNT_LEFT		//no. of menu items ==> This should be the last line in this enum
 
 };
 enum zoomControls
