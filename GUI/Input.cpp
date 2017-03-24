@@ -75,8 +75,8 @@ ActionType Input::GetUserAction() const
 			case ITM_BRUSH6:		  return ITM_BRUSH6_Clicked;
 			case ITM_BRUSH7:		  return ITM_BRUSH7_Clicked;
 			case ITM_BRUSH8:		  return ITM_BRUSH8_Clicked;
+			case ITM_BRUSH9:		  return ITM_BRUSH9_Clicked;
 			case ITM_BRUSH10:		  return ITM_BRUSH10_Clicked;
-			case ITM_BRUSH11:		  return ITM_BRUSH11_Clicked;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
@@ -94,8 +94,8 @@ ActionType Input::GetUserAction() const
 			case ITM_BRUSHFILL6:		  return ITM_BRUSHFILL6_Clicked;
 			case ITM_BRUSHFILL7:		  return ITM_BRUSHFILL7_Clicked;
 			case ITM_BRUSHFILL8:		  return ITM_BRUSHFILL8_Clicked;
+			case ITM_BRUSHFILL9:		  return ITM_BRUSHFILL9_Clicked;
 			case ITM_BRUSHFILL10:		  return ITM_BRUSHFILL10_Clicked;
-			case ITM_BRUSHFILL11:		  return ITM_BRUSHFILL11_Clicked;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}

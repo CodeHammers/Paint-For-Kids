@@ -20,10 +20,11 @@ public:
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
 
-								// -- Figures Drawing functions
+	// -- Figures Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a rectangle
-
-																						  ///Make similar functions for drawing all other figures.
+	void DrawLine(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a Line
+	void DrawTriangle(Point P1, Point P2,Point P3, GfxInfo RectGfxInfo, bool selected = false) const; //Draw a triangle
+	void DrawCircle(Point center, int radius, GfxInfo RectGfxInfo, bool selected = false) const; //Draw a circle.
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar
 

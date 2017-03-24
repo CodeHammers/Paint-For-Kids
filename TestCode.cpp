@@ -17,34 +17,34 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 
-								///////////////////////////////////////////////////////////////////////////////////
-								// TEST 1:	
-								//			Create The FULL Tool bar, the drawing area and the status bar	
-								//			This has already been done through the constrcutor of class Output
-								///////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////
+	// TEST 1:	
+	//			Create The FULL Tool bar, the drawing area and the status bar	
+	//			This has already been done through the constrcutor of class Output
+	///////////////////////////////////////////////////////////////////////////////////
 
 	pOut->PrintMessage("TEST1: Drawing Tool bar and Status bar, Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 
-								///////////////////////////////////////////////////////////////////////////////////
-								// TEST 2:	
-								//			Drawing all the Figures with all possible states: 
-								//			Non-filled, Filled, and highlighted in both cases			
-								///////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////
+	// TEST 2:	
+	//			Drawing all the Figures with all possible states: 
+	//			Non-filled, Filled, and highlighted in both cases			
+	///////////////////////////////////////////////////////////////////////////////////
+
+	GfxInfo gfxInfo;//to be used with draw function of the class Ouput
+	Point P1, P2, P3;
 
 	pOut->PrintMessage("TEST2: Now we will show that Output class can draw any figure in any state, Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
-
-	GfxInfo gfxInfo;//to be used with draw function of the class Ouput
-	Point P1, P2;
 
 	/// 2.1- Rectangle Test ///
 	/// =================== 
 	pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-								// 2.1.1 - Drawing non-filled rectangle
+	//2.1.1 - Drawing non-filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
 	pIn->GetPointClicked(P2.x, P2.y);
@@ -54,13 +54,13 @@ int main()
 	gfxInfo.isFilled = false;	//Figure is NOT filled
 	pOut->DrawRect(P1, P2, gfxInfo, false);
 
-	// 2.1.2 - Drawing highlighted non-filled rectangle
+	//2.1.2 - Drawing highlighted non-filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted non-filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->DrawRect(P1, P2, gfxInfo, true);
 
 
-	// 2.1.3 - Drawing a filled rectangle
+	//2.1.3 - Drawing a filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
 	pIn->GetPointClicked(P2.x, P2.y);
@@ -72,7 +72,7 @@ int main()
 	pOut->DrawRect(P1, P2, gfxInfo, false);
 
 
-	// 2.1.4 - Drawing a highlighted filled rectangle
+	//2.1.4 - Drawing a highlighted filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> Highlighted filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->DrawRect(P1, P2, gfxInfo, true);
@@ -83,23 +83,79 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->ClearDrawArea();
 
-	/// 2.2- Line Test ///
-	/// ============== 
+	///// 2.2- Line Test ///
+	///// ============== 
 	pOut->PrintMessage("Drawing a Line, normal and Highlighted, Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-								///TODO: Add code to draw Line, Normal and Highlighted
+	///TODO: Add code to draw Line, Normal and Highlighted
+
+	//Drawing non-highlighted line.
+	pOut->PrintMessage("Drawing a Line, normal, click the two end points");
+	pIn->GetPointClicked(P1.x, P1.y);
+	pIn->GetPointClicked(P2.x, P2.y);
+
+	gfxInfo.BorderWdth = 3;
+	gfxInfo.DrawClr = BLACK;	//any color for border
+	gfxInfo.isFilled = false;	//Figure is NOT filled
+	pOut->DrawLine(P1, P2, gfxInfo, false);
+
+	//Drawing a highlighted line.
+	pOut->PrintMessage("Drawing a Line, highlighted, click anywhere");
+	pIn->GetPointClicked(x, y);
+	pOut->DrawLine(P1, P2, gfxInfo, true);
 
 	pOut->PrintMessage("Drawing a Line Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->ClearDrawArea();
 
-	/// 2.3- Triangle Test ///
-	/// =================== 
+	///2.3- Triangle Test ///
+	///=================== 
 	pOut->PrintMessage("Drawing a Triangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-								///TODO: Add code to draw Triangle in all possible states
+	//Drawing non-filled, non-highlighted
+	pOut->PrintMessage("Drawing a Triangle, normal, non-filled, Click to continue");
+	pIn->GetPointClicked(x, y);
+
+	pOut->PrintMessage("Click to position the three vertices of the triangle");
+	pIn->GetPointClicked(P1.x, P1.y);
+	pIn->GetPointClicked(P2.x, P2.y);
+	pIn->GetPointClicked(P3.x, P3.y);
+
+	gfxInfo.BorderWdth = 3;
+	gfxInfo.DrawClr = BLACK;	//any color for border
+	gfxInfo.isFilled = false;	//Figure is NOT filled
+
+	pOut->DrawTriangle(P1, P2, P3, gfxInfo, false); //non-filled, non-highlighted
+
+    //Drawing non-filled, highlighted
+	pOut->PrintMessage("Drawing a Triangle, highlighted, non-filled, Click to continue");
+	pIn->GetPointClicked(x, y);
+
+	pOut->DrawTriangle(P1, P2, P3, gfxInfo, true);
+
+	//Drawing filled, non-highlighted
+	pOut->PrintMessage("Drawing a Triangle, normal, filled, Click to continue");
+	pIn->GetPointClicked(x, y);
+
+	pOut->PrintMessage("Click to position the three vertices of the triangle");
+	pIn->GetPointClicked(P1.x, P1.y);
+	pIn->GetPointClicked(P2.x, P2.y);
+	pIn->GetPointClicked(P3.x, P3.y);
+
+	gfxInfo.BorderWdth = 4;
+	gfxInfo.DrawClr = BLUE;	//any color for border
+	gfxInfo.FillClr = GREEN;//any color for filling
+	gfxInfo.isFilled = true;//Figure is filled
+
+	pOut->DrawTriangle(P1, P2, P3, gfxInfo, false);
+
+	//Drawing filled, highlighted
+	pOut->PrintMessage("Drawing a Triangle, Highlighted, filled, Click to continue");
+	pIn->GetPointClicked(x, y);
+
+	pOut->DrawTriangle(P1, P2, P3, gfxInfo, true);
 
 	pOut->PrintMessage("Drawing a Triangle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
@@ -110,7 +166,43 @@ int main()
 	pOut->PrintMessage("Drawing a Circle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-								///TODO: Add code to draw Circle in all possible states
+	///TODO: Add code to draw Circle in all possible states
+	//Drawing non-filled, non-highlighted
+	pOut->PrintMessage("Drawing a Circle, normal, non-filled, Click to continue");
+	pIn->GetPointClicked(x, y);
+
+	pOut->PrintMessage("Drawing a Circle, normal, non-filled, click to position the center");
+	pIn->GetPointClicked(P1.x, P1.y);
+
+	gfxInfo.BorderWdth = 3;
+	gfxInfo.DrawClr = BLACK;	//any color for border
+	gfxInfo.isFilled = false;	//Figure is NOT filled
+
+	pOut->DrawCircle(P1, 50, gfxInfo, false);
+
+	//Drawing non-filled, highlighted
+	pOut->PrintMessage("Drawing a Circle, highlighted, non-filled, click to highlight");
+	pIn->GetPointClicked(x, y);
+
+	pOut->DrawCircle(P1, 50, gfxInfo, true);
+
+	//Drawing filled, non-highlighted
+	pOut->PrintMessage("Drawing a Circle, normal, filled, click to position the center");
+	pIn->GetPointClicked(P1.x, P1.y);
+
+	gfxInfo.BorderWdth = 4;
+	gfxInfo.DrawClr = BLUE;	//any color for border
+	gfxInfo.FillClr = GREEN;//any color for filling
+	gfxInfo.isFilled = true;//Figure is filled
+
+	pOut->DrawCircle(P1, 70, gfxInfo, false);
+
+	//Drawing filled highlighted.
+	pOut->PrintMessage("Drawing a Circle, filled, highlighted, click to highlight");
+	pIn->GetPointClicked(x,y);
+
+	pOut->DrawCircle(P1, 70, gfxInfo, true);
+
 
 	pOut->PrintMessage("Drawing a Circle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
@@ -191,12 +283,12 @@ int main()
 			pOut->PrintMessage("Action: BRUSH 8 Clicked");
 			break;
 
-		case  ITM_BRUSH10_Clicked:
-			pOut->PrintMessage("Action: BRUSH 10 Clicked");
+		case  ITM_BRUSH9_Clicked:
+			pOut->PrintMessage("Action: BRUSH 9 Clicked");
 			break;
 
-		case  ITM_BRUSH11_Clicked:
-			pOut->PrintMessage("Action: BRUSH 11 Clicked");
+		case  ITM_BRUSH10_Clicked:
+			pOut->PrintMessage("Action: BRUSH 10 Clicked");
 			break;
 
 		case ITM_COLLAPSELEFT_Clicked:
@@ -237,12 +329,12 @@ int main()
 			pOut->PrintMessage("Action: BRUSHFILL 8 Clicked");
 			break;
 
-		case  ITM_BRUSHFILL10_Clicked:
-			pOut->PrintMessage("Action: BRUSHFILL 10 Clicked");
+		case  ITM_BRUSHFILL9_Clicked:
+			pOut->PrintMessage("Action: BRUSHFILL 9 Clicked");
 			break;
 
-		case  ITM_BRUSHFILL11_Clicked:
-			pOut->PrintMessage("Action: BRUSHFILL 11 Clicked");
+		case  ITM_BRUSHFILL10_Clicked:
+			pOut->PrintMessage("Action: BRUSHFILL 10 Clicked");
 			break;
 
 			//The Horizontal ITEMS //
@@ -356,7 +448,7 @@ int main()
 
 		case TO_DRAW:
 			pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
-			pOut->CreateDrawToolBarRight();
+			pOut->CreateDrawToolBarLeft();
 			pOut->CreateDrawToolBarUp();
 			break;
 

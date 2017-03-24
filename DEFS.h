@@ -17,7 +17,6 @@ enum ActionType //The actions supported (you can add more if needed)
 	ITM_BRUSH8_Clicked,
 	ITM_BRUSH9_Clicked,
 	ITM_BRUSH10_Clicked,
-	ITM_BRUSH11_Clicked,
 	ITM_COLLAPSELEFT_Clicked,
 
 	// ITEM BRUSH FILL //
@@ -29,8 +28,8 @@ enum ActionType //The actions supported (you can add more if needed)
 	ITM_BRUSHFILL6_Clicked,
 	ITM_BRUSHFILL7_Clicked,
 	ITM_BRUSHFILL8_Clicked,
+	ITM_BRUSHFILL9_Clicked,
 	ITM_BRUSHFILL10_Clicked,
-	ITM_BRUSHFILL11_Clicked,
 
 	// ZOOM ITEMS // 
 	ITM_ZOOM_IN_Clicked,

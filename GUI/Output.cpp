@@ -75,7 +75,7 @@ void Output::ClearStatusBar() const
 	pWind->DrawRectangle(0, UI.height - UI.StatusBarHeight, UI.width, UI.height);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-void Output::CreateDrawToolBarLeft() const
+void Output::CreateDrawToolBarRight() const
 {
 	UI.InterfaceMode = MODE_DRAW;  //Setting the current mode.
 
@@ -126,7 +126,7 @@ void Output::CreateDrawToolBarLeft() const
 }
 
 
-void Output::CreateDrawToolBarRight() const
+void Output::CreateDrawToolBarLeft() const
 {
 	UI.InterfaceMode = MODE_DRAW;   //Setting the current mode.
 
@@ -157,8 +157,8 @@ void Output::CreateDrawToolBarRight() const
 	MenuItemImages1[ITM_BRUSH6] = "images\\MenuItems\\ICONS\\BROWN.jpg";
 	MenuItemImages1[ITM_BRUSH7] = "images\\MenuItems\\ICONS\\BUMBY.jpg";
 	MenuItemImages1[ITM_BRUSH8] = "images\\MenuItems\\ICONS\\BLUE.jpg";
-	MenuItemImages1[ITM_BRUSH10] = "images\\MenuItems\\ICONS\\PURPLE.jpg";
-	MenuItemImages1[ITM_BRUSH11] = "images\\MenuItems\\ICONS\\LAST.jpg";
+	MenuItemImages1[ITM_BRUSH9] = "images\\MenuItems\\ICONS\\PURPLE.jpg";
+	MenuItemImages1[ITM_BRUSH10] = "images\\MenuItems\\ICONS\\LAST.jpg";
 	MenuItemImages1[ITM_COLLAPSELEFT] = "images\\MenuItems\\ICONS\\COLLAPSE.jpg";
 	//Drawing the icons for the first menu of the right toolbar.
 	for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTBRUSH; i++) // 1 here is the intializer of enum 
@@ -175,8 +175,8 @@ void Output::CreateDrawToolBarRight() const
 	MenuItemImages2[ITM_BRUSHFILL6] = "images\\MenuItems\\ICONS\\BRUSH\\BROWN.jpg";
 	MenuItemImages2[ITM_BRUSHFILL7] = "images\\MenuItems\\ICONS\\BRUSH\\BUMBY.jpg";
 	MenuItemImages2[ITM_BRUSHFILL8] = "images\\MenuItems\\ICONS\\BRUSH\\BLUE.jpg";
-	MenuItemImages2[ITM_BRUSHFILL10] = "images\\MenuItems\\ICONS\\BRUSH\\PURPLE.jpg";
-	MenuItemImages2[ITM_BRUSHFILL11] = "images\\MenuItems\\ICONS\\BRUSH\\LAST.jpg";
+	MenuItemImages2[ITM_BRUSHFILL9] = "images\\MenuItems\\ICONS\\BRUSH\\PURPLE.jpg";
+	MenuItemImages2[ITM_BRUSHFILL10] = "images\\MenuItems\\ICONS\\BRUSH\\LAST.jpg";
 
 	//Drawing the icons for the second menu of the right toolbar.
 	for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTBRUSHFILL; i++)
@@ -192,14 +192,14 @@ void Output::CreateDrawToolBarUp() const
 {
 	UI.InterfaceMode = MODE_DRAW;   //Setting the current mode.
 
-									//You can draw the tool bar icons in any way you want.
-									//Below is one possible way
+	//You can draw the tool bar icons in any way you want.
+	//Below is one possible way
 
-									//First prepare List of images for each menu item
-									//To control the order of these images in the menu, 
-									//reoder them in UI_Info.h ==> enum DrawMenuItem
+	//First prepare List of images for each menu item
+	//To control the order of these images in the menu, 
+	//reoder them in UI_Info.h ==> enum DrawMenuItem
 
-									//Loading the icons for the upper toolbar.
+	//Loading the icons for the upper toolbar.
 	string MenuItemImages[DRAW_ITEM_COUNT_UP];
 	MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\ICONS\\CIRCULE.jpg";
 	MenuItemImages[ITM_RECTANGLE] = "images\\MenuItems\\ICONS\\RECTANGLE.jpg";
@@ -299,9 +299,64 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-
 }
 
+void Output::DrawLine(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = RectGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);	//Set Drawing color & width
+	
+	pWind->DrawLine(P1.x, P1.y, P2.x, P2.y,FRAME);
+}
+
+void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo RectGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = RectGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);
+
+	drawstyle style;
+	if (RectGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(RectGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
+}
+
+void Output::DrawCircle(Point center, int radius, GfxInfo RectGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = RectGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);
+
+	drawstyle style;
+	if (RectGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(RectGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	pWind->DrawCircle(center.x, center.y, radius, style);
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////
 Output::~Output()
