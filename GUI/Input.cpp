@@ -122,7 +122,7 @@ ActionType Input::GetUserAction() const
 		}
 
 		// ZOOM ITEMS //
-		else if (x >= 1385 && x <= 1500 && y >= 12 * 50 && y <= UI.height - UI.StatusBarHeight) {
+		else if (x >= 1385 && x <= 1500 && y >= 13 * 50 && y <= UI.height - UI.StatusBarHeight) {
 			if (x < 1435)
 				return ITM_ZOOM_IN_Clicked;
 			return ITM_ZOOM_OUT_Clicked;
@@ -160,7 +160,7 @@ ActionType Input::GetUserAction() const
 	else
 	{
 		// ZOOM ITEMS //
-		if (x >= 1385 && x <= 1500 && y >= 12 * 50 && y <= UI.height - UI.StatusBarHeight) {
+		if (x >= 1385 && x <= 1500 && y >= 13 * 50 && y <= UI.height - UI.StatusBarHeight) {
 			if (x < 1435)
 				return ITM_ZOOM_IN_Clicked;
 			return ITM_ZOOM_OUT_Clicked;
