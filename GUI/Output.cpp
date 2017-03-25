@@ -12,7 +12,7 @@ Output::Output()
 	UI.wx = 5;  //Setting the starting position of the window.
 	UI.wy = 5;   //Setting the ending position on the window.
 
-				 /*Setting the dimensions of the toolbars right,up,left*/
+	/*Setting the dimensions of the toolbars right,up,left*/
 	UI.StatusBarHeight = 80;      //Settting the height of the status bar.
 	UI.MenuItemWidthLeft = 50;    //Setting the width of icons in the left menu.
 	UI.MenuItemWidthUp = 100;     //Setting the width of icons in the upper menu.
@@ -27,7 +27,7 @@ Output::Output()
 	UI.StatusBarColor = TURQUOISE;  //Setting the color of the status bar.
 	UI.PenWidth = 3;	//Setting the width of figures frames.
 
-						/*Ceating the output window and setting the new name for the app*/
+	/*Ceating the output window and setting the new name for the app*/
 	pWind = CreateWind(UI.width, UI.height, UI.wx, UI.wy);
 	pWind->ChangeTitle("Paint for Kids - Programming Techniques Project");
 
@@ -79,12 +79,12 @@ void Output::CreateDrawToolBarRight() const
 {
 	UI.InterfaceMode = MODE_DRAW;  //Setting the current mode.
 
-								   //You can draw the tool bar icons in any way you want.
-								   //Below is one possible way
+	//You can draw the tool bar icons in any way you want.
+	//Below is one possible way
 
-								   //First prepare List of images for each menu item
-								   //To control the order of these images in the menu, 
-								   //reoder them in UI_Info.h ==> enum DrawMenuItem
+	//First prepare List of images for each menu item
+	//To control the order of these images in the menu, 
+	//reoder them in UI_Info.h ==> enum DrawMenuItem
 
 	/*Adding two parallel icons for zooming in and out*/;
 	string zoomControls[CounterZoom];
@@ -94,8 +94,6 @@ void Output::CreateDrawToolBarRight() const
 	pWind->DrawImage(zoomControls[ITM_ZOOM_OUT], 1435, 13 * 50, 50, 50);
 
 
-
-
 	/*Loading the icons for the left toolbar.*/
 	string MenuItemImages[DRAW_ITM_COUNT_LEFT];
 	MenuItemImages[ITM_COLLAPSERIGHT] = "images\\MenuItems\\ICONS\\TOOLS\\COLLAPSE.jpg";
@@ -103,8 +101,6 @@ void Output::CreateDrawToolBarRight() const
 	MenuItemImages[ITM_MOVE] = "images\\MenuItems\\ICONS\\TOOLS\\MOVE.jpg";
 	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\ICONS\\TOOLS\\SELECT.jpg";
 	MenuItemImages[ITM_RESIZE] = "images\\MenuItems\\ICONS\\TOOLS\\RESIZE1.jpg";
-	MenuItemImages[ITM_RECT] = "images\\MenuItems\\Menu_Rect.jpg";
-	MenuItemImages[ITM_CIRC] = "images\\MenuItems\\Menu_Circ.jpg";
 	MenuItemImages[ITM_COPY] = "images\\MenuItems\\ICONS\\TOOLS\\COPY.jpg";
 	MenuItemImages[ITM_CUT] = "images\\MenuItems\\ICONS\\TOOLS\\CUT.jpg";
 	MenuItemImages[ITM_PASTE] = "images\\MenuItems\\ICONS\\TOOLS\\PASTE.jpg";
@@ -116,13 +112,12 @@ void Output::CreateDrawToolBarRight() const
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\ICONS\\TOOLS\\EXIT.jpg";
 
 	//Drawing the left toolbar, excluding the last three icons(not needed now)
-	for (int i = 1; i<DRAW_ITM_COUNT_LEFT - 4; i++)  //the -3 is temp, change later.
+	for (int i = 1; i<DRAW_ITM_COUNT_LEFT-2 ; i++)  
 		pWind->DrawImage(MenuItemImages[i], 1435, ((i) * 50), UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+
 	pWind->DrawImage(MenuItemImages[ITM_COLLAPSERIGHT], 1385, 0, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
 	pWind->DrawImage(MenuItemImages[ITM_EXIT], 1435, 0, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
-	/*NOTE: When we finish the input class, I shall remove the last three items,
-	I have left the for the time being to be able to test without changing
-	the main function*/
+
 }
 
 
