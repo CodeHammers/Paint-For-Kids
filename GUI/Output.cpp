@@ -150,10 +150,10 @@ void Output::CreateDrawToolBarLeft() const
 	MenuItemImages1[ITM_BRUSH4] = "images\\MenuItems\\ICONS\\ORANGE.jpg";
 	MenuItemImages1[ITM_BRUSH5] = "images\\MenuItems\\ICONS\\NILE.jpg";
 	MenuItemImages1[ITM_BRUSH6] = "images\\MenuItems\\ICONS\\BROWN.jpg";
-	MenuItemImages1[ITM_BRUSH7] = "images\\MenuItems\\ICONS\\BUMBY.jpg";
+	MenuItemImages1[ITM_BRUSH7] = "images\\MenuItems\\ICONS\\LAST.jpg";
 	MenuItemImages1[ITM_BRUSH8] = "images\\MenuItems\\ICONS\\BLUE.jpg";
 	MenuItemImages1[ITM_BRUSH9] = "images\\MenuItems\\ICONS\\PURPLE.jpg";
-	MenuItemImages1[ITM_BRUSH10] = "images\\MenuItems\\ICONS\\LAST.jpg";
+	MenuItemImages1[ITM_BRUSH10] = "images\\MenuItems\\ICONS\\BLACK.jpg";
 	MenuItemImages1[ITM_COLLAPSELEFT] = "images\\MenuItems\\ICONS\\COLLAPSE.jpg";
 	//Drawing the icons for the first menu of the right toolbar.
 	for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTBRUSH; i++) // 1 here is the intializer of enum 
@@ -168,10 +168,10 @@ void Output::CreateDrawToolBarLeft() const
 	MenuItemImages2[ITM_BRUSHFILL4] = "images\\MenuItems\\ICONS\\BRUSH\\ORANGE.jpg";
 	MenuItemImages2[ITM_BRUSHFILL5] = "images\\MenuItems\\ICONS\\BRUSH\\NILE.jpg";
 	MenuItemImages2[ITM_BRUSHFILL6] = "images\\MenuItems\\ICONS\\BRUSH\\BROWN.jpg";
-	MenuItemImages2[ITM_BRUSHFILL7] = "images\\MenuItems\\ICONS\\BRUSH\\BUMBY.jpg";
+	MenuItemImages2[ITM_BRUSHFILL7] = "images\\MenuItems\\ICONS\\BRUSH\\LAST.jpg";
 	MenuItemImages2[ITM_BRUSHFILL8] = "images\\MenuItems\\ICONS\\BRUSH\\BLUE.jpg";
 	MenuItemImages2[ITM_BRUSHFILL9] = "images\\MenuItems\\ICONS\\BRUSH\\PURPLE.jpg";
-	MenuItemImages2[ITM_BRUSHFILL10] = "images\\MenuItems\\ICONS\\BRUSH\\LAST.jpg";
+	MenuItemImages2[ITM_BRUSHFILL10] = "images\\MenuItems\\ICONS\\BRUSH\\BLACK.jpg";
 
 	//Drawing the icons for the second menu of the right toolbar.
 	for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTBRUSHFILL; i++)
