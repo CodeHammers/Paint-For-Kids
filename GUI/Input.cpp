@@ -39,28 +39,27 @@ ActionType Input::GetUserAction() const
 
 									//special hadling for mode switching
 									//if (x >= 60 && x <= 120 && y >= 600 && y <= 660 && UI.InterfaceMode == MODE_DRAW) //click on the play mode
-									//UI.InterfaceMode = MODE_PLAY;
+								//UI.InterfaceMode = MODE_PLAY;
 									//else if(x >= 60 && x <= 120 && y >= 600 && y <= 660 && UI.InterfaceMode == MODE_PLAY)
 									//UI.InterfaceMode = MODE_DRAW;
-
-
+ 
 	if (UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
 		// Edited .. UI Tool Bar Width =60*2 ;; 
 		UI.ToolBarWidth = 60 * 2;  // 60 refers to The first column ,, 2 refers to double columns ;; 
 								   //[1] If user clicks on the Toolbar
 
-		if (x >= 60 && x < UI.ToolBarWidth && y >= 600 && y <= 660)
+		if (x >= 0 && x < UI.ToolBarWidth / 2 && y >= 0 && y <= 60)
 			return TO_PLAY;
 
-		if (x >= 0 && x < UI.ToolBarWidth / 2 && y >= 600 && y <= 660)
+		if (x >= 60 && x < UI.ToolBarWidth  && y >= 0 && y <= 60)
 			return ITM_COLLAPSELEFT_Clicked;
 
 		else if (x >= 0 && x < UI.ToolBarWidth / 2)
 		{
 			//Check which Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
-			int ClickedItemOrder = (y / UI.MenuItemHeight);
+			int ClickedItemOrder = ((y-60) / UI.MenuItemHeight);
 			//Divide x coord of the point clicked by the menu item width (int division)
 			//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
 
@@ -82,11 +81,11 @@ ActionType Input::GetUserAction() const
 			}
 		}
 		else if (x >= 60 && x < UI.ToolBarWidth) { // The Second  Column from left
-			int ClickedItemOrder = (y / UI.MenuItemHeight);
+			int ClickedItemOrder = ((y-60) / UI.MenuItemHeight);
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_BRUSHFILL1:			  return ITM_BRUSHFILL1_Clicked;
+			case ITM_BRUSHFILL1:		  return ITM_BRUSHFILL1_Clicked;
 			case ITM_BRUSHFILL2:		  return ITM_BRUSHFILL2_Clicked;
 			case ITM_BRUSHFILL3:		  return ITM_BRUSHFILL3_Clicked;
 			case ITM_BRUSHFILL4:		  return ITM_BRUSHFILL4_Clicked;
@@ -208,7 +207,7 @@ ActionType Input::GetUserAction() const
 		else
 			return STATUS;
 	}
-
+	
 
 }
 /////////////////////////////////

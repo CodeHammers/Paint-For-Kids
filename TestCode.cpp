@@ -403,7 +403,7 @@ int main()
 
 		case ITM_UNDO_Clicked:
 			pOut->PrintMessage("Action: Undo Button Clicked");
-			pOut->CreateDrawToolBarLeft();
+			// pOut->CreateDrawToolBarLeft();
 			break;
 
 		case ITM_REDO_Clicked:

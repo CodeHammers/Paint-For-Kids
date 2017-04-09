@@ -58,7 +58,7 @@ enum DrawMenuItemUp  //enumeration for icons on the upper menu
 };
 
 
-enum DrawMenuItemRightBrush  //enumeration for icons on the right menu
+enum DrawMenuItemRight  //enumeration for icons on the right menu
 {
 	ITM_BRUSH1,
 	ITM_BRUSH2,

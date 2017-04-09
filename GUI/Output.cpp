@@ -137,48 +137,46 @@ void Output::CreateDrawToolBarLeft() const
 	menu shows the fill colors to control the fill color of a figure*/
 
 	//Collapse the GAME_MODE UPPER toolbar.
+	
+	
 	pWind->SetBrush(UI.BkGrndColor);
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->DrawRectangle(0, 0, PLAY_ITM_COUNT * 100, 100);
 
 
+	string UPPERRIGHTICONS[2];
+	UPPERRIGHTICONS[0] = "images\\MenuItems\\ICONS\\COLLAPSE.jpg";
+	UPPERRIGHTICONS[1] = "images\\MenuItems\\ICONS\\JOYSTICK.jpg";
+
+	pWind->DrawImage(UPPERRIGHTICONS[0], 60, 0, 60, 60);
+	pWind->DrawImage(UPPERRIGHTICONS[1], 0, 0, 60, UI.MenuItemHeight);
+
+
+
+
 	//Loading the icons for the first menu of the right toolbar.
 	string MenuItemImages1[DRAW_ITEM_COUNT_RIGHTBRUSH];
-	MenuItemImages1[ITM_BRUSH1] = "images\\MenuItems\\ICONS\\RED.jpg";
-	MenuItemImages1[ITM_BRUSH2] = "images\\MenuItems\\ICONS\\GREEN.jpg";
-	MenuItemImages1[ITM_BRUSH3] = "images\\MenuItems\\ICONS\\YELLOW.jpg";
-	MenuItemImages1[ITM_BRUSH4] = "images\\MenuItems\\ICONS\\ORANGE.jpg";
-	MenuItemImages1[ITM_BRUSH5] = "images\\MenuItems\\ICONS\\NILE.jpg";
-	MenuItemImages1[ITM_BRUSH6] = "images\\MenuItems\\ICONS\\BROWN.jpg";
-	MenuItemImages1[ITM_BRUSH7] = "images\\MenuItems\\ICONS\\LAST.jpg";
-	MenuItemImages1[ITM_BRUSH8] = "images\\MenuItems\\ICONS\\BLUE.jpg";
-	MenuItemImages1[ITM_BRUSH9] = "images\\MenuItems\\ICONS\\PURPLE.jpg";
-	MenuItemImages1[ITM_BRUSH10] = "images\\MenuItems\\ICONS\\BLACK.jpg";
+	MenuItemImages1[ITM_BRUSH1] = "images\\MenuItems\\ICONS\\COLOR-RED.jpg";
+	MenuItemImages1[ITM_BRUSH2] = "images\\MenuItems\\ICONS\\COLOR-GREEN.jpg";
+	MenuItemImages1[ITM_BRUSH3] = "images\\MenuItems\\ICONS\\COLOR-YELLOW.jpg";
+	MenuItemImages1[ITM_BRUSH4] = "images\\MenuItems\\ICONS\\COLOR-ORANGE.jpg";
+	MenuItemImages1[ITM_BRUSH5] = "images\\MenuItems\\ICONS\\COLOR-NILE.jpg";
+	MenuItemImages1[ITM_BRUSH6] = "images\\MenuItems\\ICONS\\COLOR-BROWN.jpg";
+	MenuItemImages1[ITM_BRUSH7] = "images\\MenuItems\\ICONS\\COLOR-LAST.jpg";
+	MenuItemImages1[ITM_BRUSH8] = "images\\MenuItems\\ICONS\\COLOR-BLUE.jpg";
+	MenuItemImages1[ITM_BRUSH9] = "images\\MenuItems\\ICONS\\COLOR-PURBLE.jpg";
+	MenuItemImages1[ITM_BRUSH10] = "images\\MenuItems\\ICONS\\COLOR-BLACK.jpg";
 	MenuItemImages1[ITM_COLLAPSELEFT] = "images\\MenuItems\\ICONS\\COLLAPSE.jpg";
 	//Drawing the icons for the first menu of the right toolbar.
-	for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTBRUSH; i++) // 1 here is the intializer of enum 
-		pWind->DrawImage(MenuItemImages1[i], 0, ((i) * 60), UI.MenuItemWidthRight, UI.MenuItemHeight);
-	pWind->DrawImage(MenuItemImages1[10], 0, (10 * 60), 60, UI.MenuItemHeight);
+	for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTBRUSH-1; i++) // 1 here is the intializer of enum 
+		pWind->DrawImage(MenuItemImages1[i], 0, ((i+1) * 60), 120, UI.MenuItemHeight);
+
 
 	////Loading the icons for the second menu of the right toolbar.
-	string MenuItemImages2[DRAW_ITEM_COUNT_RIGHTBRUSHFILL]; // 10 elements
-	MenuItemImages2[ITM_BRUSHFILL1] = "images\\MenuItems\\ICONS\\BRUSH\\RED.jpg";
-	MenuItemImages2[ITM_BRUSHFILL2] = "images\\MenuItems\\ICONS\\BRUSH\\GREEN.jpg";
-	MenuItemImages2[ITM_BRUSHFILL3] = "images\\MenuItems\\ICONS\\BRUSH\\YELLOW.jpg";
-	MenuItemImages2[ITM_BRUSHFILL4] = "images\\MenuItems\\ICONS\\BRUSH\\ORANGE.jpg";
-	MenuItemImages2[ITM_BRUSHFILL5] = "images\\MenuItems\\ICONS\\BRUSH\\NILE.jpg";
-	MenuItemImages2[ITM_BRUSHFILL6] = "images\\MenuItems\\ICONS\\BRUSH\\BROWN.jpg";
-	MenuItemImages2[ITM_BRUSHFILL7] = "images\\MenuItems\\ICONS\\BRUSH\\LAST.jpg";
-	MenuItemImages2[ITM_BRUSHFILL8] = "images\\MenuItems\\ICONS\\BRUSH\\BLUE.jpg";
-	MenuItemImages2[ITM_BRUSHFILL9] = "images\\MenuItems\\ICONS\\BRUSH\\PURPLE.jpg";
-	MenuItemImages2[ITM_BRUSHFILL10] = "images\\MenuItems\\ICONS\\BRUSH\\BLACK.jpg";
+	
 
-	//Drawing the icons for the second menu of the right toolbar.
-	for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTBRUSHFILL; i++)
-		pWind->DrawImage(MenuItemImages2[i], 60, ((i) * 60), UI.MenuItemWidthRight, UI.MenuItemHeight);
-
-	string playModeIcon = "images\\MenuItems\\ICONS\\JOYSTICK.jpg";
-	pWind->DrawImage(playModeIcon, 60, 600, UI.MenuItemHeight, UI.MenuItemHeight);
+	//string playModeIcon = "images\\MenuItems\\ICONS\\JOYSTICK.jpg";
+	//pWind->DrawImage(playModeIcon, 60, 600, UI.MenuItemHeight, UI.MenuItemHeight);
 
 }
 
