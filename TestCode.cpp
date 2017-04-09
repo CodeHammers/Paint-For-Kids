@@ -16,7 +16,8 @@ int main()
 	pOut->PrintMessage("This demo is to test input and output classes, Click anywhere to start the test");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-
+	
+/*
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 1:	
 	//			Create The FULL Tool bar, the drawing area and the status bar	
@@ -35,7 +36,7 @@ int main()
 
 	GfxInfo gfxInfo;//to be used with draw function of the class Ouput
 	Point P1, P2, P3;
-	
+
 	pOut->PrintMessage("TEST2: Now we will show that Output class can draw any figure in any state, Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
@@ -236,7 +237,7 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	pOut->ClearDrawArea();
-
+*/
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 4: 
 	//			Input Class : Check for the user action
@@ -309,6 +310,7 @@ int main()
 			// The Second Column from left //
 		case  ITM_BRUSHFILL1_Clicked:
 			pOut->PrintMessage("Action: BRUSHFILL 1 Clicked");
+			pOut->CreateDrawToolBarRight();
 			break;
 
 		case  ITM_BRUSHFILL2_Clicked:
@@ -401,6 +403,7 @@ int main()
 
 		case ITM_UNDO_Clicked:
 			pOut->PrintMessage("Action: Undo Button Clicked");
+			pOut->CreateDrawToolBarLeft();
 			break;
 
 		case ITM_REDO_Clicked:
@@ -425,6 +428,7 @@ int main()
 
 		case ITM_COLLAPSERIGHT_Clicked:
 			pOut->PrintMessage("Action: COLLAPSERIGHT Button Clicked");
+			pOut->crap();
 			break;
 
 			// GAME_MODE ICONS //

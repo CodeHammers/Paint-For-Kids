@@ -125,18 +125,18 @@ void Output::CreateDrawToolBarLeft() const
 {
 	UI.InterfaceMode = MODE_DRAW;   //Setting the current mode.
 
-									//You can draw the tool bar icons in any way you want.
-									//Below is one possible way
+	//You can draw the tool bar icons in any way you want.
+	//Below is one possible way
 
-									//First prepare List of images for each menu item
-									//To control the order of these images in the menu, 
-									//reoder them in UI_Info.h ==> enum DrawMenuItem
+	//First prepare List of images for each menu item
+	//To control the order of these images in the menu, 
+	//reoder them in UI_Info.h ==> enum DrawMenuItem
 
-									/*Here we draw two menus side-by-side, the first menu contains brush
-									colors the control the draw color of the outerline of a figure, the second
-									menu shows the fill colors to control the fill color of a figure*/
+	/*Here we draw two menus side-by-side, the first menu contains brush
+	colors the control the draw color of the outerline of a figure, the second
+	menu shows the fill colors to control the fill color of a figure*/
 
-									//Collapse the GAME_MODE UPPER toolbar.
+	//Collapse the GAME_MODE UPPER toolbar.
 	pWind->SetBrush(UI.BkGrndColor);
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->DrawRectangle(0, 0, PLAY_ITM_COUNT * 100, 100);
@@ -221,7 +221,7 @@ void Output::CreatePlayToolBar() const
 	//Collapse the upper toolbar.
 	pWind->DrawRectangle(500, 0, 900, 100);
 
-	//temporary images.
+	
 	string MenuItemImages[PLAY_ITM_COUNT];
 	MenuItemImages[ITM_SCRAMBLE] = "images\\MenuItems\\ICONS\\TOOLS\\SCRAMBLE.jpg";
 	MenuItemImages[ITM_FIND] = "images\\MenuItems\\ICONS\\TOOLS\\FIND.jpg";
@@ -351,6 +351,38 @@ void Output::DrawCircle(Point center, int radius, GfxInfo RectGfxInfo, bool sele
 		style = FRAME;
 
 	pWind->DrawCircle(center.x, center.y, radius, style);
+}
+
+void Output::crap()
+{
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->DrawRectangle(1435, 50, 1500, 600);
+
+	/*Loading the icons for the left toolbar.*/
+	string MenuItemImages[DRAW_ITM_COUNT_LEFT];
+	MenuItemImages[ITM_COLLAPSERIGHT] = "images\\MenuItems\\ICONS\\TOOLS\\COLLAPSE.jpg";
+	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\ICONS\\TOOLS\\LOAD.jpg";
+	MenuItemImages[ITM_MOVE] = "images\\MenuItems\\ICONS\\TOOLS\\MOVE.jpg";
+	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\ICONS\\TOOLS\\SELECT.jpg";
+	MenuItemImages[ITM_RESIZE] = "images\\MenuItems\\ICONS\\TOOLS\\RESIZE1.jpg";
+	MenuItemImages[ITM_COPY] = "images\\MenuItems\\ICONS\\TOOLS\\COPY.jpg";
+	MenuItemImages[ITM_CUT] = "images\\MenuItems\\ICONS\\TOOLS\\CUT.jpg";
+	MenuItemImages[ITM_PASTE] = "images\\MenuItems\\ICONS\\TOOLS\\PASTE.jpg";
+	MenuItemImages[ITM_REDO] = "images\\MenuItems\\ICONS\\TOOLS\\REDO11.jpg";
+	MenuItemImages[ITM_UNDO] = "images\\MenuItems\\ICONS\\TOOLS\\UNDO11.jpg";
+	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\ICONS\\TOOLS\\DELETE.jpg";
+	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\ICONS\\TOOLS\\SAVE.jpg";
+	MenuItemImages[ITM_SAVEAS] = "images\\MenuItems\\ICONS\\TOOLS\\SAVEAS.jpg";
+	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\ICONS\\TOOLS\\EXIT.jpg";
+
+	for (int j = 0; j < 80; j++) {
+		//Drawing the left toolbar, excluding the last three icons(not needed now)
+		for (int i = 1; i < DRAW_ITM_COUNT_LEFT - 2; i++) {
+			pWind->DrawImage(MenuItemImages[i], 1435 + (0.7)*j, ((i) * 50), UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+			pWind->DrawRectangle(1435, 50, 1435+(0.7)*j, 600);
+		}
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
