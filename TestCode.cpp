@@ -17,7 +17,7 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	
-/*
+
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 1:	
 	//			Create The FULL Tool bar, the drawing area and the status bar	
@@ -237,7 +237,7 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	pOut->ClearDrawArea();
-*/
+
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 4: 
 	//			Input Class : Check for the user action
@@ -304,14 +304,14 @@ int main()
 
 		case ITM_COLLAPSELEFT_Clicked:
 			pOut->PrintMessage("Action: Collapse Button Clicked");
-			pOut->CreateDrawToolBarLeft(true);
+			//pOut->CreateDrawToolBarLeft(true);
 			break;
 
 
 			// The Second Column from left //
 		case  ITM_BRUSHFILL1_Clicked:
 			pOut->PrintMessage("Action: BRUSHFILL 1 Clicked");
-			pOut->CreateDrawToolBarRight(false);
+			//pOut->CreateDrawToolBarRight(false);
 			break;
 
 		case  ITM_BRUSHFILL2_Clicked:
@@ -404,7 +404,7 @@ int main()
 
 		case ITM_UNDO_Clicked:
 			pOut->PrintMessage("Action: Undo Button Clicked");
-			pOut->CreateDrawToolBarLeft(false);
+			//pOut->CreateDrawToolBarLeft(false);
 			break;
 
 		case ITM_REDO_Clicked:
@@ -429,7 +429,7 @@ int main()
 
 		case ITM_COLLAPSERIGHT_Clicked:
 			pOut->PrintMessage("Action: COLLAPSERIGHT Button Clicked");
-			pOut->CreateDrawToolBarRight(true);
+			//pOut->CreateDrawToolBarRight(true);
 			break;
 
 			// GAME_MODE ICONS //

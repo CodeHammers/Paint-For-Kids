@@ -186,10 +186,10 @@ void Output::CreateDrawToolBarLeft(bool collapse) const
 	else {
 		pWind->SetBrush(UI.BkGrndColor);
 		pWind->SetPen(UI.BkGrndColor, 1);
-		for (int j = 0; j < 120; j++) {
+		for (int j = 0; j <= 120; j++) {
 			for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTBRUSH - 1; i++) { // 1 here is the intializer of enum 
-				pWind->DrawImage(MenuItemImages1[i], -(j*1.5), ((i + 1) * 60), 120, UI.MenuItemHeight);
-				pWind->DrawRectangle(120, 60, 120-(j*1.5), 602);
+				pWind->DrawImage(MenuItemImages1[i], -(j), ((i + 1) * 60), 120, UI.MenuItemHeight);
+				pWind->DrawRectangle(120, 60, 120-(j), 602);
 			}
 		}
 	}
