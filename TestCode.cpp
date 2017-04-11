@@ -304,13 +304,14 @@ int main()
 
 		case ITM_COLLAPSELEFT_Clicked:
 			pOut->PrintMessage("Action: Collapse Button Clicked");
+			pOut->CreateDrawToolBarLeft(true);
 			break;
 
 
 			// The Second Column from left //
 		case  ITM_BRUSHFILL1_Clicked:
 			pOut->PrintMessage("Action: BRUSHFILL 1 Clicked");
-			pOut->CreateDrawToolBarRight();
+			pOut->CreateDrawToolBarRight(false);
 			break;
 
 		case  ITM_BRUSHFILL2_Clicked:
@@ -403,7 +404,7 @@ int main()
 
 		case ITM_UNDO_Clicked:
 			pOut->PrintMessage("Action: Undo Button Clicked");
-			// pOut->CreateDrawToolBarLeft();
+			pOut->CreateDrawToolBarLeft(false);
 			break;
 
 		case ITM_REDO_Clicked:
@@ -428,7 +429,7 @@ int main()
 
 		case ITM_COLLAPSERIGHT_Clicked:
 			pOut->PrintMessage("Action: COLLAPSERIGHT Button Clicked");
-			pOut->crap();
+			pOut->CreateDrawToolBarRight(true);
 			break;
 
 			// GAME_MODE ICONS //
@@ -462,7 +463,7 @@ int main()
 
 		case TO_DRAW:
 			pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
-			pOut->CreateDrawToolBarLeft();
+			pOut->CreateDrawToolBarLeft(false);
 			pOut->CreateDrawToolBarUp();
 			break;
 

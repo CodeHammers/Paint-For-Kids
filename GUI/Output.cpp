@@ -32,9 +32,9 @@ Output::Output()
 	pWind->ChangeTitle("Paint for Kids - Programming Techniques Project");
 
 	/*Drawing all four menus for the application window*/
-	CreateDrawToolBarLeft();
+	CreateDrawToolBarLeft(false);
 	CreateDrawToolBarUp();
-	CreateDrawToolBarRight();
+	CreateDrawToolBarRight(false);
 
 	/*Drawing the status bar in the application window*/
 	CreateStatusBar();
@@ -75,7 +75,7 @@ void Output::ClearStatusBar() const
 	pWind->DrawRectangle(0, UI.height - UI.StatusBarHeight, UI.width, UI.height);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-void Output::CreateDrawToolBarRight() const
+void Output::CreateDrawToolBarRight(bool collapse) const
 {
 	UI.InterfaceMode = MODE_DRAW;  //Setting the current mode.
 
@@ -86,6 +86,7 @@ void Output::CreateDrawToolBarRight() const
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
 
+	
 	/*Adding two parallel icons for zooming in and out*/;
 	string zoomControls[CounterZoom];
 	zoomControls[ITM_ZOOM_IN] = "images\\MenuItems\\ICONS\\TOOLS\\ZOOMIN.jpg";
@@ -111,17 +112,29 @@ void Output::CreateDrawToolBarRight() const
 	MenuItemImages[ITM_SAVEAS] = "images\\MenuItems\\ICONS\\TOOLS\\SAVEAS.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\ICONS\\TOOLS\\EXIT.jpg";
 
-	//Drawing the left toolbar, excluding the last three icons(not needed now)
-	for (int i = 1; i<DRAW_ITM_COUNT_LEFT-2 ; i++)  
-		pWind->DrawImage(MenuItemImages[i], 1435, ((i) * 50), UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
-
+	if (!collapse) {
+		//Drawing the left toolbar, excluding the last three icons(not needed now)
+		for (int i = 1; i < DRAW_ITM_COUNT_LEFT - 2; i++)
+			pWind->DrawImage(MenuItemImages[i], 1435, i*50, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+	}
+	else {
+		pWind->SetBrush(UI.BkGrndColor);
+		pWind->SetPen(UI.BkGrndColor, 1);
+		for (int j = 0; j < 80; j++) {
+			//Drawing the left toolbar, excluding the last three icons(not needed now)
+			for (int i = 1; i < DRAW_ITM_COUNT_LEFT - 2; i++) {
+				pWind->DrawImage(MenuItemImages[i], 1435 + (0.7)*j, i*50, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+				pWind->DrawRectangle(1435, 50, 1435 + (0.7)*j, 600);
+			}
+		}
+	}
 	pWind->DrawImage(MenuItemImages[ITM_COLLAPSERIGHT], 1385, 0, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
 	pWind->DrawImage(MenuItemImages[ITM_EXIT], 1435, 0, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
 
 }
 
 
-void Output::CreateDrawToolBarLeft() const
+void Output::CreateDrawToolBarLeft(bool collapse) const
 {
 	UI.InterfaceMode = MODE_DRAW;   //Setting the current mode.
 
@@ -138,7 +151,6 @@ void Output::CreateDrawToolBarLeft() const
 
 	//Collapse the GAME_MODE UPPER toolbar.
 	
-	
 	pWind->SetBrush(UI.BkGrndColor);
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->DrawRectangle(0, 0, PLAY_ITM_COUNT * 100, 100);
@@ -150,8 +162,6 @@ void Output::CreateDrawToolBarLeft() const
 
 	pWind->DrawImage(UPPERRIGHTICONS[0], 60, 0, 60, 60);
 	pWind->DrawImage(UPPERRIGHTICONS[1], 0, 0, 60, UI.MenuItemHeight);
-
-
 
 
 	//Loading the icons for the first menu of the right toolbar.
@@ -167,14 +177,24 @@ void Output::CreateDrawToolBarLeft() const
 	MenuItemImages1[ITM_BRUSH9] = "images\\MenuItems\\ICONS\\COLOR-PURBLE.jpg";
 	MenuItemImages1[ITM_BRUSH10] = "images\\MenuItems\\ICONS\\COLOR-BLACK.jpg";
 	MenuItemImages1[ITM_COLLAPSELEFT] = "images\\MenuItems\\ICONS\\COLLAPSE.jpg";
-	//Drawing the icons for the first menu of the right toolbar.
-	for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTBRUSH-1; i++) // 1 here is the intializer of enum 
-		pWind->DrawImage(MenuItemImages1[i], 0, ((i+1) * 60), 120, UI.MenuItemHeight);
-
+	
+	if (!collapse) {
+		//Drawing the icons for the first menu of the right toolbar.
+		for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTBRUSH - 1; i++) // 1 here is the intializer of enum 
+			pWind->DrawImage(MenuItemImages1[i], 0, ((i + 1) * 60), 120, UI.MenuItemHeight);
+	}
+	else {
+		pWind->SetBrush(UI.BkGrndColor);
+		pWind->SetPen(UI.BkGrndColor, 1);
+		for (int j = 0; j < 120; j++) {
+			for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTBRUSH - 1; i++) { // 1 here is the intializer of enum 
+				pWind->DrawImage(MenuItemImages1[i], -(j*1.5), ((i + 1) * 60), 120, UI.MenuItemHeight);
+				pWind->DrawRectangle(120, 60, 120-(j*1.5), 602);
+			}
+		}
+	}
 
 	////Loading the icons for the second menu of the right toolbar.
-	
-
 	//string playModeIcon = "images\\MenuItems\\ICONS\\JOYSTICK.jpg";
 	//pWind->DrawImage(playModeIcon, 60, 600, UI.MenuItemHeight, UI.MenuItemHeight);
 
@@ -349,38 +369,6 @@ void Output::DrawCircle(Point center, int radius, GfxInfo RectGfxInfo, bool sele
 		style = FRAME;
 
 	pWind->DrawCircle(center.x, center.y, radius, style);
-}
-
-void Output::crap()
-{
-	pWind->SetBrush(UI.BkGrndColor);
-	pWind->SetPen(UI.BkGrndColor, 1);
-	pWind->DrawRectangle(1435, 50, 1500, 600);
-
-	/*Loading the icons for the left toolbar.*/
-	string MenuItemImages[DRAW_ITM_COUNT_LEFT];
-	MenuItemImages[ITM_COLLAPSERIGHT] = "images\\MenuItems\\ICONS\\TOOLS\\COLLAPSE.jpg";
-	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\ICONS\\TOOLS\\LOAD.jpg";
-	MenuItemImages[ITM_MOVE] = "images\\MenuItems\\ICONS\\TOOLS\\MOVE.jpg";
-	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\ICONS\\TOOLS\\SELECT.jpg";
-	MenuItemImages[ITM_RESIZE] = "images\\MenuItems\\ICONS\\TOOLS\\RESIZE1.jpg";
-	MenuItemImages[ITM_COPY] = "images\\MenuItems\\ICONS\\TOOLS\\COPY.jpg";
-	MenuItemImages[ITM_CUT] = "images\\MenuItems\\ICONS\\TOOLS\\CUT.jpg";
-	MenuItemImages[ITM_PASTE] = "images\\MenuItems\\ICONS\\TOOLS\\PASTE.jpg";
-	MenuItemImages[ITM_REDO] = "images\\MenuItems\\ICONS\\TOOLS\\REDO11.jpg";
-	MenuItemImages[ITM_UNDO] = "images\\MenuItems\\ICONS\\TOOLS\\UNDO11.jpg";
-	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\ICONS\\TOOLS\\DELETE.jpg";
-	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\ICONS\\TOOLS\\SAVE.jpg";
-	MenuItemImages[ITM_SAVEAS] = "images\\MenuItems\\ICONS\\TOOLS\\SAVEAS.jpg";
-	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\ICONS\\TOOLS\\EXIT.jpg";
-
-	for (int j = 0; j < 80; j++) {
-		//Drawing the left toolbar, excluding the last three icons(not needed now)
-		for (int i = 1; i < DRAW_ITM_COUNT_LEFT - 2; i++) {
-			pWind->DrawImage(MenuItemImages[i], 1435 + (0.7)*j, ((i) * 50), UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
-			pWind->DrawRectangle(1435, 50, 1435+(0.7)*j, 600);
-		}
-	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
