@@ -39,27 +39,27 @@ ActionType Input::GetUserAction() const
 
 									//special hadling for mode switching
 									//if (x >= 60 && x <= 120 && y >= 600 && y <= 660 && UI.InterfaceMode == MODE_DRAW) //click on the play mode
-								//UI.InterfaceMode = MODE_PLAY;
+									//UI.InterfaceMode = MODE_PLAY;
 									//else if(x >= 60 && x <= 120 && y >= 600 && y <= 660 && UI.InterfaceMode == MODE_PLAY)
 									//UI.InterfaceMode = MODE_DRAW;
- 
+
 	if (UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
 		// Edited .. UI Tool Bar Width =60*2 ;; 
-		UI.ToolBarWidth = 60 * 2;  // 60 refers to The first column ,, 2 refers to double columns ;; 
-								   //[1] If user clicks on the Toolbar
+		UI.ToolBarWidth = originalToolBarWidth * 2;  // 60 refers to The first column ,, 2 refers to double columns ;; 
+													 //[1] If user clicks on the Toolbar
 
-		if (x >= 0 && x < UI.ToolBarWidth / 2 && y >= 0 && y <= 60)
+		if (x >= 0 && x < UI.ToolBarWidth / 2 && y >= 0 && y <= originalToolBarWidth)
 			return TO_PLAY;
 
-		if (x >= 60 && x < UI.ToolBarWidth  && y >= 0 && y <= 60)
+		if (x >= originalToolBarWidth && x < UI.ToolBarWidth  && y >= 0 && y <= originalToolBarWidth)
 			return ITM_COLLAPSELEFT_Clicked;
 
 		else if (x >= 0 && x < UI.ToolBarWidth / 2)
 		{
 			//Check which Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
-			int ClickedItemOrder = ((y-60) / UI.MenuItemHeight);
+			int ClickedItemOrder = ((y - originalToolBarWidth) / UI.MenuItemHeight);
 			//Divide x coord of the point clicked by the menu item width (int division)
 			//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
 
@@ -80,8 +80,8 @@ ActionType Input::GetUserAction() const
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
-		else if (x >= 60 && x < UI.ToolBarWidth) { // The Second  Column from left
-			int ClickedItemOrder = ((y-60) / UI.MenuItemHeight);
+		else if (x >= originalToolBarWidth && x < UI.ToolBarWidth) { // The Second  Column from left
+			int ClickedItemOrder = ((y - originalToolBarWidth) / UI.MenuItemHeight);
 
 			switch (ClickedItemOrder)
 			{
@@ -100,7 +100,8 @@ ActionType Input::GetUserAction() const
 			}
 
 		}
-		else if (x >= 500 && x <= (4 * UI.MenuItemWidthUp + 500) && y >= 0 && y <= UI.MenuItemWidthUp) {
+		else if (x >= startingXForUpperMenu && x <= (4 * UI.MenuItemWidthUp + startingXForUpperMenu)
+			&& y >= 0 && y <= UI.MenuItemWidthUp) {
 			int ClickedItemOrder = ((x) / UI.MenuItemWidthUp);
 			switch (ClickedItemOrder) {
 			case ITM_CIRCLE:			return DRAW_CIRC;
@@ -113,22 +114,24 @@ ActionType Input::GetUserAction() const
 
 
 		// EXIT AND COLLAPSE //
-		else if (x >= 1385 && x <= 1500 && y >= 0 && y <= 50)
+		else if (x >= startingXforLeftMenu2ndCol && x <= ScreenEndX && y >= 0 && y <= leftMenuItemHeight)
 		{
-			if (x < 1435)
+			if (x < startingXforLeftMenu1stCol)
 				return ITM_COLLAPSERIGHT_Clicked;
 			return EXIT;
 		}
 
 		// ZOOM ITEMS //
-		else if (x >= 1385 && x <= 1500 && y >= 13 * 50 && y <= UI.height - UI.StatusBarHeight) {
-			if (x < 1435)
+		else if (x >= startingXforLeftMenu2ndCol && x <= ScreenEndX
+			&& y >= 13 * leftMenuItemHeight && y <= UI.height - UI.StatusBarHeight) {
+			if (x < startingXforLeftMenu1stCol)
 				return ITM_ZOOM_IN_Clicked;
 			return ITM_ZOOM_OUT_Clicked;
 		}
 
 		// The Right Column ITEMS // 
-		else if (x >= 1435 && x <= 1500 && y > 50 && y <= 800) {
+		else if (x >= startingXforLeftMenu1stCol && x <= ScreenEndX
+			&& y > leftMenuItemHeight && y <= ScreenEndY) {
 			int ClickedItemOrder = (y / UI.MenuItemWidthLeft);
 			switch (ClickedItemOrder) {
 			case ITM_RESIZE:				return ITM_RESIZE_Clicked;
@@ -159,21 +162,22 @@ ActionType Input::GetUserAction() const
 	else
 	{
 		// ZOOM ITEMS //
-		if (x >= 1385 && x <= 1500 && y >= 13 * 50 && y <= UI.height - UI.StatusBarHeight) {
-			if (x < 1435)
+		if (x >= startingXforLeftMenu2ndCol && x <= ScreenEndX && y >= 13 * leftMenuItemHeight
+			&& y <= UI.height - UI.StatusBarHeight) {
+			if (x < startingXforLeftMenu1stCol)
 				return ITM_ZOOM_IN_Clicked;
 			return ITM_ZOOM_OUT_Clicked;
 		}
 		// EXIT AND COLLAPSE //
-		else if (x >= 1385 && x <= 1500 && y >= 0 && y <= 50)
+		else if (x >= startingXforLeftMenu2ndCol && x <= ScreenEndX && y >= 0 && y <= leftMenuItemHeight)
 		{
-			if (x < 1435)
+			if (x < startingXforLeftMenu1stCol)
 				return ITM_COLLAPSERIGHT_Clicked;
 			return EXIT;
 		}
 
 
-		else if (y >= 0 && y <= 100 && x >= 0 && x <= PLAY_ITM_COUNT * UI.MenuItemWidthUp) {
+		else if (y >= 0 && y <= playModeItemHeight && x >= 0 && x <= PLAY_ITM_COUNT * UI.MenuItemWidthUp) {
 			int ClickedItemOrder = (x / UI.MenuItemWidthUp);
 			switch (ClickedItemOrder) {
 			case ITM_SCRAMBLE:			return ITM_SCRAMBLE_Clicked;
@@ -183,7 +187,7 @@ ActionType Input::GetUserAction() const
 			}
 		}
 
-		else if (x >= 1435 && x <= 1500 && y > 50 && y <= 800) {
+		else if (x >= startingXforLeftMenu1stCol && x <= ScreenEndX && y > leftMenuItemHeight && y <= ScreenEndY) {
 			int ClickedItemOrder = (y / UI.MenuItemWidthLeft);
 			switch (ClickedItemOrder) {
 			case ITM_RESIZE:				return ITM_RESIZE_Clicked;
@@ -207,7 +211,7 @@ ActionType Input::GetUserAction() const
 		else
 			return STATUS;
 	}
-	
+
 
 }
 /////////////////////////////////

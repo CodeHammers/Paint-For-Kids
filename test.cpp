@@ -16,23 +16,23 @@ int main()
 	pOut->PrintMessage("This demo is to test input and output classes, Click anywhere to start the test");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	
 
-	///////////////////////////////////////////////////////////////////////////////////
-	// TEST 1:	
-	//			Create The FULL Tool bar, the drawing area and the status bar	
-	//			This has already been done through the constrcutor of class Output
-	///////////////////////////////////////////////////////////////////////////////////
+
+								///////////////////////////////////////////////////////////////////////////////////
+								// TEST 1:	
+								//			Create The FULL Tool bar, the drawing area and the status bar	
+								//			This has already been done through the constrcutor of class Output
+								///////////////////////////////////////////////////////////////////////////////////
 
 	pOut->PrintMessage("TEST1: Drawing Tool bar and Status bar, Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 
-	///////////////////////////////////////////////////////////////////////////////////
-	// TEST 2:	
-	//			Drawing all the Figures with all possible states: 
-	//			Non-filled, Filled, and highlighted in both cases			
-	///////////////////////////////////////////////////////////////////////////////////
+								///////////////////////////////////////////////////////////////////////////////////
+								// TEST 2:	
+								//			Drawing all the Figures with all possible states: 
+								//			Non-filled, Filled, and highlighted in both cases			
+								///////////////////////////////////////////////////////////////////////////////////
 
 	GfxInfo gfxInfo;//to be used with draw function of the class Ouput
 	Point P1, P2, P3;
@@ -40,12 +40,12 @@ int main()
 	pOut->PrintMessage("TEST2: Now we will show that Output class can draw any figure in any state, Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	/// 2.1- Rectangle Test ///
-	/// =================== 
+								/// 2.1- Rectangle Test ///
+								/// =================== 
 	pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	//2.1.1 - Drawing non-filled rectangle
+								//2.1.1 - Drawing non-filled rectangle
 	pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
 	pIn->GetPointClicked(P1.x, P1.y);
 	pIn->GetPointClicked(P2.x, P2.y);
@@ -88,9 +88,9 @@ int main()
 	pOut->PrintMessage("Drawing a Line, normal and Highlighted, Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	///TODO: Add code to draw Line, Normal and Highlighted
+								///TODO: Add code to draw Line, Normal and Highlighted
 
-	//Drawing non-highlighted line.
+								//Drawing non-highlighted line.
 	pOut->PrintMessage("Drawing a Line, normal, click the two end points");
 	pIn->GetPointClicked(P1.x, P1.y);
 	pIn->GetPointClicked(P2.x, P2.y);
@@ -114,7 +114,7 @@ int main()
 	pOut->PrintMessage("Drawing a Triangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	//Drawing non-filled, non-highlighted
+								//Drawing non-filled, non-highlighted
 	pOut->PrintMessage("Drawing a Triangle, normal, non-filled, Click to continue");
 	pIn->GetPointClicked(x, y);
 
@@ -129,7 +129,7 @@ int main()
 
 	pOut->DrawTriangle(P1, P2, P3, gfxInfo, false); //non-filled, non-highlighted
 
-    //Drawing non-filled, highlighted
+													//Drawing non-filled, highlighted
 	pOut->PrintMessage("Drawing a Triangle, highlighted, non-filled, Click to continue");
 	pIn->GetPointClicked(x, y);
 
@@ -166,8 +166,8 @@ int main()
 	pOut->PrintMessage("Drawing a Circle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	///TODO: Add code to draw Circle in all possible states
-	//Drawing non-filled, non-highlighted
+								///TODO: Add code to draw Circle in all possible states
+								//Drawing non-filled, non-highlighted
 	pOut->PrintMessage("Drawing a Circle, normal, non-filled, Click to continue");
 	pIn->GetPointClicked(x, y);
 
@@ -201,7 +201,7 @@ int main()
 
 	//calculate the radius
 	dist = sqrt(pow(P1.x - P2.x, 2) + pow(P1.y - P2.y, 2));
-	
+
 	gfxInfo.BorderWdth = 4;
 	gfxInfo.DrawClr = BLUE;	//any color for border
 	gfxInfo.FillClr = GREEN;//any color for filling
@@ -211,14 +211,14 @@ int main()
 
 	//Drawing filled highlighted.
 	pOut->PrintMessage("Drawing a Circle, filled, highlighted, click to highlight");
-	pIn->GetPointClicked(x,y);
+	pIn->GetPointClicked(x, y);
 
 	pOut->DrawCircle(P1, dist, gfxInfo, true);
 
 	pOut->PrintMessage("Drawing a Circle Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->ClearDrawArea();
-	
+
 
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 3: 
@@ -233,7 +233,7 @@ int main()
 	pOut->PrintMessage("Testing the ability to read strings, enter your name");
 	string name = pIn->GetSrting(pOut);
 
-	pOut->PrintMessage("Hello!, "+name+" ,Click anywhere to continue");
+	pOut->PrintMessage("Hello!, " + name + " ,Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	pOut->ClearDrawArea();
