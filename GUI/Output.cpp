@@ -12,12 +12,13 @@ Output::Output()
 	UI.wx = 5;  //Setting the starting position of the window.
 	UI.wy = 5;   //Setting the ending position on the window.
 
-				 /*Setting the dimensions of the toolbars right,up,left*/
+	/*Setting the dimensions of the toolbars right,up,left*/
 	UI.StatusBarHeight = 80;      //Settting the height of the status bar.
 	UI.MenuItemWidthLeft = 50;    //Setting the width of icons in the left menu.
-	UI.MenuItemWidthUp = 100;     //Setting the width of icons in the upper menu.
-	UI.MenuItemWidthRight = 60;   //Setting the width of icons in the right menu.
-	UI.MenuItemHeight = 60;
+	UI.MenuItemWidthUp = 50;     //Setting the width of icons in the upper menu.
+	UI.MenuItemWidthRight = 50;   //Setting the width of icons in the right menu.
+	UI.MenuItemHeight = 60;      
+
 	/*Setting the default colors for drawing and window background*/
 	UI.DrawColor = BLUE;	//Setting the drawing color of figures.
 	UI.FillColor = GREEN;	//Setting the filling color of the figures.
@@ -27,13 +28,12 @@ Output::Output()
 	UI.StatusBarColor = TURQUOISE;  //Setting the color of the status bar.
 	UI.PenWidth = 3;	//Setting the width of figures frames.
 
-						/*Ceating the output window and setting the new name for the app*/
+	/*Ceating the output window and setting the new name for the app*/
 	pWind = CreateWind(UI.width, UI.height, UI.wx, UI.wy);
-	pWind->ChangeTitle("Paint for Kids - Programming Techniques Project");
+	pWind->ChangeTitle("Paint for Kids - Drawing Mode");  //default mode, changes to play in the play mode
 
-	/*Drawing all four menus for the application window*/
-	CreateDrawToolBarLeft(false);
-	CreateDrawToolBarUp();
+	/*Drawing the 2 menus for the application window*/
+	CreateDrawToolBarUp(0,false);
 	CreateDrawToolBarRight(false);
 
 	/*Drawing the status bar in the application window*/
@@ -79,20 +79,12 @@ void Output::CreateDrawToolBarRight(bool collapse) const
 {
 	UI.InterfaceMode = MODE_DRAW;  //Setting the current mode.
 
-								   //You can draw the tool bar icons in any way you want.
-								   //Below is one possible way
-
-								   //First prepare List of images for each menu item
-								   //To control the order of these images in the menu, 
-								   //reoder them in UI_Info.h ==> enum DrawMenuItem
-
-
 	/*Adding two parallel icons for zooming in and out*/;
 	string zoomControls[CounterZoom];
 	zoomControls[ITM_ZOOM_IN] = "images\\MenuItems\\ICONS\\TOOLS\\ZOOMIN.jpg";
 	zoomControls[ITM_ZOOM_OUT] = "images\\MenuItems\\ICONS\\TOOLS\\ZOOMOUT.jpg";
-	pWind->DrawImage(zoomControls[ITM_ZOOM_IN], 1385, 13 * 50, 50, 50);
-	pWind->DrawImage(zoomControls[ITM_ZOOM_OUT], 1435, 13 * 50, 50, 50);
+	pWind->DrawImage(zoomControls[ITM_ZOOM_IN], 1385, 13 * UI.MenuItemWidthRight, UI.MenuItemWidthRight, UI.MenuItemWidthRight);
+	pWind->DrawImage(zoomControls[ITM_ZOOM_OUT], 1435, 13 * UI.MenuItemWidthRight, UI.MenuItemWidthRight, UI.MenuItemWidthRight);
 
 
 	/*Loading the icons for the left toolbar.*/
@@ -130,100 +122,255 @@ void Output::CreateDrawToolBarRight(bool collapse) const
 	}
 	pWind->DrawImage(MenuItemImages[ITM_COLLAPSERIGHT], 1385, 0, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
 	pWind->DrawImage(MenuItemImages[ITM_EXIT], 1435, 0, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
-
 }
 
 
-void Output::CreateDrawToolBarLeft(bool collapse) const
+/*This function is responsible of drawing the upper toolber and all its sub menus*/
+void Output::CreateDrawToolBarUp(int action, bool collapse) const
 {
-	UI.InterfaceMode = MODE_DRAW;   //Setting the current mode.
+	//Action tells this function what to do
+	// 0: draw normal menu, other numbers it draws the corresponding sub menus 
+	if (action == 0) {
+		UI.InterfaceMode = MODE_DRAW;   //Setting the current mode.
 
-									//You can draw the tool bar icons in any way you want.
-									//Below is one possible way
-
-									//First prepare List of images for each menu item
-									//To control the order of these images in the menu, 
-									//reoder them in UI_Info.h ==> enum DrawMenuItem
-
-									/*Here we draw two menus side-by-side, the first menu contains brush
-									colors the control the draw color of the outerline of a figure, the second
-									menu shows the fill colors to control the fill color of a figure*/
-
-									//Collapse the GAME_MODE UPPER toolbar.
-
-	pWind->SetBrush(UI.BkGrndColor);
-	pWind->SetPen(UI.BkGrndColor, 1);
-	pWind->DrawRectangle(0, 0, PLAY_ITM_COUNT * 100, 100);
-
-
-	string UPPERRIGHTICONS[2];
-	UPPERRIGHTICONS[0] = "images\\MenuItems\\ICONS\\COLLAPSE.jpg";
-	UPPERRIGHTICONS[1] = "images\\MenuItems\\ICONS\\JOYSTICK.jpg";
-
-	pWind->DrawImage(UPPERRIGHTICONS[0], 60, 0, 60, 60);
-	pWind->DrawImage(UPPERRIGHTICONS[1], 0, 0, 60, UI.MenuItemHeight);
-
-
-	//Loading the icons for the first menu of the right toolbar.
-	string MenuItemImages1[DRAW_ITEM_COUNT_RIGHTBRUSH];
-	MenuItemImages1[ITM_BRUSH1] = "images\\MenuItems\\ICONS\\COLOR-RED.jpg";
-	MenuItemImages1[ITM_BRUSH2] = "images\\MenuItems\\ICONS\\COLOR-GREEN.jpg";
-	MenuItemImages1[ITM_BRUSH3] = "images\\MenuItems\\ICONS\\COLOR-YELLOW.jpg";
-	MenuItemImages1[ITM_BRUSH4] = "images\\MenuItems\\ICONS\\COLOR-ORANGE.jpg";
-	MenuItemImages1[ITM_BRUSH5] = "images\\MenuItems\\ICONS\\COLOR-NILE.jpg";
-	MenuItemImages1[ITM_BRUSH6] = "images\\MenuItems\\ICONS\\COLOR-BROWN.jpg";
-	MenuItemImages1[ITM_BRUSH7] = "images\\MenuItems\\ICONS\\COLOR-LAST.jpg";
-	MenuItemImages1[ITM_BRUSH8] = "images\\MenuItems\\ICONS\\COLOR-BLUE.jpg";
-	MenuItemImages1[ITM_BRUSH9] = "images\\MenuItems\\ICONS\\COLOR-PURBLE.jpg";
-	MenuItemImages1[ITM_BRUSH10] = "images\\MenuItems\\ICONS\\COLOR-BLACK.jpg";
-	MenuItemImages1[ITM_COLLAPSELEFT] = "images\\MenuItems\\ICONS\\COLLAPSE.jpg";
-
-	if (!collapse) {
-		//Drawing the icons for the first menu of the right toolbar.
-		for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTBRUSH - 1; i++) // 1 here is the intializer of enum 
-			pWind->DrawImage(MenuItemImages1[i], 0, ((i + 1) * 60), 120, UI.MenuItemHeight);
-	}
-	else {
+		//clear the area where the menu is going to be drawn
 		pWind->SetBrush(UI.BkGrndColor);
 		pWind->SetPen(UI.BkGrndColor, 1);
-		for (int j = 0; j <= 120; j++) {
-			for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTBRUSH - 1; i++) { // 1 here is the intializer of enum 
-				pWind->DrawImage(MenuItemImages1[i], -(j), ((i + 1) * 60), 120, UI.MenuItemHeight);
-				pWind->DrawRectangle(120, 60, 120 - (j), 602);
+		pWind->DrawRectangle(50, 0, 1200, 50);
+
+		//drawing the play mode icon
+		string PlayModeIcon = "images\\MenuItems\\ICONS\\JOYSTICK.jpg";
+		pWind->DrawImage(PlayModeIcon, 0, 0, 60, UI.MenuItemHeight);
+
+		//Loading the icons for the main upper menu.
+		string MenuItemImages[DRAW_LEFT_MENU_ITEMS_COUNT];
+		MenuItemImages[ITM_FIGURE] = "images\\MenuItems\\ICONS\\TOOLS\\FIGURE.jpg";
+		MenuItemImages[ITM_PEN] = "images\\MenuItems\\ICONS\\Pencils\\BLACK.jpg";
+		MenuItemImages[ITM_BRUSH] = "images\\MenuItems\\ICONS\\Brushes\\GREEN.jpg";
+		MenuItemImages[ITM_BCKGCOLOR] = "images\\MenuItems\\ICONS\\BkGROUND\\WHITE.jpg";
+		MenuItemImages[STROKWIDTH] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\GROUP.jpg";
+		
+		//Drawing the upper toolbar, 11 is a shifting factor to start drawing near the middle of the screen
+		for (int i = 0; i < DRAW_LEFT_MENU_ITEMS_COUNT; i++)
+			pWind->DrawImage(MenuItemImages[i], (11+i)*UI.MenuItemWidthUp, 0, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
+	}
+
+
+	else if (action == 1) {
+		;
+	}
+
+
+	else if (action == 2) {
+		
+		//Loading icons for the second sub menu (the pen sub menu)
+		string MenuItemImages[DRAW_ITEM_COUNT_RIGHTPEN];
+		MenuItemImages[ITM_PEN1] = "images\\MenuItems\\ICONS\\Pencils\\BLACK.jpg";
+		MenuItemImages[ITM_PEN2] = "images\\MenuItems\\ICONS\\Pencils\\YELLOW.jpg";
+		MenuItemImages[ITM_PEN3] = "images\\MenuItems\\ICONS\\Pencils\\BLUE.jpg";
+		MenuItemImages[ITM_PEN4] = "images\\MenuItems\\ICONS\\Pencils\\BROWN.jpg";
+		MenuItemImages[ITM_PEN5] = "images\\MenuItems\\ICONS\\Pencils\\PINK.jpg";
+		MenuItemImages[ITM_PEN6] = "images\\MenuItems\\ICONS\\Pencils\\GREEN.jpg";
+		MenuItemImages[ITM_PEN7] = "images\\MenuItems\\ICONS\\Pencils\\NILE.jpg";
+		MenuItemImages[ITM_PEN8] = "images\\MenuItems\\ICONS\\Pencils\\ORANGE.jpg";
+		MenuItemImages[ITM_PEN9] = "images\\MenuItems\\ICONS\\Pencils\\PURPLE.jpg";
+		MenuItemImages[ITM_PEN10] = "images\\MenuItems\\ICONS\\Pencils\\RED.jpg";
+
+
+		//The following logic tells the loop whether to draw a menu moving into the screen
+		//Or collapsing outta the screen
+		int sign, start;
+		if (!collapse) {   //not collapse means moving into the screen
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU2;
+			sign = 1;
+			start = -50;
+		}
+		else {            //collapse means moving outta the screen
+			UI.InterfaceMode = MODE_DRAW;
+			sign = -1;
+			start = 0;
+		}
+		
+		/*The following loop does a double job depending on the values of start and
+		sign, for one set of values it draws a menu moving into the screen, offering a selection
+		of pens to the user, and for the other set of values it collapses the menu out of the screen*/
+		//the number 50 in the j counter is the FPS in which the menu motion is done
+
+		for (int j = 0; j <= 50; j++) { //note: i+2 is the shifting ratio
+			for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTPEN ; i++) { // 1 here is the intializer of enum 
+				pWind->DrawImage(MenuItemImages[i], start+sign*j, (i + 2) * UI.MenuItemWidthLeft, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+				if (collapse) {
+					pWind->SetBrush(UI.BkGrndColor);
+					pWind->SetPen(UI.BkGrndColor, 1);
+					pWind->DrawRectangle(UI.MenuItemWidthLeft, 2 * UI.MenuItemWidthLeft, UI.MenuItemWidthLeft - j, (DRAW_ITEM_COUNT_RIGHTPEN + 2)* UI.MenuItemWidthLeft);
+				}
 			}
 		}
 	}
 
-	////Loading the icons for the second menu of the right toolbar.
-	//string playModeIcon = "images\\MenuItems\\ICONS\\JOYSTICK.jpg";
-	//pWind->DrawImage(playModeIcon, 60, 600, UI.MenuItemHeight, UI.MenuItemHeight);
+	else if (action == 3) {
+		
+		//Loading icons for the third sub menu(Brush sub menu)
+		string MenuItemImages[DRAW_ITEM_COUNT_RIGHTBRUSHFILL];
+		MenuItemImages[ITM_BRUSHFILL1] = "images\\MenuItems\\ICONS\\Brushes\\BLACK.jpg";
+		MenuItemImages[ITM_BRUSHFILL2] = "images\\MenuItems\\ICONS\\Brushes\\YELLOW.jpg";
+		MenuItemImages[ITM_BRUSHFILL3] = "images\\MenuItems\\ICONS\\Brushes\\BLUE.jpg";
+		MenuItemImages[ITM_BRUSHFILL4] = "images\\MenuItems\\ICONS\\Brushes\\BROWN.jpg";
+		MenuItemImages[ITM_BRUSHFILL5] = "images\\MenuItems\\ICONS\\Brushes\\PINK.jpg";
+		MenuItemImages[ITM_BRUSHFILL6] = "images\\MenuItems\\ICONS\\Brushes\\GREEN.jpg";
+		MenuItemImages[ITM_BRUSHFILL7] = "images\\MenuItems\\ICONS\\Brushes\\NILE.jpg";
+		MenuItemImages[ITM_BRUSHFILL8] = "images\\MenuItems\\ICONS\\Brushes\\ORANGE.jpg";
+		MenuItemImages[ITM_BRUSHFILL9] = "images\\MenuItems\\ICONS\\Brushes\\PURPLE.jpg";
+		MenuItemImages[ITM_BRUSHFILL10] = "images\\MenuItems\\ICONS\\Brushes\\RED.jpg";
 
+		int sign, start;
+		if (!collapse) {   //not collapse means moving into the screen
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU2;
+			sign = 1;
+			start = -50;
+		}
+		else {            //collapse means moving outta the screen
+			UI.InterfaceMode = MODE_DRAW;
+			sign = -1;
+			start = 0;
+		}
+
+		/*The following loop does a double job depending on the values of start and
+		sign, for one set of values it draws a menu moving into the screen, offering a selection
+		of pens to the user, and for the other set of values it collapses the menu out of the screen*/
+		//the number 50 in the j counter is the FPS in which the menu motion is done
+
+		for (int j = 0; j <= 50; j++) { //note: i+2 is the shifting ratio
+			for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTBRUSHFILL; i++) { // 1 here is the intializer of enum 
+				pWind->DrawImage(MenuItemImages[i], start + sign*j, (i + 2) * UI.MenuItemWidthLeft, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+				if (collapse) {
+					pWind->SetBrush(UI.BkGrndColor);
+					pWind->SetPen(UI.BkGrndColor, 1);
+					pWind->DrawRectangle(UI.MenuItemWidthLeft, 2 * UI.MenuItemWidthLeft, UI.MenuItemWidthLeft - j, (DRAW_ITEM_COUNT_RIGHTBRUSHFILL + 2)* UI.MenuItemWidthLeft);
+				}
+			}
+		}
+	}
+
+	else if (action == 4) {
+		
+		//Loading icons for the forth sub menu (background color options)
+		string MenuItemImages[BKCG_COLOR_COUNT];
+		MenuItemImages[ITM_BCKG_WHITE] = "images\\MenuItems\\ICONS\\BkGROUND\\WHITE.jpg";
+		MenuItemImages[ITM_BCKG_YELLOW] = "images\\MenuItems\\ICONS\\BkGROUND\\YELLOW.jpg";
+		MenuItemImages[ITM_BCKG_BLUE] = "images\\MenuItems\\ICONS\\BkGROUND\\BLUE.jpg";
+		MenuItemImages[ITM_BCKG_BROWN] = "images\\MenuItems\\ICONS\\BkGROUND\\BROWN.jpg";
+		MenuItemImages[ITM_BCKG_PINK] = "images\\MenuItems\\ICONS\\BkGROUND\\PINK.jpg";
+		MenuItemImages[ITM_BCKG_GREEN] = "images\\MenuItems\\ICONS\\BkGROUND\\GREEN.jpg";
+		MenuItemImages[ITM_BCKG_NILE] = "images\\MenuItems\\ICONS\\BkGROUND\\NILE.jpg";
+		MenuItemImages[ITM_BCKG_ORANE] = "images\\MenuItems\\ICONS\\BkGROUND\\ORANGE.jpg";
+		MenuItemImages[ITM_BCKG_PURPLE] = "images\\MenuItems\\ICONS\\BkGROUND\\PURPLE.jpg";
+		MenuItemImages[ITM_BCKG_RED] = "images\\MenuItems\\ICONS\\BkGROUND\\RED.jpg";
+
+		int sign, start;
+		if (!collapse) {   //not collapse means moving into the screen
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU2;
+			sign = 1;
+			start = -50;
+		}
+		else {            //collapse means moving outta the screen
+			UI.InterfaceMode = MODE_DRAW;
+			sign = -1;
+			start = 0;
+		}
+
+		/*The following loop does a double job depending on the values of start and
+		sign, for one set of values it draws a menu moving into the screen, offering a selection
+		of pens to the user, and for the other set of values it collapses the menu out of the screen*/
+		//the number 50 in the j counter is the FPS in which the menu motion is done
+
+		for (int j = 0; j <= 50; j++) { //note: i+2 is the shifting ratio
+			for (int i = 0; i < BKCG_COLOR_COUNT; i++) { // 1 here is the intializer of enum 
+				pWind->DrawImage(MenuItemImages[i], start + sign*j, (i + 2) * UI.MenuItemWidthLeft, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+				if (collapse) {
+					pWind->SetBrush(UI.BkGrndColor);
+					pWind->SetPen(UI.BkGrndColor, 1);
+					pWind->DrawRectangle(UI.MenuItemWidthLeft, 2 * UI.MenuItemWidthLeft, UI.MenuItemWidthLeft - j, (BKCG_COLOR_COUNT + 2)* UI.MenuItemWidthLeft);
+				}
+			}
+		}
+	}
+
+	else if(action == 5) {
+
+		//Loading icons for the fifth sub menu (border width options)
+		string MenuItemImages[BORDER_WIDTH_COUNT];
+		MenuItemImages[ITM_BORDERWIDTH1] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\1.jpg";
+		MenuItemImages[ITM_BORDERWIDTH2] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\2.jpg";
+		MenuItemImages[ITM_BORDERWIDTH3] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\3.jpg";
+		MenuItemImages[ITM_BORDERWIDTH4] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\4.jpg";
+
+		int sign, start;
+		if (!collapse) {   //not collapse means moving into the screen
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU2;
+			sign = 1;
+			start = -50;
+		}
+		else {            //collapse means moving outta the screen
+			UI.InterfaceMode = MODE_DRAW;
+			sign = -1;
+			start = 0;
+		}
+
+		/*The following loop does a double job depending on the values of start and
+		sign, for one set of values it draws a menu moving into the screen, offering a selection
+		of pens to the user, and for the other set of values it collapses the menu out of the screen*/
+		//the number 50 in the j counter is the FPS in which the menu motion is done
+
+		for (int j = 0; j <= 50; j++) { //note: i+2 is the shifting ratio
+			for (int i = 0; i < BORDER_WIDTH_COUNT; i++) { // 1 here is the intializer of enum 
+				pWind->DrawImage(MenuItemImages[i], start + sign*j, (i + 4) * UI.MenuItemWidthLeft, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+				if (collapse) {
+					pWind->SetBrush(UI.BkGrndColor);
+					pWind->SetPen(UI.BkGrndColor, 1);
+					pWind->DrawRectangle(UI.MenuItemWidthLeft, 4 * UI.MenuItemWidthLeft, UI.MenuItemWidthLeft - j, (BKCG_COLOR_COUNT + 4)* UI.MenuItemWidthLeft);
+				}
+			}
+		}
+	}
+
+	else {
+		//Loading icons for the fifth sub menu (border width options)
+		string MenuItemImages[RESIZE_CONTROLS_COUNT];
+		MenuItemImages[ITM_RESIZE25] = "images\\MenuItems\\ICONS\\RESIZE\\25.jpg";
+		MenuItemImages[ITM_RESIZE50] = "images\\MenuItems\\ICONS\\RESIZE\\50.jpg";
+		MenuItemImages[ITM_RESIZE200] = "images\\MenuItems\\ICONS\\RESIZE\\200.jpg";
+		MenuItemImages[ITM_RESIZE400] = "images\\MenuItems\\ICONS\\RESIZE\\400.jpg";
+
+		int sign, start;
+		if (!collapse) {   //not collapse means moving into the screen
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU2;
+			sign = 1;
+			start = -50;
+		}
+		else {            //collapse means moving outta the screen
+			UI.InterfaceMode = MODE_DRAW;
+			sign = -1;
+			start = 0;
+		}
+
+		/*The following loop does a double job depending on the values of start and
+		sign, for one set of values it draws a menu moving into the screen, offering a selection
+		of pens to the user, and for the other set of values it collapses the menu out of the screen*/
+		//the number 50 in the j counter is the FPS in which the menu motion is done
+
+		for (int j = 0; j <= 50; j++) { //note: i+2 is the shifting ratio
+			for (int i = 0; i < RESIZE_CONTROLS_COUNT; i++) { // 1 here is the intializer of enum 
+				pWind->DrawImage(MenuItemImages[i], start + sign*j, (i + 4) * UI.MenuItemWidthLeft, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+				if (collapse) {
+					pWind->SetBrush(UI.BkGrndColor);
+					pWind->SetPen(UI.BkGrndColor, 1);
+					pWind->DrawRectangle(UI.MenuItemWidthLeft, 4 * UI.MenuItemWidthLeft, UI.MenuItemWidthLeft - j, (RESIZE_CONTROLS_COUNT + 4)* UI.MenuItemWidthLeft);
+				}
+			}
+		}
+	}
 }
-
-
-void Output::CreateDrawToolBarUp() const
-{
-	UI.InterfaceMode = MODE_DRAW;   //Setting the current mode.
-
-									//You can draw the tool bar icons in any way you want.
-									//Below is one possible way
-
-									//First prepare List of images for each menu item
-									//To control the order of these images in the menu, 
-									//reoder them in UI_Info.h ==> enum DrawMenuItem
-
-									//Loading the icons for the upper toolbar.
-	string MenuItemImages[DRAW_ITEM_COUNT_UP];
-	MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\ICONS\\CIRCULE.jpg";
-	MenuItemImages[ITM_RECTANGLE] = "images\\MenuItems\\ICONS\\RECTANGLE.jpg";
-	MenuItemImages[ITM_TRIANGLE] = "images\\MenuItems\\ICONS\\TRIANGLE.jpg";
-	MenuItemImages[ITM_LINE] = "images\\MenuItems\\ICONS\\LINE.jpg";
-
-	//Drawing the upper toolbar.
-	for (int i = 5; i<DRAW_ITEM_COUNT_UP; i++)
-		pWind->DrawImage(MenuItemImages[i], 500 + (i - 5)*UI.MenuItemWidthUp, 0, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
-}
-
 
 //////////////////////////////////////////////////////////////////////////////////////////
 

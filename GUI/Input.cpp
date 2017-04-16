@@ -66,16 +66,16 @@ ActionType Input::GetUserAction() const
 			switch (ClickedItemOrder)
 			{
 				///TODO: Add the rest of user actions here.
-			case ITM_BRUSH1:		  return ITM_BRUSH1_Clicked;
-			case ITM_BRUSH2:		  return ITM_BRUSH2_Clicked;
-			case ITM_BRUSH3:		  return ITM_BRUSH3_Clicked;
-			case ITM_BRUSH4:		  return ITM_BRUSH4_Clicked;
-			case ITM_BRUSH5:		  return ITM_BRUSH5_Clicked;
-			case ITM_BRUSH6:		  return ITM_BRUSH6_Clicked;
-			case ITM_BRUSH7:		  return ITM_BRUSH7_Clicked;
-			case ITM_BRUSH8:		  return ITM_BRUSH8_Clicked;
-			case ITM_BRUSH9:		  return ITM_BRUSH9_Clicked;
-			case ITM_BRUSH10:		  return ITM_BRUSH10_Clicked;
+			case ITM_PEN1:		  return ITM_BRUSH1_Clicked;
+			case ITM_PEN2:		  return ITM_BRUSH2_Clicked;
+			case ITM_PEN3:		  return ITM_BRUSH3_Clicked;
+			case ITM_PEN4:		  return ITM_BRUSH4_Clicked;
+			case ITM_PEN5:		  return ITM_BRUSH5_Clicked;
+			case ITM_PEN6:		  return ITM_BRUSH6_Clicked;
+			case ITM_PEN7:		  return ITM_BRUSH7_Clicked;
+			case ITM_PEN8:		  return ITM_BRUSH8_Clicked;
+			case ITM_PEN9:		  return ITM_BRUSH9_Clicked;
+			case ITM_PEN10:		  return ITM_BRUSH10_Clicked;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}

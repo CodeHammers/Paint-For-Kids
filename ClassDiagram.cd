@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Action" Collapsed="true">
-    <Position X="2.75" Y="1.25" Width="1.5" />
+    <Position X="4.5" Y="1.5" Width="1.5" />
     <AssociationLine Name="pManager" Type="ApplicationManager">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.185" Y="-0.015" />
@@ -16,14 +16,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="AddRectAction" Collapsed="true">
-    <Position X="0.5" Y="1.25" Width="1.5" />
+    <Position X="2.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAABRAAAAAAQQAAACAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Actions\AddRectAction.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ApplicationManager" Collapsed="true">
-    <Position X="4.5" Y="1.75" Width="1.5" />
+    <Position X="6.25" Y="2" Width="1.5" />
     <AssociationLine Name="FigList" Type="CFigure">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.36" Y="-0.065" />
@@ -31,9 +31,9 @@
     </AssociationLine>
     <AssociationLine Name="pIn" Type="Input" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="5.625" Y="1.75" />
-        <Point X="5.625" Y="0.781" />
-        <Point X="6" Y="0.781" />
+        <Point X="7.375" Y="2" />
+        <Point X="7.375" Y="1.031" />
+        <Point X="7.75" Y="1.031" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.268" Y="-0.411" />
@@ -57,28 +57,28 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="CFigure" Collapsed="true">
-    <Position X="2.75" Y="2.5" Width="1.5" />
+    <Position X="4.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAAAkgAAAAQAAAAAAAAABAAAAIAAAQAAAAI=</HashCode>
       <FileName>Figures\CFigure.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CRectangle" Collapsed="true">
-    <Position X="0.5" Y="2.5" Width="1.5" />
+    <Position X="2.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAQAAAAAAAAAMAAAAAAAAAA=</HashCode>
       <FileName>Figures\CRectangle.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Input" Collapsed="true">
-    <Position X="6" Y="0.5" Width="1.5" />
+    <Position X="7.75" Y="0.75" Width="1.5" />
     <AssociationLine Name="pWind" Type="window">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="-0.14" Y="0.185" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAABAAQAAAAAAEAAEAAAEAAAAAAAAAAAAAAAgAA=</HashCode>
+      <HashCode>AAAAAAEBBAQAAAAAAEAAEAAgEAAAAAABAAALAAAAgEA=</HashCode>
       <FileName>GUI\Input.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -86,14 +86,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Output" Collapsed="true">
-    <Position X="6" Y="3" Width="1.5" />
+    <Position X="7.75" Y="3.25" Width="1.5" />
     <AssociationLine Name="pWind" Type="window">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="-0.14" Y="0.185" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAALAAAUABAABgAAIAAAAQBAAQAAAAAAAIAgAgAA=</HashCode>
+      <HashCode>AAAIAADAAAUAhAABgAAIAAAAQBAAQBEAAEAAYAgAgAA=</HashCode>
       <FileName>GUI\Output.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -101,7 +101,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="window" Collapsed="true">
-    <Position X="6.75" Y="1.75" Width="1.5" />
+    <Position X="8.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>lJITjJAVABAAoEAUADQAkCDGASAH6FKIAEtkaGIGQME=</HashCode>
       <FileName>CMUgraphicsLib\CMUgraphics.h</FileName>

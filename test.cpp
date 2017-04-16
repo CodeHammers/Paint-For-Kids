@@ -27,7 +27,7 @@ int main()
 	pOut->PrintMessage("TEST1: Drawing Tool bar and Status bar, Click anywhere to continue");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
-
+	/*
 								///////////////////////////////////////////////////////////////////////////////////
 								// TEST 2:	
 								//			Drawing all the Figures with all possible states: 
@@ -237,7 +237,7 @@ int main()
 	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	pOut->ClearDrawArea();
-
+	*/
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 4: 
 	//			Input Class : Check for the user action
@@ -370,32 +370,42 @@ int main()
 			//ZOOM ITEMS //
 		case ITM_ZOOM_IN_Clicked:
 			pOut->PrintMessage("Action: ZOOM IN Button Clicked");
+			pOut->CreateDrawToolBarUp(2, false);
 			break;
 
 		case ITM_ZOOM_OUT_Clicked:
 			pOut->PrintMessage("Action: ZOOM OUT Button Clicked");
+			pOut->CreateDrawToolBarUp(3, false);
 			break;
 
 			// The RIGHT COLUMN ITEMS // 
 
 		case ITM_RESIZE_Clicked:
 			pOut->PrintMessage("Action: Resize Button Clicked");
+			pOut->CreateDrawToolBarUp(6, false);
 			break;
 
 		case ITM_COPY_Clicked:
 			pOut->PrintMessage("Action: Copy Button Clicked");
+			pOut->CreateDrawToolBarUp(2, true);
+			//pOut->CreateDrawToolBarUp(0, false);
 			break;
 
 		case ITM_MOVE_Clicked:
 			pOut->PrintMessage("Action: Move Button Clicked");
+			pOut->CreateDrawToolBarUp(3, true);
+			//pOut->CreateDrawToolBarUp(0, false);
 			break;
 
 		case ITM_CUT_Clicked:
 			pOut->PrintMessage("Action: Cut Button Clicked");
+			pOut->CreateDrawToolBarUp(4,false);
 			break;
 
 		case ITM_PASTE_Clicked:
 			pOut->PrintMessage("Action: Paste Button Clicked");
+			pOut->CreateDrawToolBarUp(4, true);
+			//pOut->CreateDrawToolBarUp(0, false);
 			break;
 
 		case ITM_DELETE_Clicked:
@@ -404,11 +414,12 @@ int main()
 
 		case ITM_UNDO_Clicked:
 			pOut->PrintMessage("Action: Undo Button Clicked");
-			//pOut->CreateDrawToolBarLeft(false);
+			pOut->CreateDrawToolBarUp(5,false);
 			break;
 
 		case ITM_REDO_Clicked:
 			pOut->PrintMessage("Action: Redo Button Clicked");
+			pOut->CreateDrawToolBarUp(5, true);
 			break;
 
 		case ITM_SELECT_Clicked:
@@ -421,6 +432,7 @@ int main()
 
 		case ITM_SAVE_Clicked:
 			pOut->PrintMessage("Action: Save Button Clicked");
+			pOut->CreateDrawToolBarUp(6, true);
 			break;
 
 		case ITM_SAVEAS_Clicked:
@@ -463,8 +475,8 @@ int main()
 
 		case TO_DRAW:
 			pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
-			pOut->CreateDrawToolBarLeft(false);
-			pOut->CreateDrawToolBarUp();
+			//pOut->CreateDrawToolBarLeft(false);
+			pOut->CreateDrawToolBarUp(0, false);
 			break;
 
 

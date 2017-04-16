@@ -10,6 +10,12 @@
 enum GUI_MODE	//Graphical user interface mode
 {
 	MODE_DRAW,	//Drawing mode (startup mode)
+	MODE_DRAW_SUB_MENU1,  //figure list
+	MODE_DRAW_SUB_MENU2,  //pen collection
+	MODE_DRAW_SUB_MENU3,  //brush collection
+	MODE_DRAW_SUB_MENU4,  //background colors collection
+	MODE_DRAW_SUB_MENU5,  //border width options
+	MODE_DRAW_SUB_MENU6,  //resize options
 	MODE_PLAY	//Playing mode
 };
 
@@ -48,33 +54,41 @@ enum zoomControls
 
 };
 
-enum DrawMenuItemUp  //enumeration for icons on the upper menu
+enum FigurelistIcons  //enumeration for icons on the upper menu
 {
-	ITM_CIRCLE = 5,
+	ITM_CIRCLE ,
 	ITM_RECTANGLE,
 	ITM_TRIANGLE,
 	ITM_LINE,
 	DRAW_ITEM_COUNT_UP
 };
 
-
-enum DrawMenuItemRight  //enumeration for icons on the right menu
+enum DrawMenuItemRight
 {
-	ITM_BRUSH1,
-	ITM_BRUSH2,
-	ITM_BRUSH3,
-	ITM_BRUSH4,
-	ITM_BRUSH5,
-	ITM_BRUSH6,
-	ITM_BRUSH7,
-	ITM_BRUSH8,
-	ITM_BRUSH9,
-	ITM_BRUSH10,
-	ITM_COLLAPSELEFT,
-	DRAW_ITEM_COUNT_RIGHTBRUSH
+	ITM_FIGURE,
+	ITM_PEN,
+	ITM_BRUSH,
+	ITM_BCKGCOLOR,
+	STROKWIDTH,
+	DRAW_LEFT_MENU_ITEMS_COUNT
 };
 
-enum DrawMenuItemRightBrushFill
+enum DrawMenuItemRightPen  //enumeration for icons on the right menu
+{
+	ITM_PEN1,
+	ITM_PEN2,
+	ITM_PEN3,
+	ITM_PEN4,
+	ITM_PEN5,
+	ITM_PEN6,
+	ITM_PEN7,
+	ITM_PEN8,
+	ITM_PEN9,
+	ITM_PEN10,
+	DRAW_ITEM_COUNT_RIGHTPEN
+};
+
+enum DrawMenuItemRightBrush
 {
 	ITM_BRUSHFILL1,
 	ITM_BRUSHFILL2,
@@ -87,6 +101,39 @@ enum DrawMenuItemRightBrushFill
 	ITM_BRUSHFILL9,
 	ITM_BRUSHFILL10,
 	DRAW_ITEM_COUNT_RIGHTBRUSHFILL
+};
+
+enum DrawingAreaBackGroundColor
+{
+	ITM_BCKG_WHITE,
+	ITM_BCKG_BLUE,
+	ITM_BCKG_RED,
+	ITM_BCKG_BROWN,
+	ITM_BCKG_PINK,
+	ITM_BCKG_NILE,
+	ITM_BCKG_YELLOW,
+	ITM_BCKG_ORANE,
+	ITM_BCKG_PURPLE,
+	ITM_BCKG_GREEN,
+	BKCG_COLOR_COUNT
+};
+
+enum BorderWidthMenu
+{
+	ITM_BORDERWIDTH1,
+	ITM_BORDERWIDTH2,
+	ITM_BORDERWIDTH3,
+	ITM_BORDERWIDTH4,
+	BORDER_WIDTH_COUNT
+};
+
+enum ResizeControlsIcons
+{
+	ITM_RESIZE25,
+	ITM_RESIZE50,
+	ITM_RESIZE200,
+	ITM_RESIZE400,
+	RESIZE_CONTROLS_COUNT
 };
 
 enum PlayMenuItem //The items of the Play menu (you should add more items)
