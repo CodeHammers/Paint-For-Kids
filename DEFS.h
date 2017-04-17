@@ -35,6 +35,39 @@ enum ActionType //The actions supported (you can add more if needed)
 	ITM_ZOOM_IN_Clicked,
 	ITM_ZOOM_OUT_Clicked,
 
+	MODE_DRAW_SUB_MENU1_Clicked,
+	MODE_DRAW_SUB_MENU2_Clicked,
+	MODE_DRAW_SUB_MENU3_Clicked,
+	MODE_DRAW_SUB_MENU4_Clicked,
+	MODE_DRAW_SUB_MENU5_Clicked,
+	MODE_DRAW_SUB_MENU6_Clicked,
+
+
+
+	ITM_BCKG_WHITE_Clicked,
+	ITM_BCKG_BLUE_Clicked,
+	ITM_BCKG_RED_Clicked,
+	ITM_BCKG_BROWN_Clicked,
+	ITM_BCKG_PINK_Clicked,
+	ITM_BCKG_NILE_Clicked,
+	ITM_BCKG_YELLOW_Clicked,
+	ITM_BCKG_ORANE_Clicked,
+	ITM_BCKG_PURPLE_Clicked,
+	ITM_BCKG_GREEN_Clicked,
+
+
+
+	ITM_BORDERWIDTH1_Clicked,
+	ITM_BORDERWIDTH2_Clicked,
+	ITM_BORDERWIDTH3_Clicked,
+	ITM_BORDERWIDTH4_Clicked,
+
+
+	ITM_RESIZE25_Clicked,
+	ITM_RESIZE50_Clicked,
+	ITM_RESIZE200_Clicked,
+	ITM_RESIZE400_Clicked,
+
 
 	// RIGHT COLUMN CLICKED //
 	ITM_RESIZE_Clicked,

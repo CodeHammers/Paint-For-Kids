@@ -256,6 +256,214 @@ int main()
 		switch (ActType)
 		{
 
+			/*
+			case ITM_BCKG_WHITE:	return ITM_BCKG_WHITE_Clicked;
+			case ITM_BCKG_BLUE:		return ITM_BCKG_BLUE_Clicked;
+			case ITM_BCKG_RED:		return ITM_BCKG_RED_Clicked;
+			case ITM_BCKG_BROWN:	return ;
+			case ITM_BCKG_PINK:		return ;
+			case ITM_BCKG_NILE:		return ;
+			case ITM_BCKG_YELLOW:	return ;
+			case ITM_BCKG_ORANE:	return ;
+			case ITM_BCKG_PURPLE:	return ;
+			case ITM_BCKG_GREEN:	return ;
+			default: return EMPTY;
+			*/
+
+
+		case ITM_BCKG_WHITE_Clicked:
+			pOut->PrintMessage("Action: BackGround  WHITE");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(4, true);
+			break;
+
+		case ITM_BCKG_BLUE_Clicked:
+			pOut->PrintMessage("Action: BackGround BLUE");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(4, true);
+			break;
+
+		case ITM_BCKG_RED_Clicked:
+			pOut->PrintMessage("Action: BackGround  RED");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(4, true);
+			break;
+
+
+		case ITM_BCKG_BROWN_Clicked:
+			pOut->PrintMessage("Action: BackGround  BROWN");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(4, true);
+			break;
+
+
+		case ITM_BCKG_PINK_Clicked:
+			pOut->PrintMessage("Action: BackGround  PINK");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(4, true);
+			break;
+
+
+		case ITM_BCKG_NILE_Clicked:
+			pOut->PrintMessage("Action: BackGround  NILE");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(4, true);
+			break;
+
+		case ITM_BCKG_YELLOW_Clicked:
+			pOut->PrintMessage("Action: BackGround  YELLOW");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(4, true);
+			break;
+
+		case ITM_BCKG_ORANE_Clicked:
+			pOut->PrintMessage("Action: BackGround  ORANGE");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(4, true);
+			break;
+
+
+		case ITM_BCKG_PURPLE_Clicked:
+			pOut->PrintMessage("Action: BackGround  PURPLE");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(4, true);
+			break;
+
+
+		case ITM_BCKG_GREEN_Clicked:
+			pOut->PrintMessage("Action: BackGround  GREEN");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(4, true);
+			break;
+			
+
+			// ... // 
+
+		case ITM_BORDERWIDTH1_Clicked:
+			pOut->PrintMessage("Action: Smallest Border Width Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(5, true);
+			break;
+
+		case ITM_BORDERWIDTH2_Clicked:
+			pOut->PrintMessage("Action: Above Smallest Border Width Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(5, true);
+			break;
+
+
+		case ITM_BORDERWIDTH3_Clicked:
+			pOut->PrintMessage("Action: Medium Border Width Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(5, true);
+			break;
+
+
+		case ITM_BORDERWIDTH4_Clicked:
+			pOut->PrintMessage("Action: Greatest Border Width Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(5, true);
+			break;
+
+			// .. // 
+
+		case MODE_DRAW_SUB_MENU1_Clicked:
+			pOut->PrintMessage("Action: Choose your Figure");
+
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				break;
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU1;
+			pOut->CreateDrawToolBarUp(1, false);
+			break;
+
+		case MODE_DRAW_SUB_MENU2_Clicked:
+			pOut->PrintMessage("Action: Choose Your Color");
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				break;
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU2;
+			pOut->CreateDrawToolBarUp(2, false);
+			break;
+
+		case MODE_DRAW_SUB_MENU3_Clicked:
+			pOut->PrintMessage("Action: Choose Your Color");
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				break;
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU3;
+			pOut->CreateDrawToolBarUp(3, false);
+			break;
+
+		case MODE_DRAW_SUB_MENU4_Clicked:
+			pOut->PrintMessage("Action: Choose Your Color");
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				break;
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU4;
+			pOut->CreateDrawToolBarUp(4, false);
+			break;
+
+		case MODE_DRAW_SUB_MENU5_Clicked:
+			pOut->PrintMessage("Action: Choose your border size");
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				break;
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU5;
+			pOut->CreateDrawToolBarUp(5, false);
+			break;
+
+			
+
+			// .. // 
+
 		case TO_PLAY:
 			pOut->PrintMessage("Action: Switch to Play Mode, creating Design tool bar");
 			pOut->CreatePlayToolBar();
@@ -263,185 +471,451 @@ int main()
 
 			// The First Column //
 		case  ITM_BRUSH1_Clicked:
-			pOut->PrintMessage("Action: BRUSH 1 Clicked");
+			pOut->PrintMessage("Action: BRUSH BLACK Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(2, true);
 			break;
 
 		case  ITM_BRUSH2_Clicked:
-			pOut->PrintMessage("Action: BRUSH 2 Clicked");
+			pOut->PrintMessage("Action: BRUSH YELLOW Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(2, true);
 			break;
 
 		case  ITM_BRUSH3_Clicked:
-			pOut->PrintMessage("Action: BRUSH 3 Clicked");
+			pOut->PrintMessage("Action: BRUSH BLUE Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(2, true);
 			break;
 
 		case  ITM_BRUSH4_Clicked:
-			pOut->PrintMessage("Action: BRUSH 4 Clicked");
+			pOut->PrintMessage("Action: BRUSH BROWN Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(2, true);
 			break;
 
 		case  ITM_BRUSH5_Clicked:
-			pOut->PrintMessage("Action: BRUSH 5 Clicked");
+			pOut->PrintMessage("Action: BRUSH PINK Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(2, true);
 			break;
 
 		case  ITM_BRUSH6_Clicked:
-			pOut->PrintMessage("Action: BRUSH 6 Clicked");
+			pOut->PrintMessage("Action: BRUSH GREEN Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(2, true);
 			break;
 
 		case  ITM_BRUSH7_Clicked:
-			pOut->PrintMessage("Action: BRUSH 7 Clicked");
+			pOut->PrintMessage("Action: BRUSH NILE Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(2, true);
 			break;
 
 		case  ITM_BRUSH8_Clicked:
-			pOut->PrintMessage("Action: BRUSH 8 Clicked");
+			pOut->PrintMessage("Action: BRUSH ORANGE Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(2, true);
 			break;
 
 		case  ITM_BRUSH9_Clicked:
-			pOut->PrintMessage("Action: BRUSH 9 Clicked");
+			pOut->PrintMessage("Action: BRUSH PURPLE Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(2, true);
 			break;
 
 		case  ITM_BRUSH10_Clicked:
-			pOut->PrintMessage("Action: BRUSH 10 Clicked");
-			break;
-
-		case ITM_COLLAPSELEFT_Clicked:
-			pOut->PrintMessage("Action: Collapse Button Clicked");
-			//pOut->CreateDrawToolBarLeft(true);
+			pOut->PrintMessage("Action: BRUSH RED Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(2, true);
 			break;
 
 
 			// The Second Column from left //
 		case  ITM_BRUSHFILL1_Clicked:
-			pOut->PrintMessage("Action: BRUSHFILL 1 Clicked");
-			//pOut->CreateDrawToolBarRight(false);
+			pOut->PrintMessage("Action: BRUSHFILL BLACK Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(3, true);
 			break;
 
 		case  ITM_BRUSHFILL2_Clicked:
-			pOut->PrintMessage("Action: BRUSHFILL 2 Clicked");
+			pOut->PrintMessage("Action: BRUSHFILL YELLOW Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(3, true);
 			break;
 
 		case  ITM_BRUSHFILL3_Clicked:
-			pOut->PrintMessage("Action: BRUSHFILL 3 Clicked");
+			pOut->PrintMessage("Action: BRUSHFILL BLUE Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(3, true);
 			break;
 
 		case  ITM_BRUSHFILL4_Clicked:
-			pOut->PrintMessage("Action: BRUSHFILL 4 Clicked");
+			pOut->PrintMessage("Action: BRUSHFILL BROWN Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(3, true);
 			break;
 
 		case  ITM_BRUSHFILL5_Clicked:
-			pOut->PrintMessage("Action: BRUSHFILL 5 Clicked");
+			pOut->PrintMessage("Action: BRUSHFILL PINK Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(3, true);
 			break;
 
 		case  ITM_BRUSHFILL6_Clicked:
-			pOut->PrintMessage("Action: BRUSHFILL 6 Clicked");
+			pOut->PrintMessage("Action: BRUSHFILL GREEN Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(3, true);
 			break;
 
 		case  ITM_BRUSHFILL7_Clicked:
-			pOut->PrintMessage("Action: BRUSHFILL 7 Clicked");
+			pOut->PrintMessage("Action: BRUSHFILL NILE Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(3, true);
 			break;
 
 		case  ITM_BRUSHFILL8_Clicked:
-			pOut->PrintMessage("Action: BRUSHFILL 8 Clicked");
+			pOut->PrintMessage("Action: BRUSHFILL ORANGE Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(3, true);
 			break;
 
 		case  ITM_BRUSHFILL9_Clicked:
-			pOut->PrintMessage("Action: BRUSHFILL 9 Clicked");
+			pOut->PrintMessage("Action: BRUSHFILL PURPLE Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(3, true);
 			break;
 
 		case  ITM_BRUSHFILL10_Clicked:
-			pOut->PrintMessage("Action: BRUSHFILL 10 Clicked");
+			pOut->PrintMessage("Action: BRUSHFILL RED Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(3, true);
 			break;
 
 			//The Horizontal ITEMS //
+
 		case DRAW_CIRC:
 			pOut->PrintMessage("Action: Circule Button Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(1, true);
 			break;
 
 		case DRAW_RECT:
 			pOut->PrintMessage("Action: Rectangle Button Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(1, true);
 			break;
 
 		case DRAW_TRI:
 			pOut->PrintMessage("Action: Triangle Button Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(1, true);
 			break;
 
 		case DRAW_LINE:
 			pOut->PrintMessage("Action: Line Button Clicked");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(1, true);
 			break;
+
+			// .. // 
+		case ITM_RESIZE25_Clicked:
+			pOut->PrintMessage("Action: Resize By 25 %");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(6, true);
+			break;
+
+		case ITM_RESIZE50_Clicked:
+			pOut->PrintMessage("Action: Resize By 50 %");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(6, true);
+			break;
+
+		case ITM_RESIZE200_Clicked:
+			pOut->PrintMessage("Action: Resize By 200 %");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(6, true);
+			break;
+
+		case ITM_RESIZE400_Clicked:
+			pOut->PrintMessage("Action: Resize By 400 %");
+			UI.InterfaceMode = MODE_DRAW;
+			pOut->CreateDrawToolBarUp(6, true);
+			break;
+
 
 			//ZOOM ITEMS //
 		case ITM_ZOOM_IN_Clicked:
 			pOut->PrintMessage("Action: ZOOM IN Button Clicked");
-			pOut->CreateDrawToolBarUp(2, false);
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case ITM_ZOOM_OUT_Clicked:
 			pOut->PrintMessage("Action: ZOOM OUT Button Clicked");
-			pOut->CreateDrawToolBarUp(3, false);
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 			// The RIGHT COLUMN ITEMS // 
 
 		case ITM_RESIZE_Clicked:
 			pOut->PrintMessage("Action: Resize Button Clicked");
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				break;
+
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU6;
 			pOut->CreateDrawToolBarUp(6, false);
 			break;
 
 		case ITM_COPY_Clicked:
 			pOut->PrintMessage("Action: Copy Button Clicked");
-			pOut->CreateDrawToolBarUp(2, true);
-			//pOut->CreateDrawToolBarUp(0, false);
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case ITM_MOVE_Clicked:
 			pOut->PrintMessage("Action: Move Button Clicked");
-			pOut->CreateDrawToolBarUp(3, true);
-			//pOut->CreateDrawToolBarUp(0, false);
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case ITM_CUT_Clicked:
 			pOut->PrintMessage("Action: Cut Button Clicked");
-			pOut->CreateDrawToolBarUp(4,false);
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case ITM_PASTE_Clicked:
 			pOut->PrintMessage("Action: Paste Button Clicked");
-			pOut->CreateDrawToolBarUp(4, true);
-			//pOut->CreateDrawToolBarUp(0, false);
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case ITM_DELETE_Clicked:
 			pOut->PrintMessage("Action: Delete Button Clicked");
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case ITM_UNDO_Clicked:
 			pOut->PrintMessage("Action: Undo Button Clicked");
-			pOut->CreateDrawToolBarUp(5,false);
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case ITM_REDO_Clicked:
 			pOut->PrintMessage("Action: Redo Button Clicked");
-			pOut->CreateDrawToolBarUp(5, true);
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case ITM_SELECT_Clicked:
 			pOut->PrintMessage("Action: Select Button Clicked");
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case ITM_LOAD_Clicked:
 			pOut->PrintMessage("Action: Load Button Clicked");
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case ITM_SAVE_Clicked:
 			pOut->PrintMessage("Action: Save Button Clicked");
-			pOut->CreateDrawToolBarUp(6, true);
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case ITM_SAVEAS_Clicked:
 			pOut->PrintMessage("Action: Save As Button Clicked");
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case ITM_COLLAPSERIGHT_Clicked:
 			pOut->PrintMessage("Action: COLLAPSERIGHT Button Clicked");
-			//pOut->CreateDrawToolBarRight(true);
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 			// GAME_MODE ICONS //
@@ -463,20 +937,60 @@ int main()
 
 		case STATUS:
 			pOut->PrintMessage("Action: a click on the Status Bar, Click anywhere");
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case DRAWING_AREA:
 			pOut->PrintMessage("Action: a click on the Drawing Area, Click anywhere");
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case EMPTY:
 			pOut->PrintMessage("Action: a click on empty area in the Design Tool Bar, Click anywhere");
+			if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1)
+				pOut->CreateDrawToolBarUp(1, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2)
+				pOut->CreateDrawToolBarUp(2, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3)
+				pOut->CreateDrawToolBarUp(3, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4)
+				pOut->CreateDrawToolBarUp(4, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5)
+				pOut->CreateDrawToolBarUp(5, true);
+			else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6)
+				pOut->CreateDrawToolBarUp(6, true);
+
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case TO_DRAW:
 			pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
-			//pOut->CreateDrawToolBarLeft(false);
-			pOut->CreateDrawToolBarUp(0, false);
 			break;
 
 

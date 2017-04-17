@@ -1,7 +1,6 @@
 #include "Input.h"
 #include "Output.h"
 
-
 Input::Input(window* pW)
 {
 	pWind = pW; //point to the passed window
@@ -35,37 +34,75 @@ string Input::GetSrting(Output *pO) const
 ActionType Input::GetUserAction() const
 {
 	int x, y;
-	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
+	pWind->WaitMouseClick(x, y);
 
-									//special hadling for mode switching
-									//if (x >= 60 && x <= 120 && y >= 600 && y <= 660 && UI.InterfaceMode == MODE_DRAW) //click on the play mode
-									//UI.InterfaceMode = MODE_PLAY;
-									//else if(x >= 60 && x <= 120 && y >= 600 && y <= 660 && UI.InterfaceMode == MODE_PLAY)
-									//UI.InterfaceMode = MODE_DRAW;
 
-	if (UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
-	{
-		// Edited .. UI Tool Bar Width =60*2 ;; 
-		UI.ToolBarWidth = originalToolBarWidth * 2;  // 60 refers to The first column ,, 2 refers to double columns ;; 
-													 //[1] If user clicks on the Toolbar
+	if (x >= startingXforLeftMenu2ndCol && x <= ScreenEndX && y >= 0 && y <= leftMenuItemHeight) {
+		if (x < startingXforLeftMenu1stCol)
+			return ITM_COLLAPSERIGHT_Clicked;
+		return EXIT;
+	}
+	else if (x >= startingXforLeftMenu2ndCol && x <= ScreenEndX	&& y >= 13 * leftMenuItemHeight && y <= UI.height - UI.StatusBarHeight) {
+		if (x < startingXforLeftMenu1stCol)
+			return ITM_ZOOM_IN_Clicked;
+		return ITM_ZOOM_OUT_Clicked;
+	}
+
+	else if (x >= startingXforLeftMenu1stCol && x <= ScreenEndX	&& y > leftMenuItemHeight && y <= ScreenEndY) {
+		int ClickedItemOrder = (y / UI.MenuItemWidthLeft);
+		switch (ClickedItemOrder) {
+		case    ITM_RESIZE:				return ITM_RESIZE_Clicked;
+		case	ITM_MOVE:				return ITM_MOVE_Clicked;
+		case	ITM_COPY:				return ITM_COPY_Clicked;
+		case	ITM_CUT:				return ITM_CUT_Clicked;
+		case	ITM_PASTE:				return ITM_PASTE_Clicked;
+		case	ITM_DELETE:				return ITM_DELETE_Clicked;
+		case	ITM_UNDO:				return ITM_UNDO_Clicked;
+		case	ITM_REDO:				return ITM_REDO_Clicked;
+		case	ITM_SELECT:				return ITM_SELECT_Clicked;
+		case	ITM_LOAD:				return ITM_LOAD_Clicked;
+		case	ITM_SAVE:				return ITM_SAVE_Clicked;
+		case	ITM_SAVEAS:				return ITM_SAVEAS_Clicked;
+		case	ITM_COLLAPSERIGHT:		return ITM_COLLAPSERIGHT_Clicked;
+		default: return EMPTY;
+		}
+	}
+	else if (y > 720)
+		return STATUS;
+
+	else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU1) {
+		if (x >= 0 && x <= UI.MenuItemWidthLeft) {
+			int ClickedItemOrder = ((y - 200) / UI.MenuItemWidthLeft);
+			switch (ClickedItemOrder) {
+			case ITM_CIRCLE:		return DRAW_CIRC;
+			case ITM_RECTANGLE:		return DRAW_RECT;
+			case ITM_LINE:			return DRAW_LINE;
+			case ITM_TRIANGLE:		return DRAW_TRI;
+			default: return EMPTY;
+			}
+		}
 
 		if (x >= 0 && x < UI.ToolBarWidth / 2 && y >= 0 && y <= originalToolBarWidth)
 			return TO_PLAY;
 
-		if (x >= originalToolBarWidth && x < UI.ToolBarWidth  && y >= 0 && y <= originalToolBarWidth)
-			return ITM_COLLAPSELEFT_Clicked;
-
-		else if (x >= 0 && x < UI.ToolBarWidth / 2)
-		{
-			//Check which Menu item was clicked
-			//==> This assumes that menu items are lined up horizontally <==
-			int ClickedItemOrder = ((y - originalToolBarWidth) / UI.MenuItemHeight);
-			//Divide x coord of the point clicked by the menu item width (int division)
-			//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
-
+		else if (x >= 550 && x < 600 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU1_Clicked;
+		else if (x >= 600 && x < 650 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU2_Clicked;
+		else if (x >= 650 && x < 700 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU3_Clicked;
+		else if (x >= 700 && x < 750 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU4_Clicked;
+		else if (x >= 750 && x < 800 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU5_Clicked;
+		else
+			return DRAWING_AREA;
+	}
+	else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU2) {
+		if (x >= 0 && x <= UI.MenuItemWidthLeft) {
+			int ClickedItemOrder = ((y - 100) / UI.MenuItemWidthLeft);
 			switch (ClickedItemOrder)
 			{
-				///TODO: Add the rest of user actions here.
 			case ITM_PEN1:		  return ITM_BRUSH1_Clicked;
 			case ITM_PEN2:		  return ITM_BRUSH2_Clicked;
 			case ITM_PEN3:		  return ITM_BRUSH3_Clicked;
@@ -77,12 +114,28 @@ ActionType Input::GetUserAction() const
 			case ITM_PEN9:		  return ITM_BRUSH9_Clicked;
 			case ITM_PEN10:		  return ITM_BRUSH10_Clicked;
 
-			default: return EMPTY;	//A click on empty place in desgin toolbar
+			default: return EMPTY;
 			}
 		}
-		else if (x >= originalToolBarWidth && x < UI.ToolBarWidth) { // The Second  Column from left
-			int ClickedItemOrder = ((y - originalToolBarWidth) / UI.MenuItemHeight);
+		if (x >= 0 && x < UI.ToolBarWidth / 2 && y >= 0 && y <= originalToolBarWidth)
+			return TO_PLAY;
 
+		else if (x >= 550 && x < 600 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU1_Clicked;
+		else if (x >= 600 && x < 650 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU2_Clicked;
+		else if (x >= 650 && x < 700 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU3_Clicked;
+		else if (x >= 700 && x < 750 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU4_Clicked;
+		else if (x >= 750 && x < 800 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU5_Clicked;
+		else
+			return DRAWING_AREA;
+	}
+	else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU3) {
+		if (x >= 0 && x <= UI.MenuItemWidthLeft) {
+			int ClickedItemOrder = ((y - 100) / UI.MenuItemWidthLeft);
 			switch (ClickedItemOrder)
 			{
 			case ITM_BRUSHFILL1:		  return ITM_BRUSHFILL1_Clicked;
@@ -98,121 +151,139 @@ ActionType Input::GetUserAction() const
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
-
 		}
-		else if (x >= startingXForUpperMenu && x <= (4 * UI.MenuItemWidthUp + startingXForUpperMenu)
-			&& y >= 0 && y <= UI.MenuItemWidthUp) {
-			int ClickedItemOrder = ((x) / UI.MenuItemWidthUp);
-			switch (ClickedItemOrder) {
-			case ITM_CIRCLE:			return DRAW_CIRC;
-			case ITM_RECTANGLE:	return DRAW_RECT;
-			case ITM_LINE:			return DRAW_LINE;
-			case ITM_TRIANGLE:		return DRAW_TRI;
-			default: return EMPTY;
-			}
-		}
+		if (x >= 0 && x < UI.ToolBarWidth / 2 && y >= 0 && y <= originalToolBarWidth)
+			return TO_PLAY;
 
-
-		// EXIT AND COLLAPSE //
-		else if (x >= startingXforLeftMenu2ndCol && x <= ScreenEndX && y >= 0 && y <= leftMenuItemHeight)
-		{
-			if (x < startingXforLeftMenu1stCol)
-				return ITM_COLLAPSERIGHT_Clicked;
-			return EXIT;
-		}
-
-		// ZOOM ITEMS //
-		else if (x >= startingXforLeftMenu2ndCol && x <= ScreenEndX
-			&& y >= 13 * leftMenuItemHeight && y <= UI.height - UI.StatusBarHeight) {
-			if (x < startingXforLeftMenu1stCol)
-				return ITM_ZOOM_IN_Clicked;
-			return ITM_ZOOM_OUT_Clicked;
-		}
-
-		// The Right Column ITEMS // 
-		else if (x >= startingXforLeftMenu1stCol && x <= ScreenEndX
-			&& y > leftMenuItemHeight && y <= ScreenEndY) {
-			int ClickedItemOrder = (y / UI.MenuItemWidthLeft);
-			switch (ClickedItemOrder) {
-			case ITM_RESIZE:				return ITM_RESIZE_Clicked;
-			case	ITM_MOVE:				return ITM_MOVE_Clicked;
-			case	ITM_COPY:				return ITM_COPY_Clicked;
-			case	ITM_CUT:				return ITM_CUT_Clicked;
-			case	ITM_PASTE:				return ITM_PASTE_Clicked;
-			case	ITM_DELETE:				return ITM_DELETE_Clicked;
-			case	ITM_UNDO:				return ITM_UNDO_Clicked;
-			case	ITM_REDO:				return ITM_REDO_Clicked;
-			case	ITM_SELECT:				return ITM_SELECT_Clicked;
-			case	ITM_LOAD:				return ITM_LOAD_Clicked;
-			case	ITM_SAVE:				return ITM_SAVE_Clicked;
-			case	ITM_SAVEAS:				return ITM_SAVEAS_Clicked;
-			case	ITM_COLLAPSERIGHT:		return ITM_COLLAPSERIGHT_Clicked;
-			default: return EMPTY;
-			}
-		}
-
-		//[2] User clicks on the drawing area
-		else if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
-		{
-			return DRAWING_AREA;
-		}
-		//[3] User clicks on the status bar
-		return STATUS;
-	}
-	else
-	{
-		// ZOOM ITEMS //
-		if (x >= startingXforLeftMenu2ndCol && x <= ScreenEndX && y >= 13 * leftMenuItemHeight
-			&& y <= UI.height - UI.StatusBarHeight) {
-			if (x < startingXforLeftMenu1stCol)
-				return ITM_ZOOM_IN_Clicked;
-			return ITM_ZOOM_OUT_Clicked;
-		}
-		// EXIT AND COLLAPSE //
-		else if (x >= startingXforLeftMenu2ndCol && x <= ScreenEndX && y >= 0 && y <= leftMenuItemHeight)
-		{
-			if (x < startingXforLeftMenu1stCol)
-				return ITM_COLLAPSERIGHT_Clicked;
-			return EXIT;
-		}
-
-
-		else if (y >= 0 && y <= playModeItemHeight && x >= 0 && x <= PLAY_ITM_COUNT * UI.MenuItemWidthUp) {
-			int ClickedItemOrder = (x / UI.MenuItemWidthUp);
-			switch (ClickedItemOrder) {
-			case ITM_SCRAMBLE:			return ITM_SCRAMBLE_Clicked;
-			case ITM_FIND:				return ITM_FIND_Clicked;
-			case ITEM_TODRAW:			return TO_DRAW;
-			default: return EMPTY;
-			}
-		}
-
-		else if (x >= startingXforLeftMenu1stCol && x <= ScreenEndX && y > leftMenuItemHeight && y <= ScreenEndY) {
-			int ClickedItemOrder = (y / UI.MenuItemWidthLeft);
-			switch (ClickedItemOrder) {
-			case ITM_RESIZE:				return ITM_RESIZE_Clicked;
-			case	ITM_MOVE:				return ITM_MOVE_Clicked;
-			case	ITM_COPY:				return ITM_COPY_Clicked;
-			case	ITM_CUT:				return ITM_CUT_Clicked;
-			case	ITM_PASTE:				return ITM_PASTE_Clicked;
-			case	ITM_DELETE:				return ITM_DELETE_Clicked;
-			case	ITM_UNDO:				return ITM_UNDO_Clicked;
-			case	ITM_REDO:				return ITM_REDO_Clicked;
-			case	ITM_SELECT:				return ITM_SELECT_Clicked;
-			case	ITM_LOAD:				return ITM_LOAD_Clicked;
-			case	ITM_SAVE:				return ITM_SAVE_Clicked;
-			case	ITM_SAVEAS:				return ITM_SAVEAS_Clicked;
-			default: return EMPTY;
-			}
-		}
-
-		else if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
-			return DRAWING_AREA;
+		else if (x >= 550 && x < 600 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU1_Clicked;
+		else if (x >= 600 && x < 650 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU2_Clicked;
+		else if (x >= 650 && x < 700 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU3_Clicked;
+		else if (x >= 700 && x < 750 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU4_Clicked;
+		else if (x >= 750 && x < 800 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU5_Clicked;
 		else
-			return STATUS;
+			return DRAWING_AREA;
 	}
 
+	else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU4) {
+		if (x >= 0 && x <= UI.MenuItemWidthLeft) {
+			int ClickedItemOrder = ((y - 100) / UI.MenuItemWidthLeft);
+			switch (ClickedItemOrder)
+			{
+			case ITM_BCKG_WHITE:	return ITM_BCKG_WHITE_Clicked;
+			case ITM_BCKG_BLUE:		return ITM_BCKG_BLUE_Clicked;
+			case ITM_BCKG_RED:		return ITM_BCKG_RED_Clicked;
+			case ITM_BCKG_BROWN:	return ITM_BCKG_BROWN_Clicked;
+			case ITM_BCKG_PINK:		return ITM_BCKG_PINK_Clicked;
+			case ITM_BCKG_NILE:		return ITM_BCKG_NILE_Clicked;
+			case ITM_BCKG_YELLOW:	return ITM_BCKG_YELLOW_Clicked;
+			case ITM_BCKG_ORANE:	return ITM_BCKG_ORANE_Clicked;
+			case ITM_BCKG_PURPLE:	return ITM_BCKG_PURPLE_Clicked;
+			case ITM_BCKG_GREEN:	return ITM_BCKG_GREEN_Clicked;
+			default: return EMPTY;
+			}
+		}
+		if (x >= 0 && x < UI.ToolBarWidth / 2 && y >= 0 && y <= originalToolBarWidth)
+			return TO_PLAY;
 
+		else if (x >= 550 && x < 600 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU1_Clicked;
+		else if (x >= 600 && x < 650 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU2_Clicked;
+		else if (x >= 650 && x < 700 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU3_Clicked;
+		else if (x >= 700 && x < 750 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU4_Clicked;
+		else if (x >= 750 && x < 800 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU5_Clicked;
+		else
+			return DRAWING_AREA;
+	}
+
+	else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU5) {
+		if (x >= 0 && x <= UI.MenuItemWidthLeft) {
+			int ClickedItemOrder = ((y - 200) / UI.MenuItemWidthLeft);
+			switch (ClickedItemOrder)
+			{
+			case ITM_BORDERWIDTH1: return ITM_BORDERWIDTH1_Clicked;
+			case ITM_BORDERWIDTH2: return ITM_BORDERWIDTH2_Clicked;
+			case ITM_BORDERWIDTH3: return ITM_BORDERWIDTH3_Clicked;
+			case ITM_BORDERWIDTH4: return ITM_BORDERWIDTH4_Clicked;
+
+			default: return EMPTY;
+			}
+		}
+		if (x >= 0 && x < UI.ToolBarWidth / 2 && y >= 0 && y <= originalToolBarWidth)
+			return TO_PLAY;
+
+		else if (x >= 550 && x < 600 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU1_Clicked;
+		else if (x >= 600 && x < 650 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU2_Clicked;
+		else if (x >= 650 && x < 700 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU3_Clicked;
+		else if (x >= 700 && x < 750 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU4_Clicked;
+		else if (x >= 750 && x < 800 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU5_Clicked;
+		else
+			return DRAWING_AREA;
+	}
+
+	else if (UI.InterfaceMode == MODE_DRAW_SUB_MENU6) {
+		if (x >= 0 && x <= UI.MenuItemWidthLeft) {
+			int ClickedItemOrder = ((y - 200) / UI.MenuItemWidthLeft);
+			switch (ClickedItemOrder)
+			{
+			case ITM_RESIZE25:	 return ITM_RESIZE25_Clicked;
+			case ITM_RESIZE50:	 return ITM_RESIZE50_Clicked;
+			case ITM_RESIZE200:	 return ITM_RESIZE200_Clicked;
+			case ITM_RESIZE400:	 return ITM_RESIZE400_Clicked;
+
+			default: return EMPTY;
+			}
+		}
+		if (x >= 0 && x < UI.ToolBarWidth / 2 && y >= 0 && y <= originalToolBarWidth)
+			return TO_PLAY;
+
+		else if (x >= 550 && x < 600 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU1_Clicked;
+		else if (x >= 600 && x < 650 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU2_Clicked;
+		else if (x >= 650 && x < 700 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU3_Clicked;
+		else if (x >= 700 && x < 750 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU4_Clicked;
+		else if (x >= 750 && x < 800 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU5_Clicked;
+		else
+			return DRAWING_AREA;
+	}
+
+	else if (UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
+	{
+		// Edited .. UI Tool Bar Width =60*2 ;; 
+		UI.ToolBarWidth = originalToolBarWidth * 2;  // 60 refers to The first column ,, 2 refers to double columns ;; 
+													 //[1] If user clicks on the Toolbar
+
+		if (x >= 0 && x < UI.ToolBarWidth / 2 && y >= 0 && y <= originalToolBarWidth)
+			return TO_PLAY;
+
+		else if (x >= 550 && x < 600 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU1_Clicked;
+		else if (x >= 600 && x < 650 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU2_Clicked;
+		else if (x >= 650 && x < 700 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU3_Clicked;
+		else if (x >= 700 && x < 750 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU4_Clicked;
+		else if (x >= 750 && x < 800 && y>0 && y <= UI.MenuItemWidthLeft)
+			return MODE_DRAW_SUB_MENU5_Clicked;
+	}
 }
 /////////////////////////////////
 

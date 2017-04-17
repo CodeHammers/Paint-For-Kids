@@ -157,10 +157,34 @@ void Output::CreateDrawToolBarUp(int action, bool collapse) const
 
 
 	else if (action == 1) {
-		;
+		string MenuItemImages[FigurelistIcons_Count];
+		MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\ICONS\\CIRCULE.jpg";
+		MenuItemImages[ITM_RECTANGLE] = "images\\MenuItems\\ICONS\\RECTANGLE.jpg";
+		MenuItemImages[ITM_TRIANGLE]="images\\MenuItems\\ICONS\\TRIANGLE.jpg";
+		MenuItemImages[ITM_LINE]="images\\MenuItems\\ICONS\\LINE.jpg";
+
+		int sign, start;
+		if (!collapse)		{
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU1;
+			sign = 1;
+			start = -50;
+		}
+		else {
+			UI.InterfaceMode = MODE_DRAW;
+			sign = -1;
+			start = 0;
+		}
+		for (int j = 0; j <= 50; ++j) {
+			for (int i = 0; i < FigurelistIcons_Count; ++i)
+				pWind->DrawImage(MenuItemImages[i], start + sign*j, (i + 4)*UI.MenuItemWidthLeft, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+			if (collapse) {
+				pWind->SetBrush(UI.BkGrndColor);
+				pWind->SetPen(UI.BkGrndColor, 1);
+				pWind->DrawRectangle(UI.MenuItemWidthLeft, 4 * UI.MenuItemWidthLeft, UI.MenuItemWidthLeft - j, (FigurelistIcons_Count + 4)*UI.MenuItemWidthLeft);
+			}
+		}
 	}
-
-
+	
 	else if (action == 2) {
 		
 		//Loading icons for the second sub menu (the pen sub menu)
@@ -225,7 +249,7 @@ void Output::CreateDrawToolBarUp(int action, bool collapse) const
 
 		int sign, start;
 		if (!collapse) {   //not collapse means moving into the screen
-			UI.InterfaceMode = MODE_DRAW_SUB_MENU2;
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU3;
 			sign = 1;
 			start = -50;
 		}
@@ -269,7 +293,7 @@ void Output::CreateDrawToolBarUp(int action, bool collapse) const
 
 		int sign, start;
 		if (!collapse) {   //not collapse means moving into the screen
-			UI.InterfaceMode = MODE_DRAW_SUB_MENU2;
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU4;
 			sign = 1;
 			start = -50;
 		}
@@ -307,7 +331,7 @@ void Output::CreateDrawToolBarUp(int action, bool collapse) const
 
 		int sign, start;
 		if (!collapse) {   //not collapse means moving into the screen
-			UI.InterfaceMode = MODE_DRAW_SUB_MENU2;
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU5;
 			sign = 1;
 			start = -50;
 		}
@@ -344,7 +368,7 @@ void Output::CreateDrawToolBarUp(int action, bool collapse) const
 
 		int sign, start;
 		if (!collapse) {   //not collapse means moving into the screen
-			UI.InterfaceMode = MODE_DRAW_SUB_MENU2;
+			UI.InterfaceMode = MODE_DRAW_SUB_MENU6;
 			sign = 1;
 			start = -50;
 		}

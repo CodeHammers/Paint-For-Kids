@@ -18,7 +18,6 @@ enum GUI_MODE	//Graphical user interface mode
 	MODE_DRAW_SUB_MENU6,  //resize options
 	MODE_PLAY	//Playing mode
 };
-
 enum DrawMenuItemLeft //The items of the Draw menu (you should add more items)
 {
 	//Note: Items are ordered here as they appear in menu
@@ -60,7 +59,7 @@ enum FigurelistIcons  //enumeration for icons on the upper menu
 	ITM_RECTANGLE,
 	ITM_TRIANGLE,
 	ITM_LINE,
-	DRAW_ITEM_COUNT_UP
+	FigurelistIcons_Count
 };
 
 enum DrawMenuItemRight
