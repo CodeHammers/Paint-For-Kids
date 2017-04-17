@@ -22,7 +22,40 @@ ApplicationManager::ApplicationManager()
 ActionType ApplicationManager::GetUserAction() const
 {
 	//Ask the input to get the action from the user.
-	return pIn->GetUserAction();		
+	ActionType Type = pIn->GetUserAction(), ret;
+
+	switch (Type) {
+
+	case MODE_DRAW_SUB_MENU1_Clicked:   //figures
+		pOut->CreateDrawToolBarUp(1, false);  //show sub menu
+		ret = pIn->GetUserAction();  //get action(figure option)
+		pOut->CreateDrawToolBarUp(1, true);  //hide sub menu
+		return ret;
+
+	case MODE_DRAW_SUB_MENU2_Clicked:  //pens
+		pOut->CreateDrawToolBarUp(2, false);  //show sub menu
+		ret = pIn->GetUserAction();  //get action(figure option)
+		pOut->CreateDrawToolBarUp(2, true);  //hide sub menu
+		return ret;
+
+	case MODE_DRAW_SUB_MENU3_Clicked:
+		pOut->CreateDrawToolBarUp(3, false);  //show sub menu
+		ret = pIn->GetUserAction();  //get action(figure option)
+		pOut->CreateDrawToolBarUp(3, true);  //hide sub menu
+		return ret;
+
+	case MODE_DRAW_SUB_MENU4_Clicked:
+		pOut->CreateDrawToolBarUp(4, false);  //show sub menu
+		ret = pIn->GetUserAction();  //get action(figure option)
+		pOut->CreateDrawToolBarUp(4, true);  //hide sub menu
+		return ret;
+
+	case MODE_DRAW_SUB_MENU5_Clicked:
+		pOut->CreateDrawToolBarUp(5, false);  //show sub menu
+		ret = pIn->GetUserAction();  //get action(figure option)
+		pOut->CreateDrawToolBarUp(5, true);  //hide sub menu
+		return ret; 
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Creates an action and executes it
@@ -33,6 +66,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
+		
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			break;
