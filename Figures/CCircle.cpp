@@ -13,7 +13,7 @@ void CCircle::Draw(Output* pOut) const
 }
 
 
-bool CCircle::Encloses(Point P) const
+bool CCircle::Encloses(Point P) 
 {
 	float dist = pow(Center.x - P.x, 2) + pow(Center.y - P.y, 2);
 	return dist <= Radius;

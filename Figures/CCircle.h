@@ -20,5 +20,5 @@ public:
 	virtual void Load(ifstream &Infile);
 
 	//A function tell tell with the point P is inside the circle
-	virtual bool Encloses(Point P) const;
+	virtual bool Encloses(Point P);
 };

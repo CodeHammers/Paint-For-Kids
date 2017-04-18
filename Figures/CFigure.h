@@ -34,7 +34,7 @@ public:
 	//virtual void Resize() = 0;	//Resize the figure
 	//virtual void Move() = 0;		//Move the figure
 
-	virtual bool Encloses(Point P) = 0;
+	virtual bool Encloses(Point P) = 0 ;
 
 	//virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
 	virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file

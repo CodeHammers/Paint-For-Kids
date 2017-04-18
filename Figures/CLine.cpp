@@ -13,7 +13,7 @@ void CLine::Draw(Output* pOut) const
 }
 
 
-bool CLine::Encloses(Point P) const
+bool CLine::Encloses(Point P) 
 {
 	float dist1 = pow(EndPoint1.x - P.x, 2) + pow(EndPoint1.y - P.y, 2);
 	float dist2 = pow(EndPoint2.x - P.x, 2) + pow(EndPoint2.y - P.y, 2);

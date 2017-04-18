@@ -1,13 +1,19 @@
-﻿  AddCircleAction.cpp
-  Generating Code...
-  Compiling...
-  main.cpp
-  ApplicationManager.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
+﻿  CTriangle.cpp
+e:\paint-for-kids\figures\ctriangle.cpp(20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  CRectangle.cpp
+  CLine.cpp
+e:\paint-for-kids\figures\cline.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+e:\paint-for-kids\figures\cline.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+e:\paint-for-kids\figures\cline.cpp(20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  CCircle.cpp
+e:\paint-for-kids\figures\ccircle.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   LoadAction.cpp
   AddTriangleAction.cpp
   AddRectAction.cpp
   AddLineAction.cpp
+  AddCircleAction.cpp
+  Generating Code...
+e:\paint-for-kids\actions\loadaction.cpp(30): warning C4700: uninitialized local variable 'NumOfFigs' used
+e:\paint-for-kids\actions\loadaction.cpp(34): warning C4700: uninitialized local variable 'emptyP' used
   PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

@@ -15,7 +15,7 @@ void CRectangle::Draw(Output* pOut) const
 }
 
 
-bool CRectangle::Encloses(Point P) const
+bool CRectangle::Encloses(Point P) 
 {
 	return (P.x >= Corner1.x && P.x <= Corner2.x && P.y >= Corner1.y && P.y <= Corner2.y);
 }

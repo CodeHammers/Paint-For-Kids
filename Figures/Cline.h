@@ -14,7 +14,7 @@ public:
 	virtual void Draw(Output* pOut) const;
 
 	//A function to tell whether a point belongs to a line
-	bool Encloses(Point P) const;
+	virtual bool Encloses(Point P) ;
 
 	//Load the figure parameters to the file
 	virtual void Load(ifstream &Infile);	

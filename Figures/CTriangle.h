@@ -14,7 +14,7 @@ public:
 	virtual void Draw(Output* pOut) const;
 
 	//Encloses function
-	virtual bool Encloses(Point P) const;
+	virtual bool Encloses(Point P) ;
 
 	//Function to the get the area of the triangle (used by encloses function)
 	float GetArea(int x1, int y1, int x2, int y2, int x3, int y3) const;
