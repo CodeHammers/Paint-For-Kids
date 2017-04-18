@@ -222,11 +222,13 @@ void Output::CreateDrawToolBarUp(int action, bool collapse) const
 
 		for (int j = 0; j <= 50; j++) { //note: i+2 is the shifting ratio
 			for (int i = 0; i < DRAW_ITEM_COUNT_RIGHTPEN ; i++) { // 1 here is the intializer of enum 
-				pWind->DrawImage(MenuItemImages[i], start+sign*j, (i + 2) * UI.MenuItemWidthLeft, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+				pWind->DrawImage(MenuItemImages[i], start+sign*j, (i + 2) * UI.MenuItemWidthLeft,
+					UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
 				if (collapse) {
 					pWind->SetBrush(UI.BkGrndColor);
 					pWind->SetPen(UI.BkGrndColor, 1);
-					pWind->DrawRectangle(UI.MenuItemWidthLeft, 2 * UI.MenuItemWidthLeft, UI.MenuItemWidthLeft - j, (DRAW_ITEM_COUNT_RIGHTPEN + 2)* UI.MenuItemWidthLeft);
+					pWind->DrawRectangle(UI.MenuItemWidthLeft, 2 * UI.MenuItemWidthLeft,
+						UI.MenuItemWidthLeft - j, (DRAW_ITEM_COUNT_RIGHTPEN + 2)* UI.MenuItemWidthLeft);
 				}
 			}
 		}

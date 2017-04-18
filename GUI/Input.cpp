@@ -26,7 +26,8 @@ string Input::GetSrting(Output *pO) const
 			Label.resize(Label.size() - 1);
 		else
 			Label += Key;
-		pO->PrintMessage(Label);
+		if(pO!=NULL)
+			pO->PrintMessage(Label);
 	}
 }
 
