@@ -22,22 +22,21 @@ bool CRectangle::Encloses(Point P)
 
 void CRectangle::Load(ifstream & Infile)
 {
-	int id,x,y;
-	string DrawColor,FillColor;
+	int id, x, y;
+	string DrawColor, FillColor;
 	Infile >> id >> x >> y;
-	Corner1.x = x; Corner1.y = y;
-	Infile >> x >> y;
-	Corner2.x = x; Corner2.y = y;
+	Infile >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y;
 	GfxInfo info;
 	Infile >> DrawColor;
 	//Check for the color
-	info.DrawClr = RED;
+	info.DrawClr = GetColor(DrawColor);
 	Infile >> FillColor;
 	if (FillColor == "NOFILL") {
 		info.isFilled = false;
 	}
 	else {
-		//check for the color
+		info.isFilled = true;
+		info.FillClr = GetColor(FillColor);
 	}
 	CFigure::FigGfxInfo = info;
 }

@@ -41,7 +41,20 @@ Output::Output()
 	/*Drawing the status bar in the application window*/
 	CreateStatusBar();
 }
-
+void Output::EditWindowSettings(color drawcolor, color fillcolor, color backgroundcolor)
+{
+	UI.DrawColor = drawcolor;
+	UI.FillColor = fillcolor;
+	UI.BkGrndColor = backgroundcolor;
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->DrawRectangle(0, 0, UI.width, UI.height);
+	pWind->SetPen(UI.DrawColor);
+	pWind->SetBrush(UI.FillColor);
+	CreateDrawToolBarUp(0, false);
+	CreateDrawToolBarRight(false);
+	CreateStatusBar();
+}
 
 Input* Output::CreateInput() const
 {

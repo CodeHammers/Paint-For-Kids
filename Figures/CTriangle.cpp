@@ -1,5 +1,5 @@
 #include"CTriangle.h"
-
+#include <fstream>
 
 CTriangle::CTriangle(Point V1, Point V2, Point V3, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
@@ -41,5 +41,20 @@ bool CTriangle::Encloses(Point P)
 void CTriangle::Load(ifstream &Infile)
 {
 	///Your code goes here.
-	;
+	int id, x, y;
+	string DrawColor, FillColor;
+	Infile >> id >> x >> y;
+	Infile >> Vertex1.x >> Vertex1.y >> Vertex2.x >> Vertex2.y >> Vertex3.x >> Vertex3.y;
+	GfxInfo info;
+	Infile >> DrawColor;
+	info.DrawClr = GetColor(DrawColor);
+	Infile >> FillColor;
+	if (FillColor == "NOFILL") {
+		info.isFilled = false;
+	}
+	else {
+		info.isFilled = true;
+		info.FillClr = GetColor(FillColor);
+	}
+	CFigure::FigGfxInfo = info;
 }

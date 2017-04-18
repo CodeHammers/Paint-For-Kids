@@ -1,5 +1,5 @@
 #include "CLine.h"
-
+#include <fstream>
 CLine::CLine(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	EndPoint1 = P1;
@@ -25,5 +25,13 @@ bool CLine::Encloses(Point P)
 void CLine::Load(ifstream &Infile)
 {
 	///Youe code goes here.
-	;
+	int id, x, y;
+	string DrawColor;
+	Infile >> id >> x >> y;
+	Infile >> EndPoint1.x >> EndPoint1.y >> EndPoint2.x >> EndPoint2.y;
+	GfxInfo info;
+	Infile >> DrawColor;
+	//Check for the color
+	info.DrawClr = GetColor(DrawColor);
+	CFigure::FigGfxInfo = info;
 }

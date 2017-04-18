@@ -1,5 +1,36 @@
 #include "CFigure.h"
 
+color CFigure::GetColor(string DrawColor)
+{
+	if (DrawColor == "RED") {
+		return  RED;
+	}
+	if (DrawColor == "GREEN") {
+		return  GREEN;
+	}
+	if (DrawColor == "BLUE") {
+		return  BLUE;
+	}
+	if (DrawColor == "BROWN") {
+		return  BROWN;
+	}
+	if (DrawColor == "BLACK") {
+		return BLACK;
+	}
+	if (DrawColor == "ORANGE") {
+		return  ORANGE;
+	}
+	if (DrawColor == "PURPLE") {
+		return  PURPLE;
+	}
+	if (DrawColor == "YELLOW") {
+		return  YELLOW;
+	}
+	if (DrawColor == "NILE") {
+		return PURPLE;
+	}
+	return NULL;
+}
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.

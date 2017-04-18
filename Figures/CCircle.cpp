@@ -1,5 +1,5 @@
 #include "CCircle.h"
-
+#include <fstream>
 CCircle::CCircle(Point P1, int r,GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Center = P1;
@@ -22,5 +22,20 @@ bool CCircle::Encloses(Point P)
 void CCircle::Load(ifstream &Infile)
 {
 	///Your code goes here.
-	;
+	int id, x, y;
+	string DrawColor, FillColor;
+	Infile >> id >> x >> y;
+	Infile >> Center.x >> Center.y >> Radius;
+	GfxInfo info;
+	Infile >> DrawColor;
+	info.DrawClr = GetColor(DrawColor);
+	Infile >> FillColor;
+	if (FillColor == "NOFILL") {
+		info.isFilled = false;
+	}
+	else {
+		info.isFilled = true;
+		info.FillClr = GetColor(FillColor);
+	}
+	CFigure::FigGfxInfo = info; ;
 }
