@@ -1,5 +1,5 @@
 #pragma once
-#include "Actions\Action.h"
+#include "Action.h"
 
 class LoadAction :
 	public Action

@@ -1,8 +1,12 @@
 #include "LoadAction.h"
-#include "ApplicationManager.h"
-#include "GUI\input.h"
-#include "GUI\Output.h"
-#include "Figures\CRectangle.h"
+
+#include "..\ApplicationManager.h"
+
+#include "..\GUI\input.h"
+#include "..\GUI\Output.h"
+
+#include "..\Figures\CRectangle.h"
+
 #include <fstream>
 
 LoadAction::LoadAction(ApplicationManager * pApp) : Action(pApp)

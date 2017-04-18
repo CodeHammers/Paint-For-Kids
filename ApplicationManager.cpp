@@ -1,6 +1,8 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
-
+#include "Actions\AddLineAction.h"
+#include "Actions\AddCircleAction.h"
+#include "Actions\AddTriangleAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -21,11 +23,21 @@ ApplicationManager::ApplicationManager()
 //==================================================================================//
 ActionType ApplicationManager::GetUserAction() const
 {
+	/*We get the user actions, we define two main types of actions,
+	(1) a simple action, that's an action taken directly from an on-screen icon
+	(2) a nested action, that's an action taken from a sub menu
+	-for action number 1, we simple return the action type to the main
+	-for action number 2, we do the following: 
+	   [1] show the sub menu
+	   [2] wait for the user to click an icon from the sub menu
+	   [3] hide th sub menu(that includes a click in the sub menu or outside it)
+	   [4] return the selected action to the main function*/
+
 	//Ask the input to get the action from the user.
 	ActionType Type = pIn->GetUserAction(), ret;
 
 	switch (Type) {
-
+    
 	case MODE_DRAW_SUB_MENU1_Clicked:   //figures
 		pOut->CreateDrawToolBarUp(1, false);  //show sub menu
 		ret = pIn->GetUserAction();  //get action(figure option)
@@ -34,28 +46,36 @@ ActionType ApplicationManager::GetUserAction() const
 
 	case MODE_DRAW_SUB_MENU2_Clicked:  //pens
 		pOut->CreateDrawToolBarUp(2, false);  //show sub menu
-		ret = pIn->GetUserAction();  //get action(figure option)
+		ret = pIn->GetUserAction();  //get action(pen option)
 		pOut->CreateDrawToolBarUp(2, true);  //hide sub menu
 		return ret;
 
-	case MODE_DRAW_SUB_MENU3_Clicked:
+	case MODE_DRAW_SUB_MENU3_Clicked: //brushes
 		pOut->CreateDrawToolBarUp(3, false);  //show sub menu
-		ret = pIn->GetUserAction();  //get action(figure option)
+		ret = pIn->GetUserAction();  //get action(brushes option)
 		pOut->CreateDrawToolBarUp(3, true);  //hide sub menu
 		return ret;
 
-	case MODE_DRAW_SUB_MENU4_Clicked:
+	case MODE_DRAW_SUB_MENU4_Clicked:  //background colors
 		pOut->CreateDrawToolBarUp(4, false);  //show sub menu
-		ret = pIn->GetUserAction();  //get action(figure option)
+		ret = pIn->GetUserAction();  //get action(background colors option)
 		pOut->CreateDrawToolBarUp(4, true);  //hide sub menu
 		return ret;
 
-	case MODE_DRAW_SUB_MENU5_Clicked:
+	case MODE_DRAW_SUB_MENU5_Clicked:  //border width
 		pOut->CreateDrawToolBarUp(5, false);  //show sub menu
-		ret = pIn->GetUserAction();  //get action(figure option)
+		ret = pIn->GetUserAction();  //get action(border width option)
 		pOut->CreateDrawToolBarUp(5, true);  //hide sub menu
 		return ret; 
+
+	case ITM_RESIZE_Clicked:  //resize options
+		pOut->CreateDrawToolBarUp(6, false);  //show sub menu
+		ret = pIn->GetUserAction();  //get action(resize option)
+		pOut->CreateDrawToolBarUp(6, true);  //hide sub menu
+		return ret;
 	}
+
+	return Type;  //if not a sub menu action, return it directly.
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Creates an action and executes it
@@ -72,8 +92,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case DRAW_LINE:
-			///create AddLineAction here
+			pAct = new AddLineAction(this);
+			break;
 
+		case DRAW_CIRC:
+			pAct = new AddCircleAction(this);
+			break;
+
+		case DRAW_TRI:
+			pAct = new AddTriangleAction(this);
 			break;
 
 		case EXIT:

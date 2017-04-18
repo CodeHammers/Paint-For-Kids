@@ -21,9 +21,9 @@ public:
 
 								// -- Figures Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a rectangle
-	void DrawLine(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a Line
-	void DrawTriangle(Point P1, Point P2, Point P3, GfxInfo RectGfxInfo, bool selected = false) const; //Draw a triangle
-	void DrawCircle(Point center, int radius, GfxInfo RectGfxInfo, bool selected = false) const; //Draw a circle.
+	void DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected = false) const;  //Draw a Line
+	void DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriangleGfxInfo, bool selected = false) const; //Draw a triangle
+	void DrawCircle(Point center, int radius, GfxInfo CircleGfxInfo, bool selected = false) const; //Draw a circle.
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar
 

@@ -487,34 +487,34 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 }
 
-void Output::DrawLine(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
+void Output::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected) const
 {
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
 	else
-		DrawingClr = RectGfxInfo.DrawClr;
+		DrawingClr = LineGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);	//Set Drawing color & width
+	pWind->SetPen(DrawingClr, LineGfxInfo.BorderWdth);	//Set Drawing color & width
 
 	pWind->DrawLine(P1.x, P1.y, P2.x, P2.y, FRAME);
 }
 
-void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo RectGfxInfo, bool selected) const
+void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriangleGfxInfo, bool selected) const
 {
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
 	else
-		DrawingClr = RectGfxInfo.DrawClr;
+		DrawingClr = TriangleGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);
+	pWind->SetPen(DrawingClr, TriangleGfxInfo.BorderWdth);
 
 	drawstyle style;
-	if (RectGfxInfo.isFilled)
+	if (TriangleGfxInfo.isFilled)
 	{
 		style = FILLED;
-		pWind->SetBrush(RectGfxInfo.FillClr);
+		pWind->SetBrush(TriangleGfxInfo.FillClr);
 	}
 	else
 		style = FRAME;
@@ -522,21 +522,21 @@ void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo RectGfxInfo, boo
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
 }
 
-void Output::DrawCircle(Point center, int radius, GfxInfo RectGfxInfo, bool selected) const
+void Output::DrawCircle(Point center, int radius, GfxInfo CircleGfxInfo, bool selected) const
 {
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
 	else
-		DrawingClr = RectGfxInfo.DrawClr;
+		DrawingClr = CircleGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);
+	pWind->SetPen(DrawingClr, CircleGfxInfo.BorderWdth);
 
 	drawstyle style;
-	if (RectGfxInfo.isFilled)
+	if (CircleGfxInfo.isFilled)
 	{
 		style = FILLED;
-		pWind->SetBrush(RectGfxInfo.FillClr);
+		pWind->SetBrush(CircleGfxInfo.FillClr);
 	}
 	else
 		style = FRAME;

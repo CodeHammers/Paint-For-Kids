@@ -1,17 +1,8 @@
-﻿  LoadAction.cpp
-  Input.cpp
-  AddRectAction.cpp
-  CRectangle.cpp
-  Generating Code...
-c:\paint-for-kids\loadaction.cpp(25): warning C4700: uninitialized local variable 'NumOfFigs' used
-c:\paint-for-kids\loadaction.cpp(29): warning C4700: uninitialized local variable 'emptyP' used
-  Compiling...
+﻿  main.cpp
   ApplicationManager.cpp
+  CTriangle.cpp
+  AddTriangleAction.cpp
   Generating Code...
-c:\paint-for-kids\applicationmanager.cpp(59): warning C4715: 'ApplicationManager::GetUserAction': not all control paths return a value
-  Skipping... (no relevant changes detected)
-  main.cpp
-  CFigure.cpp
-auxil.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-  PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
+AddCircleAction.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)
