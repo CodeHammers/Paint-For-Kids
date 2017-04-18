@@ -14,6 +14,12 @@ void CRectangle::Draw(Output* pOut) const
 	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
 }
 
+
+bool CRectangle::Encloses(Point P) const
+{
+	return (P.x >= Corner1.x && P.x <= Corner2.x && P.y >= Corner1.y && P.y <= Corner2.y);
+}
+
 void CRectangle::Load(ifstream & Infile)
 {
 	int id,x,y;

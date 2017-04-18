@@ -13,6 +13,12 @@ public:
 	//Draw function
 	virtual void Draw(Output* pOut) const;
 
+	//Encloses function
+	virtual bool Encloses(Point P) const;
+
+	//Function to the get the area of the triangle (used by encloses function)
+	float GetArea(int x1, int y1, int x2, int y2, int x3, int y3) const;
+
 	//Load function
 	virtual void Load(ifstream &Infile);
 };

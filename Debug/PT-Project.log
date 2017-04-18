@@ -1,8 +1,13 @@
-﻿  AddTriangleAction.cpp
-  AddRectAction.cpp
-  AddCircleAction.cpp
+﻿  AddCircleAction.cpp
+  Generating Code...
+  Compiling...
+  main.cpp
+  ApplicationManager.cpp
   Generating Code...
   Skipping... (no relevant changes detected)
-  ApplicationManager.cpp
+  LoadAction.cpp
+  AddTriangleAction.cpp
+  AddRectAction.cpp
+  AddLineAction.cpp
   PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

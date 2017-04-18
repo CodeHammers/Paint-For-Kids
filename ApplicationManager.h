@@ -14,7 +14,7 @@ class ApplicationManager
 private:
 	int FigCount;		//Actual number of figures
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
-
+	CFigure* CurrentlySelected[MaxFigCount]; //list of the currently selected figures
 	//Pointers to Input and Output classes
 	Input *pIn;
 	Output *pOut;
