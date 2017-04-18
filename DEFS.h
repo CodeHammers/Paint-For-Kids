@@ -114,8 +114,8 @@ enum ActionType //The actions supported (you can add more if needed)
 	DRAW_LINE,		//Draw Line
 	DRAW_RECT,		//Draw Rectangle
 	DRAW_TRI,			//Draw Triangle
-	DRAW_CIRC			//Draw Circle
-
+	DRAW_CIRC,			//Draw Circle
+		
 						///TODO: Add more action types (if needed)
 };
 

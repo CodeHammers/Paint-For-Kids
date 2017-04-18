@@ -13,10 +13,11 @@ LoadAction::LoadAction(ApplicationManager * pApp) : Action(pApp)
 {
 }
 
-void LoadAction::ReadActionParameters()
+bool LoadAction::ReadActionParameters()
 {
 	Input* pIn = pManager->GetInput();
 	filename = pIn->GetSrting(NULL);
+	return true;
 }
 
 

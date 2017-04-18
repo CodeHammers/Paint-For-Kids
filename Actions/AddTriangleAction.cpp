@@ -13,20 +13,50 @@ AddTriangleAction::AddTriangleAction(ApplicationManager* pApp) :Action(pApp)
 }
 
 
-void AddTriangleAction::ReadActionParameters()
+bool AddTriangleAction::ReadActionParameters()
 {
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
 	pOut->PrintMessage("New Triangle: click to position vertex #1");
-	pIn->GetPointClicked(P1.x, P1.y);
+	while (true) {
+		pIn->GetPointClicked(P1.x, P1.y);
+		if (Abort(P1)) {
+			pOut->ClearStatusBar();
+			return false;
+		}
+		if (!InDrawingArea(P1))
+			pOut->PrintMessage("New Triangle: first vertex is out of the drawing area, click again");
+		else
+			break;
+	}
 
 	pOut->PrintMessage("New Triangle: click to position vertex #2");
-	pIn->GetPointClicked(P2.x, P2.y);
+	while (true) {
+		pIn->GetPointClicked(P2.x, P2.y);
+		if (Abort(P2)) {
+			pOut->ClearStatusBar();
+			return false;
+		}
+		if (!InDrawingArea(P2))
+			pOut->PrintMessage("New Triangle: second vertex is out of the drawing area, click again");
+		else
+			break;
+	}
 
 	pOut->PrintMessage("New Triangle: click to position vertex #3");
-	pIn->GetPointClicked(P3.x, P3.y);
+	while (true) {
+		pIn->GetPointClicked(P3.x, P3.y);
+		if (Abort(P3)) {
+			pOut->ClearStatusBar();
+			return false;
+		}
+		if (!InDrawingArea(P3))
+			pOut->PrintMessage("New Triangle: third vertex is out of the drawing area, click again");
+		else
+			break;
+	}
 
 	TriangleGfxInfo.isFilled = false;	//default is not filled
 
@@ -36,17 +66,24 @@ void AddTriangleAction::ReadActionParameters()
 	TriangleGfxInfo.BorderWdth = pOut->getCrntPenWidth();
 
 	pOut->ClearStatusBar();
+	return true;
 }
 
 
 void AddTriangleAction::Execute()
 {
 	//Get action parameters
-	ReadActionParameters();
+	if (ReadActionParameters()) {
 
-	//Create the corrosponding object
-	CTriangle* Triangle = new CTriangle(P1, P2, P3, TriangleGfxInfo);
+		//Create the corrosponding object
+		CTriangle* Triangle = new CTriangle(P1, P2, P3, TriangleGfxInfo);
 
-	//Save the figure in the figure list
-	pManager->AddFigure(Triangle);
+		//Save the figure in the figure list
+		pManager->AddFigure(Triangle);
+	}
+}
+
+bool AddTriangleAction::InDrawingArea(Point P) const
+{
+	return (P.x >= 55 && P.x <= 1435 && P.y >= 60 && P.y <= 710);
 }

@@ -18,6 +18,8 @@ Output::Output()
 	UI.MenuItemWidthUp = 50;     //Setting the width of icons in the upper menu.
 	UI.MenuItemWidthRight = 50;   //Setting the width of icons in the right menu.
 	UI.MenuItemHeight = 60;      
+	//Drawing area dimensions 1380*660 with 5 pixels empty on all for sides
+	//from x=55 ==> x=1435 , y=55 ==> y=715
 
 	/*Setting the default colors for drawing and window background*/
 	UI.DrawColor = BLUE;	//Setting the drawing color of figures.

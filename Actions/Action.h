@@ -17,7 +17,7 @@ public:
 	Action(ApplicationManager *pApp) { pManager = pApp; }	//constructor
 
 	//Reads parameters required for action to execute (code depends on action type)
-	virtual void ReadActionParameters() =0;
+	virtual bool ReadActionParameters() =0;
 	
 	//Execute action (code depends on action type)
 	virtual void Execute() =0;
@@ -28,6 +28,10 @@ public:
 	//To redo this action (code depends on action type)
 	//virtual void Redo()=0;
 
+	bool Abort(Point P) {
+		return (P.x >= 1385 && P.x <= 1500 && P.y >= 0 && P.y <= 50);
+	}
+	
 };
 
 #endif

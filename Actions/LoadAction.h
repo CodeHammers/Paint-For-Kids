@@ -9,7 +9,7 @@ private:
 public:
 	LoadAction(ApplicationManager * pApp);
 	//Reads File Name
-	virtual void ReadActionParameters();
+	virtual bool ReadActionParameters();
 
 	//Reads figures' Data and add appropiate objects to the FigList
 	virtual void Execute();

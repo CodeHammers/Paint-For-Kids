@@ -1,8 +1,8 @@
-﻿  main.cpp
-  ApplicationManager.cpp
-  CTriangle.cpp
-  AddTriangleAction.cpp
+﻿  AddTriangleAction.cpp
+  AddRectAction.cpp
+  AddCircleAction.cpp
   Generating Code...
-AddCircleAction.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  Skipping... (no relevant changes detected)
+  ApplicationManager.cpp
   PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

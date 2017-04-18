@@ -285,7 +285,9 @@ ActionType Input::GetUserAction() const
 		else if (x >= 750 && x < 800 && y>0 && y <= UI.MenuItemWidthLeft)
 			return MODE_DRAW_SUB_MENU5_Clicked;
 	}
-	return DRAWING_AREA;
+	if(x>=55 && x<=1435 && y>=60 && y<=710)
+		return DRAWING_AREA;
+	return EMPTY;
 }
 /////////////////////////////////
 

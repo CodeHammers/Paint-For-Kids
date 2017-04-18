@@ -15,9 +15,11 @@ public:
 	AddCircleAction(ApplicationManager* pApp);
 
 	//Get action parameters function
-	virtual void ReadActionParameters();
+	virtual bool ReadActionParameters();
 
 	//Execute the action
 	virtual void Execute();
 
+	//Function to handle edge cases
+	bool InDrawingArea(Point P) const ;
 };

@@ -12,17 +12,37 @@ AddLineAction::AddLineAction(ApplicationManager* pApp) :Action(pApp)
 }
 
 
-void AddLineAction::ReadActionParameters()
+bool AddLineAction::ReadActionParameters()
 {
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
 	pOut->PrintMessage("New Line: click the first end point");
-	pIn->GetPointClicked(P1.x,P1.y);
+	while (true) {
+		pIn->GetPointClicked(P1.x, P1.y);
+		if (Abort(P1)) {
+			pOut->ClearStatusBar();
+			return false;
+		}
+		if (!InDrawingArea(P1))
+			pOut->PrintMessage("New Line: first end point is out of the drawing area, click again");
+		else
+			break;
+	}
 
 	pOut->PrintMessage("New Line: click the second end point");
-	pIn->GetPointClicked(P2.x, P2.y);
+	while (true) {
+		pIn->GetPointClicked(P2.x, P2.y);
+		if (Abort(P2)) {
+			pOut->ClearStatusBar();
+			return false;
+		}
+		if (!InDrawingArea(P2))
+			pOut->PrintMessage("New Line: second end point is out of the drawing area, click again");
+		else
+			break;
+	}
 
 	LineGfxInfo.isFilled = false;	//default is not filled
 
@@ -32,17 +52,24 @@ void AddLineAction::ReadActionParameters()
 	LineGfxInfo.BorderWdth = pOut->getCrntPenWidth();
 
 	pOut->ClearStatusBar();
+	return true;
 }
 
 
 void AddLineAction::Execute()
 {
 	//Read the action parameter from the user
-	ReadActionParameters();
+	if (ReadActionParameters()) {
 
-	//Create the corrosponding object
-	CLine* L = new CLine(P1, P2, LineGfxInfo);
+		//Create the corrosponding object
+		CLine* L = new CLine(P1, P2, LineGfxInfo);
 
-	//Save the Line in the figure list
-	pManager->AddFigure(L);
+		//Save the Line in the figure list
+		pManager->AddFigure(L);
+	}
+}
+
+bool AddLineAction::InDrawingArea(Point P) const
+{
+	return (P.x >= 55 && P.x <= 1435 && P.y >= 60 && P.y <= 710);
 }
