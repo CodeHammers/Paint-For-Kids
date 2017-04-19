@@ -17,7 +17,13 @@ void CRectangle::Draw(Output* pOut) const
 
 bool CRectangle::Encloses(Point P) 
 {
-	return (P.x >= Corner1.x && P.x <= Corner2.x && P.y >= Corner1.y && P.y <= Corner2.y);
+	int minx, maxx, miny, maxy;
+	minx = min(Corner1.x, Corner2.x);
+	maxx = max(Corner1.x, Corner2.x);
+	miny = min(Corner1.y, Corner2.y);
+	maxy = max(Corner1.y, Corner2.y);
+
+	return (P.x >= minx && P.x <= maxx && P.y >= miny && P.y <= maxy);
 }
 
 void CRectangle::Load(ifstream & Infile)

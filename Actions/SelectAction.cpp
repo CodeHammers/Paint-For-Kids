@@ -22,14 +22,17 @@ bool SelectAction::ReadActionParameters()
 
 		/*If the user clicked the select button again, means he wants to
 		terminate the selection process, so keep all the selected figures*/
-		if (TerminateSelection(P))
+		if (TerminateSelection(P)) {
+			pOut->ClearStatusBar();
 			return true;
+		}
 
 
 		/*If the user clicks outside the drawing area or clicks the abort 
 		button, then the user wants to cancel the operation, unselect*/
 		if (!InDrawingArea(P) || Abort(P)) {
 			Unselect();
+			pOut->ClearStatusBar();
 			return false;
 		}
 
@@ -47,12 +50,15 @@ bool SelectAction::ReadActionParameters()
 		/*[1] the user clicked at an empty spot*/
 		if (ptr == NULL) {
 			Unselect();
+			pOut->ClearStatusBar();
 			return false;
 		}
 		else {
 			SelectedSoFar.push_back(ptr);  //add this figure to the currently selected figures
 			Select(ptr);    //see the select function logic
 		}
+
+		pManager->UpdateInterface();
 	}
 }
 
