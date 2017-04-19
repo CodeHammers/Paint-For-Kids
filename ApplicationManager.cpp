@@ -3,6 +3,8 @@
 #include "Actions\AddLineAction.h"
 #include "Actions\AddCircleAction.h"
 #include "Actions\AddTriangleAction.h"
+#include "Actions\SelectAction.h"
+
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -103,6 +105,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddTriangleAction(this);
 			break;
 
+		case ITM_SELECT_Clicked:
+			pAct = new SelectAction(this);
+			break;
+
 		case EXIT:
 			///create ExitAction here
 			
@@ -130,17 +136,18 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 	if(FigCount < MaxFigCount )
 		FigList[FigCount++] = pFig;	
 }
+
 ////////////////////////////////////////////////////////////////////////////////////
-CFigure *ApplicationManager::GetFigure(int x, int y) const
+CFigure* ApplicationManager::GetFigure(int x, int y) const
 {
-	//If a figure is found return a pointer to it.
-	//if this point (x,y) does not belong to any figure return NULL
-
-
-	///Add your code here to search for a figure given a point x,y	
-
+	for (int i = FigCount-1; i>=0; i--) {
+		if (FigList[i]->Encloses({ x,y }))  //if the point is in the figure
+			return FigList[i];
+	}
 	return NULL;
 }
+
+
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//

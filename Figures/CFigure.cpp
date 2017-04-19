@@ -31,6 +31,8 @@ color CFigure::GetColor(string DrawColor)
 	}
 	return NULL;
 }
+
+
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
@@ -51,4 +53,3 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
 }
-

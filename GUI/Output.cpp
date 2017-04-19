@@ -41,6 +41,8 @@ Output::Output()
 	/*Drawing the status bar in the application window*/
 	CreateStatusBar();
 }
+
+
 void Output::EditWindowSettings(color drawcolor, color fillcolor, color backgroundcolor)
 {
 	UI.DrawColor = drawcolor;
