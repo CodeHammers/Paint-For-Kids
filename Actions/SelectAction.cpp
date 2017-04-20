@@ -54,12 +54,16 @@ bool SelectAction::ReadActionParameters()
 		}
 		else {
 			Select(ptr);    //see the select function logic
+
 			if(ptr->IsSelected())
 				SelectedSoFar.insert(ptr);  //add this figure to the currently selected figures
+
 			if (SelectedSoFar.size() == 1 && (*SelectedSoFar.begin())->IsSelected())
 				(*SelectedSoFar.begin())->PrintInfo(pOut);
-			else
-				pOut->ClearStatusBar();
+			else {
+				string cnt = to_string(SelectedSoFar.size());
+				pOut->PrintMessage("You have selected " + cnt + " figures so far");
+			}
 		}
 
 		pManager->UpdateInterface();
