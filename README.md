@@ -1,6 +1,6 @@
 # Paint-For-Kids
 
- #Overview:
+ Overview:
  ----------
  A fancy colorful application is an effective way to teach kids some computer skills. Educational games are another enjoyable way 
  for kids teaching.
@@ -10,18 +10,18 @@
  types, colors, sizes … etc. 
  
  
- #Purpose:
+ Purpose:
  ---------
  This application will be submitted as a semester project for an object oriented programming course, it will also be our OOP learning    space.  
  
  
- #Language:
+ Language:
  ----------
  We will be using object oriented C++ to core of this application, we will be using CMU graphics library to create the user interface
  and application-user interaction.
  
  
- #Creators:
+ Creators:
  ----------
  -Sayed Kotb 
  -Kareem Emad
