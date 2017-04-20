@@ -21,4 +21,7 @@ public:
 
 	//A function tell tell with the point P is inside the circle
 	virtual bool Encloses(Point P);
+
+	//A function to print a figure info
+	virtual void PrintInfo(Output* pOut);
 };

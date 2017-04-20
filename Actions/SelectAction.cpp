@@ -15,15 +15,16 @@ bool SelectAction::ReadActionParameters()
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	
+	pOut->PrintMessage("Click inside or on the border of a shape to select");
 	while (true) {
-		pOut->PrintMessage("Click inside or on the border of a shape to select");
+		
 		pIn->GetPointClicked(P.x, P.y);
 
 		/*If the user clicked the select button again, means he wants to
 		terminate the selection process, so keep all the selected figures*/
 		if (TerminateSelection(P)) {
-			pOut->ClearStatusBar();
+			if(SelectedSoFar.size()>1)
+				pOut->ClearStatusBar();
 			return true;
 		}
 
@@ -45,8 +46,6 @@ bool SelectAction::ReadActionParameters()
 
 		ptr = pManager->GetFigure(P.x, P.y); //see where the point
 		
-		//if(ptr!=NULL) SelectedSoFar.push_back(ptr); //add this figure to the currently selected figures
-
 		/*[1] the user clicked at an empty spot*/
 		if (ptr == NULL) {
 			Unselect();
@@ -54,8 +53,13 @@ bool SelectAction::ReadActionParameters()
 			return false;
 		}
 		else {
-			SelectedSoFar.push_back(ptr);  //add this figure to the currently selected figures
 			Select(ptr);    //see the select function logic
+			if(ptr->IsSelected())
+				SelectedSoFar.insert(ptr);  //add this figure to the currently selected figures
+			if (SelectedSoFar.size() == 1 && (*SelectedSoFar.begin())->IsSelected())
+				(*SelectedSoFar.begin())->PrintInfo(pOut);
+			else
+				pOut->ClearStatusBar();
 		}
 
 		pManager->UpdateInterface();
@@ -89,14 +93,16 @@ void SelectAction::Select(CFigure* ptr)
 	else {
 		ptr->ChngDrawClr(UI.DrawColor);
 		ptr->SetSelected(false);
+		SelectedSoFar.erase(ptr);
 	}
 }
 
 void SelectAction::Unselect()
 {
-	for (int i = 0; i < SelectedSoFar.size(); i++) {
-		SelectedSoFar[i]->ChngDrawClr(UI.DrawColor);
-		SelectedSoFar[i]->SetSelected(false);
-	}
+	/*set<CFigure*>::iterator it = SelectedSoFar.begin();
+	for (it;it!= SelectedSoFar.end();it++) {
+		(*it)->ChngDrawClr(UI.DrawColor);
+		(*it)->SetSelected(false);
+	}*/
+	SelectedSoFar.clear();
 }
-

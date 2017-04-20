@@ -16,6 +16,8 @@ public:
 	virtual bool Encloses(Point P) ;
 
 	virtual void Load(ifstream &Infile);	//Load the figure parameters to the file
+
+	virtual void PrintInfo(Output* pOut);
 };
 
 #endif

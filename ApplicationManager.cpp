@@ -133,6 +133,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 //Add a figure to the list of figures
 void ApplicationManager::AddFigure(CFigure* pFig)
 {
+	
 	if(FigCount < MaxFigCount )
 		FigList[FigCount++] = pFig;	
 }

@@ -1,4 +1,5 @@
 #include "CCircle.h"
+#include <sstream>
 #include <fstream>
 CCircle::CCircle(Point P1, int r,GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
@@ -38,4 +39,11 @@ void CCircle::Load(ifstream &Infile)
 		info.FillClr = GetColor(FillColor);
 	}
 	CFigure::FigGfxInfo = info; ;
+}
+
+void CCircle::PrintInfo(Output* pOut) 
+{
+	string rs = to_string(Radius);
+	string c = "(" + to_string(Center.x) + "," + to_string(Center.y) + ")";
+	pOut->PrintMessage("Circle: radius = " + rs + ", Center = " + c);
 }

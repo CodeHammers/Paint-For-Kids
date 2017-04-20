@@ -35,3 +35,11 @@ void CLine::Load(ifstream &Infile)
 	info.DrawClr = GetColor(DrawColor);
 	CFigure::FigGfxInfo = info;
 }
+
+void CLine::PrintInfo(Output* pOut)
+{
+	string x = "(" + to_string(EndPoint1.x) + "," + to_string(EndPoint1.y) + ")";
+	string y = "(" + to_string(EndPoint2.x) + "," + to_string(EndPoint2.y) + ")";
+
+	pOut->PrintMessage("Line: EndPoint1= "+x+" , EndPoint2= "+y);
+}

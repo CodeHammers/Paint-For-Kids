@@ -18,4 +18,6 @@ public:
 
 	//Load the figure parameters to the file
 	virtual void Load(ifstream &Infile);	
+
+	virtual void PrintInfo(Output* pOut);
 };

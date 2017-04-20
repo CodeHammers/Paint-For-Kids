@@ -2,14 +2,14 @@
 
 #include"Action.h"
 #include"..\Figures\CFigure.h"
-#include<vector>
+#include<set>
 
 class SelectAction :public Action
 {
 private:
 	Point P;
 	CFigure* ptr;
-	vector<CFigure*>SelectedSoFar;
+	set<CFigure*>SelectedSoFar;
 
 public:
 	SelectAction(ApplicationManager* pApp);

@@ -58,3 +58,11 @@ void CTriangle::Load(ifstream &Infile)
 	}
 	CFigure::FigGfxInfo = info;
 }
+
+void CTriangle::PrintInfo(Output* pOut)
+{
+	string x = "(" + to_string(Vertex1.x) + "," + to_string(Vertex1.y) + ")";
+	string y = "(" + to_string(Vertex2.x) + "," + to_string(Vertex2.y) + ")";
+	string z = "(" + to_string(Vertex3.x) + "," + to_string(Vertex3.y) + ")";
+	pOut->PrintMessage("Triangle: Vertex1 = " + x + " , Vertex2 = " + y + " , Vertex3 = "+z);
+}
