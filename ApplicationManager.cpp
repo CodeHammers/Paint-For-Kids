@@ -4,7 +4,7 @@
 #include "Actions\AddCircleAction.h"
 #include "Actions\AddTriangleAction.h"
 #include "Actions\SelectAction.h"
-
+#include "Actions\LoadAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -20,6 +20,13 @@ ApplicationManager::ApplicationManager()
 		FigList[i] = NULL;	
 }
 
+void ApplicationManager::nullifyFigList() {
+	while (FigCount--) {
+		delete FigList[FigCount];
+		FigList[FigCount] = NULL;
+	}
+	++FigCount;
+}
 //==================================================================================//
 //								Actions Related Functions							//
 //==================================================================================//
@@ -88,7 +95,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
-		
+		case ITM_LOAD_Clicked:
+			pAct = new LoadAction(this);
+			break;
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			break;

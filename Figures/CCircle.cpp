@@ -23,9 +23,9 @@ bool CCircle::Encloses(Point P)
 void CCircle::Load(ifstream &Infile)
 {
 	///Your code goes here.
-	int id, x, y;
+	int id;
 	string DrawColor, FillColor;
-	Infile >> id >> x >> y;
+	Infile >> id ;
 	Infile >> Center.x >> Center.y >> Radius;
 	GfxInfo info;
 	Infile >> DrawColor;
@@ -33,11 +33,14 @@ void CCircle::Load(ifstream &Infile)
 	Infile >> FillColor;
 	if (FillColor == "NOFILL") {
 		info.isFilled = false;
+		info.FillClr = WHITE;
 	}
 	else {
 		info.isFilled = true;
 		info.FillClr = GetColor(FillColor);
 	}
+	info.BorderWdth = 3;
+	CFigure::ID = id;
 	CFigure::FigGfxInfo = info; ;
 }
 

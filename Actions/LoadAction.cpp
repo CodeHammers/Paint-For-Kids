@@ -7,7 +7,7 @@
 #include "..\Figures\CCircle.h"
 #include "..\Figures\CLine.h"
 #include <fstream>
-
+#include <iostream>
 LoadAction::LoadAction(ApplicationManager * pApp) : Action(pApp)
 {
 }
@@ -15,7 +15,7 @@ LoadAction::LoadAction(ApplicationManager * pApp) : Action(pApp)
 bool LoadAction::ReadActionParameters()
 {
 	Input* pIn = pManager->GetInput();
-	filename = pIn->GetSrting(NULL);
+	filename = pIn->GetSrting(pManager->GetOutput());
 	return true;
 }
 
@@ -24,18 +24,26 @@ void LoadAction::Execute()
 {
 	ReadActionParameters();
 	//should ask to save current work if any before clearing
-	pManager->GetOutput()->ClearDrawArea();
-	ifstream Infile(filename);
+	ifstream Infile;
+	Infile.open("Saved//"+filename+".txt", ios::in);
+	//Infile.open("input.txt", ios::in);
+	/*
+	if (!Infile) {
+		std::cout << "leh ba2a";
+	}
+	*/
 	string DrawColor, FillColor, BackgroundColor, FigType;
 	Infile >> DrawColor >> FillColor >> BackgroundColor;
 	color drawcolor = CFigure::GetColor(DrawColor);
 	color fillcolor = CFigure::GetColor(FillColor);
 	color bckgcolor = CFigure::GetColor(BackgroundColor);
+	pManager->nullifyFigList();
 	pManager->GetOutput()->EditWindowSettings(drawcolor, fillcolor, bckgcolor);
-	int NumOfFigs;
+	int NumOfFigs; Infile >> NumOfFigs;
 	for (int i = 0; i < NumOfFigs; i++) {
-		GfxInfo emptyGFX;
-		Point emptyP;
+		GfxInfo emptyGFX = GfxInfo();
+		Infile >> FigType;
+		Point emptyP= Point();
 		if (FigType == "RECT") {
 			CRectangle* rec = new CRectangle(emptyP, emptyP, emptyGFX);
 			rec->Load(Infile);
@@ -46,7 +54,7 @@ void LoadAction::Execute()
 			trig->Load(Infile);
 			pManager->AddFigure(trig);
 		}
-		if (FigType == "CRICLE") {
+		if (FigType == "CIRCLE") {
 			CCircle* circ = new CCircle(emptyP, 0, emptyGFX);
 			circ->Load(Infile);
 			pManager->AddFigure(circ);
@@ -57,6 +65,7 @@ void LoadAction::Execute()
 			pManager->AddFigure(line);
 		}
 	}
+	pManager->UpdateInterface();
 
 }
 

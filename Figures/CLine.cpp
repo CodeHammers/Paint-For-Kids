@@ -25,14 +25,16 @@ bool CLine::Encloses(Point P)
 void CLine::Load(ifstream &Infile)
 {
 	///Youe code goes here.
-	int id, x, y;
+	int id;
 	string DrawColor;
-	Infile >> id >> x >> y;
+	Infile >> id ;
 	Infile >> EndPoint1.x >> EndPoint1.y >> EndPoint2.x >> EndPoint2.y;
 	GfxInfo info;
 	Infile >> DrawColor;
 	//Check for the color
 	info.DrawClr = GetColor(DrawColor);
+	info.BorderWdth = 3;
+	CFigure::ID = id;
 	CFigure::FigGfxInfo = info;
 }
 

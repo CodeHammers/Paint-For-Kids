@@ -41,9 +41,9 @@ bool CTriangle::Encloses(Point P)
 void CTriangle::Load(ifstream &Infile)
 {
 	///Your code goes here.
-	int id, x, y;
+	int id;
 	string DrawColor, FillColor;
-	Infile >> id >> x >> y;
+	Infile >> id;
 	Infile >> Vertex1.x >> Vertex1.y >> Vertex2.x >> Vertex2.y >> Vertex3.x >> Vertex3.y;
 	GfxInfo info;
 	Infile >> DrawColor;
@@ -51,11 +51,14 @@ void CTriangle::Load(ifstream &Infile)
 	Infile >> FillColor;
 	if (FillColor == "NOFILL") {
 		info.isFilled = false;
+		info.FillClr = WHITE;
 	}
 	else {
 		info.isFilled = true;
 		info.FillClr = GetColor(FillColor);
 	}
+	info.BorderWdth = 3;
+	CFigure::ID = id;
 	CFigure::FigGfxInfo = info;
 }
 

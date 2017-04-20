@@ -51,11 +51,16 @@ void Output::EditWindowSettings(color drawcolor, color fillcolor, color backgrou
 	pWind->SetBrush(UI.BkGrndColor);
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->DrawRectangle(0, 0, UI.width, UI.height);
+	UI.DrawColor = drawcolor;
+	UI.FillColor = fillcolor;
+	UI.BkGrndColor = backgroundcolor;
 	pWind->SetPen(UI.DrawColor);
 	pWind->SetBrush(UI.FillColor);
 	CreateDrawToolBarUp(0, false);
 	CreateDrawToolBarRight(false);
 	CreateStatusBar();
+	//pWind->DrawRectangle(0, 0, UI.width, UI.height);
+
 }
 
 Input* Output::CreateInput() const
