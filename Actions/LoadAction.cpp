@@ -15,6 +15,7 @@ LoadAction::LoadAction(ApplicationManager * pApp) : Action(pApp)
 bool LoadAction::ReadActionParameters()
 {
 	Input* pIn = pManager->GetInput();
+	pManager->GetOutput()->PrintMessage("specify the name of the file you want to load from ");
 	filename = pIn->GetSrting(pManager->GetOutput());
 	return true;
 }

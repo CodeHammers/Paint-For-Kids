@@ -5,6 +5,7 @@
 #include "Actions\AddTriangleAction.h"
 #include "Actions\SelectAction.h"
 #include "Actions\LoadAction.h"
+#include "Actions\ChangeBckgrndColor.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -27,6 +28,33 @@ void ApplicationManager::nullifyFigList() {
 	}
 	++FigCount;
 }
+bool ApplicationManager::IsBackgroundMenu(ActionType ActType) const
+{
+	switch (ActType)
+	{
+	case ITM_BCKG_WHITE_Clicked:
+		return true;
+	case ITM_BCKG_BLUE_Clicked:
+		return true;
+	case ITM_BCKG_RED_Clicked:
+		return true;
+	case ITM_BCKG_PINK_Clicked:
+		return true;
+	case ITM_BCKG_BROWN_Clicked:
+		return true;
+	case ITM_BCKG_NILE_Clicked:
+		return true;
+	case ITM_BCKG_YELLOW_Clicked:
+		return true;
+	case ITM_BCKG_ORANE_Clicked:
+		return true;
+	case ITM_BCKG_PURPLE_Clicked:
+		return true;
+	case ITM_BCKG_GREEN_Clicked:
+		return true;
+	}
+	return false;
+}
 //==================================================================================//
 //								Actions Related Functions							//
 //==================================================================================//
@@ -44,7 +72,6 @@ ActionType ApplicationManager::GetUserAction() const
 
 	//Ask the input to get the action from the user.
 	ActionType Type = pIn->GetUserAction(), ret;
-
 	switch (Type) {
     
 	case MODE_DRAW_SUB_MENU1_Clicked:   //figures
@@ -93,6 +120,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	Action* pAct = NULL;
 	
 	//According to Action Type, create the corresponding action object
+	if (IsBackgroundMenu(ActType)) {
+		pAct = new ChangeBckgrndColor(this,ActType);
+	}
+	else
 	switch (ActType)
 	{
 		case ITM_LOAD_Clicked:

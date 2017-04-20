@@ -131,6 +131,8 @@
     <ClCompile Include="Actions\AddCircleAction.cpp" />
     <ClCompile Include="Actions\AddLineAction.cpp" />
     <ClCompile Include="Actions\AddTriangleAction.cpp" />
+    <ClCompile Include="Actions\ChangeBckgrndColor.cpp" />
+    <ClCompile Include="Actions\ChangeDrawColorAction.cpp" />
     <ClCompile Include="Actions\LoadAction.cpp" />
     <ClCompile Include="Actions\SelectAction.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -184,6 +186,8 @@
     <ClInclude Include="Actions\AddCircleAction.h" />
     <ClInclude Include="Actions\AddLineAction.h" />
     <ClInclude Include="Actions\AddTriangleAction.h" />
+    <ClInclude Include="Actions\ChangeBckgrndColor.h" />
+    <ClInclude Include="Actions\ChangeDrawColorAction.h" />
     <ClInclude Include="Actions\LoadAction.h" />
     <ClInclude Include="Actions\SelectAction.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />

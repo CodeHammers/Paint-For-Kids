@@ -9,7 +9,7 @@ private:
 public:
 	Output();
 	void EditWindowSettings(color drawcolor, color fillcolor, color backgroundcolor);
-
+	void ChangeBackgroundColor(color BackgroundColor);
 	window* CreateWind(int, int, int, int) const; //creates the application window
 	void CreateDrawToolBarUp(int action, bool sub) const;	//creates Draw mode upper toolbar 
 	void CreateDrawToolBarRight(bool collapse) const;//creates Draw mode right toolbar 

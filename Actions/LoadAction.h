@@ -6,10 +6,11 @@ class LoadAction :
 {
 private:
 	string filename;
+	virtual bool ReadActionParameters();
+
 public:
 	LoadAction(ApplicationManager * pApp);
 	//Reads File Name
-	virtual bool ReadActionParameters();
 
 	//Reads figures' Data and add appropiate objects to the FigList
 	virtual void Execute();
