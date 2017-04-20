@@ -99,10 +99,5 @@ void SelectAction::Select(CFigure* ptr)
 
 void SelectAction::Unselect()
 {
-	/*set<CFigure*>::iterator it = SelectedSoFar.begin();
-	for (it;it!= SelectedSoFar.end();it++) {
-		(*it)->ChngDrawClr(UI.DrawColor);
-		(*it)->SetSelected(false);
-	}*/
 	SelectedSoFar.clear();
 }

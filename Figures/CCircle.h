@@ -24,4 +24,7 @@ public:
 
 	//A function to print a figure info
 	virtual void PrintInfo(Output* pOut);
+
+	//A function to get the area of the circle
+	virtual int GetArea();
 };

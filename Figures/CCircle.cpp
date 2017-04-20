@@ -45,5 +45,11 @@ void CCircle::PrintInfo(Output* pOut)
 {
 	string rs = to_string(Radius);
 	string c = "(" + to_string(Center.x) + "," + to_string(Center.y) + ")";
-	pOut->PrintMessage("Circle: radius = " + rs + ", Center = " + c);
+	string A = to_string(GetArea());
+	pOut->PrintMessage("Circle: radius = " + rs + ", Center = " + c+ ", Area = "+A);
+}
+
+int CCircle::GetArea()
+{
+	return (int)3.14*Radius*Radius;
 }

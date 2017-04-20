@@ -40,6 +40,11 @@ void CLine::PrintInfo(Output* pOut)
 {
 	string x = "(" + to_string(EndPoint1.x) + "," + to_string(EndPoint1.y) + ")";
 	string y = "(" + to_string(EndPoint2.x) + "," + to_string(EndPoint2.y) + ")";
+	string l = to_string(GetArea());
+	pOut->PrintMessage("Line: EndPoint1= "+x+" , EndPoint2= "+y+ " , Length= "+l);
+}
 
-	pOut->PrintMessage("Line: EndPoint1= "+x+" , EndPoint2= "+y);
+int CLine::GetArea()
+{
+	return (int)sqrt(pow(EndPoint1.x - EndPoint2.x, 2) + pow(EndPoint1.y - EndPoint2.y, 2));
 }

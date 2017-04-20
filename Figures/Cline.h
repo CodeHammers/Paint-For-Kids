@@ -20,4 +20,7 @@ public:
 	virtual void Load(ifstream &Infile);	
 
 	virtual void PrintInfo(Output* pOut);
+
+	//A function to get the length of the line
+	virtual int GetArea();
 };

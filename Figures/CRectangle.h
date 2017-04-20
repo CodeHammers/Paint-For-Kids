@@ -18,6 +18,9 @@ public:
 	virtual void Load(ifstream &Infile);	//Load the figure parameters to the file
 
 	virtual void PrintInfo(Output* pOut);
+
+	//A function to get the area of the rectangle
+	virtual int GetArea();
 };
 
 #endif

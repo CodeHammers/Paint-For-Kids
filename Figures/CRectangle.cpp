@@ -53,6 +53,16 @@ void CRectangle::PrintInfo(Output* pOut)
 {
 	string x = "(" + to_string(Corner1.x) + "," + to_string(Corner1.y) + ")";
 	string y = "(" + to_string(Corner2.x) + "," + to_string(Corner2.y) + ")";
+	string A = to_string(GetArea());
 
-	pOut->PrintMessage("Rectangle: Corner1= " + x + " , Corner2= " + y);
+	pOut->PrintMessage("Rectangle: Corner1= " + x + " , Corner2= " + y+ " , Area= "+A);
+}
+
+
+int CRectangle::GetArea()
+{
+	Point Aux = { Corner2.x,Corner1.y };
+
+	return (int)(sqrt(pow(Corner1.x - Aux.x, 2) + pow(Corner1.y - Aux.y, 2))*
+		sqrt(pow(Corner2.x - Aux.x, 2) + pow(Corner2.y - Aux.y, 2)));
 }

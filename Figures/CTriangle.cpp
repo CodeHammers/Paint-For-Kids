@@ -15,7 +15,7 @@ void CTriangle::Draw(Output* pOut) const
 }
 
 
-float CTriangle::GetArea(int x1, int y1, int x2, int y2, int x3, int y3) const
+float CTriangle::Getarea(int x1, int y1, int x2, int y2, int x3, int y3) const
 {
 	return abs((x1*(y2 - y3) + x2*(y3 - y1) + x3*(y1 - y2)) / 2.0);
 }
@@ -23,16 +23,16 @@ float CTriangle::GetArea(int x1, int y1, int x2, int y2, int x3, int y3) const
 bool CTriangle::Encloses(Point P) 
 {
 	/* Calculate the area of V1V2V3 */
-	float tot = GetArea(Vertex1.x, Vertex1.y, Vertex2.x, Vertex2.y, Vertex3.x, Vertex3.y);
+	float tot = Getarea(Vertex1.x, Vertex1.y, Vertex2.x, Vertex2.y, Vertex3.x, Vertex3.y);
 
 	/* Calculate area of triangle PV2V3 */
-	float A1 = GetArea(P.x, P.y, Vertex2.x, Vertex2.y, Vertex3.x, Vertex3.y);
+	float A1 = Getarea(P.x, P.y, Vertex2.x, Vertex2.y, Vertex3.x, Vertex3.y);
 
 	/* Calculate area of triangle PV1V3 */
-	float A2 = GetArea(Vertex1.x, Vertex1.y, P.x, P.y, Vertex3.x, Vertex3.y);
+	float A2 = Getarea(Vertex1.x, Vertex1.y, P.x, P.y, Vertex3.x, Vertex3.y);
 	
 	/* Calculate area of triangle PV1V2 */
-	float A3 = GetArea(Vertex1.x, Vertex1.y, Vertex2.x, Vertex2.y, P.x, P.y);
+	float A3 = Getarea(Vertex1.x, Vertex1.y, Vertex2.x, Vertex2.y, P.x, P.y);
 	
 	/* Check if sum of A1, A2 and A3 is same as A */
 	return (tot == A1 + A2 + A3);
@@ -64,5 +64,12 @@ void CTriangle::PrintInfo(Output* pOut)
 	string x = "(" + to_string(Vertex1.x) + "," + to_string(Vertex1.y) + ")";
 	string y = "(" + to_string(Vertex2.x) + "," + to_string(Vertex2.y) + ")";
 	string z = "(" + to_string(Vertex3.x) + "," + to_string(Vertex3.y) + ")";
-	pOut->PrintMessage("Triangle: Vertex1 = " + x + " , Vertex2 = " + y + " , Vertex3 = "+z);
+	string A = to_string(GetArea());
+
+	pOut->PrintMessage("Triangle: Vertex1 = " + x + " , Vertex2 = " + y + " , Vertex3 = "+z+ " , Area = "+A);
+}
+
+int CTriangle::GetArea()
+{
+	return (int)Getarea(Vertex1.x, Vertex1.y, Vertex2.x, Vertex2.y, Vertex3.x, Vertex3.y);
 }
