@@ -5,7 +5,7 @@ class ChangeDrawColorAction :
 {
 private:
 	ActionType ActType;
-	color BackgroundColor;
+	color DrawColor;
 	ApplicationManager* appManager;
 	virtual bool ReadActionParameters();
 public:

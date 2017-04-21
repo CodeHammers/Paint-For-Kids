@@ -2,50 +2,51 @@
 #include "..\ApplicationManager.h"
 
 /*
-ITM_BCKG_WHITE_Clicked,
-ITM_BCKG_BLUE_Clicked,
-ITM_BCKG_RED_Clicked,
-ITM_BCKG_BROWN_Clicked,
-ITM_BCKG_PINK_Clicked,
-ITM_BCKG_NILE_Clicked,
-ITM_BCKG_YELLOW_Clicked,
-ITM_BCKG_ORANE_Clicked,
-ITM_BCKG_PURPLE_Clicked,
-ITM_BCKG_GREEN_Clicked
+ITM_BRUSH_BLACK_Clicked,
+ITM_BRUSH_YELLOW_Clicked,
+ITM_BRUSH3_BLUE_Clicked,
+ITM_BRUSH_BROWN_Clicked,
+ITM_BRUSH_PINK_Clicked,
+ITM_BRUSH_GREEN_Clicked,
+ITM_BRUSH_NILE_Clicked,
+ITM_BRUSH_ORANGE_Clicked,
+ITM_BRUSH_PURPLE_Clicked,
+ITM_BRUSH_RED_Clicked,
+ITM_COLLAPSELEFT_Clicked,
 */
 bool ChangeDrawColorAction::ReadActionParameters()
 {
 	switch (ActType)
 	{
-	case ITM_BCKG_WHITE_Clicked:
-		BackgroundColor = WHITE;
+	case ITM_BRUSH_BLACK_Clicked:
+		DrawColor = BLACK;
 		break;
-	case ITM_BCKG_BLUE_Clicked:
-		BackgroundColor = BLUE;
+	case ITM_BRUSH_YELLOW_Clicked:
+		DrawColor = YELLOW;
 		break;
-	case ITM_BCKG_RED_Clicked:
-		BackgroundColor = RED;
+	case ITM_BRUSH3_BLUE_Clicked:
+		DrawColor = BLUE;
 		break;
-	case ITM_BCKG_PINK_Clicked:
-		BackgroundColor = PINK;
+	case ITM_BRUSH_BROWN_Clicked:
+		DrawColor = BROWN;
 		break;
-	case ITM_BCKG_BROWN_Clicked:
-		BackgroundColor = BROWN;
+	case ITM_BRUSH_PINK_Clicked:
+		DrawColor = PINK;
 		break;
-	case ITM_BCKG_NILE_Clicked:
-		BackgroundColor = PURPLE;//DONT KNOW WHAT IS THIS
+	case ITM_BRUSH_GREEN_Clicked:
+		DrawColor = GREEN;
 		break;
-	case ITM_BCKG_YELLOW_Clicked:
-		BackgroundColor = YELLOW;
+	case ITM_BRUSH_NILE_Clicked://??!!
+		DrawColor = PURPLE;
 		break;
-	case ITM_BCKG_ORANE_Clicked:
-		BackgroundColor = ORANGE;
+	case ITM_BRUSH_ORANGE_Clicked:
+		DrawColor = ORANGE;
 		break;
-	case ITM_BCKG_PURPLE_Clicked:
-		BackgroundColor = PURPLE;
+	case ITM_BRUSH_PURPLE_Clicked:
+		DrawColor = PURPLE;
 		break;
-	case ITM_BCKG_GREEN_Clicked:
-		BackgroundColor = GREEN;
+	case ITM_BRUSH_RED_Clicked:
+		DrawColor = RED;
 		break;
 	}
 	return true;
@@ -61,7 +62,7 @@ ChangeDrawColorAction::ChangeDrawColorAction(ApplicationManager* appManager, Act
 
 void ChangeDrawColorAction::Execute()
 {
-	appManager->GetOutput()->ChangeBackgroundColor(BackgroundColor);
+	appManager->GetOutput()->ChangeDrawColor(DrawColor);
 
 }
 

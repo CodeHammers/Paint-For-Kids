@@ -459,61 +459,61 @@
 //			break;
 //
 //			// The First Column //
-//		case  ITM_BRUSH1_Clicked:
+//		case  ITM_BRUSH_BLACK_Clicked:
 //			pOut->PrintMessage("Action: BRUSH BLACK Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(2, true);
 //			break;
 //
-//		case  ITM_BRUSH2_Clicked:
+//		case  ITM_BRUSH_YELLOW_Clicked:
 //			pOut->PrintMessage("Action: BRUSH YELLOW Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(2, true);
 //			break;
 //
-//		case  ITM_BRUSH3_Clicked:
+//		case  ITM_BRUSH3_BLUE_Clicked:
 //			pOut->PrintMessage("Action: BRUSH BLUE Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(2, true);
 //			break;
 //
-//		case  ITM_BRUSH4_Clicked:
+//		case  ITM_BRUSH_BROWN_Clicked:
 //			pOut->PrintMessage("Action: BRUSH BROWN Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(2, true);
 //			break;
 //
-//		case  ITM_BRUSH5_Clicked:
+//		case  ITM_BRUSH_PINK_Clicked:
 //			pOut->PrintMessage("Action: BRUSH PINK Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(2, true);
 //			break;
 //
-//		case  ITM_BRUSH6_Clicked:
+//		case  ITM_BRUSH_GREEN_Clicked:
 //			pOut->PrintMessage("Action: BRUSH GREEN Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(2, true);
 //			break;
 //
-//		case  ITM_BRUSH7_Clicked:
+//		case  ITM_BRUSH_NILE_Clicked:
 //			pOut->PrintMessage("Action: BRUSH NILE Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(2, true);
 //			break;
 //
-//		case  ITM_BRUSH8_Clicked:
+//		case  ITM_BRUSH_ORANGE_Clicked:
 //			pOut->PrintMessage("Action: BRUSH ORANGE Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(2, true);
 //			break;
 //
-//		case  ITM_BRUSH9_Clicked:
+//		case  ITM_BRUSH_PURPLE_Clicked:
 //			pOut->PrintMessage("Action: BRUSH PURPLE Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(2, true);
 //			break;
 //
-//		case  ITM_BRUSH10_Clicked:
+//		case  ITM_BRUSH_RED_Clicked:
 //			pOut->PrintMessage("Action: BRUSH RED Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(2, true);
@@ -521,61 +521,61 @@
 //
 //
 //			// The Second Column from left //
-//		case  ITM_BRUSHFILL1_Clicked:
+//		case  ITM_BRUSHFILL_BLACK_Clicked:
 //			pOut->PrintMessage("Action: BRUSHFILL BLACK Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(3, true);
 //			break;
 //
-//		case  ITM_BRUSHFILL2_Clicked:
+//		case  ITM_BRUSHFILL_YELLOW_Clicked:
 //			pOut->PrintMessage("Action: BRUSHFILL YELLOW Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(3, true);
 //			break;
 //
-//		case  ITM_BRUSHFILL3_Clicked:
+//		case  ITM_BRUSHFILL_BLUE_Clicked:
 //			pOut->PrintMessage("Action: BRUSHFILL BLUE Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(3, true);
 //			break;
 //
-//		case  ITM_BRUSHFILL4_Clicked:
+//		case  ITM_BRUSHFILL_BROWN_Clicked:
 //			pOut->PrintMessage("Action: BRUSHFILL BROWN Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(3, true);
 //			break;
 //
-//		case  ITM_BRUSHFILL5_Clicked:
+//		case  ITM_BRUSHFILL_PINK_Clicked:
 //			pOut->PrintMessage("Action: BRUSHFILL PINK Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(3, true);
 //			break;
 //
-//		case  ITM_BRUSHFILL6_Clicked:
+//		case  ITM_BRUSHFILL_GREEN_Clicked:
 //			pOut->PrintMessage("Action: BRUSHFILL GREEN Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(3, true);
 //			break;
 //
-//		case  ITM_BRUSHFILL7_Clicked:
+//		case  ITM_BRUSHFILL_NILE_Clicked:
 //			pOut->PrintMessage("Action: BRUSHFILL NILE Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(3, true);
 //			break;
 //
-//		case  ITM_BRUSHFILL8_Clicked:
+//		case  ITM_BRUSHFILL_ORANGE_Clicked:
 //			pOut->PrintMessage("Action: BRUSHFILL ORANGE Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(3, true);
 //			break;
 //
-//		case  ITM_BRUSHFILL9_Clicked:
+//		case  ITM_BRUSHFILL_PURPLE_Clicked:
 //			pOut->PrintMessage("Action: BRUSHFILL PURPLE Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(3, true);
 //			break;
 //
-//		case  ITM_BRUSHFILL10_Clicked:
+//		case  ITM_BRUSHFILL_RED_Clicked:
 //			pOut->PrintMessage("Action: BRUSHFILL RED Clicked");
 //			UI.InterfaceMode = MODE_DRAW;
 //			pOut->CreateDrawToolBarUp(3, true);

@@ -104,16 +104,16 @@ ActionType Input::GetUserAction() const
 			int ClickedItemOrder = ((y - 100) / UI.MenuItemWidthLeft);
 			switch (ClickedItemOrder)
 			{
-			case ITM_PEN1:		  return ITM_BRUSH1_Clicked;
-			case ITM_PEN2:		  return ITM_BRUSH2_Clicked;
-			case ITM_PEN3:		  return ITM_BRUSH3_Clicked;
-			case ITM_PEN4:		  return ITM_BRUSH4_Clicked;
-			case ITM_PEN5:		  return ITM_BRUSH5_Clicked;
-			case ITM_PEN6:		  return ITM_BRUSH6_Clicked;
-			case ITM_PEN7:		  return ITM_BRUSH7_Clicked;
-			case ITM_PEN8:		  return ITM_BRUSH8_Clicked;
-			case ITM_PEN9:		  return ITM_BRUSH9_Clicked;
-			case ITM_PEN10:		  return ITM_BRUSH10_Clicked;
+			case ITM_PEN1:		  return ITM_BRUSH_BLACK_Clicked;
+			case ITM_PEN2:		  return ITM_BRUSH_YELLOW_Clicked;
+			case ITM_PEN3:		  return ITM_BRUSH3_BLUE_Clicked;
+			case ITM_PEN4:		  return ITM_BRUSH_BROWN_Clicked;
+			case ITM_PEN5:		  return ITM_BRUSH_PINK_Clicked;
+			case ITM_PEN6:		  return ITM_BRUSH_GREEN_Clicked;
+			case ITM_PEN7:		  return ITM_BRUSH_NILE_Clicked;
+			case ITM_PEN8:		  return ITM_BRUSH_ORANGE_Clicked;
+			case ITM_PEN9:		  return ITM_BRUSH_PURPLE_Clicked;
+			case ITM_PEN10:		  return ITM_BRUSH_RED_Clicked;
 
 			default: return EMPTY;
 			}
@@ -139,16 +139,16 @@ ActionType Input::GetUserAction() const
 			int ClickedItemOrder = ((y - 100) / UI.MenuItemWidthLeft);
 			switch (ClickedItemOrder)
 			{
-			case ITM_BRUSHFILL1:		  return ITM_BRUSHFILL1_Clicked;
-			case ITM_BRUSHFILL2:		  return ITM_BRUSHFILL2_Clicked;
-			case ITM_BRUSHFILL3:		  return ITM_BRUSHFILL3_Clicked;
-			case ITM_BRUSHFILL4:		  return ITM_BRUSHFILL4_Clicked;
-			case ITM_BRUSHFILL5:		  return ITM_BRUSHFILL5_Clicked;
-			case ITM_BRUSHFILL6:		  return ITM_BRUSHFILL6_Clicked;
-			case ITM_BRUSHFILL7:		  return ITM_BRUSHFILL7_Clicked;
-			case ITM_BRUSHFILL8:		  return ITM_BRUSHFILL8_Clicked;
-			case ITM_BRUSHFILL9:		  return ITM_BRUSHFILL9_Clicked;
-			case ITM_BRUSHFILL10:		  return ITM_BRUSHFILL10_Clicked;
+			case ITM_BRUSHFILL1:		  return ITM_BRUSHFILL_BLACK_Clicked;
+			case ITM_BRUSHFILL2:		  return ITM_BRUSHFILL_YELLOW_Clicked;
+			case ITM_BRUSHFILL3:		  return ITM_BRUSHFILL_BLUE_Clicked;
+			case ITM_BRUSHFILL4:		  return ITM_BRUSHFILL_BROWN_Clicked;
+			case ITM_BRUSHFILL5:		  return ITM_BRUSHFILL_PINK_Clicked;
+			case ITM_BRUSHFILL6:		  return ITM_BRUSHFILL_GREEN_Clicked;
+			case ITM_BRUSHFILL7:		  return ITM_BRUSHFILL_NILE_Clicked;
+			case ITM_BRUSHFILL8:		  return ITM_BRUSHFILL_ORANGE_Clicked;
+			case ITM_BRUSHFILL9:		  return ITM_BRUSHFILL_PURPLE_Clicked;
+			case ITM_BRUSHFILL10:		  return ITM_BRUSHFILL_RED_Clicked;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}

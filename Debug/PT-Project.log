@@ -1,5 +1,16 @@
-﻿  Output.cpp
-c:\paint-for-kids\gui\output.cpp(147): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-c:\paint-for-kids\gui\output.cpp(148): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+﻿  ApplicationManager.cpp
+  ChangeFillColorAction.cpp
+  ChangeDrawColorAction.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  AddRectAction.cpp
+  SelectAction.cpp
+  LoadAction.cpp
+  ChangeBckgrndColor.cpp
+  AddTriangleAction.cpp
+  AddLineAction.cpp
+  AddCircleAction.cpp
+AddCircleAction.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

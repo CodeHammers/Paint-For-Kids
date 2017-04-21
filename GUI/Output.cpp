@@ -67,7 +67,10 @@ void Output::ChangeBackgroundColor(color BackgroundColor)
 {
 	EditWindowSettings(UI.DrawColor, UI.FillColor, BackgroundColor);
 }
-
+void Output::ChangeDrawColor(color DrawColor)
+{
+	EditWindowSettings(DrawColor, UI.FillColor, UI.BkGrndColor);
+}
 Input* Output::CreateInput() const
 {
 	Input* pIn = new Input(pWind);

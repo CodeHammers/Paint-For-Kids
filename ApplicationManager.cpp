@@ -6,7 +6,8 @@
 #include "Actions\SelectAction.h"
 #include "Actions\LoadAction.h"
 #include "Actions\ChangeBckgrndColor.h"
-
+#include "Actions\ChangeDrawColorAction.h"
+#include "Actions\ChangeFillColor.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -27,6 +28,34 @@ void ApplicationManager::nullifyFigList() {
 		FigList[FigCount] = NULL;
 	}
 	++FigCount;
+}
+
+bool ApplicationManager::IsFillMenu(ActionType ActType) const
+{
+	switch (ActType)
+	{
+	case ITM_BRUSHFILL_BLACK_Clicked:
+		return true;
+	case ITM_BRUSHFILL_BLUE_Clicked:
+		return true;
+	case ITM_BRUSHFILL_BROWN_Clicked:
+		return true;
+	case ITM_BRUSHFILL_GREEN_Clicked:
+		return true;
+	case ITM_BRUSHFILL_ORANGE_Clicked:
+		return true;
+	case ITM_BRUSHFILL_PINK_Clicked:
+		return true;
+	case ITM_BRUSHFILL_YELLOW_Clicked:
+		return true;
+	case ITM_BRUSHFILL_NILE_Clicked:
+		return true;
+	case ITM_BRUSHFILL_PURPLE_Clicked:
+		return true;
+	case ITM_BRUSHFILL_RED_Clicked:
+		return true;
+	}
+	return false;
 }
 bool ApplicationManager::IsBackgroundMenu(ActionType ActType) const
 {
@@ -51,6 +80,34 @@ bool ApplicationManager::IsBackgroundMenu(ActionType ActType) const
 	case ITM_BCKG_PURPLE_Clicked:
 		return true;
 	case ITM_BCKG_GREEN_Clicked:
+		return true;
+	}
+	return false;
+}
+
+bool ApplicationManager::IsPenMenu(ActionType ActType) const
+{
+	switch (ActType)
+	{
+	case ITM_BRUSH_BLACK_Clicked:
+		return true;
+	case ITM_BRUSH_YELLOW_Clicked:
+		return true;
+	case ITM_BRUSH3_BLUE_Clicked:
+		return true;
+	case ITM_BRUSH_BROWN_Clicked:
+		return true;
+	case ITM_BRUSH_PINK_Clicked:
+		return true;
+	case ITM_BRUSH_GREEN_Clicked:
+		return true;
+	case ITM_BRUSH_NILE_Clicked:
+		return true;
+	case ITM_BRUSH_ORANGE_Clicked:
+		return true;
+	case ITM_BRUSH_PURPLE_Clicked:
+		return true;
+	case ITM_BRUSH_RED_Clicked:
 		return true;
 	}
 	return false;
@@ -115,15 +172,20 @@ ActionType ApplicationManager::GetUserAction() const
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Creates an action and executes it
-void ApplicationManager::ExecuteAction(ActionType ActType) 
+void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	Action* pAct = NULL;
-	
+
 	//According to Action Type, create the corresponding action object
 	if (IsBackgroundMenu(ActType)) {
-		pAct = new ChangeBckgrndColor(this,ActType);
+		pAct = new ChangeBckgrndColor(this, ActType);
 	}
-	else
+	if (IsPenMenu(ActType)) {
+		pAct = new ChangeDrawColorAction(this, ActType);
+	}
+	if (IsFillMenu(ActType)) {
+		pAct = new ChangeFillColor(this,ActType);
+	}
 	switch (ActType)
 	{
 		case ITM_LOAD_Clicked:

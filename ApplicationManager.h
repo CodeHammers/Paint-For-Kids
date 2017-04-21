@@ -20,7 +20,10 @@ private:
 	//Pointers to Input and Output classes
 	Input *pIn;
 	Output *pOut;
+	bool IsFillMenu(ActionType ActType) const;
 	bool IsBackgroundMenu(ActionType ActType) const;
+
+	bool IsPenMenu(ActionType ActType) const;
 
 public:	
 	ApplicationManager(); 
