@@ -1,16 +1,3 @@
-﻿  ApplicationManager.cpp
-  ChangeFillColorAction.cpp
-  ChangeDrawColorAction.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  AddRectAction.cpp
-  SelectAction.cpp
-  LoadAction.cpp
-  ChangeBckgrndColor.cpp
-  AddTriangleAction.cpp
-  AddLineAction.cpp
-  AddCircleAction.cpp
-AddCircleAction.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-  PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
+﻿  SelectAction.cpp
+  PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)
