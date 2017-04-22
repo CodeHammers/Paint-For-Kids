@@ -11,6 +11,8 @@ public:
 	void EditWindowSettings(color drawcolor, color fillcolor, color backgroundcolor);
 	void ChangeBackgroundColor(color BackgroundColor);
 	void ChangeDrawColor(color DrawColor);
+	void ChangeFillColor(color FillColor);
+	void ChangeBorderWidth(int BW);
 	window* CreateWind(int, int, int, int) const; //creates the application window
 	void CreateDrawToolBarUp(int action, bool sub) const;	//creates Draw mode upper toolbar 
 	void CreateDrawToolBarRight(bool collapse) const;//creates Draw mode right toolbar 

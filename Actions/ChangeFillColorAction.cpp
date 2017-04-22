@@ -61,7 +61,7 @@ ChangeFillColor::ChangeFillColor(ApplicationManager* appManager, ActionType actT
 
 void ChangeFillColor::Execute()
 {
-	appManager->GetOutput()->ChangeDrawColor(DrawColor);
+	appManager->GetOutput()->ChangeFillColor(DrawColor);
 
 }
 

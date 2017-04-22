@@ -8,6 +8,7 @@
 #include "Actions\ChangeBckgrndColor.h"
 #include "Actions\ChangeDrawColorAction.h"
 #include "Actions\ChangeFillColor.h"
+#include "Actions\ChangeBorderWidthAction.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -186,8 +187,27 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if (IsFillMenu(ActType)) {
 		pAct = new ChangeFillColor(this,ActType);
 	}
+	/*	ITM_BORDERWIDTH1_Clicked,
+	ITM_BORDERWIDTH2_Clicked,
+	ITM_BORDERWIDTH3_Clicked,
+	ITM_BORDERWIDTH4_Clicked,*/
+
 	switch (ActType)
 	{
+		// Border Action Start
+		case ITM_BORDERWIDTH1_Clicked :
+			pAct = new ChangeBorderWidthAction(this,ActType);
+			break;
+		case ITM_BORDERWIDTH2_Clicked:
+			pAct = new ChangeBorderWidthAction(this, ActType);
+			break;
+		case ITM_BORDERWIDTH3_Clicked:
+			pAct = new ChangeBorderWidthAction(this, ActType);
+			break;
+		case ITM_BORDERWIDTH4_Clicked:
+			pAct = new ChangeBorderWidthAction(this, ActType);
+			break;
+		//Border Action End
 		case ITM_LOAD_Clicked:
 			pAct = new LoadAction(this);
 			break;

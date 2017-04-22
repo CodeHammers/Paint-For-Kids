@@ -71,6 +71,15 @@ void Output::ChangeDrawColor(color DrawColor)
 {
 	EditWindowSettings(DrawColor, UI.FillColor, UI.BkGrndColor);
 }
+void Output::ChangeFillColor(color FillColor)
+{
+	EditWindowSettings(UI.DrawColor, FillColor, UI.BkGrndColor);
+}
+void Output::ChangeBorderWidth(int bw)
+{
+	UI.PenWidth = bw;
+	pWind->SetPen(UI.DrawColor,UI.PenWidth);
+}
 Input* Output::CreateInput() const
 {
 	Input* pIn = new Input(pWind);
@@ -108,9 +117,7 @@ void Output::ClearStatusBar() const
 void Output::CreateDrawToolBarRight(bool collapse) const
 {
 	UI.InterfaceMode = MODE_DRAW;  //Setting the current mode.
-	pWind->SetPen(WHITESMOKE, 1);
-	pWind->SetBrush(WHITESMOKE);
-	pWind->DrawRectangle(1350, 0, UI.width, UI.height-UI.StatusBarHeight,FILLED,60,60);
+
 	/*Adding two parallel icons for zooming in and out*/;
 	string zoomControls[CounterZoom];
 	zoomControls[ITM_ZOOM_IN] = "images\\MenuItems\\ICONS\\TOOLS\\ZOOMIN.jpg";
@@ -169,14 +176,8 @@ void Output::CreateDrawToolBarUp(int action, bool collapse) const
 		pWind->SetBrush(UI.BkGrndColor);
 		pWind->SetPen(UI.BkGrndColor, 1);
 		pWind->DrawRectangle(50, 0, 1200, 50);
-		pWind->SetBrush(WHITESMOKE);
-		pWind->SetPen(WHITESMOKE, 1);
-		pWind->DrawRectangle(530, 0, 820, 70, FILLED, 20, 20);
 		//drawing the play mode icon
 		string PlayModeIcon = "images\\MenuItems\\ICONS\\JOYSTICK.jpg";
-		pWind->SetBrush(WHITESMOKE);
-		pWind->SetPen(WHITESMOKE, 1);
-		pWind->DrawRectangle(0, 0, 60+10, UI.MenuItemHeight +10, FILLED, 10, 10);
 		pWind->DrawImage(PlayModeIcon, 0, 0, 60, UI.MenuItemHeight);
 
 		//Loading the icons for the main upper menu.

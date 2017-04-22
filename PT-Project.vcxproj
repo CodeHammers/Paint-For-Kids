@@ -132,6 +132,7 @@
     <ClCompile Include="Actions\AddLineAction.cpp" />
     <ClCompile Include="Actions\AddTriangleAction.cpp" />
     <ClCompile Include="Actions\ChangeBckgrndColor.cpp" />
+    <ClCompile Include="Actions\ChangeBorderWidthAction.cpp" />
     <ClCompile Include="Actions\ChangeDrawColorAction.cpp" />
     <ClCompile Include="Actions\ChangeFillColorAction.cpp" />
     <ClCompile Include="Actions\LoadAction.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="Actions\AddLineAction.h" />
     <ClInclude Include="Actions\AddTriangleAction.h" />
     <ClInclude Include="Actions\ChangeBckgrndColor.h" />
+    <ClInclude Include="Actions\ChangeBorderWidthAction.h" />
     <ClInclude Include="Actions\ChangeDrawColorAction.h" />
     <ClInclude Include="Actions\ChangeFillColor.h" />
     <ClInclude Include="Actions\LoadAction.h" />
