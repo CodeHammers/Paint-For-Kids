@@ -7,3 +7,4 @@ Debug/PT Project.pdb
 *.log
 Debug/vc140.idb
 *.pdb
+*.opendb
