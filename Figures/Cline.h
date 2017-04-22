@@ -23,4 +23,7 @@ public:
 
 	//A function to get the length of the line
 	virtual int GetArea();
+
+	//A function to decide whether a line is valid to draw or not
+	static bool ValidToDraw(Point P1, Point P2);
 };

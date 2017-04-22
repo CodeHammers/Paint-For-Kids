@@ -69,3 +69,8 @@ int CRectangle::GetArea()
 	return (int)(sqrt(pow(Corner1.x - Aux.x, 2) + pow(Corner1.y - Aux.y, 2))*
 		sqrt(pow(Corner2.x - Aux.x, 2) + pow(Corner2.y - Aux.y, 2)));
 }
+
+bool CRectangle::ValidToDraw(Point P1, Point P2)
+{
+	return InDrawingArea(P1) && InDrawingArea(P2);
+}

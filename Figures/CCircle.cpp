@@ -1,6 +1,7 @@
 #include "CCircle.h"
 #include <sstream>
 #include <fstream>
+
 CCircle::CCircle(Point P1, int r,GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Center = P1;
@@ -55,4 +56,10 @@ void CCircle::PrintInfo(Output* pOut)
 int CCircle::GetArea()
 {
 	return (int)3.14*Radius*Radius;
+}
+
+bool CCircle::ValidToDraw(Point C, int R)
+{
+	return (InDrawingArea({ C.x + R,C.y }) && InDrawingArea({ C.x - R,C.y }) && 
+		   InDrawingArea({ C.x,C.y + R }) && InDrawingArea({ C.x,C.y - R }));
 }

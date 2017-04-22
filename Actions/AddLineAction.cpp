@@ -25,7 +25,7 @@ bool AddLineAction::ReadActionParameters()
 			pOut->ClearStatusBar();
 			return false;
 		}
-		if (!InDrawingArea(P1))
+		if (!CLine::InDrawingArea(P1))
 			pOut->PrintMessage("New Line: first end point is out of the drawing area, click again");
 		else
 			break;
@@ -38,7 +38,7 @@ bool AddLineAction::ReadActionParameters()
 			pOut->ClearStatusBar();
 			return false;
 		}
-		if (!InDrawingArea(P2))
+		if (!CLine::InDrawingArea(P2))
 			pOut->PrintMessage("New Line: second end point is out of the drawing area, click again");
 		else
 			break;
@@ -67,9 +67,4 @@ void AddLineAction::Execute()
 		//Save the Line in the figure list
 		pManager->AddFigure(L);
 	}
-}
-
-bool AddLineAction::InDrawingArea(Point P) const
-{
-	return (P.x >= 55 && P.x <= 1435 && P.y >= 60 && P.y <= 710);
 }

@@ -22,7 +22,7 @@ bool AddRectAction::ReadActionParameters()
 			pOut->ClearStatusBar();
 			return false;
 		}
-		if (!InDrawingArea(P1))
+		if (!CRectangle::InDrawingArea(P1))
 			pOut->PrintMessage("New Rectangle: first corner point is out of the drawing area, click again");
 		else
 			break;
@@ -35,7 +35,7 @@ bool AddRectAction::ReadActionParameters()
 			pOut->ClearStatusBar();
 			return false;
 		}
-		if (!InDrawingArea(P2))
+		if (!CRectangle::InDrawingArea(P2))
 			pOut->PrintMessage("New Rectangle: second corner point is out of the drawing area, click again");
 		else
 			break;
@@ -63,9 +63,4 @@ void AddRectAction::Execute()
 		//Add the rectangle to the list of figures
 		pManager->AddFigure(R);
 	}
-}
-
-bool AddRectAction::InDrawingArea(Point P) const
-{
-	return (P.x >= 55 && P.x <= 1435 && P.y >= 60 && P.y <= 710);
 }

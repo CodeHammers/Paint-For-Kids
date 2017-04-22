@@ -50,3 +50,8 @@ int CLine::GetArea()
 {
 	return (int)sqrt(pow(EndPoint1.x - EndPoint2.x, 2) + pow(EndPoint1.y - EndPoint2.y, 2));
 }
+
+bool CLine::ValidToDraw(Point P1, Point P2)
+{
+	return InDrawingArea(P1) && InDrawingArea(P2);
+}

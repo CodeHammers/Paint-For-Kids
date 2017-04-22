@@ -26,7 +26,7 @@ bool AddTriangleAction::ReadActionParameters()
 			pOut->ClearStatusBar();
 			return false;
 		}
-		if (!InDrawingArea(P1))
+		if (!CTriangle::InDrawingArea(P1))
 			pOut->PrintMessage("New Triangle: first vertex is out of the drawing area, click again");
 		else
 			break;
@@ -39,7 +39,7 @@ bool AddTriangleAction::ReadActionParameters()
 			pOut->ClearStatusBar();
 			return false;
 		}
-		if (!InDrawingArea(P2))
+		if (!CTriangle::InDrawingArea(P2))
 			pOut->PrintMessage("New Triangle: second vertex is out of the drawing area, click again");
 		else
 			break;
@@ -52,7 +52,7 @@ bool AddTriangleAction::ReadActionParameters()
 			pOut->ClearStatusBar();
 			return false;
 		}
-		if (!InDrawingArea(P3))
+		if (!CTriangle::InDrawingArea(P3))
 			pOut->PrintMessage("New Triangle: third vertex is out of the drawing area, click again");
 		else
 			break;
@@ -81,9 +81,4 @@ void AddTriangleAction::Execute()
 		//Save the figure in the figure list
 		pManager->AddFigure(Triangle);
 	}
-}
-
-bool AddTriangleAction::InDrawingArea(Point P) const
-{
-	return (P.x >= 55 && P.x <= 1435 && P.y >= 60 && P.y <= 710);
 }

@@ -27,4 +27,7 @@ public:
 
 	//A function to get the area of the circle
 	virtual int GetArea();
+
+	//A function to decide whether a circle is valid to draw or not
+	static bool ValidToDraw(Point C, int R);
 };

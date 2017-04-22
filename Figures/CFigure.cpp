@@ -53,3 +53,8 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
 }
+
+bool CFigure::InDrawingArea(Point P) 
+{
+	return (P.x >= 55 && P.x <= 1435 && P.y >= 60 && P.y <= 710);
+}

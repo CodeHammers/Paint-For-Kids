@@ -16,10 +16,6 @@ public:
 	
 	//Add rectangle to the ApplicationManager
 	virtual void Execute();
-
-	//Function to handle edge cases
-	bool InDrawingArea(Point P) const;
-	
 };
 
 #endif

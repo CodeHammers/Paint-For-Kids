@@ -16,7 +16,4 @@ public:
 
 	//function to execute the action
 	void virtual Execute();
-
-	//Function to handle edge cases
-	bool InDrawingArea(Point P) const;
 };

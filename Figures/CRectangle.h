@@ -21,6 +21,9 @@ public:
 
 	//A function to get the area of the rectangle
 	virtual int GetArea();
+
+	//A function to decide whether a rectangle is valid to draw or not
+	static bool ValidToDraw(Point P1, Point P2);
 };
 
 #endif

@@ -76,3 +76,8 @@ int CTriangle::GetArea()
 {
 	return (int)Getarea(Vertex1.x, Vertex1.y, Vertex2.x, Vertex2.y, Vertex3.x, Vertex3.y);
 }
+
+bool CTriangle::ValidToDraw(Point P1, Point P2, Point P3)
+{
+	return InDrawingArea(P1) && InDrawingArea(P2) && InDrawingArea(P3);
+}

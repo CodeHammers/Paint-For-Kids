@@ -26,4 +26,7 @@ public:
 
 	//A function to get the area of the triangle
 	virtual int GetArea();
+
+	//A function to decide whether a triangle is valid to draw or not
+	static bool ValidToDraw(Point P1, Point P2, Point P3);
 };
