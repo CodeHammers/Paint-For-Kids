@@ -12,6 +12,7 @@ SelectAction::SelectAction(ApplicationManager* pApp) :Action(pApp)
 
 bool SelectAction::ReadActionParameters()
 {
+
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();

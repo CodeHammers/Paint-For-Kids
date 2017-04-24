@@ -281,6 +281,12 @@ void ApplicationManager::UpdateInterface() const
 	for(int i=0; i<FigCount; i++)
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 }
+void ApplicationManager::SaveAll(ofstream &OutFile)
+{
+	OutFile << FigCount << endl;
+	for (int i = 0; i < FigCount; i++)
+		FigList[i]->Save(OutFile);
+}
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
 Input *ApplicationManager::GetInput() const

@@ -14,6 +14,21 @@ void CCircle::Draw(Output* pOut) const
 	pOut->DrawCircle(Center, Radius, FigGfxInfo);
 }
 
+void CCircle::Save(ofstream & OutFile)
+{
+	OutFile << ID << "\t";
+	OutFile << Center.x << "\t" << Center.y << "\t";
+	OutFile<< Radius << (int)FigGfxInfo.DrawClr.ucBlue << " " 
+		<< (int)FigGfxInfo.DrawClr.ucGreen<< " " << (int)FigGfxInfo.DrawClr.ucRed << "\t";
+	if (FigGfxInfo.isFilled != true)
+		OutFile << "NOFILL";
+	else
+		OutFile << (int)FigGfxInfo.FillClr.ucBlue << " " << (int)FigGfxInfo.FillClr.ucGreen << " "
+		<< (int)FigGfxInfo.FillClr.ucRed;
+	OutFile << endl;
+	color s;
+}
+
 
 bool CCircle::Encloses(Point P) 
 {

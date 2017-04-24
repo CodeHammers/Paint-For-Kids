@@ -1,10 +1,10 @@
 *.obj
 *.bsc
 *.ilk
-Debug/PT Project.pdb
 *.tlog
 *.lastbuildstate
 *.log
-Debug/vc140.idb
 *.pdb
 *.opendb
+Debug
+*.vs

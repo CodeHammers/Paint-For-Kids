@@ -15,6 +15,8 @@ public:
 	//A function to determine whether a point is inside a rectangle
 	virtual bool Encloses(Point P) ;
 
+	virtual void Save(ofstream &OutFile);
+
 	virtual void Load(ifstream &Infile);	//Load the figure parameters to the file
 
 	virtual void PrintInfo(Output* pOut);

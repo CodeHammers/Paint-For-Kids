@@ -27,6 +27,19 @@ bool CRectangle::Encloses(Point P)
 	return (P.x >= minx && P.x <= maxx && P.y >= miny && P.y <= maxy);
 }
 
+void CRectangle::Save(ofstream & OutFile)
+{
+	OutFile << ID << "\t";
+	OutFile << Corner1.x << "\t" << Corner1.y << "\t";
+	OutFile << Corner2.x << "\t" << Corner2.y << "\t";
+	if (FigGfxInfo.isFilled != true)
+		OutFile << "NOFILL";
+	else
+		OutFile << (int)FigGfxInfo.FillClr.ucBlue << " " << (int)FigGfxInfo.FillClr.ucGreen << " "
+		<< (int)FigGfxInfo.FillClr.ucRed;
+	OutFile << endl;
+}
+
 void CRectangle::Load(ifstream & Infile)
 {
 	int id;

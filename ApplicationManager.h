@@ -2,10 +2,13 @@
 #define APPLICATION_MANAGER_H
 
 #include "DEFS.h"
+
 #include "Figures\CFigure.h"
+
 #include "GUI\input.h"
 #include "GUI\output.h"
 
+#include<fstream>
 
 //Main class that manages everything in the application.
 class ApplicationManager
@@ -42,6 +45,9 @@ public:
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window
+
+	// -- where in the hell does this go functions
+	void SaveAll(ofstream &OutFile); // location for 
 };
 
 #endif

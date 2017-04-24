@@ -16,6 +16,9 @@ public:
 	//A function to tell whether a point belongs to a line
 	virtual bool Encloses(Point P) ;
 
+	//Save the figure parameters to the file
+	virtual void Save(ofstream &OutFile);
+
 	//Load the figure parameters to the file
 	virtual void Load(ifstream &Infile);	
 

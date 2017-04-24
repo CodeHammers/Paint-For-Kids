@@ -16,6 +16,9 @@ public:
 	//Draw function
 	virtual void Draw(Output* pOut) const;
 
+	//Save the figure parameters to the file
+	virtual void Save(ofstream &OutFile);
+
 	//Load the figure parameters to the file
 	virtual void Load(ifstream &Infile);
 

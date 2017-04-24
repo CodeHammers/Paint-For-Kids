@@ -22,6 +22,14 @@ bool CLine::Encloses(Point P)
 	return tot == dist1 + dist2 + 2*sqrt(dist1)*sqrt(dist2);
 }
 
+void CLine::Save(ofstream & OutFile)
+{
+	OutFile << ID << "\t" << EndPoint1.x << "\t" << EndPoint1.y << "\t"
+		<< EndPoint2.x << "\t" << EndPoint2.y << "\t"<< (int)FigGfxInfo.DrawClr.ucBlue
+		<< "\t" << (int)FigGfxInfo.DrawClr.ucGreen << "\t" << (int)FigGfxInfo.DrawClr.ucRed
+		<< "\n";
+}
+
 void CLine::Load(ifstream &Infile)
 {
 	///Youe code goes here.

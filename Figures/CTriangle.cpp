@@ -38,6 +38,20 @@ bool CTriangle::Encloses(Point P)
 	return (tot == A1 + A2 + A3);
 }
 
+void CTriangle::Save(ofstream & OutFile)
+{
+	OutFile << ID <<"\t";
+	OutFile << Vertex1.x << "\t" << Vertex1.y << "\t";
+	OutFile << Vertex2.x << "\t" << Vertex2.y << "\t";
+	OutFile << Vertex3.x << "\t" << Vertex3.y << "\t";
+	if (FigGfxInfo.isFilled != true)
+		OutFile << "NOFILL";
+	else
+		OutFile << (int)FigGfxInfo.FillClr.ucBlue << " " << (int)FigGfxInfo.FillClr.ucGreen << " "
+		<< (int)FigGfxInfo.FillClr.ucRed;
+	OutFile << endl;
+}
+
 void CTriangle::Load(ifstream &Infile)
 {
 	///Your code goes here.
