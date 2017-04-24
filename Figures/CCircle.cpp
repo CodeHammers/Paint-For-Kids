@@ -26,7 +26,6 @@ void CCircle::Save(ofstream & OutFile)
 		OutFile << (int)FigGfxInfo.FillClr.ucBlue << " " << (int)FigGfxInfo.FillClr.ucGreen << " "
 		<< (int)FigGfxInfo.FillClr.ucRed;
 	OutFile << endl;
-	color s;
 }
 
 

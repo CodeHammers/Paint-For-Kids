@@ -9,6 +9,8 @@
 #include "Actions\ChangeDrawColorAction.h"
 #include "Actions\ChangeFillColor.h"
 #include "Actions\ChangeBorderWidthAction.h"
+#include "Actions\SaveAction.h"
+
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -229,6 +231,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case ITM_SELECT_Clicked:
 			pAct = new SelectAction(this);
+			break;
+
+		case ITM_SAVEAS_Clicked:
+			pAct = new SaveAction(this);
 			break;
 
 		case EXIT:

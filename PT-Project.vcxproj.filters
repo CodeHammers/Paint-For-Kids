@@ -182,6 +182,9 @@
     <ClCompile Include="Actions\ChangeBorderWidthAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\SaveAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -303,6 +306,9 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="Actions\ChangeBorderWidthAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\SaveAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

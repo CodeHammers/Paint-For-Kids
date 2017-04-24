@@ -36,4 +36,5 @@ void SaveAction::Execute()
 	OutFile << (int)UI.BkGrndColor.ucBlue << " " << (int)UI.BkGrndColor.ucGreen 
 		<< " " << (int)UI.BkGrndColor.ucRed<< " " << endl;
 	pManager->SaveAll(OutFile);
+	OutFile.close();
 }
