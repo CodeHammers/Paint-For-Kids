@@ -27,6 +27,11 @@ public:
 
 	virtual void PrintInfo(Output* pOut);
 
+	virtual Point GetFirstVertex();
+	Point GetSecondVertex();
+	Point GetThirdVertex();
+	virtual void SetPoints(Point s);
+
 	//A function to get the area of the triangle
 	virtual int GetArea();
 

@@ -24,9 +24,11 @@ public:
 
 	virtual void PrintInfo(Output* pOut);
 
+	virtual Point GetFirstVertex();
+	Point GetSecondVertex();
 	//A function to get the length of the line
 	virtual int GetArea();
-
+	virtual void SetPoints(Point x);
 	//A function to decide whether a line is valid to draw or not
 	static bool ValidToDraw(Point P1, Point P2);
 };

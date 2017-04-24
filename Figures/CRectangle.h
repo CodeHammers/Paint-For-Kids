@@ -21,8 +21,11 @@ public:
 
 	virtual void PrintInfo(Output* pOut);
 
+	virtual Point GetFirstVertex();
+	Point GetSecondVertex();
 	//A function to get the area of the rectangle
 	virtual int GetArea();
+	virtual void SetPoints(Point s);
 
 	//A function to decide whether a rectangle is valid to draw or not
 	static bool ValidToDraw(Point P1, Point P2);

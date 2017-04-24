@@ -28,8 +28,11 @@ public:
 	//A function to print a figure info
 	virtual void PrintInfo(Output* pOut);
 
+	virtual Point GetFirstVertex();
 	//A function to get the area of the circle
 	virtual int GetArea();
+	virtual void SetPoints(Point x);
+	int GetRadius();
 
 	//A function to decide whether a circle is valid to draw or not
 	static bool ValidToDraw(Point C, int R);

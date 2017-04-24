@@ -67,9 +67,25 @@ void CCircle::PrintInfo(Output* pOut)
 	pOut->PrintMessage("Circle: radius = " + rs + ", Center = " + c+ ", Area = "+A);
 }
 
+Point CCircle::GetFirstVertex()
+{
+	return Center;
+}
+
 int CCircle::GetArea()
 {
 	return (int)3.14*Radius*Radius;
+}
+
+void CCircle::SetPoints(Point s)
+{
+	Center.x += s.x;
+	Center.y += s.y;
+}
+
+int CCircle::GetRadius()
+{
+	return Radius;
 }
 
 bool CCircle::ValidToDraw(Point C, int R)

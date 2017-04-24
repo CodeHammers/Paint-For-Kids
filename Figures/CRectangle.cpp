@@ -74,6 +74,16 @@ void CRectangle::PrintInfo(Output* pOut)
 	pOut->PrintMessage("Rectangle: Corner1= " + x + " , Corner2= " + y+ " , Area= "+A);
 }
 
+Point CRectangle::GetFirstVertex()
+{
+	return Corner1;
+}
+
+Point CRectangle::GetSecondVertex()
+{
+	return Corner2;
+}
+
 
 int CRectangle::GetArea()
 {
@@ -81,6 +91,14 @@ int CRectangle::GetArea()
 
 	return (int)(sqrt(pow(Corner1.x - Aux.x, 2) + pow(Corner1.y - Aux.y, 2))*
 		sqrt(pow(Corner2.x - Aux.x, 2) + pow(Corner2.y - Aux.y, 2)));
+}
+
+void CRectangle::SetPoints(Point s)
+{
+	Corner1.x += s.x;
+	Corner1.y += s.y;
+	Corner2.x += s.x;
+	Corner2.y += s.y;
 }
 
 bool CRectangle::ValidToDraw(Point P1, Point P2)

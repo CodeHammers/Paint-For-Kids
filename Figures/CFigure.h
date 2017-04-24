@@ -11,7 +11,7 @@ protected:
 	int ID;		//Each figure has an ID
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
-	
+	bool HighPriority = false;
 	/// Add more parameters if needed.
 
 public:
@@ -20,7 +20,8 @@ public:
 	bool IsSelected() const;	//check whether fig is selected
 	static color GetColor(string color);
 	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
-	
+	void SetPriority(bool s);	//select/unselect the figure
+	bool IsPriority() const;	//check whether fig is selected
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 
@@ -35,7 +36,10 @@ public:
 	//virtual void Resize() = 0;	//Resize the figure
 	//virtual void Move() = 0;		//Move the figure
 
-	virtual bool Encloses(Point P) = 0 ;
+	virtual Point GetFirstVertex() = 0;
+	virtual bool Encloses(Point P) = 0;
+
+	virtual void SetPoints(Point x) = 0;
 
 	virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
 	virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file

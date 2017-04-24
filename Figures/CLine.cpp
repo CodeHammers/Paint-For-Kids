@@ -54,9 +54,27 @@ void CLine::PrintInfo(Output* pOut)
 	pOut->PrintMessage("Line: EndPoint1= "+x+" , EndPoint2= "+y+ " , Length= "+l);
 }
 
+Point CLine::GetFirstVertex()
+{
+	return EndPoint1;
+}
+
+Point CLine::GetSecondVertex()
+{
+	return EndPoint2;
+}
+
 int CLine::GetArea()
 {
 	return (int)sqrt(pow(EndPoint1.x - EndPoint2.x, 2) + pow(EndPoint1.y - EndPoint2.y, 2));
+}
+
+void CLine::SetPoints(Point s)
+{
+	EndPoint1.x += s.x;
+	EndPoint1.y += s.y;
+	EndPoint2.x += s.x;
+	EndPoint2.y += s.y;
 }
 
 bool CLine::ValidToDraw(Point P1, Point P2)

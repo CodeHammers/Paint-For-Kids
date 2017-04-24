@@ -10,6 +10,10 @@
 #include "Actions\ChangeFillColor.h"
 #include "Actions\ChangeBorderWidthAction.h"
 #include "Actions\SaveAction.h"
+#include "Actions\DeleteAction.h"
+#include "Actions\CopyAction.h"
+#include "Actions\CutAction.h"
+#include "Actions\PasteAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -21,8 +25,9 @@ ApplicationManager::ApplicationManager()
 	FigCount = 0;
 		
 	//Create an array of figure pointers and set them to NULL		
-	for(int i=0; i<MaxFigCount; i++)
-		FigList[i] = NULL;	
+	for (int i = 0; i < MaxFigCount; i++)
+		FigList[i] = NULL,
+		Clipboard[i] = NULL;
 }
 
 void ApplicationManager::nullifyFigList() {
@@ -241,7 +246,22 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			///create ExitAction here
 			
 			break;
-		
+
+		case ITM_DELETE_Clicked:
+			pAct = new DeleteAction(this);
+			break;
+
+		case ITM_COPY_Clicked:
+			pAct = new CopyAction(this);
+			break;
+
+		case ITM_CUT_Clicked:
+			pAct = new CutAction(this);
+			break;
+
+		case ITM_PASTE_Clicked:
+			pAct = new PasteAction(this);
+			break;
 		case STATUS:	//a click on the status bar ==> no action
 			return;
 	}
@@ -253,6 +273,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		delete pAct;	//Action is not needed any more ==> delete it
 		pAct = NULL;
 	}
+}
+void ApplicationManager::AddClipboard(CFigure * pFig)
+{
+	Clipboard[ClipboardCount++] = pFig;
 }
 //==================================================================================//
 //						Figures Management Functions								//
@@ -276,6 +300,13 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	return NULL;
 }
 
+CFigure ** ApplicationManager::GetFigures(bool x)
+{
+	if (x == false)
+		return FigList;
+	return Clipboard;
+}
+
 
 //==================================================================================//
 //							Interface Management Functions							//
@@ -286,6 +317,22 @@ void ApplicationManager::UpdateInterface() const
 {	
 	for(int i=0; i<FigCount; i++)
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+}
+void ApplicationManager::UpdateFigCount(int Selected_Deleted)
+{
+	FigCount -= Selected_Deleted;
+}
+void ApplicationManager::CleanClipboard()
+{
+	for (int i = 0; i < ClipboardCount; ++i)
+		if (Clipboard[i] != NULL && Clipboard[i]->IsPriority()) {
+			delete Clipboard[i];
+			Clipboard[i] = NULL;
+		}
+		else
+			Clipboard[i] = NULL;
+
+	ClipboardCount = 0;
 }
 void ApplicationManager::SaveAll(ofstream &OutFile)
 {

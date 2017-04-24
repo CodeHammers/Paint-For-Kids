@@ -32,6 +32,16 @@ color CFigure::GetColor(string DrawColor)
 	return NULL;
 }
 
+void CFigure::SetPriority(bool s)
+{
+	HighPriority = s;
+}
+
+bool CFigure::IsPriority() const
+{
+	return HighPriority;
+}
+
 
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 

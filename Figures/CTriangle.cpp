@@ -86,6 +86,31 @@ void CTriangle::PrintInfo(Output* pOut)
 	pOut->PrintMessage("Triangle: Vertex1 = " + x + " , Vertex2 = " + y + " , Vertex3 = "+z+ " , Area = "+A);
 }
 
+Point CTriangle::GetFirstVertex()
+{
+	return Vertex1;
+}
+
+Point CTriangle::GetSecondVertex()
+{
+	return Vertex2;
+}
+
+Point CTriangle::GetThirdVertex()
+{
+	return Vertex3;
+}
+
+void CTriangle::SetPoints(Point s)
+{
+	Vertex1.x += s.x;
+	Vertex1.y += s.y;
+	Vertex2.x += s.x;
+	Vertex2.y += s.y;
+	Vertex3.x += s.x;
+	Vertex3.y += s.y;
+}
+
 int CTriangle::GetArea()
 {
 	return (int)Getarea(Vertex1.x, Vertex1.y, Vertex2.x, Vertex2.y, Vertex3.x, Vertex3.y);

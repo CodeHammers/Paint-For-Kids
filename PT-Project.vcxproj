@@ -135,7 +135,11 @@
     <ClCompile Include="Actions\ChangeBorderWidthAction.cpp" />
     <ClCompile Include="Actions\ChangeDrawColorAction.cpp" />
     <ClCompile Include="Actions\ChangeFillColorAction.cpp" />
+    <ClCompile Include="Actions\CopyAction.cpp" />
+    <ClCompile Include="Actions\CutAction.cpp" />
+    <ClCompile Include="Actions\DeleteAction.cpp" />
     <ClCompile Include="Actions\LoadAction.cpp" />
+    <ClCompile Include="Actions\PasteAction.cpp" />
     <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\SelectAction.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -193,7 +197,11 @@
     <ClInclude Include="Actions\ChangeBorderWidthAction.h" />
     <ClInclude Include="Actions\ChangeDrawColorAction.h" />
     <ClInclude Include="Actions\ChangeFillColor.h" />
+    <ClInclude Include="Actions\CopyAction.h" />
+    <ClInclude Include="Actions\CutAction.h" />
+    <ClInclude Include="Actions\DeleteAction.h" />
     <ClInclude Include="Actions\LoadAction.h" />
+    <ClInclude Include="Actions\PasteAction.h" />
     <ClInclude Include="Actions\SaveAction.h" />
     <ClInclude Include="Actions\SelectAction.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
