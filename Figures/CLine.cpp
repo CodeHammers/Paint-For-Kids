@@ -15,11 +15,21 @@ void CLine::Draw(Output* pOut) const
 
 bool CLine::Encloses(Point P) 
 {
-	float dist1 = pow(EndPoint1.x - P.x, 2) + pow(EndPoint1.y - P.y, 2);
+	/*float dist1 = pow(EndPoint1.x - P.x, 2) + pow(EndPoint1.y - P.y, 2);
 	float dist2 = pow(EndPoint2.x - P.x, 2) + pow(EndPoint2.y - P.y, 2);
 	float tot= pow(EndPoint1.x - EndPoint2.x, 2) + pow(EndPoint1.y - EndPoint2.y, 2);
 
-	return tot == dist1 + dist2 + 2*sqrt(dist1)*sqrt(dist2);
+	double d = abs(tot - (dist1 + dist2 + 2 * sqrt(dist1)*sqrt(dist2)));
+
+	return (abs(tot-(dist1 + dist2 + 2*sqrt(dist1)*sqrt(dist2)))<=FigGfxInfo.BorderWdth);*/
+
+	int minx, maxx, miny, maxy;
+	minx = min(EndPoint1.x, EndPoint2.x);
+	maxx = max(EndPoint1.x, EndPoint2.x);
+	miny = min(EndPoint1.y, EndPoint2.y);
+	maxy = max(EndPoint1.y, EndPoint2.y);
+
+	return (P.x >= minx && P.x <= maxx && P.y >= miny && P.y <=maxy);
 }
 
 void CLine::Save(ofstream & OutFile)
@@ -54,15 +64,20 @@ void CLine::PrintInfo(Output* pOut)
 	pOut->PrintMessage("Line: EndPoint1= "+x+" , EndPoint2= "+y+ " , Length= "+l);
 }
 
-Point CLine::GetFirstVertex()
+Point CLine::GetEndPoint1()
 {
 	return EndPoint1;
 }
 
-Point CLine::GetSecondVertex()
+Point CLine::GetEndPoint2()
 {
 	return EndPoint2;
 }
+
+//GfxInfo CLine::GetGfxInfo()
+//{
+//	return FigGfxInfo;
+//}
 
 int CLine::GetArea()
 {

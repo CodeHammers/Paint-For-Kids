@@ -8,7 +8,6 @@ CTriangle::CTriangle(Point V1, Point V2, Point V3, GfxInfo FigureGfxInfo) :CFigu
 	Vertex3 = V3;
 }
 
-
 void CTriangle::Draw(Output* pOut) const
 {
 	pOut->DrawTriangle(Vertex1, Vertex2, Vertex3, FigGfxInfo);
@@ -86,20 +85,25 @@ void CTriangle::PrintInfo(Output* pOut)
 	pOut->PrintMessage("Triangle: Vertex1 = " + x + " , Vertex2 = " + y + " , Vertex3 = "+z+ " , Area = "+A);
 }
 
-Point CTriangle::GetFirstVertex()
+Point CTriangle::GetVertex1()
 {
 	return Vertex1;
 }
 
-Point CTriangle::GetSecondVertex()
+Point CTriangle::GetVertex2()
 {
 	return Vertex2;
 }
 
-Point CTriangle::GetThirdVertex()
+Point CTriangle::GetVertex3()
 {
 	return Vertex3;
 }
+
+//GfxInfo CTriangle::GetGfxInfo()
+//{
+//	return FigGfxInfo;
+//}
 
 void CTriangle::SetPoints(Point s)
 {

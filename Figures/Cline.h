@@ -24,8 +24,9 @@ public:
 
 	virtual void PrintInfo(Output* pOut);
 
-	virtual Point GetFirstVertex();
-	Point GetSecondVertex();
+	Point GetEndPoint1();
+	Point GetEndPoint2();
+	//GfxInfo GetGfxInfo();
 	//A function to get the length of the line
 	virtual int GetArea();
 	virtual void SetPoints(Point x);

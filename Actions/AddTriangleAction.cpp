@@ -78,6 +78,9 @@ void AddTriangleAction::Execute()
 		//Create the corrosponding object
 		CTriangle* Triangle = new CTriangle(P1, P2, P3, TriangleGfxInfo);
 
+		//Set the ID for the figure
+		Triangle->SetID(pManager->GetFigCount() + 1);
+
 		//Save the figure in the figure list
 		pManager->AddFigure(Triangle);
 	}

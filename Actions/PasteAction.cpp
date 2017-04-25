@@ -15,18 +15,18 @@ PasteAction::PasteAction(ApplicationManager * pApp)
 	Actual_CountTemp = 0;
 }
 
-void PasteAction::AddTemp(CFigure* pFig)
-{
-	Temp[Actual_CountTemp++] = pFig;
-}
+//void PasteAction::AddTemp(CFigure* pFig)
+//{
+//	Temp[Actual_CountTemp++] = pFig;
+//}
 
 bool PasteAction::ReadActionParameters()
 {
-	Output* pOut = pManager->GetOutput();	
+	/*Output* pOut = pManager->GetOutput();	
 	Input* pIn = pManager->GetInput();
 
-	FigList = pManager->GetFigures();
-	Clipboard = pManager->GetFigures(true);
+	FigList = pManager->GetSelected();
+	Clipboard = pManager->GetSelected();
 	OriginPoint = GetTheOrigin();
 	pOut->PrintMessage("please Click On an Appropriate point");
 	pIn->GetPointClicked(TransitionPoint.x, TransitionPoint.y);
@@ -36,13 +36,13 @@ bool PasteAction::ReadActionParameters()
 	if (!InDrawingArea(TransitionPoint))
 		return false;
 	
-	pOut->ClearStatusBar();
+	pOut->ClearStatusBar();*/
 	return true;
 }
 
 void PasteAction::Execute()
 {
-	Output* pOut = pManager->GetOutput();
+	/*Output* pOut = pManager->GetOutput();
 	GfxInfo Info;
 	Info.BorderWdth = 3;
 	Info.DrawClr = pOut->getCrntDrawColor();
@@ -87,39 +87,40 @@ void PasteAction::Execute()
 		}
 		TransitionFigures();
 		AddtoFigList();
-	}
+	}*/
+	;
 }
 
-Point PasteAction::GetTheOrigin()
-{
-	Point P = { 2000,2000 };
-	for (int i = 0; i < 100; ++i)
-		if (Clipboard[i] != NULL)
-			if (Clipboard[i]->GetFirstVertex().y < P.y)
-				P = Clipboard[i]->GetFirstVertex();
-	return P;
-}
-
-bool PasteAction::InDrawingArea(Point P) const
-{
-	return (P.x >= 55 && P.x <= 1435 && P.y >= 60 && P.y <= 710);
-}
-
-void PasteAction::TransitionFigures()
-{
-	int A = TransitionPoint.x - OriginPoint.x;
-	int B = TransitionPoint.y - OriginPoint.y;
-	Point P{ A,B };
-
-	for (int i = 0; i < 200; ++i) {
-		if (Temp[i] == NULL)
-			return;
-		Temp[i]->SetPoints(P);
-	}
-}
-
-void PasteAction::AddtoFigList()
-{
-	for (int i = 0; i < Actual_CountTemp; ++i)
-		pManager->AddFigure(Temp[i]);
-}
+//Point PasteAction::GetTheOrigin()
+//{
+//	Point P = { 2000,2000 };
+//	for (int i = 0; i < 100; ++i)
+//		if (Clipboard[i] != NULL)
+//			if (Clipboard[i]->GetFirstVertex().y < P.y)
+//				P = Clipboard[i]->GetFirstVertex();
+//	return P;
+//}
+//
+//bool PasteAction::InDrawingArea(Point P) const
+//{
+//	return (P.x >= 55 && P.x <= 1435 && P.y >= 60 && P.y <= 710);
+//}
+//
+//void PasteAction::TransitionFigures()
+//{
+//	int A = TransitionPoint.x - OriginPoint.x;
+//	int B = TransitionPoint.y - OriginPoint.y;
+//	Point P{ A,B };
+//
+//	for (int i = 0; i < 200; ++i) {
+//		if (Temp[i] == NULL)
+//			return;
+//		Temp[i]->SetPoints(P);
+//	}
+//}
+//
+//void PasteAction::AddtoFigList()
+//{
+//	for (int i = 0; i < Actual_CountTemp; ++i)
+//		pManager->AddFigure(Temp[i]);
+//}

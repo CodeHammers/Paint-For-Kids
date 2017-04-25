@@ -37,11 +37,25 @@ void CFigure::SetPriority(bool s)
 	HighPriority = s;
 }
 
+GfxInfo CFigure::GetGfxInfo()
+{
+	return FigGfxInfo;
+}
+
+int CFigure::GetID()
+{
+	return ID;
+}
+
 bool CFigure::IsPriority() const
 {
 	return HighPriority;
 }
 
+void CFigure::SetID(int id)
+{
+	ID = id;
+}
 
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 

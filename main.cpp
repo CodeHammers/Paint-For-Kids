@@ -9,7 +9,6 @@ int main()
 	
 	do
 	{		
-	
 		//Read user action
 		ActType = AppManager.GetUserAction();
 

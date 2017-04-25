@@ -60,6 +60,9 @@ void AddRectAction::Execute()
 		//Create a rectangle with the parameters read from the user
 		CRectangle *R = new CRectangle(P1, P2, RectGfxInfo);
 
+		//Set the ID for the figure
+		R->SetID(pManager->GetFigCount() + 1);
+
 		//Add the rectangle to the list of figures
 		pManager->AddFigure(R);
 	}

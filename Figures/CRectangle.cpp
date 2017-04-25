@@ -74,16 +74,20 @@ void CRectangle::PrintInfo(Output* pOut)
 	pOut->PrintMessage("Rectangle: Corner1= " + x + " , Corner2= " + y+ " , Area= "+A);
 }
 
-Point CRectangle::GetFirstVertex()
+Point CRectangle::GetCorner1()
 {
 	return Corner1;
 }
 
-Point CRectangle::GetSecondVertex()
+Point CRectangle::GetCorner2()
 {
 	return Corner2;
 }
 
+//GfxInfo CRectangle::GetGfxInfo()
+//{
+//	return FigGfxInfo;
+//}
 
 int CRectangle::GetArea()
 {

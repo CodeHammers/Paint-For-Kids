@@ -64,6 +64,9 @@ void AddLineAction::Execute()
 		//Create the corrosponding object
 		CLine* L = new CLine(P1, P2, LineGfxInfo);
 
+		//Set the ID for the figure
+		L->SetID(pManager->GetFigCount() + 1);
+
 		//Save the Line in the figure list
 		pManager->AddFigure(L);
 	}

@@ -25,9 +25,9 @@ ApplicationManager::ApplicationManager()
 	FigCount = 0;
 		
 	//Create an array of figure pointers and set them to NULL		
-	for (int i = 0; i < MaxFigCount; i++)
+	/*for (int i = 0; i < MaxFigCount; i++)
 		FigList[i] = NULL,
-		Clipboard[i] = NULL;
+		Clipboard[i] = NULL;*/
 }
 
 void ApplicationManager::nullifyFigList() {
@@ -274,10 +274,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = NULL;
 	}
 }
-void ApplicationManager::AddClipboard(CFigure * pFig)
-{
-	Clipboard[ClipboardCount++] = pFig;
-}
+//void ApplicationManager::AddClipboard(CFigure * pFig)
+//{
+//	Clipboard.push_back(pFig);
+//}
 //==================================================================================//
 //						Figures Management Functions								//
 //==================================================================================//
@@ -287,25 +287,76 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	
 	if(FigCount < MaxFigCount )
-		FigList[FigCount++] = pFig;	
+		FigList.push_back(pFig);	
+}
+
+int ApplicationManager::GetFigCount() { return FigList.size(); }
+
+int ApplicationManager::GetSelectedFigCount()
+{
+	int cnt = 0;
+	for (int i = 0; i < FigList.size(); i++) {
+		if (FigList[i]->IsSelected())
+			cnt++;
+	}
+	return cnt;
+}
+
+void ApplicationManager::DeleteSelected(bool flag)
+{
+	for (int i = 0; i < FigList.size(); i++) {
+		if (FigList[i]->IsSelected()) {
+			if(flag) delete FigList[i];
+			FigList.erase(FigList.begin() + i);
+			i--;
+		}
+	}
+}
+
+void ApplicationManager::MoveSelectedToClipboard(bool unselect)
+{
+	for (int i = 0; i < FigList.size(); i++) {
+		if (FigList[i]->IsSelected()) {
+			if (unselect) {
+				FigList[i]->SetSelected(false);
+				FigList[i]->ChngDrawClr(UI.DrawColor);
+			}
+			Clipboard.push_back(FigList[i]);
+		}
+	}
+}
+
+void ApplicationManager::CopyToClipboard()
+{
+	for (int i = 0; i < FigList.size(); i++) {
+		if (FigList[i]->IsSelected()) {
+			FigList[i]->SetSelected(false);
+			FigList[i]->ChngDrawClr(UI.DrawColor);
+			CFigure* ptr = CopyAction::CopyFigure(FigList[i]);
+			Clipboard.push_back(ptr);
+		}
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
 {
-	for (int i = FigCount-1; i>=0; i--) {
+	for (int i = FigList.size() -1; i>=0; i--) {
 		if (FigList[i]->Encloses({ x,y }))  //if the point is in the figure
 			return FigList[i];
 	}
 	return NULL;
 }
 
-CFigure ** ApplicationManager::GetFigures(bool x)
-{
-	if (x == false)
-		return FigList;
-	return Clipboard;
-}
+//vector<CFigure*> ApplicationManager::GetSelected()
+//{
+//	vector<CFigure*> selected;
+//	for (int i = 0; i < FigList.size(); i++) {
+//		if (FigList[i]->IsSelected())
+//			selected.push_back(FigList[i]);
+//	}
+//	return selected;
+//}
 
 
 //==================================================================================//
@@ -315,29 +366,29 @@ CFigure ** ApplicationManager::GetFigures(bool x)
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
-	for(int i=0; i<FigCount; i++)
+	for(int i=0; i<FigList.size(); i++)
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 }
-void ApplicationManager::UpdateFigCount(int Selected_Deleted)
-{
-	FigCount -= Selected_Deleted;
-}
-void ApplicationManager::CleanClipboard()
-{
-	for (int i = 0; i < ClipboardCount; ++i)
-		if (Clipboard[i] != NULL && Clipboard[i]->IsPriority()) {
-			delete Clipboard[i];
-			Clipboard[i] = NULL;
-		}
-		else
-			Clipboard[i] = NULL;
 
-	ClipboardCount = 0;
+//void ApplicationManager::UpdateFigCount(int Selected_Deleted)
+//{
+//	FigCount -= Selected_Deleted;
+//}
+
+void ApplicationManager::ClearClipboard()
+{
+	Clipboard.clear();
 }
+
+int ApplicationManager::GetClipboardSize()
+{
+	return Clipboard.size();
+}
+
 void ApplicationManager::SaveAll(ofstream &OutFile)
 {
 	OutFile << FigCount << endl;
-	for (int i = 0; i < FigCount; i++)
+	for (int i = 0; i < FigList.size(); i++)
 		FigList[i]->Save(OutFile);
 }
 ////////////////////////////////////////////////////////////////////////////////////
@@ -351,9 +402,8 @@ Output *ApplicationManager::GetOutput() const
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
-	for(int i=0; i<FigCount; i++)
+	for(int i=0; i<FigList.size(); i++)
 		delete FigList[i];
 	delete pIn;
 	delete pOut;
-	
 }

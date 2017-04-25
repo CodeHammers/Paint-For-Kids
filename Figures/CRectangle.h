@@ -21,8 +21,9 @@ public:
 
 	virtual void PrintInfo(Output* pOut);
 
-	virtual Point GetFirstVertex();
-	Point GetSecondVertex();
+	Point GetCorner1();
+	Point GetCorner2();
+	//GfxInfo GetGfxInfo();
 	//A function to get the area of the rectangle
 	virtual int GetArea();
 	virtual void SetPoints(Point s);

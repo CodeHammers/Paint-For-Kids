@@ -79,6 +79,9 @@ void AddCircleAction::Execute()
 		//Creat the corrosponding object
 		CCircle* Circ = new CCircle(C, R, CircGfxInfo);
 
+		//Set the ID for the figure
+		Circ->SetID(pManager->GetFigCount() + 1);
+
 		//Save the circle in the figure list
 		pManager->AddFigure(Circ);
 	}

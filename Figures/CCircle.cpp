@@ -67,10 +67,15 @@ void CCircle::PrintInfo(Output* pOut)
 	pOut->PrintMessage("Circle: radius = " + rs + ", Center = " + c+ ", Area = "+A);
 }
 
-Point CCircle::GetFirstVertex()
+Point CCircle::GetCenter()
 {
 	return Center;
 }
+
+//GfxInfo CCircle::GetGfxInfo()
+//{
+//	return FigGfxInfo;
+//}
 
 int CCircle::GetArea()
 {
