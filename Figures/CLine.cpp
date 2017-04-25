@@ -96,3 +96,8 @@ bool CLine::ValidToDraw(Point P1, Point P2)
 {
 	return InDrawingArea(P1) && InDrawingArea(P2);
 }
+
+void CLine::TransferFigure(Point To)
+{
+	;
+}

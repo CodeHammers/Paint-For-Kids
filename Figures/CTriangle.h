@@ -38,4 +38,5 @@ public:
 
 	//A function to decide whether a triangle is valid to draw or not
 	static bool ValidToDraw(Point P1, Point P2, Point P3);
+	virtual void TransferFigure(Point To);
 };

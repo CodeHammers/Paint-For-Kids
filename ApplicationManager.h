@@ -23,11 +23,11 @@ private:
 	vector<CFigure*>FigList;
 	//CFigure* CurrentlySelected[MaxFigCount]; //list of the currently selected figures
 	//Pointers to Input and Output classes
+	int ClipboardMode;
 	Input *pIn;
 	Output *pOut;
 	vector<CFigure*>Clipboard;
 	int ClipboardCount;
-
 	bool IsFillMenu(ActionType ActType) const;
 	bool IsBackgroundMenu(ActionType ActType) const;
 
@@ -58,8 +58,9 @@ public:
 	void SaveAll(ofstream &OutFile); // location for 
 	int GetFigCount();
 	int GetSelectedFigCount();
-	void MoveSelectedToClipboard(bool unselect);
+	void CutToClipboard(bool unselect);
 	void CopyToClipboard();
+	void AddPastedFigures(Point P);
 };
 
 #endif

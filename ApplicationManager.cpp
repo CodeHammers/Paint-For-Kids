@@ -23,7 +23,7 @@ ApplicationManager::ApplicationManager()
 	pIn = pOut->CreateInput();
 	
 	FigCount = 0;
-		
+	ClipboardMode = 1;
 	//Create an array of figure pointers and set them to NULL		
 	/*for (int i = 0; i < MaxFigCount; i++)
 		FigList[i] = NULL,
@@ -285,7 +285,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 //Add a figure to the list of figures
 void ApplicationManager::AddFigure(CFigure* pFig)
 {
-	
 	if(FigCount < MaxFigCount )
 		FigList.push_back(pFig);	
 }
@@ -313,7 +312,7 @@ void ApplicationManager::DeleteSelected(bool flag)
 	}
 }
 
-void ApplicationManager::MoveSelectedToClipboard(bool unselect)
+void ApplicationManager::CutToClipboard(bool unselect)
 {
 	for (int i = 0; i < FigList.size(); i++) {
 		if (FigList[i]->IsSelected()) {
@@ -335,6 +334,28 @@ void ApplicationManager::CopyToClipboard()
 			CFigure* ptr = CopyAction::CopyFigure(FigList[i]);
 			Clipboard.push_back(ptr);
 		}
+	}
+}
+
+void ApplicationManager::AddPastedFigures(Point P)
+{
+	if (ClipboardMode > 1) {
+
+		vector<CFigure*>temp(Clipboard.size());
+		for (int i = 0; i < Clipboard.size(); i++)
+			temp[i] = Clipboard[i];
+
+		Clipboard.clear();
+		for (int i = 0; i < temp.size(); i++) {
+			CFigure* ptr = CopyAction::CopyFigure(temp[i]);
+			Clipboard.push_back(ptr);
+		}
+	}
+
+	for (int i = 0; i < Clipboard.size(); i++) {
+		Clipboard[i]->TransferFigure(P);
+		AddFigure(Clipboard[i]);
+		ClipboardMode++;
 	}
 }
 
@@ -377,6 +398,10 @@ void ApplicationManager::UpdateInterface() const
 
 void ApplicationManager::ClearClipboard()
 {
+	if (ClipboardMode == 1) {
+		for (int i = 0; i < Clipboard.size(); i++)
+			delete Clipboard[i];
+	}
 	Clipboard.clear();
 }
 

@@ -466,7 +466,7 @@ void Output::ClearDrawArea() const
 {
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
-	pWind->DrawRectangle(120, 100, UI.width - 115, UI.height - UI.StatusBarHeight);
+	pWind->DrawRectangle(50, 50, UI.width - 65, UI.height - UI.StatusBarHeight);
 	//I changed the clear function to only clear the area enclosed by all 4 toolbars
 }
 //////////////////////////////////////////////////////////////////////////////////////////

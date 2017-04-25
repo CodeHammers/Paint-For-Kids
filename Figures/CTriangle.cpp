@@ -124,3 +124,8 @@ bool CTriangle::ValidToDraw(Point P1, Point P2, Point P3)
 {
 	return InDrawingArea(P1) && InDrawingArea(P2) && InDrawingArea(P3);
 }
+
+void CTriangle::TransferFigure(Point To)
+{
+	;
+}

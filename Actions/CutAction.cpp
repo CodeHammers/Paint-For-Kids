@@ -26,9 +26,9 @@ void CutAction::Execute()
 		if (pManager->GetClipboardSize() > 0)
 			pManager->ClearClipboard();
 
-		pManager->MoveSelectedToClipboard(false);
+		pManager->CutToClipboard(false);
 		pManager->DeleteSelected(false);
-		pManager->MoveSelectedToClipboard(true);
+		pManager->CutToClipboard(true);
 		pOut->PrintMessage("Cut: Figures were cut successfully");
 		pOut->ClearDrawArea();
 	}

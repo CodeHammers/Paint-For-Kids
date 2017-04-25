@@ -48,6 +48,7 @@ public:
 	static bool InDrawingArea(Point P);
 	GfxInfo GetGfxInfo();
 	int GetID();
+	virtual void TransferFigure(Point To) = 0;
 };
 
 #endif

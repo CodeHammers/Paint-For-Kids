@@ -32,4 +32,6 @@ public:
 	virtual void SetPoints(Point x);
 	//A function to decide whether a line is valid to draw or not
 	static bool ValidToDraw(Point P1, Point P2);
+
+	virtual void TransferFigure(Point To);
 };

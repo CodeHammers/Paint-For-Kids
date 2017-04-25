@@ -1,3 +1,5 @@
-﻿  CLine.cpp
+﻿  Output.cpp
+e:\paint-for-kids\gui\output.cpp(157): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+e:\paint-for-kids\gui\output.cpp(158): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
   PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

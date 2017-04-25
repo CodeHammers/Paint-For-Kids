@@ -98,3 +98,8 @@ bool CCircle::ValidToDraw(Point C, int R)
 	return (InDrawingArea({ C.x + R,C.y }) && InDrawingArea({ C.x - R,C.y }) && 
 		   InDrawingArea({ C.x,C.y + R }) && InDrawingArea({ C.x,C.y - R }));
 }
+
+void CCircle::TransferFigure(Point To)
+{
+	;
+}
