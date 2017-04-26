@@ -49,7 +49,7 @@ bool SelectAction::ReadActionParameters()
 		
 		/*[1] the user clicked at an empty spot*/
 		if (ptr == NULL) {
-			Unselect();
+			//Unselect();
 			pOut->ClearStatusBar();
 			return false;
 		}

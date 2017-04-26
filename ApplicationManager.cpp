@@ -412,7 +412,7 @@ int ApplicationManager::GetClipboardSize()
 
 void ApplicationManager::SaveAll(ofstream &OutFile)
 {
-	OutFile << FigCount << endl;
+	OutFile << FigList.size() << endl;
 	for (int i = 0; i < FigList.size(); i++)
 		FigList[i]->Save(OutFile);
 }
@@ -420,6 +420,7 @@ void ApplicationManager::SaveAll(ofstream &OutFile)
 //Return a pointer to the input
 Input *ApplicationManager::GetInput() const
 {	return pIn; }
+
 //Return a pointer to the output
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
