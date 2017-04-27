@@ -35,5 +35,6 @@ public:
 	//A function to decide whether a line is valid to draw or not
 	static bool ValidToDraw(Point P1, Point P2);
 
-	virtual void TransferFigure(Point To);
+	virtual Point GetTopCorner();
+	virtual bool TransferFigure(Point To, bool Check = false);
 };

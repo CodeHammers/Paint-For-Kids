@@ -43,13 +43,13 @@ public:
 
 	virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
 	virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
-
+	virtual Point GetTopCorner() = 0;
+	virtual bool TransferFigure(Point To, bool Check = false) = 0;
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 	
 	static bool InDrawingArea(Point P);
 	GfxInfo GetGfxInfo();
 	int GetID();
-	virtual void TransferFigure(Point To) = 0;
 };
 
 #endif

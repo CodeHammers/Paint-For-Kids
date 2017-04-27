@@ -367,14 +367,32 @@ void ApplicationManager::AddPastedFigures(Point P)
 			Clipboard.push_back(ptr);
 		}
 	}
-
+	bool found = true;
+	for (int i = 0; i < Clipboard.size(); ++i)
+		if (!Clipboard[i]->TransferFigure(P, true)) {
+			found = false;	break;
+		}
 	for (int i = 0; i < Clipboard.size(); i++) {
-		Clipboard[i]->TransferFigure(P);
-		AddFigure(Clipboard[i]);
-		ClipboardMode++;
+		if (found) {
+			Clipboard[i]->TransferFigure(P);
+			AddFigure(Clipboard[i]);
+			ClipboardMode++;
+		}
+		else {
+			pOut->PrintMessage("Paste: Can't paste all/some figures taking reference to the Clicker point");
+			break;
+		}
 	}
 }
 
+Point ApplicationManager::GetTheTopFigure()
+{
+	Point P = { 2000,2000 };
+	for (int i = 0; i < Clipboard.size(); ++i)
+		if (Clipboard[i]->GetTopCorner().x <= P.x && Clipboard[i]->GetTopCorner().y <= P.y)
+			P = Clipboard[i]->GetTopCorner();
+	return P;
+}
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
 {

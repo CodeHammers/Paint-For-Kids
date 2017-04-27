@@ -102,7 +102,18 @@ bool CCircle::ValidToDraw(Point C, int R)
 		   InDrawingArea({ C.x,C.y + R }) && InDrawingArea({ C.x,C.y - R }));
 }
 
-void CCircle::TransferFigure(Point To)
+Point CCircle::GetTopCorner()
 {
-	;
+	return Center;
+}
+
+bool CCircle::TransferFigure(Point To, bool Check)
+{
+	if (!Check) {
+		Center.x += To.x; Center.y += To.y;
+		return true;
+	}
+	Point V = Center;
+	V.x += To.x; V.y += To.y;
+	return ValidToDraw(V, Radius);
 }

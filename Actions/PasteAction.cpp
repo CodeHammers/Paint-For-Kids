@@ -45,7 +45,9 @@ void PasteAction::Execute()
 	Output* pOut = pManager->GetOutput();
 
 	if (ReadActionParameters()) {
-		pManager->AddPastedFigures(P);
+		Point ORIGIN = pManager->GetTheTopFigure();
+		Point Transfer = { P.x - ORIGIN.x,P.y - ORIGIN.y };
+		pManager->AddPastedFigures(Transfer);
 	}
 	else
 		return;

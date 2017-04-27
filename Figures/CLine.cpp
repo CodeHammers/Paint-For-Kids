@@ -117,7 +117,22 @@ bool CLine::ValidToDraw(Point P1, Point P2)
 	return InDrawingArea(P1) && InDrawingArea(P2);
 }
 
-void CLine::TransferFigure(Point To)
+Point CLine::GetTopCorner()
 {
-	;
+	if (EndPoint1.x <= EndPoint2.x&&EndPoint1.y <= EndPoint2.y)
+		return EndPoint1;
+	return EndPoint2;
+}
+
+bool CLine::TransferFigure(Point To, bool Check)
+{
+	if (!Check) {
+		EndPoint1.x += To.x;	EndPoint1.y += To.y;
+		EndPoint2.x += To.x;    EndPoint2.y += To.y;
+		return true;
+	}
+	Point V1 = EndPoint1, V2 = EndPoint2;
+	V1.x += To.x;   V1.y += To.y;
+	V2.x += To.x;	V2.y += To.y;
+	return ValidToDraw(V1, V2);
 }

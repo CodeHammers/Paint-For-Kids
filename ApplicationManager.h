@@ -62,6 +62,7 @@ public:
 	void CutToClipboard(bool unselect);
 	void CopyToClipboard();
 	void AddPastedFigures(Point P);
+	Point GetTheTopFigure();
 };
 
 #endif

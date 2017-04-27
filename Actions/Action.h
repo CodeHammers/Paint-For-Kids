@@ -29,7 +29,7 @@ public:
 	//virtual void Redo()=0;
 
 	bool Abort(Point P) {
-		return (P.x >= 1385 && P.x <= 1500 && P.y >= 0 && P.y <= 50);
+		return (P.x >= 1437 && P.x <= 1500 && P.y >= 13*50 && P.y <= 800-80-25);
 	}
 	
 };

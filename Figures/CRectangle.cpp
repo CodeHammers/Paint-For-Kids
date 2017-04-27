@@ -130,7 +130,21 @@ bool CRectangle::ValidToDraw(Point P1, Point P2)
 	return InDrawingArea(P1) && InDrawingArea(P2);
 }
 
-void CRectangle::TransferFigure(Point To)
+Point CRectangle::GetTopCorner()
 {
-	;
+	if (Corner1.x <= Corner2.x&&Corner1.y <= Corner2.y)
+		return Corner1;
+	return Corner2;
+}
+bool CRectangle::TransferFigure(Point To, bool Check)
+{
+	if (!Check) {
+		Corner1.x += To.x;	Corner1.y += To.y;
+		Corner2.x += To.x;  Corner2.y += To.y;
+		return true;
+	}
+	Point V1 = Corner1, V2 = Corner2;
+	V1.x += To.x;   V1.y += To.y;
+	V2.x += To.x;	V2.y += To.y;
+	return ValidToDraw(V1, V2);
 }

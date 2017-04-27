@@ -122,15 +122,15 @@ void Output::CreateDrawToolBarRight(bool collapse) const
 
 	/*Adding two parallel icons for zooming in and out*/;
 	string zoomControls[CounterZoom];
-	zoomControls[ITM_ZOOM_IN] = "images\\MenuItems\\ICONS\\TOOLS\\ZOOMIN.jpg";
-	zoomControls[ITM_ZOOM_OUT] = "images\\MenuItems\\ICONS\\TOOLS\\ZOOMOUT.jpg";
-	pWind->DrawImage(zoomControls[ITM_ZOOM_IN], 1385, 13 * UI.MenuItemWidthRight, UI.MenuItemWidthRight, UI.MenuItemWidthRight);
-	pWind->DrawImage(zoomControls[ITM_ZOOM_OUT], 1435, 13 * UI.MenuItemWidthRight, UI.MenuItemWidthRight, UI.MenuItemWidthRight);
+	zoomControls[ITM_ZOOM_IN] = "images\\MenuItems\\ICONS\\TOOLS\\ZOOM_IN.jpg";
+	zoomControls[ITM_ZOOM_OUT] = "images\\MenuItems\\ICONS\\TOOLS\\ZOOM_OUT.jpg";
+	pWind->DrawImage(zoomControls[ITM_ZOOM_IN], 1435, 13 * UI.MenuItemWidthRight+45, 25, 25);
+	pWind->DrawImage(zoomControls[ITM_ZOOM_OUT], 1460, 13 * UI.MenuItemWidthRight+45, 25, 25);
 
 
 	/*Loading the icons for the left toolbar.*/
 	string MenuItemImages[DRAW_ITM_COUNT_LEFT];
-	MenuItemImages[ITM_COLLAPSERIGHT] = "images\\MenuItems\\ICONS\\TOOLS\\COLLAPSE.jpg";
+	MenuItemImages[ITM_COLLAPSERIGHT] = "images\\MenuItems\\ICONS\\TOOLS\\ABORT.jpg";
 	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\ICONS\\TOOLS\\LOAD.jpg";
 	MenuItemImages[ITM_MOVE] = "images\\MenuItems\\ICONS\\TOOLS\\MOVE.jpg";
 	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\ICONS\\TOOLS\\SELECT.jpg";
@@ -161,8 +161,8 @@ void Output::CreateDrawToolBarRight(bool collapse) const
 			}
 		}
 	}
-	pWind->DrawImage(MenuItemImages[ITM_COLLAPSERIGHT], 1385, 0, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
-	pWind->DrawImage(MenuItemImages[ITM_EXIT], 1435, 0, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+	pWind->DrawImage(MenuItemImages[ITM_COLLAPSERIGHT], 1437, 13 * UI.MenuItemWidthLeft, 45, 45);
+	pWind->DrawImage(MenuItemImages[ITM_EXIT], 1437, 0, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
 }
 
 

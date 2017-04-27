@@ -38,18 +38,16 @@ ActionType Input::GetUserAction() const
 	pWind->WaitMouseClick(x, y);
 
 
-	if (x >= startingXforLeftMenu2ndCol && x <= ScreenEndX && y >= 0 && y <= leftMenuItemHeight) {
-		if (x < startingXforLeftMenu1stCol)
-			return ITM_COLLAPSERIGHT_Clicked;
+	if (x >= 1435 && x <= ScreenEndX && y >= 0 && y <= leftMenuItemHeight)
 		return EXIT;
-	}
-	else if (x >= startingXforLeftMenu2ndCol && x <= ScreenEndX	&& y >= 13 * leftMenuItemHeight && y <= UI.height - UI.StatusBarHeight) {
-		if (x < startingXforLeftMenu1stCol)
-			return ITM_ZOOM_IN_Clicked;
-		return ITM_ZOOM_OUT_Clicked;
+
+	else if (x >= 1435 && x <= ScreenEndX	&& y >= 13 * leftMenuItemHeight+45 && y <= UI.height - UI.StatusBarHeight) {
+		if (x > 1460)
+			return ITM_ZOOM_OUT_Clicked;
+		return ITM_ZOOM_IN_Clicked;
 	}
 
-	else if (x >= startingXforLeftMenu1stCol && x <= ScreenEndX	&& y > leftMenuItemHeight && y <= ScreenEndY) {
+	else if (x >= startingXforLeftMenu1stCol && x <= ScreenEndX	&& y > leftMenuItemHeight && y <= ScreenEndY - UI.StatusBarHeight - 25 - 45) {
 		int ClickedItemOrder = (y / UI.MenuItemWidthLeft);
 		switch (ClickedItemOrder) {
 		case    ITM_RESIZE:				return ITM_RESIZE_Clicked;
@@ -64,10 +62,11 @@ ActionType Input::GetUserAction() const
 		case	ITM_LOAD:				return ITM_LOAD_Clicked;
 		case	ITM_SAVE:				return ITM_SAVE_Clicked;
 		case	ITM_SAVEAS:				return ITM_SAVEAS_Clicked;
-		case	ITM_COLLAPSERIGHT:		return ITM_COLLAPSERIGHT_Clicked;
 		default: return EMPTY;
 		}
 	}
+	else if (x >= 1437 && x <= ScreenEndX	&& y > 13 * UI.MenuItemWidthLeft && y <= ScreenEndY - UI.StatusBarHeight - 25)
+		return ITM_COLLAPSERIGHT_Clicked;
 	else if (y > 720)
 		return STATUS;
 

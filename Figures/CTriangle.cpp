@@ -127,7 +127,26 @@ bool CTriangle::ValidToDraw(Point P1, Point P2, Point P3)
 	return InDrawingArea(P1) && InDrawingArea(P2) && InDrawingArea(P3);
 }
 
-void CTriangle::TransferFigure(Point To)
+
+Point CTriangle::GetTopCorner()
 {
-	;
+	if (Vertex1.x <= Vertex2.x && Vertex1.x <= Vertex3.x && Vertex1.y <= Vertex2.y && Vertex1.y <= Vertex3.y)
+		return Vertex1;
+	else if (Vertex2.x <= Vertex1.x&&Vertex2.x <= Vertex3.x&&Vertex2.y <= Vertex1.y&&Vertex2.y <= Vertex3.x)
+		return Vertex2;
+	return Vertex3;
+}
+bool CTriangle::TransferFigure(Point To, bool Check)
+{
+	if (!Check) {
+		Vertex1.x += To.x;  Vertex1.y += To.y;
+		Vertex2.x += To.x;	Vertex2.y += To.y;
+		Vertex3.x += To.x;	Vertex3.y += To.y;
+		return true;
+	}
+	Point V1 = Vertex1, V2 = Vertex2, V3 = Vertex3;
+	V1.x += To.x;   V1.y += To.y;
+	V2.x += To.x;	V2.y += To.y;
+	V3.x += To.x;	V3.y += To.y;
+	return ValidToDraw(V1, V2, V3);
 }

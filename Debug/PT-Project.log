@@ -1,15 +1,24 @@
-﻿  ApplicationManager.cpp
-c:\paint-for-kids\applicationmanager.cpp(42): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(313): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(322): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(333): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(346): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(361): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(365): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(371): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(407): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(419): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(433): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(448): warning C4018: '<': signed/unsigned mismatch
-  PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
+﻿  AddCircleAction.cpp
+  Generating Code...
+  Compiling...
+  SelectAction.cpp
+  PasteAction.cpp
+  AddTriangleAction.cpp
+  AddRectAction.cpp
+  AddLineAction.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  ApplicationManager.cpp
+  ZoomAction.cpp
+  SaveAction.cpp
+  LoadAction.cpp
+  DeleteAction.cpp
+  CutAction.cpp
+  CopyAction.cpp
+  ChangeFillColorAction.cpp
+  ChangeDrawColorAction.cpp
+  ChangeBorderWidthAction.cpp
+  ChangeBckgrndColor.cpp
+  PT-Project.vcxproj -> C:\Users\Marshal-Moamen\Documents\GitHub\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)
