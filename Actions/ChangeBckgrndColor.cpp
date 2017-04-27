@@ -61,6 +61,7 @@ ChangeBckgrndColor::ChangeBckgrndColor(ApplicationManager* appManager,ActionType
 
 void ChangeBckgrndColor::Execute()
 {
+	
 	appManager->GetOutput()->ChangeBackgroundColor(BackgroundColor);
 
 }

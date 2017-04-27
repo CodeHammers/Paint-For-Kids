@@ -11,7 +11,7 @@ Output::Output()
 	UI.height = 800; //Setting the height of the window.
 	UI.wx = 5;  //Setting the starting position of the window.
 	UI.wy = 5;   //Setting the ending position on the window.
-
+	UI.Ratio = 1;
 	/*Setting the dimensions of the toolbars right,up,left*/
 	UI.StatusBarHeight = 80;      //Settting the height of the status bar.
 	UI.MenuItemWidthLeft = 50;    //Setting the width of icons in the left menu.
@@ -41,7 +41,9 @@ Output::Output()
 	/*Drawing the status bar in the application window*/
 	CreateStatusBar();
 }
-
+void Output::ChangeZoomLevel(double z) {
+	UI.Ratio *= z;
+}
 
 void Output::EditWindowSettings(color drawcolor, color fillcolor, color backgroundcolor)
 {
@@ -520,9 +522,28 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	}
 	else
 		style = FRAME;
+	
+	int Dist = abs(P1.y -P2.y);
+	Point P1s = P1; Point P2s = P2;
+	int increment = Dist * UI.Ratio -Dist;
+	if (P1.y > P2.y) {
+		P1.y += increment / 2; P2.y -= increment / 2;
+	}
+	else {
+		P2.y += increment / 2; P1.y -= increment / 2;
+	}
+	Dist = abs(P1.x - P2.x);
+	increment = Dist * UI.Ratio - Dist;
+	if (P1.x > P2.x) {
+		P1.x += increment / 2; P2.x -= increment / 2;
 
+	}
+	else {
+		P2.x += increment / 2; P1.x -= increment / 2;
+	}
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
+	P1 = P1s; P2 = P2s;
 }
 
 void Output::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected) const
@@ -534,8 +555,29 @@ void Output::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected) co
 		DrawingClr = LineGfxInfo.DrawClr;
 
 	pWind->SetPen(DrawingClr, LineGfxInfo.BorderWdth);	//Set Drawing color & width
+	Point P1s = P1; Point P2s = P2;
+
+	int Dist = abs(P1.y - P2.y);
+	int increment = Dist * UI.Ratio - Dist;
+	if (P1.y > P2.y) {
+		P1.y += increment / 2; P2.y -= increment / 2;
+	}
+	else {
+		P2.y += increment / 2; P1.y -= increment / 2;
+	}
+	Dist = abs(P1.x - P2.x);
+	increment = Dist * UI.Ratio - Dist;
+	if (P1.x > P2.x) {
+		P1.x += increment / 2; P2.x -= increment / 2;
+
+	}
+	else {
+		P2.x += increment / 2; P1.x -= increment / 2;
+	}
 
 	pWind->DrawLine(P1.x, P1.y, P2.x, P2.y, FRAME);
+	P1 = P1s; P2 = P2s;
+
 }
 
 void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriangleGfxInfo, bool selected) const
@@ -579,7 +621,7 @@ void Output::DrawCircle(Point center, int radius, GfxInfo CircleGfxInfo, bool se
 	else
 		style = FRAME;
 
-	pWind->DrawCircle(center.x, center.y, radius, style);
+	pWind->DrawCircle(center.x, center.y, radius*UI.Ratio, style);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////

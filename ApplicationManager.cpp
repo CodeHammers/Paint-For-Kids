@@ -14,7 +14,7 @@
 #include "Actions\CopyAction.h"
 #include "Actions\CutAction.h"
 #include "Actions\PasteAction.h"
-
+#include "Actions\ZoomAction.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -201,6 +201,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	switch (ActType)
 	{
+		case ITM_ZOOM_IN_Clicked:
+			pAct = new ZoomAction(this, ActType);
+			break;
+		case ITM_ZOOM_OUT_Clicked:
+			pAct = new ZoomAction(this, ActType);
+			break;
 		// Border Action Start
 		case ITM_BORDERWIDTH1_Clicked :
 			pAct = new ChangeBorderWidthAction(this,ActType);
@@ -387,6 +393,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
+	GetOutput()->ClearDrawArea();
 	for(int i=0; i<FigList.size(); i++)
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 }

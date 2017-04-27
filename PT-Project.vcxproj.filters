@@ -197,6 +197,9 @@
     <ClCompile Include="Actions\PasteAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\ZoomAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -333,6 +336,9 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="Actions\PasteAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ZoomAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

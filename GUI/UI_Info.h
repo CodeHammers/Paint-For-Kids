@@ -172,7 +172,7 @@ struct UI_Info	//User Interface Info.
 	color BkGrndColor;		//Background color
 	color StatusBarColor;	//Status bar color
 	int PenWidth;			//width of the pen that draws shapes
-
+	double Ratio;
 							/// Add more members if needed
 
 }UI;	//create a global object UI

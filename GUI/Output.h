@@ -8,6 +8,7 @@ private:
 	window* pWind;	//Pointer to the Graphics Window
 public:
 	Output();
+	void ChangeZoomLevel(double z);
 	void EditWindowSettings(color drawcolor, color fillcolor, color backgroundcolor);
 	void ChangeBackgroundColor(color BackgroundColor);
 	void ChangeDrawColor(color DrawColor);
