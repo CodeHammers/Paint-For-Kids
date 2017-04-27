@@ -289,6 +289,8 @@ ActionType Input::GetUserAction() const
 				return MODE_PLAY_SUB_MENU1_Clicked;
 			return MODE_PLAY_SUB_MENU2_Clicked;
 		}
+		else if (x >= 0 && x <= 50 && y >= 0 && y <= 50)
+			return TO_DRAW;
 	}
 	else if (UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{

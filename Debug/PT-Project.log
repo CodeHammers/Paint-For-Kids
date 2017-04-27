@@ -1,17 +1,58 @@
-﻿  ApplicationManager.cpp
-c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(42): warning C4018: '<': signed/unsigned mismatch
-c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(345): warning C4018: '<': signed/unsigned mismatch
-c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(354): warning C4018: '<': signed/unsigned mismatch
-c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(365): warning C4018: '<': signed/unsigned mismatch
-c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(378): warning C4018: '<': signed/unsigned mismatch
-c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(393): warning C4018: '<': signed/unsigned mismatch
-c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(397): warning C4018: '<': signed/unsigned mismatch
-c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(403): warning C4018: '<': signed/unsigned mismatch
-c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(407): warning C4018: '<': signed/unsigned mismatch
-c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(423): warning C4018: '<': signed/unsigned mismatch
-c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(457): warning C4018: '<': signed/unsigned mismatch
-c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(469): warning C4018: '<': signed/unsigned mismatch
-c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(483): warning C4018: '<': signed/unsigned mismatch
-c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(498): warning C4018: '<': signed/unsigned mismatch
+﻿  main.cpp
+  Output.cpp
+c:\users\marshal-moamen\documents\github\paint-for-kids\gui\output.cpp(609): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\marshal-moamen\documents\github\paint-for-kids\gui\output.cpp(617): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\marshal-moamen\documents\github\paint-for-kids\gui\output.cpp(642): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\marshal-moamen\documents\github\paint-for-kids\gui\output.cpp(650): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\marshal-moamen\documents\github\paint-for-kids\gui\output.cpp(705): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+  Input.cpp
+  CTriangle.cpp
+c:\users\marshal-moamen\documents\github\paint-for-kids\figures\ctriangle.cpp(19): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  CRectangle.cpp
+c:\users\marshal-moamen\documents\github\paint-for-kids\figures\crectangle.cpp(110): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\marshal-moamen\documents\github\paint-for-kids\figures\crectangle.cpp(118): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  CLine.cpp
+c:\users\marshal-moamen\documents\github\paint-for-kids\figures\cline.cpp(12): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\marshal-moamen\documents\github\paint-for-kids\figures\cline.cpp(20): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  CFigure.cpp
+  CCircle.cpp
+c:\users\marshal-moamen\documents\github\paint-for-kids\figures\ccircle.cpp(18): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\marshal-moamen\documents\github\paint-for-kids\figures\ccircle.cpp(37): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  ApplicationManager.cpp
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(44): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(348): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(357): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(368): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(381): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(396): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(400): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(406): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(410): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(426): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(461): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(473): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(487): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(502): warning C4018: '<': signed/unsigned mismatch
+  ZoomAction.cpp
+  UndoAction.cpp
+  SelectAction.cpp
+  SaveAction.cpp
+  PasteAction.cpp
+  LoadAction.cpp
+  DeleteAction.cpp
+  CutAction.cpp
+  CopyAction.cpp
+  ChangeFillColorAction.cpp
+  ChangeDrawColorAction.cpp
+  Generating Code...
+c:\users\marshal-moamen\documents\github\paint-for-kids\actions\copyaction.cpp(53): warning C4715: 'CopyAction::CopyFigure': not all control paths return a value
+  Compiling...
+  ChangeBorderWidthAction.cpp
+  ChangeBckgrndColor.cpp
+  AddTriangleAction.cpp
+  AddRectAction.cpp
+  AddLineAction.cpp
+  AddCircleAction.cpp
+  Generating Code...
   PT-Project.vcxproj -> C:\Users\Marshal-Moamen\Documents\GitHub\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

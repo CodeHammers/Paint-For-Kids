@@ -11,5 +11,4 @@ public:
 
 	//Execute action
 	virtual void Execute();
-
 };

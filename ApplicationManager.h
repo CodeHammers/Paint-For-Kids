@@ -27,6 +27,7 @@ private:
 	Input *pIn;
 	Output *pOut;
 	vector<CFigure*>Clipboard;
+	vector<CFigure**>List;
 	int ClipboardCount;
 	bool IsFillMenu(ActionType ActType) const;
 	bool IsBackgroundMenu(ActionType ActType) const;

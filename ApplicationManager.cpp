@@ -15,6 +15,8 @@
 #include "Actions\CutAction.h"
 #include "Actions\PasteAction.h"
 #include "Actions\ZoomAction.h"
+
+
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -187,15 +189,7 @@ ActionType ApplicationManager::GetUserAction() const
 	
 	case MODE_PLAY_SUB_MENU2_Clicked:
 		pOut->CreatePlayToolBar(1, false);
-		ret = pIn->GetUserAction();
-		pOut->CreatePlayToolBar(1, true);
-		return ret;
-
-
-	case MODE_PLAY_SUB_MENU1_Clicked:
-		pOut->CreatePlayToolBar(1, false);
-		break;
-
+		return ITM_PickAndHide_Clicked;
 	}
 
 	return Type;  //if not a sub menu action, return it directly.
@@ -292,11 +286,16 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new PasteAction(this);
 			break;
 
+		case TO_DRAW:
+		/*	if (UI.InterfaceMode == MODE_PLAY)
+				pOut->CreatePlayToolBar(0, true);
+			pOut->CreateDrawToolBarUp(0, false, false);
+			*/
 		case TO_PLAY:
 			pOut->CreatePlayToolBar(0,false);
 			break;
 
-		case ITM_BY_TYPE_Clicked:
+	/*	case ITM_BY_TYPE_Clicked:
 			pOut->PrintMessage("Action Action :: ITM BY TYPE CLICKED");
 			break;
 		
@@ -309,7 +308,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ITM_BY_TYPE_AND_FILLCOL_Clicked:
 			pOut->PrintMessage("Action Action :: ITM BY TYPE AND COLOR CLICKED");
 			break;
-
+	*/
+		case ITM_PickAndHide_Clicked:
+			pOut->CreatePlayToolBar(1, false);
+			pOut->PrintMessage("You chose the Pick And Hide Game");
+			break;
 		case STATUS:	//a click on the status bar ==> no action
 			return;
 	}
@@ -425,6 +428,7 @@ Point ApplicationManager::GetTheTopFigure()
 			P = Clipboard[i]->GetTopCorner();
 	return P;
 }
+
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
 {

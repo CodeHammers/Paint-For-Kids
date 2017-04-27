@@ -102,10 +102,6 @@ enum ActionType //The actions supported (you can add more if needed)
 
 	// GAME MODE ITEMS \\
 
-	ITM_SCRAMBLE_Clicked,
-	ITM_FIND_Clicked,
-	ITEM_TODRAW_Clicked,
-
 	ITM_SCRAMBLEAndFind_Clicked,
 	ITM_PickAndHide_Clicked,
 	CHNG_DRAW_CLR,	//Change the drawing color
