@@ -15,7 +15,7 @@
 #include "Actions\CutAction.h"
 #include "Actions\PasteAction.h"
 #include "Actions\ZoomAction.h"
-
+#include "Actions\PlayAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -187,9 +187,6 @@ ActionType ApplicationManager::GetUserAction() const
 		pOut->CreateDrawToolBarUp(6, true, false);  //hide sub menu
 		return ret;
 	
-	case MODE_PLAY_SUB_MENU2_Clicked:
-		pOut->CreatePlayToolBar(1, false);
-		return ITM_PickAndHide_Clicked;
 	}
 
 	return Type;  //if not a sub menu action, return it directly.
@@ -210,11 +207,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if (IsFillMenu(ActType)) {
 		pAct = new ChangeFillColor(this,ActType);
 	}
-	/*	ITM_BORDERWIDTH1_Clicked,
-	ITM_BORDERWIDTH2_Clicked,
-	ITM_BORDERWIDTH3_Clicked,
-	ITM_BORDERWIDTH4_Clicked,*/
-
+	
 	switch (ActType)
 	{
 		case ITM_ZOOM_IN_Clicked:
@@ -287,32 +280,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case TO_DRAW:
-		/*	if (UI.InterfaceMode == MODE_PLAY)
-				pOut->CreatePlayToolBar(0, true);
+			pOut->CreatePlayToolBar(0, true,false);
 			pOut->CreateDrawToolBarUp(0, false, false);
-			*/
-		case TO_PLAY:
-			pOut->CreatePlayToolBar(0,false);
+			pOut->CreateDrawToolBarRight(false, false);
 			break;
 
-	/*	case ITM_BY_TYPE_Clicked:
-			pOut->PrintMessage("Action Action :: ITM BY TYPE CLICKED");
+		case TO_PLAY:
+			pAct = new PlayAction(this);
 			break;
-		
-		case ITM_BY_AREA_Clicked:
-			pOut->PrintMessage("Action Action :: ITM BY AREA CLICKED");
-			break;
-		case ITM_BY_FILLCOL_Clicked:
-			pOut->PrintMessage("Action Action :: ITM BY TYPE FILL COLOR CLICKED");
-			break;
-		case ITM_BY_TYPE_AND_FILLCOL_Clicked:
-			pOut->PrintMessage("Action Action :: ITM BY TYPE AND COLOR CLICKED");
-			break;
-	*/
-		case ITM_PickAndHide_Clicked:
-			pOut->CreatePlayToolBar(1, false);
-			pOut->PrintMessage("You chose the Pick And Hide Game");
-			break;
+
 		case STATUS:	//a click on the status bar ==> no action
 			return;
 	}

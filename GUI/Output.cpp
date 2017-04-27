@@ -477,11 +477,13 @@ void Output::CreateDrawToolBarUp(int action, bool collapse,bool show) const
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-void Output::CreatePlayToolBar(int action, bool collapse) const
+void Output::CreatePlayToolBar(int action, bool collapse, bool stat) const
 {
 	if (action == 0) {
-		CreateDrawToolBarUp(0, true, false);
-		CreateDrawToolBarRight(true, false);
+		if (stat) {
+			CreateDrawToolBarUp(0, true, false);
+			CreateDrawToolBarRight(true, false);
+		}
 
 		string MenuItemImages[PLAY_ITM_COUNT];
 		MenuItemImages[ITM_SCRAMBLEAndFind] = "images\\MenuItems\\ICONS\\TOOLS\\SCRAMBLE.jpg";
@@ -510,7 +512,7 @@ void Output::CreatePlayToolBar(int action, bool collapse) const
 			}
 		}
 		pWind->DrawImage(MenuItemImages[2], 0, 0, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
-		CreateDrawToolBarRight(false, false);
+		//CreateDrawToolBarRight(false, false);
 		UI.InterfaceMode = MODE_PLAY;
 	}
 	else {
