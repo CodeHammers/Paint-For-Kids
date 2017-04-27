@@ -10,6 +10,8 @@ public:
 	//Constrcutor
 	CLine(Point P1, Point P2, GfxInfo FigureGfxInfo);
 
+	bool ValidAfterZoom();
+
 	//Draw function
 	virtual void Draw(Output* pOut) const;
 

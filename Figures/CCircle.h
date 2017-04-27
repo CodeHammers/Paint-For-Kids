@@ -16,6 +16,8 @@ public:
 	//Draw function
 	virtual void Draw(Output* pOut) const;
 
+	bool ValidAfterZoom();
+
 	//Save the figure parameters to the file
 	virtual void Save(ofstream &OutFile);
 

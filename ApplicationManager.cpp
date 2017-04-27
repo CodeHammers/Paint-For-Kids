@@ -37,7 +37,17 @@ void ApplicationManager::nullifyFigList() {
 	}
 	++FigCount;
 }
-
+bool ApplicationManager::CheckValidityOfZoom(double r) {
+	UI.Ratio *= r;
+	for (int i = 0; i < FigList.size(); i++) {
+		if (!FigList[i]->ValidAfterZoom()) {
+			UI.Ratio /= r;
+			return false;
+		}
+	}
+	UI.Ratio /= r;
+	return true;
+}
 bool ApplicationManager::IsFillMenu(ActionType ActType) const
 {
 	switch (ActType)

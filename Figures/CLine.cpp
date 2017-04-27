@@ -6,7 +6,27 @@ CLine::CLine(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 	EndPoint2 = P2;
 }
 
+bool CLine::ValidAfterZoom() {
+	Point P1 = EndPoint1; Point P2 = EndPoint2;
+	int Dist = abs(P1.y - P2.y);
+	int increment = Dist * UI.Ratio - Dist;
+	if (P1.y > P2.y) {
+		P1.y += increment / 2; P2.y -= increment / 2;
+	}
+	else {
+		P2.y += increment / 2; P1.y -= increment / 2;
+	}
+	Dist = abs(P1.x - P2.x);
+	increment = Dist * UI.Ratio - Dist;
+	if (P1.x > P2.x) {
+		P1.x += increment / 2; P2.x -= increment / 2;
 
+	}
+	else {
+		P2.x += increment / 2; P1.x -= increment / 2;
+	}
+	return ValidToDraw(P1, P2);
+}
 void CLine::Draw(Output* pOut) const
 {
 	pOut->DrawLine(EndPoint1, EndPoint2, FigGfxInfo, Selected);

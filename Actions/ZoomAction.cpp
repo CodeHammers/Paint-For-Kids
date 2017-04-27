@@ -18,9 +18,18 @@ ZoomAction::ZoomAction(ApplicationManager* appManager, ActionType actType) : Act
 void ZoomAction::Execute()
 {
 	if (actType == ITM_ZOOM_IN_Clicked) {
+		if (!appManager->CheckValidityOfZoom(2)) {
+			appManager->GetOutput()->PrintMessage("Woooooooow,That's is too much for me to handle ,kid");
+			return;
+		}
+
 		appManager->GetOutput()->ChangeZoomLevel(2);
 	}
 	if (actType == ITM_ZOOM_OUT_Clicked) {
+		if (!appManager->CheckValidityOfZoom(0.5)) {
+			appManager->GetOutput()->PrintMessage("Woooooooow,That's is too much for me to handle ,kid");
+			return;
+		}
 		appManager->GetOutput()->ChangeZoomLevel(0.5);
 	}
 }

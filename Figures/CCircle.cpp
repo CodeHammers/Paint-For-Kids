@@ -14,6 +14,9 @@ void CCircle::Draw(Output* pOut) const
 	pOut->DrawCircle(Center, Radius, FigGfxInfo);
 }
 
+bool CCircle::ValidAfterZoom() {
+	return ValidToDraw(Center, Radius*UI.Ratio);
+}
 void CCircle::Save(ofstream & OutFile)
 {
 	OutFile << ID << "\t";
