@@ -42,6 +42,10 @@ enum ActionType //The actions supported (you can add more if needed)
 	MODE_DRAW_SUB_MENU5_Clicked,
 	MODE_DRAW_SUB_MENU6_Clicked,
 
+	MODE_PLAY_SUB_MENU1_Clicked,
+	MODE_PLAY_SUB_MENU2_Clicked,
+
+
 
 
 	ITM_BCKG_WHITE_Clicked,
@@ -69,6 +73,18 @@ enum ActionType //The actions supported (you can add more if needed)
 	ITM_RESIZE400_Clicked,
 
 
+
+	// Pick And Hide //
+	ITM_BY_TYPE_Clicked,
+	ITM_BY_FILLCOL_Clicked,
+	ITM_BY_TYPE_AND_FILLCOL_Clicked,
+	ITM_BY_AREA_Clicked,
+
+
+
+
+
+
 	// RIGHT COLUMN CLICKED //
 	ITM_RESIZE_Clicked,
 	ITM_MOVE_Clicked,
@@ -90,8 +106,8 @@ enum ActionType //The actions supported (you can add more if needed)
 	ITM_FIND_Clicked,
 	ITEM_TODRAW_Clicked,
 
-
-
+	ITM_SCRAMBLEAndFind_Clicked,
+	ITM_PickAndHide_Clicked,
 	CHNG_DRAW_CLR,	//Change the drawing color
 	CHNG_FILL_CLR,	//Change the filling color
 	CHNG_BK_CLR,	//Change background color

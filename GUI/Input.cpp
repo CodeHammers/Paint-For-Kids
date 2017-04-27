@@ -263,7 +263,33 @@ ActionType Input::GetUserAction() const
 		else
 			return DRAWING_AREA;
 	}
+	else if (UI.InterfaceMode == MODE_PLAY_SUB_MENU2) {
+		if (x >= 0 && x <= 50 && y >= 200 && y <= 400){
+			int ClickedItemOrder = ((y - 200) / UI.MenuItemWidthLeft);
+			switch (ClickedItemOrder)
+			{
+			case ITM_BY_TYPE:				 return ITM_BY_TYPE_Clicked;
+			case ITM_BY_FILLCOL:			 return ITM_BY_FILLCOL_Clicked;
+			case ITM_BY_TYPE_AND_FILLCOL:	 return ITM_BY_TYPE_AND_FILLCOL_Clicked;
+			case ITM_BY_AREA:				 return ITM_BY_AREA_Clicked;
 
+			default: return EMPTY;
+			}
+		}
+		else if (x >= 13 * 50 && x <= 15 * 50 && y >= 0 && y <= 50) {
+			if (x < 14 * 50)
+				return MODE_PLAY_SUB_MENU1_Clicked;
+			return MODE_PLAY_SUB_MENU2_Clicked;
+		}
+	}
+
+	else if (UI.InterfaceMode == MODE_PLAY) {
+		if (x >= 13 * 50 && x <= 15 * 50 && y >= 0 && y <= 50) {
+			if (x < 14 * 50)
+				return MODE_PLAY_SUB_MENU1_Clicked;
+			return MODE_PLAY_SUB_MENU2_Clicked;
+		}
+	}
 	else if (UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
 		// Edited .. UI Tool Bar Width =60*2 ;; 

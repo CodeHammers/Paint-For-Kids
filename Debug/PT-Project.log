@@ -1,24 +1,17 @@
-﻿  Output.cpp
-e:\paint-for-kids\gui\output.cpp(581): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-e:\paint-for-kids\gui\output.cpp(589): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-e:\paint-for-kids\gui\output.cpp(614): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-e:\paint-for-kids\gui\output.cpp(622): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-e:\paint-for-kids\gui\output.cpp(677): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-  ApplicationManager.cpp
-e:\paint-for-kids\applicationmanager.cpp(42): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(319): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(328): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(339): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(352): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(367): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(371): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(377): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(381): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(397): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(431): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(443): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(457): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(472): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
+﻿  ApplicationManager.cpp
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(42): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(345): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(354): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(365): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(378): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(393): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(397): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(403): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(407): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(423): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(457): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(469): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(483): warning C4018: '<': signed/unsigned mismatch
+c:\users\marshal-moamen\documents\github\paint-for-kids\applicationmanager.cpp(498): warning C4018: '<': signed/unsigned mismatch
+  PT-Project.vcxproj -> C:\Users\Marshal-Moamen\Documents\GitHub\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

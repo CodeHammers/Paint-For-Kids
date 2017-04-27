@@ -16,6 +16,8 @@ enum GUI_MODE	//Graphical user interface mode
 	MODE_DRAW_SUB_MENU4,  //background colors collection
 	MODE_DRAW_SUB_MENU5,  //border width options
 	MODE_DRAW_SUB_MENU6,  //resize options
+	MODE_PLAY_SUB_MENU1,  // For ScrambleAndFind
+	MODE_PLAY_SUB_MENU2,  // For PickAndHide
 	MODE_PLAY	//Playing mode
 };
 enum DrawMenuItemLeft //The items of the Draw menu (you should add more items)
@@ -141,13 +143,21 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 	//If you want to change the menu items order, change the order here
 
 	///TODO: Add more items names here
-	ITM_SCRAMBLE,
-	ITM_FIND,
+	ITM_SCRAMBLEAndFind,
+	ITM_PickAndHide,
 	ITEM_TODRAW,
 	PLAY_ITM_COUNT
 	//no. of menu items ==> This should be the last line in this enum
 };
 
+enum PickAndHide
+{
+	ITM_BY_TYPE,
+	ITM_BY_FILLCOL,
+	ITM_BY_TYPE_AND_FILLCOL,
+	ITM_BY_AREA,
+	Pick_And_Hide_Menu_Count
+};
 
 __declspec(selectany) //This line to prevent "redefinition error"
 

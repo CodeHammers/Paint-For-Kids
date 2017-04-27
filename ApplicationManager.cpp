@@ -184,6 +184,18 @@ ActionType ApplicationManager::GetUserAction() const
 		ret = pIn->GetUserAction();  //get action(resize option)
 		pOut->CreateDrawToolBarUp(6, true, false);  //hide sub menu
 		return ret;
+	
+	case MODE_PLAY_SUB_MENU2_Clicked:
+		pOut->CreatePlayToolBar(1, false);
+		ret = pIn->GetUserAction();
+		pOut->CreatePlayToolBar(1, true);
+		return ret;
+
+
+	case MODE_PLAY_SUB_MENU1_Clicked:
+		pOut->CreatePlayToolBar(1, false);
+		break;
+
 	}
 
 	return Type;  //if not a sub menu action, return it directly.
@@ -276,12 +288,26 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case ITM_PASTE_Clicked:
-			pOut->CreatePlayToolBar(0, true);
-			//pAct = new PasteAction(this);
+			//pOut->CreatePlayToolBar(0, true);
+			pAct = new PasteAction(this);
 			break;
 
 		case TO_PLAY:
 			pOut->CreatePlayToolBar(0,false);
+			break;
+
+		case ITM_BY_TYPE_Clicked:
+			pOut->PrintMessage("Action Action :: ITM BY TYPE CLICKED");
+			break;
+		
+		case ITM_BY_AREA_Clicked:
+			pOut->PrintMessage("Action Action :: ITM BY AREA CLICKED");
+			break;
+		case ITM_BY_FILLCOL_Clicked:
+			pOut->PrintMessage("Action Action :: ITM BY TYPE FILL COLOR CLICKED");
+			break;
+		case ITM_BY_TYPE_AND_FILLCOL_Clicked:
+			pOut->PrintMessage("Action Action :: ITM BY TYPE AND COLOR CLICKED");
 			break;
 
 		case STATUS:	//a click on the status bar ==> no action

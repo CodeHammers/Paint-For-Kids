@@ -192,7 +192,7 @@ void Output::CreateDrawToolBarUp(int action, bool collapse,bool show) const
 		pWind->DrawRectangle(50, 0, 1200, 50);
 		//drawing the play mode icon
 		string PlayModeIcon = "images\\MenuItems\\ICONS\\JOYSTICK.jpg";
-		pWind->DrawImage(PlayModeIcon, 0, 0, 60, UI.MenuItemHeight);
+		pWind->DrawImage(PlayModeIcon, 0, 0, 50, 50);
 
 		//Loading the icons for the main upper menu.
 		string MenuItemImages[DRAW_LEFT_MENU_ITEMS_COUNT];
@@ -479,41 +479,69 @@ void Output::CreateDrawToolBarUp(int action, bool collapse,bool show) const
 
 void Output::CreatePlayToolBar(int action, bool collapse) const
 {
-	UI.InterfaceMode = MODE_PLAY;
+	if (action == 0) {
+		CreateDrawToolBarUp(0, true, false);
+		CreateDrawToolBarRight(true, false);
 
-	CreateDrawToolBarUp(0, true,false);
-	CreateDrawToolBarRight(true,false);
+		string MenuItemImages[PLAY_ITM_COUNT];
+		MenuItemImages[ITM_SCRAMBLEAndFind] = "images\\MenuItems\\ICONS\\TOOLS\\SCRAMBLE.jpg";
+		MenuItemImages[ITM_PickAndHide] = "images\\MenuItems\\ICONS\\TOOLS\\PickAndHide.jpg";
+		MenuItemImages[ITEM_TODRAW] = "images\\MenuItems\\ICONS\\TOOLS\\TODRAW1.jpg";
 
-	string MenuItemImages[PLAY_ITM_COUNT];
-	MenuItemImages[ITM_SCRAMBLE] = "images\\MenuItems\\ICONS\\TOOLS\\SCRAMBLE.jpg";
-	MenuItemImages[ITM_FIND] = "images\\MenuItems\\ICONS\\TOOLS\\FIND.jpg";
-	MenuItemImages[ITEM_TODRAW] = "images\\MenuItems\\ICONS\\TOOLS\\TODRAW1.jpg";
+		int sign, start;
+		if (!collapse) {
+			sign = 1;
+			start = -50;
+		}
+		else {
+			sign = -1;
+			start = 0;
+		}
 
-	int sign, start;
-	if (!collapse) {
-		sign = 1;
-		start = -50;
+		for (int j = 0; j <= 50; j++) {
+			//Drawing the upper toolbar, 11 is a shifting factor to start drawing near the middle of the screen
+			for (int i = 0; i < PLAY_ITM_COUNT - 1; i++) {
+				pWind->DrawImage(MenuItemImages[i], (13 + i)*UI.MenuItemWidthUp, start + sign*j, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
+				if (collapse) {
+					pWind->SetBrush(UI.BkGrndColor);
+					pWind->SetPen(UI.BkGrndColor, 1);
+					pWind->DrawRectangle((13 + i)*UI.MenuItemWidthUp, UI.MenuItemWidthUp - j, 2 * UI.MenuItemWidthUp, 2 * UI.MenuItemWidthUp - j);
+				}
+			}
+		}
+		pWind->DrawImage(MenuItemImages[2], 0, 0, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
+		CreateDrawToolBarRight(false, false);
+		UI.InterfaceMode = MODE_PLAY;
 	}
 	else {
-		sign = -1;
-		start = 0;
-	}
+		string MenuItemImages[Pick_And_Hide_Menu_Count];
+		MenuItemImages[ITM_BY_TYPE] = "images\\MenuItems\\ICONS\\TOOLS\\ByShape.jpg";       //add the icons you created!!
+		MenuItemImages[ITM_BY_FILLCOL] = "images\\MenuItems\\ICONS\\TOOLS\\ByColor.jpg";
+		MenuItemImages[ITM_BY_TYPE_AND_FILLCOL] = "images\\MenuItems\\ICONS\\TOOLS\\ByColorShpae.jpg";
+		MenuItemImages[ITM_BY_AREA] = "images\\MenuItems\\ICONS\\TOOLS\\BySize.jpg";
 
-	for (int j = 0; j <= 50; j++) {
-		//Drawing the upper toolbar, 11 is a shifting factor to start drawing near the middle of the screen
-		for (int i = 0; i < PLAY_ITM_COUNT - 1; i++) {
-			pWind->DrawImage(MenuItemImages[i], (13 + i)*UI.MenuItemWidthUp, start + sign*j, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
+		int sign, start;
+		if (!collapse) {
+			UI.InterfaceMode = MODE_PLAY_SUB_MENU2;
+			sign = 1;
+			start = -50;
+		}
+		else {
+			UI.InterfaceMode = MODE_PLAY;
+			sign = -1;
+			start = 0;
+		}
+
+		for (int j = 0; j <= 50; ++j) {
+			for (int i = 0; i < Pick_And_Hide_Menu_Count; ++i)
+				pWind->DrawImage(MenuItemImages[i], start + sign*j, (i + 4)*UI.MenuItemWidthLeft, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
 			if (collapse) {
 				pWind->SetBrush(UI.BkGrndColor);
 				pWind->SetPen(UI.BkGrndColor, 1);
-				pWind->DrawRectangle((13 + i)*UI.MenuItemWidthUp, UI.MenuItemWidthUp - j, 2 * UI.MenuItemWidthUp, 2 * UI.MenuItemWidthUp - j);
+				pWind->DrawRectangle(UI.MenuItemWidthLeft, 4 * UI.MenuItemWidthLeft, UI.MenuItemWidthLeft - j, (FigurelistIcons_Count + 4)*UI.MenuItemWidthLeft);
 			}
 		}
 	}
-
-	pWind->DrawImage(MenuItemImages[2], 0, 0, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
-
-	CreateDrawToolBarRight(false,false);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
