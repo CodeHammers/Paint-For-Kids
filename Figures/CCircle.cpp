@@ -11,7 +11,7 @@ CCircle::CCircle(Point P1, int r,GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 
 void CCircle::Draw(Output* pOut) const
 {
-	pOut->DrawCircle(Center, Radius, FigGfxInfo);
+	pOut->DrawCircle(Center, Radius, FigGfxInfo, Selected);
 }
 
 bool CCircle::ValidAfterZoom() {

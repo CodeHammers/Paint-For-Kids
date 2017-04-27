@@ -10,7 +10,7 @@ CTriangle::CTriangle(Point V1, Point V2, Point V3, GfxInfo FigureGfxInfo) :CFigu
 
 void CTriangle::Draw(Output* pOut) const
 {
-	pOut->DrawTriangle(Vertex1, Vertex2, Vertex3, FigGfxInfo);
+	pOut->DrawTriangle(Vertex1, Vertex2, Vertex3, FigGfxInfo, Selected);
 }
 
 

@@ -15,9 +15,9 @@ public:
 	void ChangeFillColor(color FillColor);
 	void ChangeBorderWidth(int BW);
 	window* CreateWind(int, int, int, int) const; //creates the application window
-	void CreateDrawToolBarUp(int action, bool sub) const;	//creates Draw mode upper toolbar 
-	void CreateDrawToolBarRight(bool collapse) const;//creates Draw mode right toolbar 
-	void CreatePlayToolBar() const;	//creates Play mode toolbar & menu
+	void CreateDrawToolBarUp(int action, bool sub, bool show) const;	//creates Draw mode upper toolbar 
+	void CreateDrawToolBarRight(bool collapse,bool show) const;//creates Draw mode right toolbar 
+	void CreatePlayToolBar(int action, bool collapse) const;	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
 
 	Input* CreateInput() const; //creates a pointer to the Input object	

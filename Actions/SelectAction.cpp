@@ -92,11 +92,11 @@ bool SelectAction::TerminateSelection(Point P) const
 void SelectAction::Select(CFigure* ptr)
 {
 	if (!ptr->IsSelected()) {
-		ptr->ChngDrawClr(UI.HighlightColor);
+		//ptr->ChngDrawClr(UI.HighlightColor);
 		ptr->SetSelected(true);
 	}
 	else {
-		ptr->ChngDrawClr(UI.DrawColor);
+		//ptr->ChngDrawClr(UI.DrawColor);
 		ptr->SetSelected(false);
 		SelectedSoFar.erase(ptr);
 	}

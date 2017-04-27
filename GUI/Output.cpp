@@ -35,8 +35,8 @@ Output::Output()
 	pWind->ChangeTitle("Paint for Kids - Drawing Mode");  //default mode, changes to play in the play mode
 
 	/*Drawing the 2 menus for the application window*/
-	CreateDrawToolBarUp(0,false);
-	CreateDrawToolBarRight(false);
+	CreateDrawToolBarUp(0,false,true);
+	CreateDrawToolBarRight(false,true);
 
 	/*Drawing the status bar in the application window*/
 	CreateStatusBar();
@@ -58,8 +58,8 @@ void Output::EditWindowSettings(color drawcolor, color fillcolor, color backgrou
 	UI.BkGrndColor = backgroundcolor;
 	pWind->SetPen(UI.DrawColor);
 	pWind->SetBrush(UI.FillColor);
-	CreateDrawToolBarUp(0, false);
-	CreateDrawToolBarRight(false);
+	CreateDrawToolBarUp(0, false,true);
+	CreateDrawToolBarRight(false,true);
 	CreateStatusBar();
 	//pWind->DrawRectangle(0, 0, UI.width, UI.height);
 
@@ -116,7 +116,7 @@ void Output::ClearStatusBar() const
 	pWind->DrawRectangle(0, UI.height - UI.StatusBarHeight, UI.width, UI.height);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-void Output::CreateDrawToolBarRight(bool collapse) const
+void Output::CreateDrawToolBarRight(bool collapse,bool show) const
 {
 	UI.InterfaceMode = MODE_DRAW;  //Setting the current mode.
 
@@ -145,29 +145,41 @@ void Output::CreateDrawToolBarRight(bool collapse) const
 	MenuItemImages[ITM_SAVEAS] = "images\\MenuItems\\ICONS\\TOOLS\\SAVEAS.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\ICONS\\TOOLS\\EXIT.jpg";
 
-	if (!collapse) {
-		//Drawing the left toolbar, excluding the last three icons(not needed now)
-		for (int i = 1; i < DRAW_ITM_COUNT_LEFT - 2; i++)
+	pWind->DrawImage(MenuItemImages[ITM_COLLAPSERIGHT], 1437, 13 * UI.MenuItemWidthLeft, 45, 45);
+	pWind->DrawImage(MenuItemImages[ITM_EXIT], 1437, 0, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+
+	if (show) {
+		for (int i = 1; i < DRAW_ITM_COUNT_LEFT - 2; i++) {
 			pWind->DrawImage(MenuItemImages[i], 1435, i * 50, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+		}
+		return;
+	}
+
+	int sign, start;
+	if (!collapse) {
+		sign = -1;
+		start = 1500;
 	}
 	else {
-		pWind->SetBrush(UI.BkGrndColor);
-		pWind->SetPen(UI.BkGrndColor, 1);
-		for (int j = 0; j < 80; j++) {
-			//Drawing the left toolbar, excluding the last three icons(not needed now)
-			for (int i = 1; i < DRAW_ITM_COUNT_LEFT - 2; i++) {
-				pWind->DrawImage(MenuItemImages[i], 1435 + (0.7)*j, i * 50, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
-				pWind->DrawRectangle(1435, 50, 1435 + (0.7)*j, 600);
+		sign = 1;
+		start = 1435;
+	}
+
+	for (int j = 0; j <= 63; j++) {
+		for (int i = 1; i < DRAW_ITM_COUNT_LEFT - 2; i++){
+			pWind->DrawImage(MenuItemImages[i],start+sign*j, i * 50, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
+			if (collapse) {
+				pWind->SetBrush(UI.BkGrndColor);
+				pWind->SetPen(UI.BkGrndColor, 1);
+				pWind->DrawRectangle(start, 50, start + sign*j, 600);
 			}
 		}
 	}
-	pWind->DrawImage(MenuItemImages[ITM_COLLAPSERIGHT], 1437, 13 * UI.MenuItemWidthLeft, 45, 45);
-	pWind->DrawImage(MenuItemImages[ITM_EXIT], 1437, 0, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
 }
 
 
 /*This function is responsible of drawing the upper toolber and all its sub menus*/
-void Output::CreateDrawToolBarUp(int action, bool collapse) const
+void Output::CreateDrawToolBarUp(int action, bool collapse,bool show) const
 {
 	//Action tells this function what to do
 	// 0: draw normal menu, other numbers it draws the corresponding sub menus 
@@ -190,9 +202,34 @@ void Output::CreateDrawToolBarUp(int action, bool collapse) const
 		MenuItemImages[ITM_BCKGCOLOR] = "images\\MenuItems\\ICONS\\BkGROUND\\WHITE.jpg";
 		MenuItemImages[STROKWIDTH] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\GROUP.jpg";
 		
-		//Drawing the upper toolbar, 11 is a shifting factor to start drawing near the middle of the screen
-		for (int i = 0; i < DRAW_LEFT_MENU_ITEMS_COUNT; i++)
-			pWind->DrawImage(MenuItemImages[i], (11+i)*UI.MenuItemWidthUp, 0, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
+		if (show) {
+			for (int i = 0; i < DRAW_LEFT_MENU_ITEMS_COUNT; i++) {
+				pWind->DrawImage(MenuItemImages[i], (11 + i)*UI.MenuItemWidthUp, 0, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
+			}
+				return;
+		}
+
+		int sign, start;
+		if (!collapse) {
+			sign = 1;
+			start = -50;
+		}
+		else {
+			sign = -1;
+			start = 0;
+		}
+
+		for (int j = 0; j <= 50; j++) {
+			//Drawing the upper toolbar, 11 is a shifting factor to start drawing near the middle of the screen
+			for (int i = 0; i < DRAW_LEFT_MENU_ITEMS_COUNT; i++) {
+				pWind->DrawImage(MenuItemImages[i], (11 + i)*UI.MenuItemWidthUp, start + sign*j, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
+				if (collapse) {
+					pWind->SetBrush(UI.BkGrndColor);
+					pWind->SetPen(UI.BkGrndColor, 1);
+					pWind->DrawRectangle((11 + i)*UI.MenuItemWidthUp, UI.MenuItemWidthUp -j, 5*UI.MenuItemWidthUp , 2*UI.MenuItemWidthUp -j);
+				}
+			}
+		}
 	}
 
 
@@ -268,7 +305,7 @@ void Output::CreateDrawToolBarUp(int action, bool collapse) const
 					pWind->SetBrush(UI.BkGrndColor);
 					pWind->SetPen(UI.BkGrndColor, 1);
 					pWind->DrawRectangle(UI.MenuItemWidthLeft, 2 * UI.MenuItemWidthLeft,
-						UI.MenuItemWidthLeft - j, (DRAW_ITEM_COUNT_RIGHTPEN + 2)* UI.MenuItemWidthLeft);
+					       UI.MenuItemWidthLeft - j, (DRAW_ITEM_COUNT_RIGHTPEN + 2)* UI.MenuItemWidthLeft);
 				}
 			}
 		}
@@ -440,27 +477,43 @@ void Output::CreateDrawToolBarUp(int action, bool collapse) const
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-void Output::CreatePlayToolBar() const
+void Output::CreatePlayToolBar(int action, bool collapse) const
 {
 	UI.InterfaceMode = MODE_PLAY;
 
-	//Collapse the left toolbar.
-	pWind->SetBrush(UI.BkGrndColor);
-	pWind->SetPen(UI.BkGrndColor, 1);
-	pWind->DrawRectangle(0, 0, 120, 660);
-
-	//Collapse the upper toolbar.
-	pWind->DrawRectangle(500, 0, 900, 100);
-
+	CreateDrawToolBarUp(0, true,false);
+	CreateDrawToolBarRight(true,false);
 
 	string MenuItemImages[PLAY_ITM_COUNT];
 	MenuItemImages[ITM_SCRAMBLE] = "images\\MenuItems\\ICONS\\TOOLS\\SCRAMBLE.jpg";
 	MenuItemImages[ITM_FIND] = "images\\MenuItems\\ICONS\\TOOLS\\FIND.jpg";
 	MenuItemImages[ITEM_TODRAW] = "images\\MenuItems\\ICONS\\TOOLS\\TODRAW1.jpg";
 
-	for (int i = 0; i<PLAY_ITM_COUNT; i++)
-		pWind->DrawImage(MenuItemImages[i], 500 + (i - 5)*UI.MenuItemWidthUp, 0, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
+	int sign, start;
+	if (!collapse) {
+		sign = 1;
+		start = -50;
+	}
+	else {
+		sign = -1;
+		start = 0;
+	}
 
+	for (int j = 0; j <= 50; j++) {
+		//Drawing the upper toolbar, 11 is a shifting factor to start drawing near the middle of the screen
+		for (int i = 0; i < PLAY_ITM_COUNT - 1; i++) {
+			pWind->DrawImage(MenuItemImages[i], (13 + i)*UI.MenuItemWidthUp, start + sign*j, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
+			if (collapse) {
+				pWind->SetBrush(UI.BkGrndColor);
+				pWind->SetPen(UI.BkGrndColor, 1);
+				pWind->DrawRectangle((13 + i)*UI.MenuItemWidthUp, UI.MenuItemWidthUp - j, 2 * UI.MenuItemWidthUp, 2 * UI.MenuItemWidthUp - j);
+			}
+		}
+	}
+
+	pWind->DrawImage(MenuItemImages[2], 0, 0, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
+
+	CreateDrawToolBarRight(false,false);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 

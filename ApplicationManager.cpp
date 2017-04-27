@@ -150,39 +150,39 @@ ActionType ApplicationManager::GetUserAction() const
 	switch (Type) {
     
 	case MODE_DRAW_SUB_MENU1_Clicked:   //figures
-		pOut->CreateDrawToolBarUp(1, false);  //show sub menu
+		pOut->CreateDrawToolBarUp(1, false,false);  //show sub menu
 		ret = pIn->GetUserAction();  //get action(figure option)
-		pOut->CreateDrawToolBarUp(1, true);  //hide sub menu
+		pOut->CreateDrawToolBarUp(1, true, false);  //hide sub menu
 		return ret;
 
 	case MODE_DRAW_SUB_MENU2_Clicked:  //pens
-		pOut->CreateDrawToolBarUp(2, false);  //show sub menu
+		pOut->CreateDrawToolBarUp(2, false, false);  //show sub menu
 		ret = pIn->GetUserAction();  //get action(pen option)
-		pOut->CreateDrawToolBarUp(2, true);  //hide sub menu
+		pOut->CreateDrawToolBarUp(2, true, false);  //hide sub menu
 		return ret;
 
 	case MODE_DRAW_SUB_MENU3_Clicked: //brushes
-		pOut->CreateDrawToolBarUp(3, false);  //show sub menu
+		pOut->CreateDrawToolBarUp(3, false, false);  //show sub menu
 		ret = pIn->GetUserAction();  //get action(brushes option)
-		pOut->CreateDrawToolBarUp(3, true);  //hide sub menu
+		pOut->CreateDrawToolBarUp(3, true, false);  //hide sub menu
 		return ret;
 
 	case MODE_DRAW_SUB_MENU4_Clicked:  //background colors
-		pOut->CreateDrawToolBarUp(4, false);  //show sub menu
+		pOut->CreateDrawToolBarUp(4, false, false);  //show sub menu
 		ret = pIn->GetUserAction();  //get action(background colors option)
-		pOut->CreateDrawToolBarUp(4, true);  //hide sub menu
+		pOut->CreateDrawToolBarUp(4, true, false);  //hide sub menu
 		return ret;
 
 	case MODE_DRAW_SUB_MENU5_Clicked:  //border width
-		pOut->CreateDrawToolBarUp(5, false);  //show sub menu
+		pOut->CreateDrawToolBarUp(5, false, false);  //show sub menu
 		ret = pIn->GetUserAction();  //get action(border width option)
-		pOut->CreateDrawToolBarUp(5, true);  //hide sub menu
+		pOut->CreateDrawToolBarUp(5, true, false);  //hide sub menu
 		return ret; 
 
 	case ITM_RESIZE_Clicked:  //resize options
-		pOut->CreateDrawToolBarUp(6, false);  //show sub menu
+		pOut->CreateDrawToolBarUp(6, false, false);  //show sub menu
 		ret = pIn->GetUserAction();  //get action(resize option)
-		pOut->CreateDrawToolBarUp(6, true);  //hide sub menu
+		pOut->CreateDrawToolBarUp(6, true, false);  //hide sub menu
 		return ret;
 	}
 
@@ -276,8 +276,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case ITM_PASTE_Clicked:
-			pAct = new PasteAction(this);
+			pOut->CreatePlayToolBar(0, true);
+			//pAct = new PasteAction(this);
 			break;
+
+		case TO_PLAY:
+			pOut->CreatePlayToolBar(0,false);
+			break;
+
 		case STATUS:	//a click on the status bar ==> no action
 			return;
 	}
