@@ -28,7 +28,7 @@ void SaveAction::Execute()
 {
 	ReadActionParameters();
 	ofstream OutFile;
-	OutFile.open(FileName + ".txt", ios::out);
+	OutFile.open("Saved//" + FileName + ".txt", ios::out);
 	OutFile << (int)UI.DrawColor.ucBlue << " " << (int)UI.DrawColor.ucGreen << " " << (int)UI.DrawColor.ucRed
 		<< " " << endl;
 	OutFile << (int)UI.FillColor.ucBlue << " " << (int)UI.FillColor.ucGreen << " " << (int)UI.FillColor.ucRed

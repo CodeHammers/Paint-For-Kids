@@ -31,7 +31,27 @@ void CLine::Draw(Output* pOut) const
 {
 	pOut->DrawLine(EndPoint1, EndPoint2, FigGfxInfo, Selected);
 }
+void CLine::Resize(double r) {
+	Point P1 = EndPoint1; Point P2 = EndPoint2;
+	int Dist = abs(P1.y - P2.y);
+	int increment = Dist * UI.Ratio - Dist;
+	if (P1.y > P2.y) {
+		P1.y += increment / 2; P2.y -= increment / 2;
+	}
+	else {
+		P2.y += increment / 2; P1.y -= increment / 2;
+	}
+	Dist = abs(P1.x - P2.x);
+	increment = Dist * UI.Ratio - Dist;
+	if (P1.x > P2.x) {
+		P1.x += increment / 2; P2.x -= increment / 2;
 
+	}
+	else {
+		P2.x += increment / 2; P1.x -= increment / 2;
+	}
+	EndPoint1 = P1; EndPoint2 = P2;
+}
 
 bool CLine::Encloses(Point P) 
 {
@@ -54,9 +74,9 @@ bool CLine::Encloses(Point P)
 
 void CLine::Save(ofstream & OutFile)
 {
-	OutFile << ID << "\t" << EndPoint1.x << "\t" << EndPoint1.y << "\t"
-		<< EndPoint2.x << "\t" << EndPoint2.y << "\t"<< (int)FigGfxInfo.DrawClr.ucBlue
-		<< "\t" << (int)FigGfxInfo.DrawClr.ucGreen << "\t" << (int)FigGfxInfo.DrawClr.ucRed
+	OutFile << "LINE" << "\t" <<ID << "\t" << EndPoint1.x << "\t" << EndPoint1.y << "\t"
+		<< EndPoint2.x << "\t" << EndPoint2.y << "\t"<< (int)FigGfxInfo.DrawClr.ucRed
+		<< "\t" << (int)FigGfxInfo.DrawClr.ucGreen << "\t" << (int)FigGfxInfo.DrawClr.ucBlue
 		<< "\n";
 }
 
@@ -64,13 +84,12 @@ void CLine::Load(ifstream &Infile)
 {
 	///Youe code goes here.
 	int id;
-	string DrawColor;
 	Infile >> id ;
 	Infile >> EndPoint1.x >> EndPoint1.y >> EndPoint2.x >> EndPoint2.y;
 	GfxInfo info;
-	Infile >> DrawColor;
-	//Check for the color
-	info.DrawClr = GetColor(DrawColor);
+	int DrawColor[3];
+	Infile >> DrawColor[0] >> DrawColor[1] >> DrawColor[2];
+	info.DrawClr = color(DrawColor[0], DrawColor[1], DrawColor[2]);
 	info.BorderWdth = 3;
 	CFigure::ID = id;
 	CFigure::FigGfxInfo = info;

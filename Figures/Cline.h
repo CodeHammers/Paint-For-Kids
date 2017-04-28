@@ -15,6 +15,8 @@ public:
 	//Draw function
 	virtual void Draw(Output* pOut) const;
 
+	void Resize(double r);
+
 	//A function to tell whether a point belongs to a line
 	virtual bool Encloses(Point P) ;
 

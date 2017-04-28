@@ -16,6 +16,7 @@ protected:
 
 public:
 	CFigure(GfxInfo FigureGfxInfo);
+	virtual void Resize(double ratio) = 0;
 	void SetSelected(bool s);	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected
 	static color GetColor(string color);

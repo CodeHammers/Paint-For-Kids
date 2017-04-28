@@ -16,7 +16,7 @@
 #include "Actions\PasteAction.h"
 #include "Actions\ZoomAction.h"
 #include "Actions\PlayAction.h"
-
+#include "Actions\ResizeAction.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -33,11 +33,14 @@ ApplicationManager::ApplicationManager()
 }
 
 void ApplicationManager::nullifyFigList() {
+	FigList.clear();
+	/*
 	while (FigCount--) {
 		delete FigList[FigCount];
 		FigList[FigCount] = NULL;
 	}
 	++FigCount;
+	*/
 }
 bool ApplicationManager::CheckValidityOfZoom(double r) {
 	UI.Ratio *= r;
@@ -207,9 +210,25 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if (IsFillMenu(ActType)) {
 		pAct = new ChangeFillColor(this,ActType);
 	}
-	
+
+	/*	ITM_RESIZE25_Clicked,
+	ITM_RESIZE50_Clicked,
+	ITM_RESIZE200_Clicked,
+	ITM_RESIZE400_Clicked,*/
 	switch (ActType)
 	{
+		case ITM_RESIZE25_Clicked:
+			pAct = new ResizeAction(this, ITM_RESIZE25_Clicked);
+			break;
+		case ITM_RESIZE50_Clicked:
+			pAct = new ResizeAction(this, ITM_RESIZE50_Clicked);
+			break;
+		case ITM_RESIZE200_Clicked:
+			pAct = new ResizeAction(this, ITM_RESIZE200_Clicked);
+			break;
+		case ITM_RESIZE400_Clicked:
+			pAct = new ResizeAction(this, ITM_RESIZE400_Clicked);
+			break;
 		case ITM_ZOOM_IN_Clicked:
 			pAct = new ZoomAction(this, ActType);
 			break;
@@ -394,6 +413,18 @@ void ApplicationManager::AddPastedFigures(Point P)
 			break;
 		}
 	}
+}
+void ApplicationManager::ResizeSelectedFigures(double ratio) {
+	double temp = UI.Ratio;
+	UI.Ratio = ratio;
+	if (FigList.empty())
+		return;
+	for (int i = 0; i < FigList.size(); i++) {
+		if (FigList[i]->IsSelected()) {
+			FigList[i]->Resize(ratio);
+		}
+	}
+	UI.Ratio = temp;
 }
 
 Point ApplicationManager::GetTheTopFigure()

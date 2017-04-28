@@ -596,7 +596,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 		DrawingClr = RectGfxInfo.DrawClr;
 
 	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);	//Set Drawing color & width
-
+	
 	drawstyle style;
 	if (RectGfxInfo.isFilled)
 	{

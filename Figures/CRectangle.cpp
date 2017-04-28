@@ -29,35 +29,37 @@ bool CRectangle::Encloses(Point P)
 
 void CRectangle::Save(ofstream & OutFile)
 {
-	OutFile << ID << "\t";
+	OutFile << "RECT" << "\t"<< ID << "\t";
 	OutFile << Corner1.x << "\t" << Corner1.y << "\t";
 	OutFile << Corner2.x << "\t" << Corner2.y << "\t";
+	OutFile << (int)FigGfxInfo.DrawClr.ucRed << " " << (int)FigGfxInfo.DrawClr.ucGreen << " "
+		<< (int)FigGfxInfo.DrawClr.ucBlue <<"\t";	
 	if (FigGfxInfo.isFilled != true)
-		OutFile << "NOFILL";
+		OutFile << "-1 -1 -1";
 	else
-		OutFile << (int)FigGfxInfo.FillClr.ucBlue << " " << (int)FigGfxInfo.FillClr.ucGreen << " "
-		<< (int)FigGfxInfo.FillClr.ucRed;
+		OutFile << (int)FigGfxInfo.FillClr.ucRed << " " << (int)FigGfxInfo.FillClr.ucGreen << " "
+		<< (int)FigGfxInfo.FillClr.ucBlue;
 	OutFile << endl;
 }
 
 void CRectangle::Load(ifstream & Infile)
 {
 	int id;
-	string DrawColor, FillColor;
 	Infile >> id;
 	Infile >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y;
 	GfxInfo info;
-	Infile >> DrawColor;
-	//Check for the color
-	info.DrawClr = GetColor(DrawColor);
-	Infile >> FillColor;
-	if (FillColor == "NOFILL") {
+	int DrawColor[3], FillColor[3];
+
+	Infile >> DrawColor[0] >> DrawColor[1] >> DrawColor[2];
+	info.DrawClr = color(DrawColor[0], DrawColor[1], DrawColor[2]);
+	Infile >> FillColor[0] >> FillColor[1] >> FillColor[2];
+	if (FillColor[0] == -1) {
 		info.isFilled = false;
 		info.FillClr = WHITE;
 	}
 	else {
 		info.isFilled = true;
-		info.FillClr = GetColor(FillColor);
+		info.FillClr = color(FillColor[0], FillColor[1], FillColor[2]);
 	}
 	info.BorderWdth = 3;
 	CFigure::ID = id;
@@ -103,6 +105,28 @@ void CRectangle::SetPoints(Point s)
 	Corner1.y += s.y;
 	Corner2.x += s.x;
 	Corner2.y += s.y;
+}
+
+void CRectangle::Resize(double r) {
+	Point P1 = Corner1; Point P2 = Corner2;
+	int Dist = abs(P1.y - P2.y);
+	int increment = Dist * UI.Ratio - Dist;
+	if (P1.y > P2.y) {
+		P1.y += increment / 2; P2.y -= increment / 2;
+	}
+	else {
+		P2.y += increment / 2; P1.y -= increment / 2;
+	}
+	Dist = abs(P1.x - P2.x);
+	increment = Dist * UI.Ratio - Dist;
+	if (P1.x > P2.x) {
+		P1.x += increment / 2; P2.x -= increment / 2;
+
+	}
+	else {
+		P2.x += increment / 2; P1.x -= increment / 2;
+	}
+	Corner1 = P1; Corner2 = P2;
 }
 bool CRectangle::ValidAfterZoom() {
 	Point P1 = Corner1; Point P2 = Corner2;

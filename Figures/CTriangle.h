@@ -21,6 +21,8 @@ public:
 
 	bool ValidAfterZoom();
 
+	void Resize(double r);
+
 	//Save function
 	virtual void Save(ofstream &OutFile);
 

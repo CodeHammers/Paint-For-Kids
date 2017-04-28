@@ -33,12 +33,18 @@ void LoadAction::Execute()
 		std::cout << "leh ba2a";
 	}
 	*/
-	string DrawColor, FillColor, BackgroundColor, FigType;
-	Infile >> DrawColor >> FillColor >> BackgroundColor;
-	color drawcolor = CFigure::GetColor(DrawColor);
-	color fillcolor = CFigure::GetColor(FillColor);
-	color bckgcolor = CFigure::GetColor(BackgroundColor);
+	int DrawColor[3], FillColor[3] ,bckgrndColor[3];
+
+	Infile >> DrawColor[0] >> DrawColor[1] >> DrawColor[2];
+	Infile >> FillColor[0] >> FillColor[1] >> FillColor[2];
+	Infile >> bckgrndColor[0] >> bckgrndColor[1] >> bckgrndColor[2];
+
+	string  FigType;
+	color drawcolor = color(DrawColor[0],DrawColor[1],DrawColor[2]);
+	color fillcolor = color(FillColor[0], FillColor[1], FillColor[2]);
+	color bckgcolor = color(bckgrndColor[0], bckgrndColor[1], bckgrndColor[2]);
 	pManager->nullifyFigList();
+	pManager->GetOutput()->ClearDrawArea();
 	pManager->GetOutput()->EditWindowSettings(drawcolor, fillcolor, bckgcolor);
 	int NumOfFigs; Infile >> NumOfFigs;
 	for (int i = 0; i < NumOfFigs; i++) {
@@ -66,8 +72,6 @@ void LoadAction::Execute()
 			pManager->AddFigure(line);
 		}
 	}
-	pManager->UpdateInterface();
-
 }
 
 LoadAction::~LoadAction()

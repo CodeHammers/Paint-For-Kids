@@ -19,15 +19,15 @@ bool CCircle::ValidAfterZoom() {
 }
 void CCircle::Save(ofstream & OutFile)
 {
-	OutFile << ID << "\t";
+	OutFile << "CIRCLE" << "\t"  << ID << "\t";
 	OutFile << Center.x << "\t" << Center.y << "\t";
-	OutFile<< Radius << (int)FigGfxInfo.DrawClr.ucBlue << " " 
-		<< (int)FigGfxInfo.DrawClr.ucGreen<< " " << (int)FigGfxInfo.DrawClr.ucRed << "\t";
+	OutFile<< Radius << "\t"<< (int)FigGfxInfo.DrawClr.ucRed << " " 
+		<< (int)FigGfxInfo.DrawClr.ucGreen<< " " << (int)FigGfxInfo.DrawClr.ucBlue << "\t";
 	if (FigGfxInfo.isFilled != true)
-		OutFile << "NOFILL";
+		OutFile << "-1 -1 -1";
 	else
-		OutFile << (int)FigGfxInfo.FillClr.ucBlue << " " << (int)FigGfxInfo.FillClr.ucGreen << " "
-		<< (int)FigGfxInfo.FillClr.ucRed;
+		OutFile << (int)FigGfxInfo.FillClr.ucRed << " " << (int)FigGfxInfo.FillClr.ucGreen << " "
+		<< (int)FigGfxInfo.FillClr.ucBlue;
 	OutFile << endl;
 }
 
@@ -42,20 +42,21 @@ void CCircle::Load(ifstream &Infile)
 {
 	///Your code goes here.
 	int id;
-	string DrawColor, FillColor;
 	Infile >> id ;
 	Infile >> Center.x >> Center.y >> Radius;
 	GfxInfo info;
-	Infile >> DrawColor;
-	info.DrawClr = GetColor(DrawColor);
-	Infile >> FillColor;
-	if (FillColor == "NOFILL") {
+	int DrawColor[3], FillColor[3];
+
+	Infile >> DrawColor[0] >> DrawColor[1] >> DrawColor[2];
+	info.DrawClr = color(DrawColor[0], DrawColor[1], DrawColor[2]);
+	Infile >> FillColor[0] >> FillColor[1] >> FillColor[2];
+	if (FillColor[0] == -1) {
 		info.isFilled = false;
 		info.FillClr = WHITE;
 	}
 	else {
 		info.isFilled = true;
-		info.FillClr = GetColor(FillColor);
+		info.FillClr = color(FillColor[0], FillColor[1], FillColor[2]);
 	}
 	info.BorderWdth = 3;
 	CFigure::ID = id;
@@ -101,7 +102,9 @@ bool CCircle::ValidToDraw(Point C, int R)
 	return (InDrawingArea({ C.x + R,C.y }) && InDrawingArea({ C.x - R,C.y }) && 
 		   InDrawingArea({ C.x,C.y + R }) && InDrawingArea({ C.x,C.y - R }));
 }
-
+void CCircle::Resize(double r) {
+	Radius = r*Radius;
+}
 Point CCircle::GetTopCorner()
 {
 	return Center;

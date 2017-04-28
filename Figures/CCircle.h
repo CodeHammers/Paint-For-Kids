@@ -38,6 +38,7 @@ public:
 	//GfxInfo GetGfxInfo();
 	//A function to decide whether a circle is valid to draw or not
 	static bool ValidToDraw(Point C, int R);
+	void Resize(double r);
 	virtual Point GetTopCorner();
 	virtual bool TransferFigure(Point To, bool Check = false);
 };

@@ -28,6 +28,8 @@ public:
 	virtual int GetArea();
 	virtual void SetPoints(Point s);
 
+	void Resize(double r);
+
 	bool ValidAfterZoom();
 
 	virtual Point GetTopCorner();

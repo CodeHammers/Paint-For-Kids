@@ -21,6 +21,9 @@ float CTriangle::Getarea(int x1, int y1, int x2, int y2, int x3, int y3) const
 bool CTriangle::ValidAfterZoom() {
 	return true;
 }
+void CTriangle::Resize(double r) {
+
+}
 bool CTriangle::Encloses(Point P) 
 {
 	/* Calculate the area of V1V2V3 */
@@ -41,15 +44,17 @@ bool CTriangle::Encloses(Point P)
 
 void CTriangle::Save(ofstream & OutFile)
 {
-	OutFile << ID <<"\t";
+	OutFile << "TRIANG"  <<"\t" << ID <<"\t";
 	OutFile << Vertex1.x << "\t" << Vertex1.y << "\t";
 	OutFile << Vertex2.x << "\t" << Vertex2.y << "\t";
 	OutFile << Vertex3.x << "\t" << Vertex3.y << "\t";
+	OutFile << (int)FigGfxInfo.DrawClr.ucRed << " " << (int)FigGfxInfo.DrawClr.ucGreen << " "
+		<< (int)FigGfxInfo.DrawClr.ucBlue << "\t";
 	if (FigGfxInfo.isFilled != true)
-		OutFile << "NOFILL";
+		OutFile << "-1 -1 -1";
 	else
-		OutFile << (int)FigGfxInfo.FillClr.ucBlue << " " << (int)FigGfxInfo.FillClr.ucGreen << " "
-		<< (int)FigGfxInfo.FillClr.ucRed;
+		OutFile << (int)FigGfxInfo.FillClr.ucRed << " " << (int)FigGfxInfo.FillClr.ucGreen << " "
+		<< (int)FigGfxInfo.FillClr.ucBlue;
 	OutFile << endl;
 }
 
@@ -57,20 +62,21 @@ void CTriangle::Load(ifstream &Infile)
 {
 	///Your code goes here.
 	int id;
-	string DrawColor, FillColor;
 	Infile >> id;
 	Infile >> Vertex1.x >> Vertex1.y >> Vertex2.x >> Vertex2.y >> Vertex3.x >> Vertex3.y;
 	GfxInfo info;
-	Infile >> DrawColor;
-	info.DrawClr = GetColor(DrawColor);
-	Infile >> FillColor;
-	if (FillColor == "NOFILL") {
+	int DrawColor[3], FillColor[3];
+
+	Infile >> DrawColor[0] >> DrawColor[1] >> DrawColor[2];
+	info.DrawClr = color(DrawColor[0], DrawColor[1], DrawColor[2]);
+	Infile >> FillColor[0]>>FillColor[1]>>FillColor[2];
+	if (FillColor[0] == -1) {
 		info.isFilled = false;
 		info.FillClr = WHITE;
 	}
 	else {
 		info.isFilled = true;
-		info.FillClr = GetColor(FillColor);
+		info.FillClr = color(FillColor[0], FillColor[1],FillColor[2]);
 	}
 	info.BorderWdth = 3;
 	CFigure::ID = id;

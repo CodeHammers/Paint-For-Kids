@@ -1,20 +1,24 @@
-﻿  ApplicationManager.cpp
-e:\paint-for-kids\applicationmanager.cpp(44): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(324): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(333): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(344): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(357): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(372): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(376): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(382): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(386): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(402): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(437): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(449): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(463): warning C4018: '<': signed/unsigned mismatch
-e:\paint-for-kids\applicationmanager.cpp(478): warning C4018: '<': signed/unsigned mismatch
-  PlayAction.cpp
+﻿  CRectangle.cpp
+c:\paint-for-kids\figures\crectangle.cpp(113): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\crectangle.cpp(121): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\crectangle.cpp(134): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\crectangle.cpp(142): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  ApplicationManager.cpp
+c:\paint-for-kids\applicationmanager.cpp(47): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(343): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(352): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(363): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(376): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(391): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(395): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(401): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(405): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(422): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(433): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(468): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(480): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(494): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(509): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-AddCircleAction.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-  PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
+  PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)
