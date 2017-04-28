@@ -1,24 +1,42 @@
-﻿  CRectangle.cpp
-c:\paint-for-kids\figures\crectangle.cpp(113): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\crectangle.cpp(121): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\crectangle.cpp(134): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\crectangle.cpp(142): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  ApplicationManager.cpp
-c:\paint-for-kids\applicationmanager.cpp(47): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(343): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(352): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(363): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(376): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(391): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(395): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(401): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(405): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(422): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(433): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(468): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(480): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(494): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(509): warning C4018: '<': signed/unsigned mismatch
+﻿  ApplicationManager.cpp
+e:\paint-for-kids\applicationmanager.cpp(47): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(343): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(352): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(363): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(376): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(391): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(395): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(401): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(405): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(422): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(433): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(442): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(477): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(489): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(503): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(518): warning C4018: '<': signed/unsigned mismatch
+  PlayAction.cpp
   Generating Code...
-  PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
+  Compiling...
+  main.cpp
+  ZoomAction.cpp
+  SelectAction.cpp
+  SaveAction.cpp
+  ResizeAction.cpp
+  PasteAction.cpp
+  LoadAction.cpp
+  DeleteAction.cpp
+  CutAction.cpp
+  CopyAction.cpp
+  ChangeFillColorAction.cpp
+  ChangeDrawColorAction.cpp
+  ChangeBorderWidthAction.cpp
+  ChangeBckgrndColor.cpp
+  AddTriangleAction.cpp
+  AddRectAction.cpp
+  AddLineAction.cpp
+  AddCircleAction.cpp
+  Generating Code...
+e:\paint-for-kids\actions\copyaction.cpp(53): warning C4715: 'CopyAction::CopyFigure': not all control paths return a value
+  PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

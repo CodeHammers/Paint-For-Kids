@@ -2,6 +2,12 @@
 
 #include"..\ApplicationManager.h"
 
+#include"..\Figures\CRectangle.h"
+#include"..\Figures\CCircle.h"
+#include"..\Figures\CLine.h"
+#include"..\Figures\CTriangle.h"
+
+
 #include"../GUI/Input.h"
 #include"../GUI/Output.h"
 
@@ -54,6 +60,49 @@ bool PlayAction::ReadActionParameters()
 	return true;
 }
 
+bool PlayAction::CheckFigureType(CFigure* ptr)
+{
+	CTriangle* T = dynamic_cast<CTriangle*>(ptr);
+	if (T)
+		return FigureType == "Triangle";
+
+	CCircle* C = dynamic_cast<CCircle*>(ptr);
+	if (C)
+		return FigureType == "Circle";
+
+	CLine* L = dynamic_cast<CLine*>(ptr);
+	if (L)
+		return FigureType == "Line";
+
+	CRectangle* R = dynamic_cast<CRectangle*>(ptr);
+	if (R)
+		return FigureType == "Rectangle";
+	return false;
+}
+
+
+bool PlayAction::CheckFigureDrawClr(CFigure* ptr)
+{
+	color c = (ptr->GetGfxInfo()).DrawClr;
+	//return ((ptr->GetGfxInfo()).DrawClr == FigureDrawClr);
+	return (c.ucBlue == FigureDrawClr.ucBlue) && (c.ucGreen == FigureDrawClr.ucGreen)
+		&& (c.ucRed == FigureDrawClr.ucRed);
+}
+
+
+bool PlayAction::CheckFigureFillClr(CFigure* ptr)
+{
+	//return ((ptr->GetGfxInfo()).FillClr == FigureFillClr);
+	color c = (ptr->GetGfxInfo()).FillClr;
+	return (c.ucBlue == FigureFillClr.ucBlue) && (c.ucGreen == FigureFillClr.ucGreen)
+		&& (c.ucRed == FigureFillClr.ucRed);
+}
+
+
+void PlayAction::CalcAndQueueAreas()
+{
+	FigureAreas = pManager->GetFigureAreas();
+}
 
 void PlayAction::Execute()
 {

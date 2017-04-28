@@ -427,6 +427,15 @@ void ApplicationManager::ResizeSelectedFigures(double ratio) {
 	UI.Ratio = temp;
 }
 
+priority_queue<int> ApplicationManager::GetFigureAreas()
+{
+	priority_queue<int>Areas;
+	for (int i = 0; i < FigList.size(); i++) {
+		Areas.push(FigList[i]->GetArea());
+	}
+	return Areas;
+}
+
 Point ApplicationManager::GetTheTopFigure()
 {
 	Point P = { 2000,2000 };

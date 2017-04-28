@@ -10,6 +10,7 @@
 
 #include<fstream>
 #include<vector>
+#include<queue>
 
 //Main class that manages everything in the application.
 class ApplicationManager
@@ -65,6 +66,7 @@ public:
 	void AddPastedFigures(Point P);
 	void ResizeSelectedFigures(double ratio);
 	Point GetTheTopFigure();
+	priority_queue<int>GetFigureAreas();
 };
 
 #endif
