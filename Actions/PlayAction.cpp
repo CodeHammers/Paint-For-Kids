@@ -33,17 +33,36 @@ bool PlayAction::ReadActionParameters()
 		ActionType TypeOfGame = pIn->GetUserAction(); //See what game the baby wants to play :V
 		pOut->CreatePlayToolBar(1, true, false);     //Hide the menu
 
+		ActionType subAction,subAction2;
+
 		switch (TypeOfGame)
 		{
 		case ITM_BY_TYPE_Clicked:
+			pOut->CreateDrawToolBarUp(1, false, false);
+			subAction = pIn->GetUserAction();
+			pOut->CreateDrawToolBarUp(1, true, false);
+			UI.InterfaceMode = MODE_PLAY;
 			///code to call functions to do the logic
 			break;
 
 		case ITM_BY_FILLCOL_Clicked:
+			pOut->CreateDrawToolBarUp(3, false, false);
+			subAction = pIn->GetUserAction();
+			pOut->CreateDrawToolBarUp(3, true, false);
+			UI.InterfaceMode = MODE_PLAY;
 			///code to call functions to do the logic
 			break;
 
 		case ITM_BY_TYPE_AND_FILLCOL_Clicked:
+			//choose type
+			pOut->CreateDrawToolBarUp(1, false, false);
+			subAction = pIn->GetUserAction();
+			pOut->CreateDrawToolBarUp(1, true, false);
+			//choose fill color
+			pOut->CreateDrawToolBarUp(3, false, false);
+			subAction2 = pIn->GetUserAction();
+			pOut->CreateDrawToolBarUp(3, true, false);
+			UI.InterfaceMode = MODE_PLAY;
 			///code to call functions to do the logic
 			break;
 
