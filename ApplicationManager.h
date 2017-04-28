@@ -67,6 +67,9 @@ public:
 	void ResizeSelectedFigures(double ratio);
 	Point GetTheTopFigure();
 	priority_queue<int>GetFigureAreas();
+	int GetNumOfFigType();
+	int GetNumOfColorfulFig();
+	void ReturnFromClipboard();
 };
 
 #endif

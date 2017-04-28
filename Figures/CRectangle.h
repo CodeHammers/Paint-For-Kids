@@ -31,7 +31,7 @@ public:
 	void Resize(double r);
 
 	bool ValidAfterZoom();
-
+	virtual GfxInfo GetGfxInfo();
 	virtual Point GetTopCorner();
 	//A function to decide whether a rectangle is valid to draw or not
 	static bool ValidToDraw(Point P1, Point P2);

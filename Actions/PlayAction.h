@@ -7,14 +7,16 @@
 class PlayAction : public Action
 {
 private:
-	string FigureType;
+	
 	color FigureDrawClr;
-	color FigureFillClr;
+	static color FigureFillClr;
 	priority_queue<int>FigureAreas;
-
+	Input* pIn; Output* pOut;
+	static string FigureType;
 public:
+	void SetSubActionForColor();
 	PlayAction(ApplicationManager* pApp);
-
+	void SetSubActionForFigureType();
 	//Get action parameters function
 	virtual bool ReadActionParameters();
 
@@ -22,7 +24,7 @@ public:
 	virtual void Execute();
 
 	//A function to check the figure type
-	bool CheckFigureType(CFigure* ptr);
+	static bool CheckFigureType(CFigure* ptr);
 
 	//A function to check the figure draw color
 	bool CheckFigureDrawClr(CFigure* ptr);
@@ -32,4 +34,9 @@ public:
 
 	//A function to claculate and queue figure areas
 	void CalcAndQueueAreas();
+	void PlayColorTypeGame();
+	void PlayFigTypeGame();
+	int GetNumOfColorfulFigures();
+	static bool CheckColorType(CFigure* ptr);
+	int GetNumOfFigure();
 };

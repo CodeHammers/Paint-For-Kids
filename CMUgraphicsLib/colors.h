@@ -25,11 +25,12 @@ class color {
 
 };
 
-bool operator==(color a, color b);
-//{
-//	return ((a.ucBlue == b.ucBlue) && (a.ucGreen == b.ucGreen) &&
-//		(a.ucRed == b.ucRed));
-//}
+/*bool operator==(color a, color b)
+{	
+	return ((a.ucBlue == b.ucBlue) && (a.ucGreen == b.ucGreen) &&
+		(a.ucRed == b.ucRed));
+}
+*/
 bool operator!=(color a, color b);
 
 /*

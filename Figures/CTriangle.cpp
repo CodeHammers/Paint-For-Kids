@@ -123,6 +123,11 @@ void CTriangle::SetPoints(Point s)
 	Vertex3.y += s.y;
 }
 
+GfxInfo CTriangle::GetGfxInfo()
+{
+	return FigGfxInfo;
+}
+
 int CTriangle::GetArea()
 {
 	return (int)Getarea(Vertex1.x, Vertex1.y, Vertex2.x, Vertex2.y, Vertex3.x, Vertex3.y);

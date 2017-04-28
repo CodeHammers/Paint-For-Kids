@@ -120,3 +120,8 @@ bool CCircle::TransferFigure(Point To, bool Check)
 	V.x += To.x; V.y += To.y;
 	return ValidToDraw(V, Radius);
 }
+
+GfxInfo CCircle::GetGfxInfo()
+{
+	return FigGfxInfo;
+}

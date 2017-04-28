@@ -37,10 +37,6 @@ void CFigure::SetPriority(bool s)
 	HighPriority = s;
 }
 
-GfxInfo CFigure::GetGfxInfo()
-{
-	return FigGfxInfo;
-}
 
 int CFigure::GetID()
 {

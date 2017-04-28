@@ -1,5 +1,8 @@
 #include "ApplicationManager.h"
 #include "Actions\LoadAction.h"
+#include "Actions\PlayAction.h"
+string PlayAction::FigureType = "";
+color  PlayAction::FigureFillClr = WHITE;
 int main()
 {
 

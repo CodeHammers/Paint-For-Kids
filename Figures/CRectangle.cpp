@@ -149,6 +149,10 @@ bool CRectangle::ValidAfterZoom() {
 	}
 	return ValidToDraw(P1, P2);
 }
+GfxInfo CRectangle::GetGfxInfo()
+{
+	return FigGfxInfo;
+}
 bool CRectangle::ValidToDraw(Point P1, Point P2)
 {
 	return InDrawingArea(P1) && InDrawingArea(P2);

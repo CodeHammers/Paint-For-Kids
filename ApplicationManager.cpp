@@ -18,6 +18,7 @@
 #include "Actions\PlayAction.h"
 #include "Actions\ResizeAction.h"
 //Constructor
+
 ApplicationManager::ApplicationManager()
 {
 	//Create Input and output
@@ -434,6 +435,32 @@ priority_queue<int> ApplicationManager::GetFigureAreas()
 		Areas.push(FigList[i]->GetArea());
 	}
 	return Areas;
+}
+
+int ApplicationManager::GetNumOfFigType()
+{
+	int cnt = 0;
+	for (int i = 0; i < FigList.size(); ++i)
+		if (PlayAction::CheckFigureType(FigList[i]))
+			cnt++;
+	return cnt;
+}
+
+int ApplicationManager::GetNumOfColorfulFig()
+{
+	int cnt = 0;
+	for (int i = 0; i < FigList.size(); ++i)
+		if (PlayAction::CheckColorType(FigList[i]))
+			cnt++;
+	return cnt;
+}
+
+void ApplicationManager::ReturnFromClipboard()
+{
+	for (int i = 0; i < Clipboard.size(); ++i) {
+		Clipboard[i]->SetSelected(false); FigList.push_back(Clipboard[i]);
+	}
+	ClipboardMode = 0;	ClearClipboard();
 }
 
 Point ApplicationManager::GetTheTopFigure()
