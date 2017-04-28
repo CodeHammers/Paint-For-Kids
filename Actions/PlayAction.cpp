@@ -12,6 +12,14 @@
 
 #include"../GUI/Input.h"
 #include"../GUI/Output.h"
+
+PlayAction::PlayAction(ApplicationManager* pApp) : Action(pApp)
+{
+	pIn = pManager->GetInput();
+	pOut = pManager->GetOutput();
+}
+
+
 void PlayAction::SetSubActionForColor()
 {
 	ActionType subAction;
@@ -28,17 +36,19 @@ void PlayAction::SetSubActionForColor()
 	if (subAction == ITM_BRUSHFILL_PURPLE_Clicked)  { FigureFillClr = PURPLE   ; }
 	if (subAction == ITM_BRUSHFILL_RED_Clicked)		{ FigureFillClr = RED      ; }
 	pOut->CreateDrawToolBarUp(3, true, false);
+
+	UI.InterfaceMode = MODE_PLAY;
+
 	pManager->UpdateInterface();
 }
-PlayAction::PlayAction(ApplicationManager* pApp) : Action(pApp)
-{
-	pIn = pManager->GetInput();
-	pOut = pManager->GetOutput();
-}
+
+
 bool operator==(color a, color b)
 {
 	return ((a.ucBlue == b.ucBlue) && (a.ucGreen == b.ucGreen) && (a.ucRed == b.ucRed));
 }
+
+
 void PlayAction::SetSubActionForFigureType()
 {
 	ActionType  subAction;
@@ -49,9 +59,17 @@ void PlayAction::SetSubActionForFigureType()
 	if (subAction == DRAW_TRI)  { FigureType = "Triangle" ;	}
 	if (subAction == DRAW_RECT) { FigureType = "Rectangle"; }
 	if (subAction == DRAW_LINE) { FigureType = "Line"     ;	}
+
+	UI.InterfaceMode = MODE_PLAY;
+
 	pManager->UpdateInterface();
 }
 
+void PlayAction::SetSubActionForColoredFigures()
+{
+	SetSubActionForFigureType();
+	SetSubActionForColor();
+}
 
 bool PlayAction::ReadActionParameters()
 {
@@ -76,6 +94,7 @@ bool PlayAction::ReadActionParameters()
 			PlayFigTypeGame();
 			pOut->CreatePlayToolBar(0, true, false);
 			pOut->CreateDrawToolBarUp(0, false, false);
+			pOut->CreateDrawToolBarRight(false, false);
 			pManager->ReturnFromClipboard();
 			break;
 
@@ -84,20 +103,17 @@ bool PlayAction::ReadActionParameters()
 			PlayColorTypeGame();
 			pOut->CreatePlayToolBar(0, true, false);
 			pOut->CreateDrawToolBarUp(0, false, false);
+			pOut->CreateDrawToolBarRight(false, false);
 			pManager->ReturnFromClipboard();
 			break;
 
 		case ITM_BY_TYPE_AND_FILLCOL_Clicked:
-			//choose type
-			pOut->CreateDrawToolBarUp(1, false, false);
-			subAction = pIn->GetUserAction();
-			pOut->CreateDrawToolBarUp(1, true, false);
-			//choose fill color
-			pOut->CreateDrawToolBarUp(3, false, false);
-			subAction2 = pIn->GetUserAction();
-			pOut->CreateDrawToolBarUp(3, true, false);
-			UI.InterfaceMode = MODE_PLAY;
-			///code to call functions to do the logic
+			SetSubActionForColoredFigures();
+			PlayColoredFigureGame();
+			pOut->CreatePlayToolBar(0, true, false);
+			pOut->CreateDrawToolBarUp(0, false, false);
+			pOut->CreateDrawToolBarRight(false, false);
+			pManager->ReturnFromClipboard();
 			break;
 
 		case ITM_BY_AREA_Clicked:
@@ -112,6 +128,7 @@ bool PlayAction::ReadActionParameters()
 	
 	return true;
 }
+
 void PlayAction:: PlayFigTypeGame() { 
 	int NumOfFigures = GetNumOfFigure(); Point P; int Cnt = 0; int FailCnt = 0;
 
@@ -156,9 +173,52 @@ void PlayAction::PlayColorTypeGame()
 		pOut->PrintMessage("The Game Finished .. You have Chosen " + to_string(Cnt) + " Correct Chosen " + to_string(FailCnt) + " Wrong Ya 3el2");
 }
 
+
+void PlayAction::PlayColoredFigureGame()
+{
+	int NumOfColoredFigures = pManager->GetNumOfColoredFigures();
+	Point P; int Cnt = 0; int FailCnt = 0;
+
+	if (NumOfColoredFigures == 0) {
+		pOut->PrintMessage("No figures with the specified color/type");
+		return;
+	}
+
+	while (NumOfColoredFigures) {
+		pIn->GetPointClicked(P.x, P.y);
+		CFigure*ptr = pManager->GetFigure(P.x, P.y);
+
+		if (ptr == NULL) continue;
+
+		if (CheckColoredFigures(ptr)) {
+			ptr->SetSelected(true);
+			pManager->CutToClipboard(false);
+			pManager->DeleteSelected(false);
+			pManager->UpdateInterface();
+
+			pOut->PrintMessage("Bravo.. Now you selected : " + to_string(++Cnt) + " Out of :" + to_string(NumOfColoredFigures));
+			NumOfColoredFigures--;
+		}
+
+		else if (Abort(P)) {
+			pOut->PrintMessage("Pick And Hide: Oh weh!, you got " + to_string(Cnt) + "/" + to_string(NumOfColoredFigures));
+			return;
+		}
+
+		else {
+			pOut->PrintMessage("Pick And Hide: Wrong figure clicked");
+			FailCnt++;
+		}
+	}
+	pOut->PrintMessage("Pick And Hide: Good Job, Correct clicks: "+to_string(Cnt)+" , Wrong clicks: "+to_string(FailCnt));
+}
+
+
+
 int PlayAction::GetNumOfFigure() {
 	return pManager->GetNumOfFigType();
 }
+
 int PlayAction::GetNumOfColorfulFigures()
 {
 	return pManager->GetNumOfColorfulFig();
@@ -183,11 +243,21 @@ bool PlayAction::CheckFigureType(CFigure* ptr)
 		return FigureType == "Rectangle";
 	return false;
 }
+
+
+bool PlayAction::CheckColoredFigures(CFigure* ptr)
+{
+	return CheckFigureType(ptr) && CheckColorType(ptr);
+}
+
+
 bool PlayAction::CheckColorType(CFigure* ptr)
 {
 	if (ptr == NULL) return false;
-	return (ptr->GetGfxInfo().isFilled == true && ptr->GetGfxInfo().FillClr.ucBlue == FigureFillClr.ucBlue &&ptr->GetGfxInfo().FillClr == FigureFillClr);
+	//return (ptr->GetGfxInfo().isFilled == true && ptr->GetGfxInfo().FillClr.ucBlue == FigureFillClr.ucBlue &&ptr->GetGfxInfo().FillClr == FigureFillClr);
+	return (ptr->GetGfxInfo().isFilled  && ptr->GetGfxInfo().FillClr == FigureFillClr);
 }
+
 
 bool PlayAction::CheckFigureDrawClr(CFigure* ptr)
 {

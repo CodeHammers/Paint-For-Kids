@@ -455,6 +455,15 @@ int ApplicationManager::GetNumOfColorfulFig()
 	return cnt;
 }
 
+int ApplicationManager::GetNumOfColoredFigures()
+{
+	int cnt = 0;
+	for (int i = 0; i < FigList.size(); ++i)
+		if (PlayAction::CheckColoredFigures(FigList[i]))
+			cnt++;
+	return cnt;
+}
+
 void ApplicationManager::ReturnFromClipboard()
 {
 	for (int i = 0; i < Clipboard.size(); ++i) {

@@ -13,6 +13,7 @@ private:
 	priority_queue<int>FigureAreas;
 	Input* pIn; Output* pOut;
 	static string FigureType;
+
 public:
 	void SetSubActionForColor();
 	PlayAction(ApplicationManager* pApp);
@@ -32,11 +33,19 @@ public:
 	//A function to check the figure fill color
 	bool CheckFigureFillClr(CFigure* ptr);
 
+	//A function to check colored figures
+	static bool CheckColoredFigures(CFigure* ptr);
+
 	//A function to claculate and queue figure areas
 	void CalcAndQueueAreas();
+
+
+
 	void PlayColorTypeGame();
 	void PlayFigTypeGame();
 	int GetNumOfColorfulFigures();
 	static bool CheckColorType(CFigure* ptr);
 	int GetNumOfFigure();
+	void PlayColoredFigureGame();
+	void SetSubActionForColoredFigures();
 };

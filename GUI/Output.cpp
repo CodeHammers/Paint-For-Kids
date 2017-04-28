@@ -589,7 +589,7 @@ int Output::getCrntPenWidth() const		//get current pen width
 
 void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
 {
-	color DrawingClr;
+	color DrawingClr; //RectGfxInfo.isFilled = true;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
 	else
@@ -598,7 +598,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);	//Set Drawing color & width
 	
 	drawstyle style;
-	if (RectGfxInfo.isFilled)
+	if (RectGfxInfo.isFilled)  
 	{
 		style = FILLED;
 		pWind->SetBrush(RectGfxInfo.FillClr);

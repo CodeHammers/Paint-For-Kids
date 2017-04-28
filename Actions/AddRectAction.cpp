@@ -57,8 +57,13 @@ void AddRectAction::Execute()
 	//This action needs to read some parameters first
 	if (ReadActionParameters()) {
 
+		//temp
+		RectGfxInfo.isFilled = true;
+		RectGfxInfo.FillClr = GREEN;
+
 		//Create a rectangle with the parameters read from the user
 		CRectangle *R = new CRectangle(P1, P2, RectGfxInfo);
+
 
 		//Set the ID for the figure
 		R->SetID(pManager->GetFigCount() + 1);

@@ -70,6 +70,7 @@ public:
 	int GetNumOfFigType();
 	int GetNumOfColorfulFig();
 	void ReturnFromClipboard();
+	int GetNumOfColoredFigures();
 };
 
 #endif
