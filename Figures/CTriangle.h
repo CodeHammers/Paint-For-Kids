@@ -15,6 +15,7 @@ public:
 
 	//Encloses function
 	virtual bool Encloses(Point P) ;
+	virtual void ChopCoordniates();
 
 	//Function to the get the area of the triangle (used by encloses function)
 	float Getarea(int x1, int y1, int x2, int y2, int x3, int y3) const;

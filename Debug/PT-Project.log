@@ -1,5 +1,4 @@
-﻿  AddTriangleAction.cpp
-  AddCircleAction.cpp
-  Generating Code...
+﻿  ScrambleAction.cpp
+AddCircleAction.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

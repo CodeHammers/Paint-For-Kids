@@ -36,7 +36,8 @@ private:
 	bool IsPenMenu(ActionType ActType) const;
 
 public:	
-	ApplicationManager(); 
+	ApplicationManager();
+	void ScaleAll();
 	~ApplicationManager();
 	void nullifyFigList();
 	bool CheckValidityOfZoom(double r);

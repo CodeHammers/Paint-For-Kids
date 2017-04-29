@@ -17,6 +17,7 @@
 #include "Actions\ZoomAction.h"
 #include "Actions\PlayAction.h"
 #include "Actions\ResizeAction.h"
+#include "Actions\ScrambleAction.h"
 //Constructor
 
 ApplicationManager::ApplicationManager()
@@ -31,6 +32,13 @@ ApplicationManager::ApplicationManager()
 	/*for (int i = 0; i < MaxFigCount; i++)
 		FigList[i] = NULL,
 		Clipboard[i] = NULL;*/
+}
+
+void ApplicationManager::ScaleAll() {
+	for (int i = 0; i < FigList.size(); i++) {
+		FigList[i]->Resize(0.5);
+		FigList[i]->ChopCoordniates();
+	}
 }
 
 void ApplicationManager::nullifyFigList() {
@@ -251,7 +259,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		//Border Action End
 		case ITM_LOAD_Clicked:
-			pAct = new LoadAction(this);
+			//pAct = new LoadAction(this);
+			pAct = new ScrambleAction(this);
+
 			break;
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);

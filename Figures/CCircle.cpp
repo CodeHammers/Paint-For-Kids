@@ -14,6 +14,12 @@ void CCircle::Draw(Output* pOut) const
 	pOut->DrawCircle(Center, Radius, FigGfxInfo, Selected);
 }
 
+void CCircle::ChopCoordniates()
+{
+	Center.x *= 0.5;
+	Center.y *= 0.5;
+}
+
 bool CCircle::ValidAfterZoom() {
 	return ValidToDraw(Center, Radius*UI.Ratio);
 }

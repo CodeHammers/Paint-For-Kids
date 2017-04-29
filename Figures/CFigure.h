@@ -27,6 +27,7 @@ public:
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 	void SetID(int id);
 	virtual bool ValidAfterZoom()=0;
+	virtual void ChopCoordniates()=0;
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 

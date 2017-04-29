@@ -14,6 +14,7 @@ public:
 
 	//A function to determine whether a point is inside a rectangle
 	virtual bool Encloses(Point P) ;
+	virtual void ChopCoordniates();
 
 	virtual void Save(ofstream &OutFile);
 

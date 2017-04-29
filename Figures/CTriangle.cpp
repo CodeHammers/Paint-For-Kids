@@ -42,6 +42,16 @@ bool CTriangle::Encloses(Point P)
 	return (tot == A1 + A2 + A3);
 }
 
+void CTriangle::ChopCoordniates()
+{
+	Vertex1.x *= 0.5;
+	Vertex1.y *= 0.5;
+	Vertex2.x *= 0.5;
+	Vertex2.y *= 0.5;
+	Vertex3.x *= 0.5;
+	Vertex3.y *= 0.5;
+}
+
 void CTriangle::Save(ofstream & OutFile)
 {
 	OutFile << "TRIANG"  <<"\t" << ID <<"\t";

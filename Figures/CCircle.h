@@ -15,6 +15,7 @@ public:
 
 	//Draw function
 	virtual void Draw(Output* pOut) const;
+	virtual void ChopCoordniates();
 
 	bool ValidAfterZoom();
 

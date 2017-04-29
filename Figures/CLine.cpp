@@ -27,6 +27,13 @@ bool CLine::ValidAfterZoom() {
 	}
 	return ValidToDraw(P1, P2);
 }
+void CLine::ChopCoordniates()
+{
+	EndPoint1.x *= 0.5;
+	EndPoint1.y *= 0.5;
+	EndPoint2.y *= 0.5;
+	EndPoint2.x *= 0.5;
+}
 void CLine::Draw(Output* pOut) const
 {
 	pOut->DrawLine(EndPoint1, EndPoint2, FigGfxInfo, Selected);

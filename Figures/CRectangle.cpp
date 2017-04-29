@@ -27,6 +27,14 @@ bool CRectangle::Encloses(Point P)
 	return (P.x >= minx && P.x <= maxx && P.y >= miny && P.y <= maxy);
 }
 
+void CRectangle::ChopCoordniates()
+{
+	Corner1.x *= 0.5;
+	Corner2.y *= 0.5;
+	Corner1.y *= 0.5;
+	Corner2.x *= 0.5;
+}
+
 void CRectangle::Save(ofstream & OutFile)
 {
 	OutFile << "RECT" << "\t"<< ID << "\t";

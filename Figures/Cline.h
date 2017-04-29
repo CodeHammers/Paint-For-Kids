@@ -11,6 +11,7 @@ public:
 	CLine(Point P1, Point P2, GfxInfo FigureGfxInfo);
 
 	bool ValidAfterZoom();
+	virtual void ChopCoordniates();
 
 	//Draw function
 	virtual void Draw(Output* pOut) const;
