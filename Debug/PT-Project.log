@@ -1,4 +1,28 @@
-﻿  ScrambleAction.cpp
-AddCircleAction.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-  PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
+﻿  ApplicationManager.cpp
+e:\paint-for-kids\applicationmanager.cpp(34): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(52): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(350): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(359): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(370): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(383): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(398): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(402): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(408): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(412): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(429): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(440): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(449): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(458): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(467): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(475): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(484): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(519): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(531): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(545): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(560): warning C4018: '<': signed/unsigned mismatch
+  PlayAction.cpp
+e:\paint-for-kids\actions\playaction.cpp(90): warning C4101: 'subAction2': unreferenced local variable
+e:\paint-for-kids\actions\playaction.cpp(90): warning C4101: 'subAction': unreferenced local variable
+  Generating Code...
+  PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

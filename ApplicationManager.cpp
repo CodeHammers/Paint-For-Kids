@@ -26,12 +26,8 @@ ApplicationManager::ApplicationManager()
 	pOut = new Output;
 	pIn = pOut->CreateInput();
 	
-	FigCount = 0;
+	//FigCount = 0;
 	ClipboardMode = 1;
-	//Create an array of figure pointers and set them to NULL		
-	/*for (int i = 0; i < MaxFigCount; i++)
-		FigList[i] = NULL,
-		Clipboard[i] = NULL;*/
 }
 
 void ApplicationManager::ScaleAll() {
@@ -387,7 +383,7 @@ void ApplicationManager::CopyToClipboard()
 	for (int i = 0; i < FigList.size(); i++) {
 		if (FigList[i]->IsSelected()) {
 			FigList[i]->SetSelected(false);
-			FigList[i]->ChngDrawClr(UI.DrawColor);
+			//FigList[i]->ChngDrawClr(UI.DrawColor);
 			CFigure* ptr = CopyAction::CopyFigure(FigList[i]);
 			Clipboard.push_back(ptr);
 		}

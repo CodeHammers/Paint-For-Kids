@@ -39,7 +39,9 @@ public:
 	//A function to claculate and queue figure areas
 	void CalcAndQueueAreas();
 
+	void PlayPickByArea();
 
+	bool CorrectArea(CFigure* ptr);
 
 	void PlayColorTypeGame();
 	void PlayFigTypeGame();

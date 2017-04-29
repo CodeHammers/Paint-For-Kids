@@ -20,6 +20,12 @@ PlayAction::PlayAction(ApplicationManager* pApp) : Action(pApp)
 }
 
 
+bool operator==(color a, color b)
+{
+	return ((a.ucBlue == b.ucBlue) && (a.ucGreen == b.ucGreen) && (a.ucRed == b.ucRed));
+}
+
+
 void PlayAction::SetSubActionForColor()
 {
 	ActionType subAction;
@@ -43,12 +49,6 @@ void PlayAction::SetSubActionForColor()
 }
 
 
-bool operator==(color a, color b)
-{
-	return ((a.ucBlue == b.ucBlue) && (a.ucGreen == b.ucGreen) && (a.ucRed == b.ucRed));
-}
-
-
 void PlayAction::SetSubActionForFigureType()
 {
 	ActionType  subAction;
@@ -65,11 +65,13 @@ void PlayAction::SetSubActionForFigureType()
 	pManager->UpdateInterface();
 }
 
+
 void PlayAction::SetSubActionForColoredFigures()
 {
 	SetSubActionForFigureType();
 	SetSubActionForColor();
 }
+
 
 bool PlayAction::ReadActionParameters()
 {
@@ -117,7 +119,13 @@ bool PlayAction::ReadActionParameters()
 			break;
 
 		case ITM_BY_AREA_Clicked:
-			///code to call functions to do the logic
+			UI.InterfaceMode = MODE_PLAY;
+			pManager->UpdateInterface();
+			PlayPickByArea();
+			pOut->CreatePlayToolBar(0, true, false);
+			pOut->CreateDrawToolBarUp(0, false, false);
+			pOut->CreateDrawToolBarRight(false, false);
+			pManager->ReturnFromClipboard();
 			break;
 		}
 	}
@@ -129,24 +137,46 @@ bool PlayAction::ReadActionParameters()
 	return true;
 }
 
+
 void PlayAction:: PlayFigTypeGame() { 
-	int NumOfFigures = GetNumOfFigure(); Point P; int Cnt = 0; int FailCnt = 0;
+	int NumOfFigures = GetNumOfFigure(); 
+	Point P; int Cnt = 0; int FailCnt = 0;
+
+	if (NumOfFigures == 0) {
+		pOut->PrintMessage("No figures with the specified type");
+		return;
+	}
 
 	while (true) {
 		pIn->GetPointClicked(P.x, P.y);
 		CFigure*ptr = pManager->GetFigure(P.x, P.y);
-		if (CheckFigureType(ptr)) {
+
+		if (ptr == NULL) continue;
+
+		else if (Abort(P)) {
+			pOut->PrintMessage("Pick And Hide: Oh weh!, you got " + to_string(Cnt) + "/" + to_string(NumOfFigures));
+			return;
+		}
+
+		//Add if exit clicked and fix abort ya mo2men ya 3el2
+
+		else if (CheckFigureType(ptr)) {
 			ptr->SetSelected(true);
 			pManager->CutToClipboard(false);
 			pManager->DeleteSelected(false); 
 			pManager->UpdateInterface();
-			pOut->PrintMessage("Bravo.. Now you selected : " + to_string(++Cnt) + " From :" + to_string(NumOfFigures));
-			if (Cnt == NumOfFigures) { pOut->PrintMessage("Congratulation You have selected all wanted figures ");	break; }
+			pOut->PrintMessage("Bravo.. Now you selected : " + to_string(++Cnt) + " out of :" + to_string(NumOfFigures));
 		}
-		else { pOut->PrintMessage("Oh Dear .. Are you stupid or what ? 5las et3ameet m4 4ayef el " + FigureType); FailCnt++; }
+
+		else {
+			pOut->PrintMessage("Pick And Hide: Wrong figure clicked");
+			FailCnt++;
+		}
+
+		if (Cnt == NumOfFigures) break;
 	}
-	if(FailCnt>0)
-		pOut->PrintMessage("The Game Finished .. You have Chosen " + to_string(Cnt) + " Correct Chosen " + to_string(FailCnt) + " Wrong Ya 3el2");
+
+	pOut->PrintMessage("Pick And Hide: Good Job, Correct clicks: " + to_string(Cnt) + " , Wrong clicks: " + to_string(FailCnt));
 }
 
 
@@ -158,19 +188,34 @@ void PlayAction::PlayColorTypeGame()
 	while (true){
 		pIn->GetPointClicked(P.x, P.y);
 		CFigure*ptr = pManager->GetFigure(P.x, P.y);
-		if (CheckColorType(ptr)) {
+
+		if (ptr == NULL) continue;
+
+		else if (Abort(P)) {
+			pOut->PrintMessage("Pick And Hide: Oh weh!, you got " + to_string(Cnt) + "/" + to_string(NumOfFigures));
+			return;
+		}
+
+		//Add if exit clicked and fix abort ya mo2men ya 3el2
+
+		else if (CheckColorType(ptr)) {
 			ptr->SetSelected(true);
 			pManager->CutToClipboard(false);
 			pManager->DeleteSelected(false);
 			pManager->UpdateInterface();
 			pOut->PrintMessage("Bravo.. Now you selected : " + to_string(++Cnt) + " From :" + to_string(NumOfFigures));
-			if (Cnt == NumOfFigures) { pOut->PrintMessage("Congratulation You have selected all wanted figures ");	break; }
+			
 		}
-		else { pOut->PrintMessage("Rakez ya3m w e5tar 3dl ya bdan ya ebn el bdan"); FailCnt++; }
 
+		else {
+			pOut->PrintMessage("Pick And Hide: Wrong figure clicked");
+			FailCnt++;
+		}
+
+		if (Cnt == NumOfFigures) break;
 	}
-	if (FailCnt>0)
-		pOut->PrintMessage("The Game Finished .. You have Chosen " + to_string(Cnt) + " Correct Chosen " + to_string(FailCnt) + " Wrong Ya 3el2");
+
+	pOut->PrintMessage("Pick And Hide: Good Job, Correct clicks: " + to_string(Cnt) + " , Wrong clicks: " + to_string(FailCnt));
 }
 
 
@@ -184,25 +229,71 @@ void PlayAction::PlayColoredFigureGame()
 		return;
 	}
 
-	while (NumOfColoredFigures) {
+	while (true) {
 		pIn->GetPointClicked(P.x, P.y);
 		CFigure*ptr = pManager->GetFigure(P.x, P.y);
 
 		if (ptr == NULL) continue;
 
-		if (CheckColoredFigures(ptr)) {
+		else if (Abort(P)) {
+			pOut->PrintMessage("Pick And Hide: Oh weh!, you got " + to_string(Cnt) + "/" + to_string(NumOfColoredFigures));
+			return;
+		}
+
+		//Add if exit clicked and fix abort ya mo2men ya 3el2
+
+		else if (CheckColoredFigures(ptr)) {
 			ptr->SetSelected(true);
 			pManager->CutToClipboard(false);
 			pManager->DeleteSelected(false);
 			pManager->UpdateInterface();
 
 			pOut->PrintMessage("Bravo.. Now you selected : " + to_string(++Cnt) + " Out of :" + to_string(NumOfColoredFigures));
-			NumOfColoredFigures--;
 		}
 
+		else {
+			pOut->PrintMessage("Pick And Hide: Wrong figure clicked");
+			FailCnt++;
+		}
+
+		if (NumOfColoredFigures == Cnt) break;
+	}
+	pOut->PrintMessage("Pick And Hide: Good Job, Correct clicks: "+to_string(Cnt)+" , Wrong clicks: "+to_string(FailCnt));
+}
+
+void PlayAction::PlayPickByArea()
+{
+	int NumOfFigures = pManager->GetFigCount();
+	Point P; int Cnt = 0; int FailCnt = 0;
+
+	if (NumOfFigures == 0) {
+		pOut->PrintMessage("You haven't drawn any figures yet, kiddo!");
+		return;
+	}
+
+	CalcAndQueueAreas();
+
+	while (FigureAreas.size()) {
+		pIn->GetPointClicked(P.x, P.y);
+		CFigure*ptr = pManager->GetFigure(P.x, P.y);
+
+		if (ptr == NULL) continue;
+
 		else if (Abort(P)) {
-			pOut->PrintMessage("Pick And Hide: Oh weh!, you got " + to_string(Cnt) + "/" + to_string(NumOfColoredFigures));
+			pOut->PrintMessage("Pick And Hide: Oh weh!, you got " + to_string(Cnt) + "/" + to_string(NumOfFigures));
 			return;
+		}
+
+		//Add if exit clicked and fix abort ya mo2men ya 3el2
+
+		else if (CorrectArea(ptr)) {
+			FigureAreas.pop();
+			ptr->SetSelected(true);
+			pManager->CutToClipboard(false);
+			pManager->DeleteSelected(false);
+			pManager->UpdateInterface();
+
+			pOut->PrintMessage("Bravo.. Now you selected : " + to_string(++Cnt) + " Out of :" + to_string(NumOfFigures));
 		}
 
 		else {
@@ -210,19 +301,26 @@ void PlayAction::PlayColoredFigureGame()
 			FailCnt++;
 		}
 	}
-	pOut->PrintMessage("Pick And Hide: Good Job, Correct clicks: "+to_string(Cnt)+" , Wrong clicks: "+to_string(FailCnt));
+	pOut->PrintMessage("Pick And Hide: Good Job, Correct clicks: " + to_string(Cnt) + " , Wrong clicks: " + to_string(FailCnt));
 }
 
+
+bool PlayAction::CorrectArea(CFigure* ptr)
+{
+	return (ptr->GetArea() == FigureAreas.top());
+}
 
 
 int PlayAction::GetNumOfFigure() {
 	return pManager->GetNumOfFigType();
 }
 
+
 int PlayAction::GetNumOfColorfulFigures()
 {
 	return pManager->GetNumOfColorfulFig();
 }
+
 
 bool PlayAction::CheckFigureType(CFigure* ptr)
 {
@@ -254,7 +352,6 @@ bool PlayAction::CheckColoredFigures(CFigure* ptr)
 bool PlayAction::CheckColorType(CFigure* ptr)
 {
 	if (ptr == NULL) return false;
-	//return (ptr->GetGfxInfo().isFilled == true && ptr->GetGfxInfo().FillClr.ucBlue == FigureFillClr.ucBlue &&ptr->GetGfxInfo().FillClr == FigureFillClr);
 	return (ptr->GetGfxInfo().isFilled  && ptr->GetGfxInfo().FillClr == FigureFillClr);
 }
 
