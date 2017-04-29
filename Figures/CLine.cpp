@@ -53,23 +53,18 @@ void CLine::Resize(double r) {
 	EndPoint1 = P1; EndPoint2 = P2;
 }
 
-bool CLine::Encloses(Point P) 
+bool CLine::Encloses(Point P)
 {
-	/*float dist1 = pow(EndPoint1.x - P.x, 2) + pow(EndPoint1.y - P.y, 2);
-	float dist2 = pow(EndPoint2.x - P.x, 2) + pow(EndPoint2.y - P.y, 2);
-	float tot= pow(EndPoint1.x - EndPoint2.x, 2) + pow(EndPoint1.y - EndPoint2.y, 2);
-
-	double d = abs(tot - (dist1 + dist2 + 2 * sqrt(dist1)*sqrt(dist2)));
-
-	return (abs(tot-(dist1 + dist2 + 2*sqrt(dist1)*sqrt(dist2)))<=FigGfxInfo.BorderWdth);*/
-
 	int minx, maxx, miny, maxy;
 	minx = min(EndPoint1.x, EndPoint2.x);
 	maxx = max(EndPoint1.x, EndPoint2.x);
 	miny = min(EndPoint1.y, EndPoint2.y);
 	maxy = max(EndPoint1.y, EndPoint2.y);
-
-	return (P.x >= minx && P.x <= maxx && P.y >= miny && P.y <=maxy);
+	double dist = (EndPoint2.y - EndPoint1.y) * P.x - (EndPoint2.x - EndPoint1.x)*P.y + EndPoint2.x * EndPoint1.y - EndPoint2.y * EndPoint1.x;
+	dist = abs(dist);
+	dist = dist / (sqrt(pow(EndPoint1.y - EndPoint2.y, 2) + pow(EndPoint1.x - EndPoint2.x, 2)));
+	double borderWidth = CFigure::FigGfxInfo.BorderWdth / 2;
+	return (P.x >= minx && P.x <= maxx || P.y >= miny && P.y <= maxy) && borderWidth+2 >= dist;
 }
 
 void CLine::Save(ofstream & OutFile)

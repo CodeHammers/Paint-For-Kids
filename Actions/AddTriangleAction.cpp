@@ -58,7 +58,7 @@ bool AddTriangleAction::ReadActionParameters()
 			break;
 	}
 
-	TriangleGfxInfo.isFilled = false;	//default is not filled
+	TriangleGfxInfo.isFilled = UI.isFilled;	//default is not filled
 
 	//get drawing, filling colors and pen width from the interface
 	TriangleGfxInfo.DrawClr = pOut->getCrntDrawColor();

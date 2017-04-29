@@ -41,7 +41,7 @@ bool AddRectAction::ReadActionParameters()
 			break;
 	}
 
-	RectGfxInfo.isFilled = false;	//default is not filled
+	RectGfxInfo.isFilled = UI.isFilled;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
 	RectGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	RectGfxInfo.FillClr = pOut->getCrntFillColor();
@@ -58,8 +58,8 @@ void AddRectAction::Execute()
 	if (ReadActionParameters()) {
 
 		//temp
-		RectGfxInfo.isFilled = true;
-		RectGfxInfo.FillClr = GREEN;
+		//RectGfxInfo.isFilled = true;
+		//RectGfxInfo.FillClr = GREEN;
 
 		//Create a rectangle with the parameters read from the user
 		CRectangle *R = new CRectangle(P1, P2, RectGfxInfo);

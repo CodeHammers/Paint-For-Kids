@@ -5,7 +5,7 @@ Output::Output()
 {
 	/*Initialize user interface parameters*/
 	UI.InterfaceMode = MODE_DRAW;
-
+	UI.isFilled = false;
 	/*Setting the dimensions of the application window*/
 	UI.width = 1500; //Setting the width of the window.
 	UI.height = 800; //Setting the height of the window.
@@ -75,7 +75,10 @@ void Output::ChangeDrawColor(color DrawColor)
 }
 void Output::ChangeFillColor(color FillColor)
 {
-	EditWindowSettings(UI.DrawColor, FillColor, UI.BkGrndColor);
+	//EditWindowSettings(UI.DrawColor, FillColor, UI.BkGrndColor);
+	UI.FillColor = FillColor;
+	UI.isFilled = true;
+	pWind->SetBrush(UI.FillColor);
 }
 void Output::ChangeBorderWidth(int bw)
 {

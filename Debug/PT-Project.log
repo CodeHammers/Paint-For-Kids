@@ -1,7 +1,5 @@
-﻿  PlayAction.cpp
-e:\paint-for-kids\actions\playaction.cpp(88): warning C4101: 'subAction2': unreferenced local variable
-e:\paint-for-kids\actions\playaction.cpp(88): warning C4101: 'subAction': unreferenced local variable
-  AddRectAction.cpp
+﻿  AddTriangleAction.cpp
+  AddCircleAction.cpp
   Generating Code...
-  PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
+  PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)
