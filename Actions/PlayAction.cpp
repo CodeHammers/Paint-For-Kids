@@ -73,70 +73,39 @@ void PlayAction::SetSubActionForColoredFigures()
 
 bool PlayAction::ReadActionParameters()
 {
-	pOut->ClearDrawArea();
-	pOut->CreatePlayToolBar(0, false, true);
+	pOut->CreatePlayToolBar(1, false, false);   //show games sub menu
 
-	ActionType Game = pIn->GetUserAction();
+	ActionType TypeOfGame = pIn->GetUserAction();
 
-	if (Game == MODE_PLAY_SUB_MENU2_Clicked) {   //pick and hide
-		pOut->CreatePlayToolBar(0, true, false);
-		pOut->CreatePlayToolBar(1, false, false);   //show games sub menu
+	pOut->CreatePlayToolBar(1, true, false);     //Hide the menu
 
-		ActionType TypeOfGame=DRAWING_AREA; 
-	
-		while (TypeOfGame == DRAWING_AREA) {
-			TypeOfGame = pIn->GetUserAction();
-		}
+	switch (TypeOfGame)
+	{
+	case ITM_BY_TYPE_Clicked:
+		SetSubActionForFigureType();
+		PlayFigTypeGame();
+		pManager->ReturnFromClipboard();
+		break;
 
-		pOut->CreatePlayToolBar(1, true, false);     //Hide the menu
+	case ITM_BY_FILLCOL_Clicked:
+		SetSubActionForColor();
+		PlayColorTypeGame();
+		pManager->ReturnFromClipboard();
+		break;
 
-		ActionType subAction,subAction2;
+	case ITM_BY_TYPE_AND_FILLCOL_Clicked:
+		SetSubActionForColoredFigures();
+		PlayColoredFigureGame();
+		pManager->ReturnFromClipboard();
+		break;
 
-		switch (TypeOfGame)
-		{
-		case ITM_BY_TYPE_Clicked:
-			SetSubActionForFigureType();
-			PlayFigTypeGame();
-			pOut->CreatePlayToolBar(0, true, false);
-			pOut->CreateDrawToolBarUp(0, false, false);
-			pOut->CreateDrawToolBarRight(false, false);
-			pManager->ReturnFromClipboard();
-			break;
-
-		case ITM_BY_FILLCOL_Clicked:
-			SetSubActionForColor();
-			PlayColorTypeGame();
-			pOut->CreatePlayToolBar(0, true, false);
-			pOut->CreateDrawToolBarUp(0, false, false);
-			pOut->CreateDrawToolBarRight(false, false);
-			pManager->ReturnFromClipboard();
-			break;
-
-		case ITM_BY_TYPE_AND_FILLCOL_Clicked:
-			SetSubActionForColoredFigures();
-			PlayColoredFigureGame();
-			pOut->CreatePlayToolBar(0, true, false);
-			pOut->CreateDrawToolBarUp(0, false, false);
-			pOut->CreateDrawToolBarRight(false, false);
-			pManager->ReturnFromClipboard();
-			break;
-
-		case ITM_BY_AREA_Clicked:
-			UI.InterfaceMode = MODE_PLAY;
-			pManager->UpdateInterface();
-			PlayPickByArea();
-			pOut->CreatePlayToolBar(0, true, false);
-			pOut->CreateDrawToolBarUp(0, false, false);
-			pOut->CreateDrawToolBarRight(false, false);
-			pManager->ReturnFromClipboard();
-			break;
-		}
+	case ITM_BY_AREA_Clicked:
+		UI.InterfaceMode = MODE_PLAY;
+		pManager->UpdateInterface();
+		PlayPickByArea();
+		pManager->ReturnFromClipboard();
+		break;
 	}
-
-	else if (Game == MODE_PLAY_SUB_MENU1_Clicked) {  //scramble and find
-		//Team kareem works here
-	}
-	
 	return true;
 }
 

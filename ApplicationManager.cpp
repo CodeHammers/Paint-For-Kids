@@ -312,6 +312,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case TO_PLAY:
+			pOut->CreatePlayToolBar(0, false, true);
+			break;
+
+		case MODE_PLAY_SUB_MENU2_Clicked:
 			pAct = new PlayAction(this);
 			break;
 
