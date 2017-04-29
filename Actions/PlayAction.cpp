@@ -51,15 +51,13 @@ void PlayAction::SetSubActionForColor()
 
 void PlayAction::SetSubActionForFigureType()
 {
-	ActionType  subAction;
 	pOut->CreateDrawToolBarUp(1, false, false);
-	subAction = pIn->GetUserAction();
+	ActionType  subAction = pIn->GetUserAction();
 	pOut->CreateDrawToolBarUp(1, true, false);
 	if (subAction == DRAW_CIRC) { FigureType = "Circule"  ;	}
 	if (subAction == DRAW_TRI)  { FigureType = "Triangle" ;	}
 	if (subAction == DRAW_RECT) { FigureType = "Rectangle"; }
 	if (subAction == DRAW_LINE) { FigureType = "Line"     ;	}
-
 	UI.InterfaceMode = MODE_PLAY;
 
 	pManager->UpdateInterface();
@@ -81,10 +79,15 @@ bool PlayAction::ReadActionParameters()
 	ActionType Game = pIn->GetUserAction();
 
 	if (Game == MODE_PLAY_SUB_MENU2_Clicked) {   //pick and hide
-
+		pOut->CreatePlayToolBar(0, true, false);
 		pOut->CreatePlayToolBar(1, false, false);   //show games sub menu
 
-		ActionType TypeOfGame = pIn->GetUserAction(); //See what game the baby wants to play :V
+		ActionType TypeOfGame=DRAWING_AREA; 
+	
+		while (TypeOfGame == DRAWING_AREA) {
+			TypeOfGame = pIn->GetUserAction();
+		}
+
 		pOut->CreatePlayToolBar(1, true, false);     //Hide the menu
 
 		ActionType subAction,subAction2;
@@ -150,14 +153,19 @@ void PlayAction:: PlayFigTypeGame() {
 	while (true) {
 		pIn->GetPointClicked(P.x, P.y);
 		CFigure*ptr = pManager->GetFigure(P.x, P.y);
-
-		if (ptr == NULL) continue;
-
-		else if (Abort(P)) {
-			pOut->PrintMessage("Pick And Hide: Oh weh!, you got " + to_string(Cnt) + "/" + to_string(NumOfFigures));
+		
+		if (Abort(P)) {
+			pOut->PrintMessage("Exiting From The Game .. Success");
 			return;
 		}
+		
+		if (ExitClicked(P)) {
+			pOut->PrintMessage("Exiting From The Game .. Success");
+			return;
+		}
+	
 
+		if (ptr == NULL) continue;
 		//Add if exit clicked and fix abort ya mo2men ya 3el2
 
 		else if (CheckFigureType(ptr)) {
@@ -189,15 +197,18 @@ void PlayAction::PlayColorTypeGame()
 		pIn->GetPointClicked(P.x, P.y);
 		CFigure*ptr = pManager->GetFigure(P.x, P.y);
 
-		if (ptr == NULL) continue;
-
-		else if (Abort(P)) {
-			pOut->PrintMessage("Pick And Hide: Oh weh!, you got " + to_string(Cnt) + "/" + to_string(NumOfFigures));
+		if (Abort(P)) {
+			pOut->PrintMessage("Loading :: EXITING FROM THE GAME");
 			return;
 		}
 
-		//Add if exit clicked and fix abort ya mo2men ya 3el2
+		if (ExitClicked(P)) {
+			pOut->PrintMessage("Loading :: EXITING FROM THE GAME");
+			return;
+		}
 
+		if (ptr == NULL) continue;
+	
 		else if (CheckColorType(ptr)) {
 			ptr->SetSelected(true);
 			pManager->CutToClipboard(false);
@@ -232,15 +243,18 @@ void PlayAction::PlayColoredFigureGame()
 	while (true) {
 		pIn->GetPointClicked(P.x, P.y);
 		CFigure*ptr = pManager->GetFigure(P.x, P.y);
-
-		if (ptr == NULL) continue;
-
-		else if (Abort(P)) {
-			pOut->PrintMessage("Pick And Hide: Oh weh!, you got " + to_string(Cnt) + "/" + to_string(NumOfColoredFigures));
+		
+		if (Abort(P)) {
+			pOut->PrintMessage("Exiting From The Game .. Success");
 			return;
 		}
 
-		//Add if exit clicked and fix abort ya mo2men ya 3el2
+		if (ExitClicked(P)) {
+			pOut->PrintMessage("Exiting From The Game .. Success");
+			return;
+		}
+
+		if (ptr == NULL) continue;
 
 		else if (CheckColoredFigures(ptr)) {
 			ptr->SetSelected(true);
@@ -276,15 +290,17 @@ void PlayAction::PlayPickByArea()
 	while (FigureAreas.size()) {
 		pIn->GetPointClicked(P.x, P.y);
 		CFigure*ptr = pManager->GetFigure(P.x, P.y);
-
-		if (ptr == NULL) continue;
-
-		else if (Abort(P)) {
-			pOut->PrintMessage("Pick And Hide: Oh weh!, you got " + to_string(Cnt) + "/" + to_string(NumOfFigures));
+	
+		if (Abort(P)) {
+			pOut->PrintMessage("Exiting From The Game .. Success");
 			return;
 		}
 
-		//Add if exit clicked and fix abort ya mo2men ya 3el2
+		if (ExitClicked(P)) {
+			pOut->PrintMessage("Exiting From The Game .. Success");
+			return;
+		}
+		if (ptr == NULL) continue;
 
 		else if (CorrectArea(ptr)) {
 			FigureAreas.pop();
@@ -308,6 +324,13 @@ void PlayAction::PlayPickByArea()
 bool PlayAction::CorrectArea(CFigure* ptr)
 {
 	return (ptr->GetArea() == FigureAreas.top());
+}
+
+bool PlayAction::ExitClicked(Point P)
+{
+	if (P.x >= 1435 && P.x <= 1500 && P.y >= 0 && P.y <= 50)
+		return true;
+	return false;
 }
 
 

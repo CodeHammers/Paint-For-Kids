@@ -18,6 +18,10 @@ enum GUI_MODE	//Graphical user interface mode
 	MODE_DRAW_SUB_MENU6,  //resize options
 	MODE_PLAY_SUB_MENU1,  // For ScrambleAndFind
 	MODE_PLAY_SUB_MENU2,  // For PickAndHide
+	MODE_PLAY_Choosing_Figure,
+	MODE_PLAY_Choosing_Color,
+	MODE_PLAY_Choosing_Size,
+
 	MODE_PLAY	//Playing mode
 };
 enum DrawMenuItemLeft //The items of the Draw menu (you should add more items)

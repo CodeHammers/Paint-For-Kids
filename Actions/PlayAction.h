@@ -42,7 +42,7 @@ public:
 	void PlayPickByArea();
 
 	bool CorrectArea(CFigure* ptr);
-
+	bool ExitClicked(Point P);
 	void PlayColorTypeGame();
 	void PlayFigTypeGame();
 	int GetNumOfColorfulFigures();
