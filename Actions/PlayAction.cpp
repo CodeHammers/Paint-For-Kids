@@ -31,6 +31,9 @@ void PlayAction::SetSubActionForColor()
 	ActionType subAction;
 	pOut->CreateDrawToolBarUp(3, false, false);
 	subAction = pIn->GetUserAction();
+	pOut->CreateDrawToolBarUp(3, true, false);
+	UI.InterfaceMode = MODE_PLAY;
+
 	if (subAction == ITM_BRUSHFILL_BLACK_Clicked)	{ FigureFillClr = BLACK    ; }
 	if (subAction == ITM_BRUSHFILL_YELLOW_Clicked)  { FigureFillClr = YELLOW   ; }
 	if (subAction == ITM_BRUSHFILL_BLUE_Clicked)	{ FigureFillClr = BLUE     ; }
@@ -41,11 +44,8 @@ void PlayAction::SetSubActionForColor()
 	if (subAction == ITM_BRUSHFILL_ORANGE_Clicked)  { FigureFillClr = ORANGE   ; }
 	if (subAction == ITM_BRUSHFILL_PURPLE_Clicked)  { FigureFillClr = PURPLE   ; }
 	if (subAction == ITM_BRUSHFILL_RED_Clicked)		{ FigureFillClr = RED      ; }
-	pOut->CreateDrawToolBarUp(3, true, false);
-
-	UI.InterfaceMode = MODE_PLAY;
-
-	pManager->UpdateInterface();
+	
+	//pManager->UpdateInterface();
 }
 
 
@@ -54,12 +54,13 @@ void PlayAction::SetSubActionForFigureType()
 	pOut->CreateDrawToolBarUp(1, false, false);
 	ActionType  subAction = pIn->GetUserAction();
 	pOut->CreateDrawToolBarUp(1, true, false);
+	UI.InterfaceMode = MODE_PLAY;
+
 	if (subAction == DRAW_CIRC) { FigureType = "Circule"  ;	}
 	if (subAction == DRAW_TRI)  { FigureType = "Triangle" ;	}
 	if (subAction == DRAW_RECT) { FigureType = "Rectangle"; }
 	if (subAction == DRAW_LINE) { FigureType = "Line"     ;	}
-	UI.InterfaceMode = MODE_PLAY;
-
+	
 	pManager->UpdateInterface();
 }
 
@@ -161,6 +162,11 @@ void PlayAction::PlayColorTypeGame()
 {
 	int NumOfFigures = GetNumOfColorfulFigures();
 	Point P; int Cnt = 0; int FailCnt = 0;
+
+	if (NumOfFigures == 0) {
+		pOut->PrintMessage("No figures with the specified color");
+		return;
+	}
 
 	while (true){
 		pIn->GetPointClicked(P.x, P.y);

@@ -301,7 +301,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case ITM_PASTE_Clicked:
-			//pOut->CreatePlayToolBar(0, true);
 			pAct = new PasteAction(this);
 			break;
 
