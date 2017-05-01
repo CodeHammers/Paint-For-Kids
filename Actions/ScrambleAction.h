@@ -12,7 +12,8 @@ public:
 
 	//Execute the action
 	virtual void Execute();
-	void LetsStartTheGaaaame();
+	void StartGame();
+	bool restart(Point p);
 	~ScrambleAction();
 };
 

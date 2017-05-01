@@ -41,7 +41,8 @@ public:
 	void RollBackChanges();
 	~ApplicationManager();
 	void nullifyFigList();
-	bool SelectFigureToScramble();
+	bool SelectFigureToScramble(int idx);
+	void ClearSelections();
 	bool CheckValidityOfZoom(double r);
 	void BundleFiguresData();
 	void RearrangeFigures();

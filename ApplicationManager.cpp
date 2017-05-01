@@ -41,6 +41,7 @@ void ApplicationManager::RollBackChanges() {
 		FigList[i]->Resize(2);
 		FigList[i]->disableScramble();
 		FigList[i]->retrieveData();
+		FigList[i]->SetSelected(false);
 	}
 }
 
@@ -54,14 +55,16 @@ void ApplicationManager::nullifyFigList() {
 	++FigCount;
 	*/
 }
-bool ApplicationManager::SelectFigureToScramble() {
-	CFigure* fig = FigList[0];
+bool ApplicationManager::SelectFigureToScramble(int idx) {
+	CFigure* fig = FigList[idx];
 	fig->SetSelected(true);
-	FigList.erase(FigList.begin());
-	FigList.push_back(fig);
 	return true;
 }
-
+void ApplicationManager::ClearSelections() {
+	for (unsigned int i = 0; i < FigList.size(); i++) {
+		FigList[i]->SetSelected(false);
+	}
+}
 bool ApplicationManager::CheckValidityOfZoom(double r) {
 	UI.Ratio *= r;
 	for (int i = 0; i < FigList.size(); i++) {
@@ -84,15 +87,23 @@ void ApplicationManager::BundleFiguresData() {
 void ApplicationManager::RearrangeFigures() {
 	int areaQuadrantsX[4];
 	int areaQuadrantsY[4];
-	areaQuadrantsX[0] = 50; areaQuadrantsY[0] = 50;
-	areaQuadrantsX[1] = UI.width/4; areaQuadrantsY[1] = 50;
-	areaQuadrantsX[2] = 50; areaQuadrantsY[2] = UI.height/2;
+	areaQuadrantsX[0] = 70; areaQuadrantsY[0] = 70;
+	areaQuadrantsX[1] = UI.width/4; areaQuadrantsY[1] = 70;
+	areaQuadrantsX[2] = 70; areaQuadrantsY[2] = UI.height/2;
 	areaQuadrantsX[3] = UI.width/4; areaQuadrantsY[3] = UI.height/2;
 	int index = 0;
 	for (unsigned int i = 0; i < FigList.size(); i++) {
 		FigList[i]->ChangeQuandrant(areaQuadrantsX[index], areaQuadrantsY[index]);
 		index++;
 		index = index % 4;
+		int maxAttemps=0;
+		while (!FigList[i]->ValidAfterZoom()) {
+			FigList[i]->ChangeQuandrant(areaQuadrantsX[index], areaQuadrantsY[index]);
+			index++;
+			index = index % 4;
+			if (++maxAttemps == 3)
+				break;
+		}
 	}
 }
 
