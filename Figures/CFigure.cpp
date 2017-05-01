@@ -69,6 +69,11 @@ bool CFigure::ScrambledFigure()
 	return Scrambled;
 }
 
+void CFigure::disableScramble()
+{
+	Scrambled = false;
+}
+
 void CFigure::SetSelected(bool s)
 {	Selected = s; }
 

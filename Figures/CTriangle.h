@@ -11,6 +11,8 @@ public:
 	//Constructor
 	CTriangle(Point V1, Point V2, Point V3, GfxInfo FigureGfxInfo);
 
+	void retrieveData();
+
 	//Draw function
 	virtual void Draw(Output* pOut) const;
 

@@ -7,7 +7,11 @@ CTriangle::CTriangle(Point V1, Point V2, Point V3, GfxInfo FigureGfxInfo) :CFigu
 	Vertex2 = V2;
 	Vertex3 = V3;
 }
-
+void CTriangle::retrieveData() {
+	Vertex1 = Bundle[0];
+	Vertex2 = Bundle[1];
+	Vertex3 = Bundle[2];
+}
 void CTriangle::Draw(Output* pOut) const
 {
 	if (Scrambled) {

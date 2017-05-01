@@ -1,13 +1,4 @@
-﻿  CRectangle.cpp
-c:\paint-for-kids\figures\crectangle.cpp(18): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\crectangle.cpp(20): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\crectangle.cpp(36): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\crectangle.cpp(37): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\crectangle.cpp(58): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\crectangle.cpp(59): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\crectangle.cpp(161): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\crectangle.cpp(169): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\crectangle.cpp(182): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\crectangle.cpp(190): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+﻿  ScrambleAction.cpp
+AddCircleAction.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

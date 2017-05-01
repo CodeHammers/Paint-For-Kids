@@ -11,6 +11,7 @@ private:
 	vector<Point> Bundle;
 public:
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
+	void retrieveData();
 	virtual void Draw(Output* pOut) const;
 
 	//A function to determine whether a point is inside a rectangle

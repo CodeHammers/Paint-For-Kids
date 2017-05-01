@@ -31,9 +31,16 @@ ApplicationManager::ApplicationManager()
 }
 
 void ApplicationManager::ScaleAll() {
-	for (int i = 0; i < FigList.size(); i++) {
+	for (unsigned int i = 0; i < FigList.size(); i++) {
 		FigList[i]->Resize(0.5);
 		FigList[i]->ChopCoordniates();
+	}
+}
+void ApplicationManager::RollBackChanges() {
+	for (unsigned int i = 0; i < FigList.size(); i++) {
+		FigList[i]->Resize(2);
+		FigList[i]->disableScramble();
+		FigList[i]->retrieveData();
 	}
 }
 

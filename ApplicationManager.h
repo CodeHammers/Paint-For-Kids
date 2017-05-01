@@ -38,6 +38,7 @@ private:
 public:	
 	ApplicationManager();
 	void ScaleAll();
+	void RollBackChanges();
 	~ApplicationManager();
 	void nullifyFigList();
 	bool SelectFigureToScramble();

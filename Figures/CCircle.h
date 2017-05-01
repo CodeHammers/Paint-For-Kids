@@ -14,6 +14,8 @@ public:
 	//Constructor
 	CCircle(Point P1, int r,GfxInfo FigureGfxInfo);
 
+	void retrieveData();
+
 	//Draw function
 	virtual void Draw(Output* pOut) const;
 	virtual void ChopCoordniates();

@@ -5,7 +5,10 @@ CLine::CLine(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 	EndPoint1 = P1;
 	EndPoint2 = P2;
 }
-
+void CLine::retrieveData() {
+	EndPoint1 = Bundle[0];
+	EndPoint2 = Bundle[1];
+}
 bool CLine::ValidAfterZoom() {
 	Point P1 = EndPoint1; Point P2 = EndPoint2;
 	int Dist = abs(P1.y - P2.y);

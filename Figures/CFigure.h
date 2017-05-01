@@ -20,6 +20,8 @@ public:
 	CFigure(GfxInfo FigureGfxInfo);
 	void ScrambleFigure();
 	bool ScrambledFigure();
+	void disableScramble();
+	virtual void retrieveData()=0;
 	virtual void Resize(double ratio) = 0;
 	void SetSelected(bool s);	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected

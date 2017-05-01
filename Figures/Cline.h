@@ -11,6 +11,8 @@ public:
 	//Constrcutor
 	CLine(Point P1, Point P2, GfxInfo FigureGfxInfo);
 
+	void retrieveData();
+
 	bool ValidAfterZoom();
 	virtual void ChopCoordniates();
 

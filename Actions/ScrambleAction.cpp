@@ -44,6 +44,8 @@ void ScrambleAction::LetsStartTheGaaaame() {
 	}
 	int total = RightAnswers + WrongAnswers;
 	pManager->GetOutput()->PrintMessage( "YOu got "+to_string( RightAnswers) + " out of " + to_string(total)+" Attemps" );
+	pManager->GetOutput()->ClearDrawArea();
+	pManager->RollBackChanges();
 }
 
 ScrambleAction::~ScrambleAction()

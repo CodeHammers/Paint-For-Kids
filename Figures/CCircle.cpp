@@ -7,7 +7,10 @@ CCircle::CCircle(Point P1, int r,GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 	Center = P1;
 	Radius = r;
 }
-
+void CCircle::retrieveData() {
+	Radius = Bundle.second;
+	Center = Bundle.first;
+}
 
 void CCircle::Draw(Output* pOut) const
 {
