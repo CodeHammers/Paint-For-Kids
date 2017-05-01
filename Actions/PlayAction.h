@@ -15,9 +15,9 @@ private:
 	static string FigureType;
 
 public:
-	void SetSubActionForColor();
+	bool SetSubActionForColor();
 	PlayAction(ApplicationManager* pApp);
-	void SetSubActionForFigureType();
+	bool SetSubActionForFigureType();
 	//Get action parameters function
 	virtual bool ReadActionParameters();
 
@@ -49,5 +49,5 @@ public:
 	static bool CheckColorType(CFigure* ptr);
 	int GetNumOfFigure();
 	void PlayColoredFigureGame();
-	void SetSubActionForColoredFigures();
+	bool SetSubActionForColoredFigures();
 };

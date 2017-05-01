@@ -359,10 +359,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pOut->CreatePlayToolBar(0, true,false);
 			pOut->CreateDrawToolBarUp(0, false, false);
 			pOut->CreateDrawToolBarRight(false, false);
+			UI.InterfaceMode = MODE_DRAW;
 			break;
 
 		case TO_PLAY:
 			pOut->CreatePlayToolBar(0, false, true);
+			ManageSelection(false);
+			ClearClipboard();
 			break;
 
 		case MODE_PLAY_SUB_MENU2_Clicked:
@@ -398,6 +401,12 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 
 int ApplicationManager::GetFigCount() { return FigList.size(); }
 
+void ApplicationManager::ManageSelection(bool s)
+{
+	for (int i = 0; i < FigList.size(); i++)
+		FigList[i]->SetSelected(s);
+}
+
 int ApplicationManager::GetSelectedFigCount()
 {
 	int cnt = 0;
@@ -423,10 +432,8 @@ void ApplicationManager::CutToClipboard(bool unselect)
 {
 	for (int i = 0; i < FigList.size(); i++) {
 		if (FigList[i]->IsSelected()) {
-			if (unselect) {
+			if (unselect) 
 				FigList[i]->SetSelected(false);
-				FigList[i]->ChngDrawClr(UI.DrawColor);
-			}
 			Clipboard.push_back(FigList[i]);
 		}
 	}
@@ -437,7 +444,6 @@ void ApplicationManager::CopyToClipboard()
 	for (int i = 0; i < FigList.size(); i++) {
 		if (FigList[i]->IsSelected()) {
 			FigList[i]->SetSelected(false);
-			//FigList[i]->ChngDrawClr(UI.DrawColor);
 			CFigure* ptr = CopyAction::CopyFigure(FigList[i]);
 			Clipboard.push_back(ptr);
 		}

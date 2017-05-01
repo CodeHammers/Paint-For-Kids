@@ -77,6 +77,7 @@ public:
 	int GetNumOfColorfulFig();
 	void ReturnFromClipboard();
 	int GetNumOfColoredFigures();
+	void ManageSelection(bool s);
 };
 
 #endif

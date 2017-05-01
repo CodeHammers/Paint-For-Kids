@@ -26,7 +26,7 @@ bool operator==(color a, color b)
 }
 
 
-void PlayAction::SetSubActionForColor()
+bool PlayAction::SetSubActionForColor()
 {
 	ActionType subAction;
 	pOut->CreateDrawToolBarUp(3, false, false);
@@ -34,41 +34,40 @@ void PlayAction::SetSubActionForColor()
 	pOut->CreateDrawToolBarUp(3, true, false);
 	UI.InterfaceMode = MODE_PLAY;
 
-	if (subAction == ITM_BRUSHFILL_BLACK_Clicked)	{ FigureFillClr = BLACK    ; }
-	if (subAction == ITM_BRUSHFILL_YELLOW_Clicked)  { FigureFillClr = YELLOW   ; }
-	if (subAction == ITM_BRUSHFILL_BLUE_Clicked)	{ FigureFillClr = BLUE     ; }
-	if (subAction == ITM_BRUSHFILL_BROWN_Clicked)   { FigureFillClr = BROWN    ; }
-	if (subAction == ITM_BRUSHFILL_PINK_Clicked)    { FigureFillClr = PINK     ; }
-	if (subAction == ITM_BRUSHFILL_GREEN_Clicked)   { FigureFillClr = GREEN    ; }
-	if (subAction == ITM_BRUSHFILL_NILE_Clicked)    { FigureFillClr = LIGHTBLUE; }
-	if (subAction == ITM_BRUSHFILL_ORANGE_Clicked)  { FigureFillClr = ORANGE   ; }
-	if (subAction == ITM_BRUSHFILL_PURPLE_Clicked)  { FigureFillClr = PURPLE   ; }
-	if (subAction == ITM_BRUSHFILL_RED_Clicked)		{ FigureFillClr = RED      ; }
-	
+	if (subAction == ITM_BRUSHFILL_BLACK_Clicked)	{ FigureFillClr = BLACK    ; return true;}
+	if (subAction == ITM_BRUSHFILL_YELLOW_Clicked)  { FigureFillClr = YELLOW   ; return true;}
+	if (subAction == ITM_BRUSHFILL_BLUE_Clicked)	{ FigureFillClr = BLUE     ; return true;}
+	if (subAction == ITM_BRUSHFILL_BROWN_Clicked)   { FigureFillClr = BROWN    ; return true;}
+	if (subAction == ITM_BRUSHFILL_PINK_Clicked)    { FigureFillClr = PINK     ; return true;}
+	if (subAction == ITM_BRUSHFILL_GREEN_Clicked)   { FigureFillClr = GREEN    ; return true;}
+	if (subAction == ITM_BRUSHFILL_NILE_Clicked)    { FigureFillClr = LIGHTBLUE; return true;}
+	if (subAction == ITM_BRUSHFILL_ORANGE_Clicked)  { FigureFillClr = ORANGE   ; return true;}
+	if (subAction == ITM_BRUSHFILL_PURPLE_Clicked)  { FigureFillClr = PURPLE   ; return true;}
+	if (subAction == ITM_BRUSHFILL_RED_Clicked)		{ FigureFillClr = RED      ; return true;}
+	else return false;
 	//pManager->UpdateInterface();
 }
 
 
-void PlayAction::SetSubActionForFigureType()
+bool PlayAction::SetSubActionForFigureType()
 {
 	pOut->CreateDrawToolBarUp(1, false, false);
 	ActionType  subAction = pIn->GetUserAction();
 	pOut->CreateDrawToolBarUp(1, true, false);
 	UI.InterfaceMode = MODE_PLAY;
 
-	if (subAction == DRAW_CIRC) { FigureType = "Circule"  ;	}
-	if (subAction == DRAW_TRI)  { FigureType = "Triangle" ;	}
-	if (subAction == DRAW_RECT) { FigureType = "Rectangle"; }
-	if (subAction == DRAW_LINE) { FigureType = "Line"     ;	}
-	
-	pManager->UpdateInterface();
+	if (subAction == DRAW_CIRC) { FigureType = "Circule"; return true; }
+	if (subAction == DRAW_TRI) { FigureType = "Triangle"; return true; }
+	if (subAction == DRAW_RECT) { FigureType = "Rectangle";return true; }
+	if (subAction == DRAW_LINE) { FigureType = "Line"; return true; }
+	else return false;
+	//pManager->UpdateInterface();
 }
 
 
-void PlayAction::SetSubActionForColoredFigures()
+bool PlayAction::SetSubActionForColoredFigures()
 {
-	SetSubActionForFigureType();
-	SetSubActionForColor();
+	return SetSubActionForFigureType() && SetSubActionForColor();
 }
 
 
@@ -83,23 +82,26 @@ bool PlayAction::ReadActionParameters()
 	switch (TypeOfGame)
 	{
 	case ITM_BY_TYPE_Clicked:
-		SetSubActionForFigureType();
-		PlayFigTypeGame();
-		pManager->ReturnFromClipboard();
+		if (SetSubActionForFigureType()) {
+			PlayFigTypeGame();
+			pManager->ReturnFromClipboard();
+		}
 		break;
 
 	case ITM_BY_FILLCOL_Clicked:
-		SetSubActionForColor();
-		PlayColorTypeGame();
-		pManager->ReturnFromClipboard();
+		if (SetSubActionForColor()) {
+			PlayColorTypeGame();
+			pManager->ReturnFromClipboard();
+		}
 		break;
 
 	case ITM_BY_TYPE_AND_FILLCOL_Clicked:
-		SetSubActionForColoredFigures();
-		PlayColoredFigureGame();
-		pManager->ReturnFromClipboard();
+		if (SetSubActionForColoredFigures()) {
+			PlayColoredFigureGame();
+			pManager->ReturnFromClipboard();
+		}
 		break;
-
+	
 	case ITM_BY_AREA_Clicked:
 		UI.InterfaceMode = MODE_PLAY;
 		pManager->UpdateInterface();
