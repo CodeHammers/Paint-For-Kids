@@ -630,6 +630,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 	P1 = P1s; P2 = P2s;
+
 }
 
 void Output::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected) const

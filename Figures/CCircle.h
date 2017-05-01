@@ -8,6 +8,7 @@ class CCircle : public CFigure
 private:
 	Point Center;
 	int Radius;
+	pair<Point, int> Bundle;
 
 public:
 	//Constructor
@@ -18,6 +19,10 @@ public:
 	virtual void ChopCoordniates();
 
 	bool ValidAfterZoom();
+
+	void ChangeQuandrant(int Qx, int Qy);
+
+	void BundleData();
 
 	//Save the figure parameters to the file
 	virtual void Save(ofstream &OutFile);

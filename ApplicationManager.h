@@ -40,7 +40,10 @@ public:
 	void ScaleAll();
 	~ApplicationManager();
 	void nullifyFigList();
+	bool SelectFigureToScramble();
 	bool CheckValidityOfZoom(double r);
+	void BundleFiguresData();
+	void RearrangeFigures();
 	// -- Action-Related Functions
 	//Reads the input command from the user and returns the corresponding action type
 	ActionType GetUserAction() const;

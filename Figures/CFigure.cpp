@@ -59,6 +59,16 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	Selected = false;
 }
 
+void CFigure::ScrambleFigure()
+{
+	Scrambled = true;
+}
+
+bool CFigure::ScrambledFigure()
+{
+	return Scrambled;
+}
+
 void CFigure::SetSelected(bool s)
 {	Selected = s; }
 

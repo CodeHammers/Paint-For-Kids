@@ -6,12 +6,17 @@ class CLine : public CFigure
 private:
 	Point EndPoint1;    //line's end points
 	Point EndPoint2;
+	vector<Point> Bundle;
 public:
 	//Constrcutor
 	CLine(Point P1, Point P2, GfxInfo FigureGfxInfo);
 
 	bool ValidAfterZoom();
 	virtual void ChopCoordniates();
+
+	void BundleData();
+
+	void ChangeQuandrant(int Qx, int Qy);
 
 	//Draw function
 	virtual void Draw(Output* pOut) const;

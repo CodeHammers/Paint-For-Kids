@@ -47,6 +47,14 @@ void ApplicationManager::nullifyFigList() {
 	++FigCount;
 	*/
 }
+bool ApplicationManager::SelectFigureToScramble() {
+	CFigure* fig = FigList[0];
+	fig->SetSelected(true);
+	FigList.erase(FigList.begin());
+	FigList.push_back(fig);
+	return true;
+}
+
 bool ApplicationManager::CheckValidityOfZoom(double r) {
 	UI.Ratio *= r;
 	for (int i = 0; i < FigList.size(); i++) {
@@ -58,6 +66,29 @@ bool ApplicationManager::CheckValidityOfZoom(double r) {
 	UI.Ratio /= r;
 	return true;
 }
+
+void ApplicationManager::BundleFiguresData() {
+	for (unsigned int i = 0; i < FigList.size(); i++) {
+		FigList[i]->ScrambleFigure();
+		FigList[i]->BundleData();
+	}
+}
+
+void ApplicationManager::RearrangeFigures() {
+	int areaQuadrantsX[4];
+	int areaQuadrantsY[4];
+	areaQuadrantsX[0] = 50; areaQuadrantsY[0] = 50;
+	areaQuadrantsX[1] = UI.width/4; areaQuadrantsY[1] = 50;
+	areaQuadrantsX[2] = 50; areaQuadrantsY[2] = UI.height/2;
+	areaQuadrantsX[3] = UI.width/4; areaQuadrantsY[3] = UI.height/2;
+	int index = 0;
+	for (unsigned int i = 0; i < FigList.size(); i++) {
+		FigList[i]->ChangeQuandrant(areaQuadrantsX[index], areaQuadrantsY[index]);
+		index++;
+		index = index % 4;
+	}
+}
+
 bool ApplicationManager::IsFillMenu(ActionType ActType) const
 {
 	switch (ActType)
@@ -255,9 +286,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		//Border Action End
 		case ITM_LOAD_Clicked:
-			//pAct = new LoadAction(this);
+			pAct = new LoadAction(this);
+			break;
+		//ironically ,this is the Scramble action :C
+		case MODE_PLAY_SUB_MENU1_Clicked:
 			pAct = new ScrambleAction(this);
-
 			break;
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
@@ -519,8 +552,10 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 void ApplicationManager::UpdateInterface() const
 {	
 	GetOutput()->ClearDrawArea();
-	for(int i=0; i<FigList.size(); i++)
+	for (int i = 0; i < FigList.size(); i++) {
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+	
+	}
 }
 
 //void ApplicationManager::UpdateFigCount(int Selected_Deleted)

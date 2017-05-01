@@ -10,6 +10,19 @@ CTriangle::CTriangle(Point V1, Point V2, Point V3, GfxInfo FigureGfxInfo) :CFigu
 
 void CTriangle::Draw(Output* pOut) const
 {
+	if (Scrambled) {
+		Point p1, p2,p3;
+		p1 = Bundle[0];
+		p2 = Bundle[1];
+		p3 = Bundle[2];
+		p1.x *= 0.5;
+		p1.x += UI.width / 2;
+		p2.x *= 0.5;
+		p2.x += UI.width / 2;
+		p3.x *= 0.5;
+		p3.x += UI.width / 2;
+		pOut->DrawTriangle(p1, p2,p3, FigGfxInfo, false);
+	}
 	pOut->DrawTriangle(Vertex1, Vertex2, Vertex3, FigGfxInfo, Selected);
 }
 
@@ -26,6 +39,19 @@ void CTriangle::Resize(double r) {
 }
 bool CTriangle::Encloses(Point P) 
 {
+	Point v1, v2, v3;
+	v1 = Vertex1; v2 = Vertex2; v3 = Vertex3;
+	if (Scrambled) {
+		Vertex1 = Bundle[0];
+		Vertex2 = Bundle[1];
+		Vertex3 = Bundle[2];
+		Vertex1.x *= 0.5;
+		Vertex2.x *= 0.5;
+		Vertex2.x *= 0.5;
+		Vertex1.x += UI.width/2;
+		Vertex2.x += UI.width/2;
+		Vertex2.x += UI.width/2;
+	}
 	/* Calculate the area of V1V2V3 */
 	float tot = Getarea(Vertex1.x, Vertex1.y, Vertex2.x, Vertex2.y, Vertex3.x, Vertex3.y);
 
@@ -39,17 +65,35 @@ bool CTriangle::Encloses(Point P)
 	float A3 = Getarea(Vertex1.x, Vertex1.y, Vertex2.x, Vertex2.y, P.x, P.y);
 	
 	/* Check if sum of A1, A2 and A3 is same as A */
+	Vertex1 = v1; Vertex2 = v2; Vertex3 = v3;
 	return (tot == A1 + A2 + A3);
 }
 
 void CTriangle::ChopCoordniates()
 {
 	Vertex1.x *= 0.5;
-	Vertex1.y *= 0.5;
 	Vertex2.x *= 0.5;
-	Vertex2.y *= 0.5;
 	Vertex3.x *= 0.5;
-	Vertex3.y *= 0.5;
+}
+void CTriangle::BundleData() {
+	Bundle.push_back(Vertex1);
+	Bundle.push_back(Vertex2);
+	Bundle.push_back(Vertex3);
+
+}
+void CTriangle::ChangeQuandrant(int Qx,int Qy) {
+	int minY = min(Vertex1.y, Vertex2.y, Vetex3.y);
+	int minX = min(Vertex1.x, Vertex2.x, Vertext3.x);
+
+	Vertex1.x += -minX +Qx;
+	Vertex2.x += -minX +Qx;
+	Vertex3.x += -minX + Qx;
+
+	Vertex1.y += -minY + Qy;
+	Vertex2.y += -minY + Qy;
+	Vertex3.y += -minY + Qy;
+
+
 }
 
 void CTriangle::Save(ofstream & OutFile)

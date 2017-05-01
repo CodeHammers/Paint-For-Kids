@@ -30,12 +30,35 @@ bool CLine::ValidAfterZoom() {
 void CLine::ChopCoordniates()
 {
 	EndPoint1.x *= 0.5;
-	EndPoint1.y *= 0.5;
-	EndPoint2.y *= 0.5;
 	EndPoint2.x *= 0.5;
+}
+
+void CLine::BundleData() {
+	Bundle.push_back(EndPoint1);
+	Bundle.push_back(EndPoint2);
+
+}
+
+void CLine::ChangeQuandrant(int Qx, int Qy) {
+	int minY = min(EndPoint1.x, EndPoint2.y);
+	int minX = min(EndPoint1.x, EndPoint2.x);
+	EndPoint1.x += -minX + Qx;
+	EndPoint2.x += -minX + Qx;
+	EndPoint1.y += -minY + Qy;
+	EndPoint2.y += -minY + Qy;
 }
 void CLine::Draw(Output* pOut) const
 {
+	if (Scrambled) {
+		Point p1, p2;
+		p1 = Bundle[0];
+		p2 = Bundle[1];
+		p1.x *= 0.5;
+		p1.x += UI.width / 2;
+		p2.x *= 0.5;
+		p2.x += UI.width / 2;
+		pOut->DrawLine(p1, p2, FigGfxInfo, false);
+	}
 	pOut->DrawLine(EndPoint1, EndPoint2, FigGfxInfo, Selected);
 }
 void CLine::Resize(double r) {
@@ -62,16 +85,26 @@ void CLine::Resize(double r) {
 
 bool CLine::Encloses(Point P)
 {
+	Point ed1 = EndPoint1;
+	Point ed2 = EndPoint2;
+	if (Scrambled) {
+		ed1 = Bundle[0];
+		ed2 = Bundle[1];
+		ed1.x *= 0.5;
+		ed2.x *= 0.5;
+		ed1.x += UI.width / 2;
+		ed2.x += UI.width / 2;
+	}
 	int minx, maxx, miny, maxy;
-	minx = min(EndPoint1.x, EndPoint2.x);
-	maxx = max(EndPoint1.x, EndPoint2.x);
-	miny = min(EndPoint1.y, EndPoint2.y);
-	maxy = max(EndPoint1.y, EndPoint2.y);
-	double dist = (EndPoint2.y - EndPoint1.y) * P.x - (EndPoint2.x - EndPoint1.x)*P.y + EndPoint2.x * EndPoint1.y - EndPoint2.y * EndPoint1.x;
+	minx = min(ed1.x, ed2.x);
+	maxx = max(ed1.x, ed2.x);
+	miny = min(ed1.y, ed2.y);
+	maxy = max(ed1.y, ed2.y);
+	double dist = (ed2.y - ed1.y) * P.x - (ed2.x - ed1.x)*P.y + ed2.x * ed1.y - ed2.y * ed1.x;
 	dist = abs(dist);
-	dist = dist / (sqrt(pow(EndPoint1.y - EndPoint2.y, 2) + pow(EndPoint1.x - EndPoint2.x, 2)));
+	dist = dist / (sqrt(pow(ed1.y - ed2.y, 2) + pow(ed1.x - ed2.x, 2)));
 	double borderWidth = CFigure::FigGfxInfo.BorderWdth / 2;
-	return (P.x >= minx && P.x <= maxx || P.y >= miny && P.y <= maxy) && borderWidth+2 >= dist;
+	return (P.x >= minx && P.x <= maxx || P.y >= miny && P.y <= maxy) && borderWidth + 2 >= dist;
 }
 
 void CLine::Save(ofstream & OutFile)

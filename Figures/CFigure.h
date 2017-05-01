@@ -1,5 +1,6 @@
 #ifndef CFIGURE_H
 #define CFIGURE_H
+#include <vector>
 
 #include "..\defs.h"
 #include "..\GUI\Output.h"
@@ -12,10 +13,13 @@ protected:
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
 	bool HighPriority = false;
+	bool Scrambled = false;
 	/// Add more parameters if needed.
 
 public:
 	CFigure(GfxInfo FigureGfxInfo);
+	void ScrambleFigure();
+	bool ScrambledFigure();
 	virtual void Resize(double ratio) = 0;
 	void SetSelected(bool s);	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected
@@ -28,6 +32,8 @@ public:
 	void SetID(int id);
 	virtual bool ValidAfterZoom()=0;
 	virtual void ChopCoordniates()=0;
+	virtual void ChangeQuandrant(int Qx,int Qy)=0;
+	virtual void BundleData()=0;
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 

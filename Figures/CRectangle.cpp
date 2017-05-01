@@ -11,6 +11,16 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(Figure
 
 void CRectangle::Draw(Output* pOut) const
 {
+	if (Scrambled) {
+		Point p1, p2;
+		p1 = Bundle[0];
+		p2 = Bundle[1];
+		p1.x *= 0.5;
+		p1.x += UI.width / 2;
+		p2.x *= 0.5;
+		p2.x += UI.width / 2;
+		pOut->DrawRect(p1, p2, FigGfxInfo, false);
+	}
 	//Call Output::DrawRect to draw a rectangle on the screen	
 	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
 }
@@ -18,23 +28,53 @@ void CRectangle::Draw(Output* pOut) const
 
 bool CRectangle::Encloses(Point P) 
 {
-	int minx, maxx, miny, maxy;
+	Point ed1 = Corner1;
+	Point ed2 = Corner2;
+	if (Scrambled) {
+		ed1 = Bundle[0];
+		ed2 = Bundle[1];
+		ed1.x *= 0.5;
+		ed2.x *= 0.5;
+		ed1.x += UI.width / 2;
+		ed2.x += UI.width / 2;
+	}
+	/*	int minx, maxx, miny, maxy;
 	minx = min(Corner1.x, Corner2.x);
 	maxx = max(Corner1.x, Corner2.x);
 	miny = min(Corner1.y, Corner2.y);
 	maxy = max(Corner1.y, Corner2.y);
 
-	return (P.x >= minx && P.x <= maxx && P.y >= miny && P.y <= maxy);
+	return (P.x >= minx && P.x <= maxx && P.y >= miny && P.y <= maxy);*/
+	int minx, maxx, miny, maxy;
+	minx = min(ed1.x, ed2.x);
+	maxx = max(ed1.x, ed2.x);
+	miny = min(ed1.y, ed2.y);
+	maxy = max(ed1.y, ed2.y);
+	return (P.x >= minx && P.x <= maxx && P.y >= miny && P.y <= maxy); 
 }
 
 void CRectangle::ChopCoordniates()
 {
 	Corner1.x *= 0.5;
-	Corner2.y *= 0.5;
-	Corner1.y *= 0.5;
 	Corner2.x *= 0.5;
 }
 
+void CRectangle::BundleData() {
+	Bundle.push_back(Corner1);
+	Bundle.push_back(Corner2);
+}
+
+void CRectangle::ChangeQuandrant(int Qx, int Qy) {
+	int minY = min(Corner1.y, Corner2.y);
+	int minX = min(Corner1.x, Corner2.x);
+
+	Corner1.x += -minX + Qx;
+	Corner2.x += -minX + Qx;
+
+	Corner1.y += - minY + Qy;
+	Corner2.y += -minY + Qy;
+
+}
 void CRectangle::Save(ofstream & OutFile)
 {
 	OutFile << "RECT" << "\t"<< ID << "\t";

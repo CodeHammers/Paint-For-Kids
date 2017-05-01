@@ -11,18 +11,32 @@ CCircle::CCircle(Point P1, int r,GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 
 void CCircle::Draw(Output* pOut) const
 {
+	if (Scrambled) {
+		Point C = Bundle.first;
+		C.x *= 0.5;
+		C.x += UI.width/2;
+		pOut->DrawCircle(C ,Radius,FigGfxInfo,false);
+	}
 	pOut->DrawCircle(Center, Radius, FigGfxInfo, Selected);
 }
 
 void CCircle::ChopCoordniates()
 {
 	Center.x *= 0.5;
-	Center.y *= 0.5;
 }
 
 bool CCircle::ValidAfterZoom() {
 	return ValidToDraw(Center, Radius*UI.Ratio);
 }
+
+void CCircle::ChangeQuandrant(int Qx, int Qy) {
+	Center.x = Qx + Radius;
+	Center.y = Qy + Radius;
+}
+void CCircle::BundleData() {
+	Bundle = make_pair(Center,Radius);
+}
+
 void CCircle::Save(ofstream & OutFile)
 {
 	OutFile << "CIRCLE" << "\t"  << ID << "\t";
@@ -40,6 +54,10 @@ void CCircle::Save(ofstream & OutFile)
 
 bool CCircle::Encloses(Point P) 
 {
+	if (Scrambled) {
+		float dist = pow(Bundle.first.x *0.5 +UI.width/2- P.x, 2) + pow(Bundle.first.y - P.y, 2);
+		return dist <= Radius*Radius;
+	}
 	float dist = pow(Center.x - P.x, 2) + pow(Center.y - P.y, 2);
 	return dist <= Radius*Radius;
 }

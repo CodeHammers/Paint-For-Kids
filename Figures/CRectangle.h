@@ -8,6 +8,7 @@ class CRectangle : public CFigure
 private:
 	Point Corner1;	
 	Point Corner2;
+	vector<Point> Bundle;
 public:
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
 	virtual void Draw(Output* pOut) const;
@@ -15,6 +16,10 @@ public:
 	//A function to determine whether a point is inside a rectangle
 	virtual bool Encloses(Point P) ;
 	virtual void ChopCoordniates();
+
+	void BundleData();
+
+	void ChangeQuandrant(int Qx, int Qy);
 
 	virtual void Save(ofstream &OutFile);
 
