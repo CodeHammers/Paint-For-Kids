@@ -148,7 +148,7 @@ bool CCircle::TransferFigure(Point To, bool Check)
 	return ValidToDraw(V, Radius);
 }
 
-GfxInfo CCircle::GetGfxInfo()
+GfxInfo& CCircle::GetGfxInfo()
 {
 	return FigGfxInfo;
 }

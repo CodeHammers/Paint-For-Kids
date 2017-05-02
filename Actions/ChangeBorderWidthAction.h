@@ -13,5 +13,4 @@ public:
 	ChangeBorderWidthAction(ApplicationManager* appManager, ActionType actType);
 	~ChangeBorderWidthAction();
 	virtual void Execute();
-
 };

@@ -49,5 +49,5 @@ public:
 	void Resize(double r);
 	virtual Point GetTopCorner();
 	virtual bool TransferFigure(Point To, bool Check = false);
-	virtual GfxInfo GetGfxInfo();
+	virtual GfxInfo& GetGfxInfo();
 };

@@ -181,7 +181,7 @@ void CTriangle::SetPoints(Point s)
 	Vertex3.y += s.y;
 }
 
-GfxInfo CTriangle::GetGfxInfo()
+GfxInfo& CTriangle::GetGfxInfo()
 {
 	return FigGfxInfo;
 }

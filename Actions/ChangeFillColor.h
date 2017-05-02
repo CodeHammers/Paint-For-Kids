@@ -12,5 +12,4 @@ public:
 	ChangeFillColor(ApplicationManager* appManager, ActionType actType);
 	~ChangeFillColor();
 	virtual void Execute();
-
 };

@@ -201,7 +201,7 @@ bool CRectangle::ValidAfterZoom() {
 	}
 	return ValidToDraw(P1, P2);
 }
-GfxInfo CRectangle::GetGfxInfo()
+GfxInfo& CRectangle::GetGfxInfo()
 {
 	return FigGfxInfo;
 }

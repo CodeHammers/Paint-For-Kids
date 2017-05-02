@@ -44,7 +44,7 @@ public:
 	virtual void SetPoints(Point x);
 	//A function to decide whether a line is valid to draw or not
 	static bool ValidToDraw(Point P1, Point P2);
-	virtual GfxInfo GetGfxInfo();
+	virtual GfxInfo& GetGfxInfo();
 	virtual Point GetTopCorner();
 	virtual bool TransferFigure(Point To, bool Check = false);
 };

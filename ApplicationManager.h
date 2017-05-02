@@ -78,6 +78,9 @@ public:
 	void ReturnFromClipboard();
 	int GetNumOfColoredFigures();
 	void ManageSelection(bool s);
+	void ChangeDrwClrForSelected(const color& Color);
+	void ChangeFillClrForSelected(const color& Color);
+	void ChangeBorderWidthForSelected(const int& BorderWidth);
 };
 
 #endif

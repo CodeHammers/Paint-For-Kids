@@ -12,6 +12,5 @@ public:
 	ChangeBckgrndColor(ApplicationManager* appManager,ActionType actType);
 	~ChangeBckgrndColor();
 	virtual void Execute();
-
 };
 

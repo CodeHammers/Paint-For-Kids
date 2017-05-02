@@ -35,8 +35,8 @@ ChangeBorderWidthAction::ChangeBorderWidthAction(ApplicationManager* appManager,
 
 void ChangeBorderWidthAction::Execute()
 {
+	pManager->ChangeBorderWidthForSelected(BorderWidth);
 	appManager->GetOutput()->ChangeBorderWidth(BorderWidth);
-
 }
 
 ChangeBorderWidthAction::~ChangeBorderWidthAction()

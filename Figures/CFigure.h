@@ -58,7 +58,7 @@ public:
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 	
 	static bool InDrawingArea(Point P);
-	virtual GfxInfo GetGfxInfo() = 0;
+	virtual GfxInfo& GetGfxInfo() = 0;
 	int GetID();
 };
 

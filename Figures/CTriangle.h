@@ -44,7 +44,7 @@ public:
 	Point GetVertex3();
 	//GfxInfo GetGfxInfo();
 	virtual void SetPoints(Point s);
-	virtual GfxInfo GetGfxInfo();
+	virtual GfxInfo& GetGfxInfo();
 	//A function to get the area of the triangle
 	virtual int GetArea();
 

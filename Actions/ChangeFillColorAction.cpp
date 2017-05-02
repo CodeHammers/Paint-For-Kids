@@ -36,7 +36,7 @@ bool ChangeFillColor::ReadActionParameters()
 		DrawColor = GREEN;
 		break;
 	case ITM_BRUSHFILL_NILE_Clicked://??!!
-		DrawColor = PURPLE;
+		DrawColor = LIGHTBLUE;
 		break;
 	case ITM_BRUSHFILL_ORANGE_Clicked:
 		DrawColor = ORANGE;
@@ -61,8 +61,8 @@ ChangeFillColor::ChangeFillColor(ApplicationManager* appManager, ActionType actT
 
 void ChangeFillColor::Execute()
 {
+	pManager->ChangeFillClrForSelected(DrawColor);
 	appManager->GetOutput()->ChangeFillColor(DrawColor);
-
 }
 
 

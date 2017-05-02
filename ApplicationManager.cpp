@@ -407,6 +407,34 @@ void ApplicationManager::ManageSelection(bool s)
 		FigList[i]->SetSelected(s);
 }
 
+void ApplicationManager::ChangeDrwClrForSelected(const color& Color)
+{
+	for (int i = 0; i < FigList.size(); ++i)
+		if (FigList[i]->IsSelected()) {
+			FigList[i]->GetGfxInfo().DrawClr = Color;
+			FigList[i]->SetSelected(false);
+		}
+}
+
+void ApplicationManager::ChangeFillClrForSelected(const color & Color)
+{
+	for (int i = 0; i < FigList.size(); ++i)
+		if (FigList[i]->IsSelected()) {
+			FigList[i]->GetGfxInfo().FillClr = Color;
+			FigList[i]->SetSelected(false);
+			FigList[i]->GetGfxInfo().isFilled = true;
+		}
+}
+
+void ApplicationManager::ChangeBorderWidthForSelected(const int & BorderWidth)
+{
+	for (int i = 0; i < FigList.size(); ++i)
+		if (FigList[i]->IsSelected()) {
+			FigList[i]->GetGfxInfo().BorderWdth = BorderWidth;
+			FigList[i]->SetSelected(false);
+		}
+}
+
 int ApplicationManager::GetSelectedFigCount()
 {
 	int cnt = 0;
