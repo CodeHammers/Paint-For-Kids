@@ -137,6 +137,12 @@ Point CCircle::GetTopCorner()
 	return Center;
 }
 
+CFigure* CCircle::Clone()
+{
+	CFigure* Temp = new CCircle(Center, Radius, FigGfxInfo);
+	return Temp;
+}
+
 bool CCircle::TransferFigure(Point To, bool Check)
 {
 	if (!Check) {
@@ -151,4 +157,9 @@ bool CCircle::TransferFigure(Point To, bool Check)
 GfxInfo& CCircle::GetGfxInfo()
 {
 	return FigGfxInfo;
+}
+
+string CCircle::GetName()
+{
+	return "Circule";
 }

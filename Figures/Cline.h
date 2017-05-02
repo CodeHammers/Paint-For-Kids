@@ -46,5 +46,7 @@ public:
 	static bool ValidToDraw(Point P1, Point P2);
 	virtual GfxInfo& GetGfxInfo();
 	virtual Point GetTopCorner();
+	virtual CFigure* Clone();
 	virtual bool TransferFigure(Point To, bool Check = false);
+	virtual string GetName();
 };

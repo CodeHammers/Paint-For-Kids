@@ -42,7 +42,9 @@ public:
 	virtual Point GetTopCorner();
 	//A function to decide whether a rectangle is valid to draw or not
 	static bool ValidToDraw(Point P1, Point P2);
+	virtual CFigure* Clone();
 	virtual bool TransferFigure(Point To, bool Check = false);
+	virtual string GetName();
 };
 
 #endif

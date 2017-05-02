@@ -22,11 +22,42 @@
 
 ApplicationManager::ApplicationManager()
 {
+
+	//Interface Here//
+
 	//Create Input and output
-	pOut = new Output;
+	pOut = new Output(5);
 	pIn = pOut->CreateInput();
-	
-	//FigCount = 0;
+	Point P;
+	while (true) {
+		pIn->GetPointClicked(P.x, P.y);
+		if (P.x >= 200 && P.x <= 700) {
+			UI.male = false;
+			break;
+		}
+		else if (P.x >= 700 && P.x <= 700 + 500) {
+			UI.male = true;
+			break;
+		}
+	}
+	UI.InterfaceMode = MODE_DRAW;
+	if (UI.male) {
+		UI.BkGrndColor = WHITE;	//Setting the background color.
+		UI.HighlightColor = MAGENTA;	//Setting the highlighting color.
+		UI.StatusBarColor = TURQUOISE;  //Setting the color of the status bar.
+	}
+	else {
+		UI.BkGrndColor = LIGHTPINK;	//Setting the background color.
+		UI.HighlightColor = WHITE;	//Setting the highlighting color.
+		UI.StatusBarColor = LIGHTBLUE;  //Setting the color of the status bar.
+	}
+	UI.PenWidth = 3;	//Setting the width of figures frames.
+	pOut->CleanTheScreen();
+	pOut->CreateDrawToolBarUp(0, false, true);
+	pOut->CreateDrawToolBarRight(false, true);
+
+	/*Drawing the status bar in the application window*/
+	pOut->CreateStatusBar();
 	ClipboardMode = 1;
 }
 

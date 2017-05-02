@@ -48,6 +48,8 @@ public:
 	static bool ValidToDraw(Point C, int R);
 	void Resize(double r);
 	virtual Point GetTopCorner();
+	virtual CFigure* Clone();
 	virtual bool TransferFigure(Point To, bool Check = false);
 	virtual GfxInfo& GetGfxInfo();
+	virtual string GetName();
 };

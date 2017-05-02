@@ -25,9 +25,16 @@ Output::Output()
 	UI.DrawColor = BLUE;	//Setting the drawing color of figures.
 	UI.FillColor = GREEN;	//Setting the filling color of the figures.
 	UI.MsgColor = RED;		//Setting the color of the messages displayed on the status bar.
-	UI.BkGrndColor = WHITE;	//Setting the background color.
-	UI.HighlightColor = MAGENTA;	//Setting the highlighting color.
-	UI.StatusBarColor = TURQUOISE;  //Setting the color of the status bar.
+	if (UI.male) {
+		UI.BkGrndColor = WHITE;	//Setting the background color.
+		UI.HighlightColor = MAGENTA;	//Setting the highlighting color.
+		UI.StatusBarColor = TURQUOISE;  //Setting the color of the status bar.
+	}
+	else {
+		UI.BkGrndColor = LIGHTPINK;	//Setting the background color.
+		UI.HighlightColor = LIGHTBLUE;	//Setting the highlighting color.
+		UI.StatusBarColor = LIGHTBLUE;  //Setting the color of the status bar.
+	}
 	UI.PenWidth = 3;	//Setting the width of figures frames.
 
 	/*Ceating the output window and setting the new name for the app*/
@@ -40,6 +47,43 @@ Output::Output()
 
 	/*Drawing the status bar in the application window*/
 	CreateStatusBar();
+}
+Output::Output(int x)
+{
+	UI.InterfaceMode = MODE_DRAW;
+	UI.isFilled = false;
+	/*Setting the dimensions of the application window*/
+	UI.width = 1500; //Setting the width of the window.
+	UI.height = 800; //Setting the height of the window.
+	UI.wx = 5;  //Setting the starting position of the window.
+	UI.wy = 5;   //Setting the ending position on the window.
+	UI.Ratio = 1;
+	/*Setting the dimensions of the toolbars right,up,left*/
+	UI.StatusBarHeight = 80;      //Settting the height of the status bar.
+	UI.MenuItemWidthLeft = 50;    //Setting the width of icons in the left menu.
+	UI.MenuItemWidthUp = 50;     //Setting the width of icons in the upper menu.
+	UI.MenuItemWidthRight = 50;   //Setting the width of icons in the right menu.
+	UI.MenuItemHeight = 60;
+	//Drawing area dimensions 1380*660 with 5 pixels empty on all for sides
+	//from x=55 ==> x=1435 , y=55 ==> y=715
+
+	/*Setting the default colors for drawing and window background*/
+	UI.DrawColor = BLUE;	//Setting the drawing color of figures.
+	UI.FillColor = GREEN;	//Setting the filling color of the figures.
+	UI.MsgColor = RED;		//Setting the color of the messages displayed on the status bar.
+	UI.BkGrndColor = WHITE;	//Setting the background color.
+	UI.HighlightColor = MAGENTA;	//Setting the highlighting color.
+	UI.StatusBarColor = TURQUOISE;  //Setting the color of the status bar.
+	UI.PenWidth = 3;	//Setting the width of figures frames.
+
+						/*Ceating the output window and setting the new name for the app*/
+	pWind = CreateWind(UI.width, UI.height, UI.wx, UI.wy);
+	pWind->ChangeTitle("Paint for Kids - Drawing Mode");  //default mode, changes to play in the play mode
+
+	string Mickey = "images\\MenuItems\\ICONS\\NewIcons\\Interface\\Mickey.jpg";
+	string Miniee = "images\\MenuItems\\ICONS\\NewIcons\\Interface\\Miniee.jpg";
+	pWind->DrawImage(Miniee,200,100,500,500);
+	pWind->DrawImage(Mickey, 200+500, 100, 500, 500);
 }
 void Output::ChangeZoomLevel(double z) {
 	UI.Ratio *= z;
@@ -119,35 +163,58 @@ void Output::ClearStatusBar() const
 	pWind->DrawRectangle(0, UI.height - UI.StatusBarHeight, UI.width, UI.height);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-void Output::CreateDrawToolBarRight(bool collapse,bool show) const
+void Output::CreateDrawToolBarRight(bool collapse, bool show) const
 {
 	UI.InterfaceMode = MODE_DRAW;  //Setting the current mode.
 
 	/*Adding two parallel icons for zooming in and out*/;
 	string zoomControls[CounterZoom];
-	zoomControls[ITM_ZOOM_IN] = "images\\MenuItems\\ICONS\\TOOLS\\ZOOM_IN.jpg";
-	zoomControls[ITM_ZOOM_OUT] = "images\\MenuItems\\ICONS\\TOOLS\\ZOOM_OUT.jpg";
+	if (UI.male) {
+		zoomControls[ITM_ZOOM_IN] = "images\\MenuItems\\ICONS\\TOOLS\\ZOOM_IN.jpg";
+		zoomControls[ITM_ZOOM_OUT] = "images\\MenuItems\\ICONS\\TOOLS\\ZOOM_OUT.jpg";
+	}
+	else {
+		zoomControls[ITM_ZOOM_IN] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\ZOOM_IN.jpg";
+		zoomControls[ITM_ZOOM_OUT] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\ZOOM_OUT.jpg";
+	}
 	pWind->DrawImage(zoomControls[ITM_ZOOM_IN], 1435, 13 * UI.MenuItemWidthRight+45, 25, 25);
 	pWind->DrawImage(zoomControls[ITM_ZOOM_OUT], 1460, 13 * UI.MenuItemWidthRight+45, 25, 25);
 
 
 	/*Loading the icons for the left toolbar.*/
 	string MenuItemImages[DRAW_ITM_COUNT_LEFT];
-	MenuItemImages[ITM_COLLAPSERIGHT] = "images\\MenuItems\\ICONS\\TOOLS\\ABORT.jpg";
-	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\ICONS\\TOOLS\\LOAD.jpg";
-	MenuItemImages[ITM_MOVE] = "images\\MenuItems\\ICONS\\TOOLS\\MOVE.jpg";
-	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\ICONS\\TOOLS\\SELECT.jpg";
-	MenuItemImages[ITM_RESIZE] = "images\\MenuItems\\ICONS\\TOOLS\\RESIZE1.jpg";
-	MenuItemImages[ITM_COPY] = "images\\MenuItems\\ICONS\\TOOLS\\COPY.jpg";
-	MenuItemImages[ITM_CUT] = "images\\MenuItems\\ICONS\\TOOLS\\CUT.jpg";
-	MenuItemImages[ITM_PASTE] = "images\\MenuItems\\ICONS\\TOOLS\\PASTE.jpg";
-	MenuItemImages[ITM_REDO] = "images\\MenuItems\\ICONS\\TOOLS\\REDO11.jpg";
-	MenuItemImages[ITM_UNDO] = "images\\MenuItems\\ICONS\\TOOLS\\UNDO11.jpg";
-	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\ICONS\\TOOLS\\DELETE.jpg";
-	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\ICONS\\TOOLS\\SAVE.jpg";
-	MenuItemImages[ITM_SAVEAS] = "images\\MenuItems\\ICONS\\TOOLS\\SAVEAS.jpg";
-	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\ICONS\\TOOLS\\EXIT.jpg";
-
+	if (UI.male) {
+		MenuItemImages[ITM_COLLAPSERIGHT] = "images\\MenuItems\\ICONS\\TOOLS\\ABORT.jpg";
+		MenuItemImages[ITM_LOAD] = "images\\MenuItems\\ICONS\\TOOLS\\LOAD.jpg";
+		MenuItemImages[ITM_MOVE] = "images\\MenuItems\\ICONS\\TOOLS\\MOVE.jpg";
+		MenuItemImages[ITM_SELECT] = "images\\MenuItems\\ICONS\\TOOLS\\SELECT.jpg";
+		MenuItemImages[ITM_RESIZE] = "images\\MenuItems\\ICONS\\TOOLS\\RESIZE1.jpg";
+		MenuItemImages[ITM_COPY] = "images\\MenuItems\\ICONS\\TOOLS\\COPY.jpg";
+		MenuItemImages[ITM_CUT] = "images\\MenuItems\\ICONS\\TOOLS\\CUT.jpg";
+		MenuItemImages[ITM_PASTE] = "images\\MenuItems\\ICONS\\TOOLS\\PASTE.jpg";
+		MenuItemImages[ITM_REDO] = "images\\MenuItems\\ICONS\\TOOLS\\REDO11.jpg";
+		MenuItemImages[ITM_UNDO] = "images\\MenuItems\\ICONS\\TOOLS\\UNDO11.jpg";
+		MenuItemImages[ITM_DELETE] = "images\\MenuItems\\ICONS\\TOOLS\\DELETE.jpg";
+		MenuItemImages[ITM_SAVE] = "images\\MenuItems\\ICONS\\TOOLS\\SAVE.jpg";
+		MenuItemImages[ITM_SAVEAS] = "images\\MenuItems\\ICONS\\TOOLS\\SAVEAS.jpg";
+		MenuItemImages[ITM_EXIT] = "images\\MenuItems\\ICONS\\TOOLS\\EXIT.jpg";
+	}
+	else {
+		MenuItemImages[ITM_COLLAPSERIGHT] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\Abort.jpg";
+		MenuItemImages[ITM_LOAD] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\LOAD.jpg";
+		MenuItemImages[ITM_MOVE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\MOVE.jpg";
+		MenuItemImages[ITM_SELECT] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\SELECT.jpg";
+		MenuItemImages[ITM_RESIZE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\RESIZE.jpg";
+		MenuItemImages[ITM_COPY] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\COPY.jpg";
+		MenuItemImages[ITM_CUT] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\CUT.jpg";
+		MenuItemImages[ITM_PASTE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\PASTE.jpg";
+		MenuItemImages[ITM_REDO] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\REDO.jpg";
+		MenuItemImages[ITM_UNDO] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\UNDO.jpg";
+		MenuItemImages[ITM_DELETE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\DELETE.jpg";
+		MenuItemImages[ITM_SAVE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\SAVE.jpg";
+		MenuItemImages[ITM_SAVEAS] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\SAVEAS.jpg";
+		MenuItemImages[ITM_EXIT] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\EXIT.jpg";
+	}
 	pWind->DrawImage(MenuItemImages[ITM_COLLAPSERIGHT], 1437, 13 * UI.MenuItemWidthLeft, 45, 45);
 	pWind->DrawImage(MenuItemImages[ITM_EXIT], 1437, 0, UI.MenuItemWidthLeft, UI.MenuItemWidthLeft);
 
@@ -194,17 +261,30 @@ void Output::CreateDrawToolBarUp(int action, bool collapse,bool show) const
 		pWind->SetPen(UI.BkGrndColor, 1);
 		pWind->DrawRectangle(50, 0, 1200, 50);
 		//drawing the play mode icon
-		string PlayModeIcon = "images\\MenuItems\\ICONS\\JOYSTICK.jpg";
+	string PlayModeIcon;
+		if (UI.male)
+			PlayModeIcon = "images\\MenuItems\\ICONS\\JOYSTICK.jpg";
+		else
+			PlayModeIcon = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\JOYSTICK2.jpg";
+
 		pWind->DrawImage(PlayModeIcon, 0, 0, 50, 50);
 
 		//Loading the icons for the main upper menu.
 		string MenuItemImages[DRAW_LEFT_MENU_ITEMS_COUNT];
-		MenuItemImages[ITM_FIGURE] = "images\\MenuItems\\ICONS\\TOOLS\\FIGURE.jpg";
-		MenuItemImages[ITM_PEN] = "images\\MenuItems\\ICONS\\Pencils\\BLACK.jpg";
-		MenuItemImages[ITM_BRUSH] = "images\\MenuItems\\ICONS\\Brushes\\GREEN.jpg";
-		MenuItemImages[ITM_BCKGCOLOR] = "images\\MenuItems\\ICONS\\BkGROUND\\WHITE.jpg";
-		MenuItemImages[STROKWIDTH] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\GROUP.jpg";
-		
+		if (UI.male) {
+			MenuItemImages[ITM_FIGURE] = "images\\MenuItems\\ICONS\\TOOLS\\FIGURE.jpg";
+			MenuItemImages[ITM_PEN] = "images\\MenuItems\\ICONS\\Pencils\\BLACK.jpg";
+			MenuItemImages[ITM_BRUSH] = "images\\MenuItems\\ICONS\\Brushes\\GREEN.jpg";
+			MenuItemImages[ITM_BCKGCOLOR] = "images\\MenuItems\\ICONS\\BkGROUND\\WHITE.jpg";
+			MenuItemImages[STROKWIDTH] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\GROUP.jpg";
+		}
+		else {
+			MenuItemImages[ITM_FIGURE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\FIGURE.jpg";
+			MenuItemImages[ITM_PEN] = "images\\MenuItems\\ICONS\\NewIcons\\Pencils\\WHITE.jpg";
+			MenuItemImages[ITM_BRUSH] = "images\\MenuItems\\ICONS\\NewIcons\\Brushes\\WHITE.jpg";
+			MenuItemImages[ITM_BCKGCOLOR] = "images\\MenuItems\\ICONS\\NewIcons\\Bkground Color\\WHITE.jpg";
+			MenuItemImages[STROKWIDTH] = "images\\MenuItems\\ICONS\\NewIcons\\BorderWidth\\GROUP.jpg";
+		}
 		if (show) {
 			for (int i = 0; i < DRAW_LEFT_MENU_ITEMS_COUNT; i++) {
 				pWind->DrawImage(MenuItemImages[i], (11 + i)*UI.MenuItemWidthUp, 0, UI.MenuItemWidthUp, UI.MenuItemWidthUp);
@@ -238,10 +318,18 @@ void Output::CreateDrawToolBarUp(int action, bool collapse,bool show) const
 
 	else if (action == 1) {
 		string MenuItemImages[FigurelistIcons_Count];
-		MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\ICONS\\CIRCULE.jpg";
-		MenuItemImages[ITM_RECTANGLE] = "images\\MenuItems\\ICONS\\RECTANGLE.jpg";
-		MenuItemImages[ITM_TRIANGLE]="images\\MenuItems\\ICONS\\TRIANGLE.jpg";
-		MenuItemImages[ITM_LINE]="images\\MenuItems\\ICONS\\LINE.jpg";
+		if (UI.male) {
+			MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\ICONS\\CIRCULE.jpg";
+			MenuItemImages[ITM_RECTANGLE] = "images\\MenuItems\\ICONS\\RECTANGLE.jpg";
+			MenuItemImages[ITM_TRIANGLE] = "images\\MenuItems\\ICONS\\TRIANGLE.jpg";
+			MenuItemImages[ITM_LINE] = "images\\MenuItems\\ICONS\\LINE.jpg";
+		}
+		else {
+			MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\CIRCULE.jpg";
+			MenuItemImages[ITM_RECTANGLE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\RECTANGLE.jpg";
+			MenuItemImages[ITM_TRIANGLE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\TRIANGLE.jpg";
+			MenuItemImages[ITM_LINE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\LINE.jpg";
+		}
 
 		int sign, start;
 		if (!collapse)		{
@@ -266,20 +354,33 @@ void Output::CreateDrawToolBarUp(int action, bool collapse,bool show) const
 	}
 	
 	else if (action == 2) {
-		
+
 		//Loading icons for the second sub menu (the pen sub menu)
 		string MenuItemImages[DRAW_ITEM_COUNT_RIGHTPEN];
-		MenuItemImages[ITM_PEN1] = "images\\MenuItems\\ICONS\\Pencils\\BLACK.jpg";
-		MenuItemImages[ITM_PEN2] = "images\\MenuItems\\ICONS\\Pencils\\YELLOW.jpg";
-		MenuItemImages[ITM_PEN3] = "images\\MenuItems\\ICONS\\Pencils\\BLUE.jpg";
-		MenuItemImages[ITM_PEN4] = "images\\MenuItems\\ICONS\\Pencils\\BROWN.jpg";
-		MenuItemImages[ITM_PEN5] = "images\\MenuItems\\ICONS\\Pencils\\PINK.jpg";
-		MenuItemImages[ITM_PEN6] = "images\\MenuItems\\ICONS\\Pencils\\GREEN.jpg";
-		MenuItemImages[ITM_PEN7] = "images\\MenuItems\\ICONS\\Pencils\\NILE.jpg";
-		MenuItemImages[ITM_PEN8] = "images\\MenuItems\\ICONS\\Pencils\\ORANGE.jpg";
-		MenuItemImages[ITM_PEN9] = "images\\MenuItems\\ICONS\\Pencils\\PURPLE.jpg";
-		MenuItemImages[ITM_PEN10] = "images\\MenuItems\\ICONS\\Pencils\\RED.jpg";
-
+		if (UI.male) {
+			MenuItemImages[ITM_PEN1] = "images\\MenuItems\\ICONS\\Pencils\\BLACK.jpg";
+			MenuItemImages[ITM_PEN2] = "images\\MenuItems\\ICONS\\Pencils\\YELLOW.jpg";
+			MenuItemImages[ITM_PEN3] = "images\\MenuItems\\ICONS\\Pencils\\BLUE.jpg";
+			MenuItemImages[ITM_PEN4] = "images\\MenuItems\\ICONS\\Pencils\\BROWN.jpg";
+			MenuItemImages[ITM_PEN5] = "images\\MenuItems\\ICONS\\Pencils\\PINK.jpg";
+			MenuItemImages[ITM_PEN6] = "images\\MenuItems\\ICONS\\Pencils\\GREEN.jpg";
+			MenuItemImages[ITM_PEN7] = "images\\MenuItems\\ICONS\\Pencils\\NILE.jpg";
+			MenuItemImages[ITM_PEN8] = "images\\MenuItems\\ICONS\\Pencils\\ORANGE.jpg";
+			MenuItemImages[ITM_PEN9] = "images\\MenuItems\\ICONS\\Pencils\\PURPLE.jpg";
+			MenuItemImages[ITM_PEN10] = "images\\MenuItems\\ICONS\\Pencils\\RED.jpg";
+		}
+		else {
+			MenuItemImages[ITM_PEN1] = "images\\MenuItems\\ICONS\\NewIcons\\Pencils\\BLACK.jpg";
+			MenuItemImages[ITM_PEN2] = "images\\MenuItems\\ICONS\\NewIcons\\Pencils\\YELLOW.jpg";
+			MenuItemImages[ITM_PEN3] = "images\\MenuItems\\ICONS\\NewIcons\\Pencils\\BLUE.jpg";
+			MenuItemImages[ITM_PEN4] = "images\\MenuItems\\ICONS\\NewIcons\\Pencils\\BROWN.jpg";
+			MenuItemImages[ITM_PEN5] = "images\\MenuItems\\ICONS\\NewIcons\\Pencils\\PINK.jpg";
+			MenuItemImages[ITM_PEN6] = "images\\MenuItems\\ICONS\\NewIcons\\Pencils\\GREEN.jpg";
+			MenuItemImages[ITM_PEN7] = "images\\MenuItems\\ICONS\\NewIcons\\Pencils\\NILE.jpg";
+			MenuItemImages[ITM_PEN8] = "images\\MenuItems\\ICONS\\NewIcons\\Pencils\\ORANGE.jpg";
+			MenuItemImages[ITM_PEN9] = "images\\MenuItems\\ICONS\\NewIcons\\Pencils\\PURPLE.jpg";
+			MenuItemImages[ITM_PEN10] = "images\\MenuItems\\ICONS\\NewIcons\\Pencils\\RED.jpg";
+		}
 
 		//The following logic tells the loop whether to draw a menu moving into the screen
 		//Or collapsing outta the screen
@@ -317,18 +418,31 @@ void Output::CreateDrawToolBarUp(int action, bool collapse,bool show) const
 	else if (action == 3) {
 		
 		//Loading icons for the third sub menu(Brush sub menu)
-		string MenuItemImages[DRAW_ITEM_COUNT_RIGHTBRUSHFILL];
-		MenuItemImages[ITM_BRUSHFILL1] = "images\\MenuItems\\ICONS\\Brushes\\BLACK.jpg";
-		MenuItemImages[ITM_BRUSHFILL2] = "images\\MenuItems\\ICONS\\Brushes\\YELLOW.jpg";
-		MenuItemImages[ITM_BRUSHFILL3] = "images\\MenuItems\\ICONS\\Brushes\\BLUE.jpg";
-		MenuItemImages[ITM_BRUSHFILL4] = "images\\MenuItems\\ICONS\\Brushes\\BROWN.jpg";
-		MenuItemImages[ITM_BRUSHFILL5] = "images\\MenuItems\\ICONS\\Brushes\\PINK.jpg";
-		MenuItemImages[ITM_BRUSHFILL6] = "images\\MenuItems\\ICONS\\Brushes\\GREEN.jpg";
-		MenuItemImages[ITM_BRUSHFILL7] = "images\\MenuItems\\ICONS\\Brushes\\NILE.jpg";
-		MenuItemImages[ITM_BRUSHFILL8] = "images\\MenuItems\\ICONS\\Brushes\\ORANGE.jpg";
-		MenuItemImages[ITM_BRUSHFILL9] = "images\\MenuItems\\ICONS\\Brushes\\PURPLE.jpg";
-		MenuItemImages[ITM_BRUSHFILL10] = "images\\MenuItems\\ICONS\\Brushes\\RED.jpg";
-
+		string MenuItemImages[DRAW_ITEM_COUNT_RIGHTBRUSHFILL]; 
+		if (UI.male) {
+			MenuItemImages[ITM_BRUSHFILL1] = "images\\MenuItems\\ICONS\\Brushes\\BLACK.jpg";
+			MenuItemImages[ITM_BRUSHFILL2] = "images\\MenuItems\\ICONS\\Brushes\\YELLOW.jpg";
+			MenuItemImages[ITM_BRUSHFILL3] = "images\\MenuItems\\ICONS\\Brushes\\BLUE.jpg";
+			MenuItemImages[ITM_BRUSHFILL4] = "images\\MenuItems\\ICONS\\Brushes\\BROWN.jpg";
+			MenuItemImages[ITM_BRUSHFILL5] = "images\\MenuItems\\ICONS\\Brushes\\PINK.jpg";
+			MenuItemImages[ITM_BRUSHFILL6] = "images\\MenuItems\\ICONS\\Brushes\\GREEN.jpg";
+			MenuItemImages[ITM_BRUSHFILL7] = "images\\MenuItems\\ICONS\\Brushes\\NILE.jpg";
+			MenuItemImages[ITM_BRUSHFILL8] = "images\\MenuItems\\ICONS\\Brushes\\ORANGE.jpg";
+			MenuItemImages[ITM_BRUSHFILL9] = "images\\MenuItems\\ICONS\\Brushes\\PURPLE.jpg";
+			MenuItemImages[ITM_BRUSHFILL10] = "images\\MenuItems\\ICONS\\Brushes\\RED.jpg";
+		}
+		else {
+			MenuItemImages[ITM_BRUSHFILL1] = "images\\MenuItems\\ICONS\\NewIcons\\Brushes\\BLACK.jpg";
+			MenuItemImages[ITM_BRUSHFILL2] = "images\\MenuItems\\ICONS\\NewIcons\\Brushes\\YELLOW.jpg";
+			MenuItemImages[ITM_BRUSHFILL3] = "images\\MenuItems\\ICONS\\NewIcons\\Brushes\\BLUE.jpg";
+			MenuItemImages[ITM_BRUSHFILL4] = "images\\MenuItems\\ICONS\\NewIcons\\Brushes\\BROWN.jpg";
+			MenuItemImages[ITM_BRUSHFILL5] = "images\\MenuItems\\ICONS\\NewIcons\\Brushes\\PINK.jpg";
+			MenuItemImages[ITM_BRUSHFILL6] = "images\\MenuItems\\ICONS\\NewIcons\\Brushes\\GREEN.jpg";
+			MenuItemImages[ITM_BRUSHFILL7] = "images\\MenuItems\\ICONS\\NewIcons\\Brushes\\NILE.jpg";
+			MenuItemImages[ITM_BRUSHFILL8] = "images\\MenuItems\\ICONS\\NewIcons\\Brushes\\ORANGE.jpg";
+			MenuItemImages[ITM_BRUSHFILL9] = "images\\MenuItems\\ICONS\\NewIcons\\Brushes\\PURPLE.jpg";
+			MenuItemImages[ITM_BRUSHFILL10] = "images\\MenuItems\\ICONS\\NewIcons\\Brushes\\RED.jpg";
+		}
 		int sign, start;
 		if (!collapse) {   //not collapse means moving into the screen
 			UI.InterfaceMode = MODE_DRAW_SUB_MENU3;
@@ -362,17 +476,30 @@ void Output::CreateDrawToolBarUp(int action, bool collapse,bool show) const
 		
 		//Loading icons for the forth sub menu (background color options)
 		string MenuItemImages[BKCG_COLOR_COUNT];
-		MenuItemImages[ITM_BCKG_WHITE] = "images\\MenuItems\\ICONS\\BkGROUND\\WHITE.jpg";
-		MenuItemImages[ITM_BCKG_YELLOW] = "images\\MenuItems\\ICONS\\BkGROUND\\YELLOW.jpg";
-		MenuItemImages[ITM_BCKG_BLUE] = "images\\MenuItems\\ICONS\\BkGROUND\\BLUE.jpg";
-		MenuItemImages[ITM_BCKG_BROWN] = "images\\MenuItems\\ICONS\\BkGROUND\\BROWN.jpg";
-		MenuItemImages[ITM_BCKG_PINK] = "images\\MenuItems\\ICONS\\BkGROUND\\PINK.jpg";
-		MenuItemImages[ITM_BCKG_GREEN] = "images\\MenuItems\\ICONS\\BkGROUND\\GREEN.jpg";
-		MenuItemImages[ITM_BCKG_NILE] = "images\\MenuItems\\ICONS\\BkGROUND\\NILE.jpg";
-		MenuItemImages[ITM_BCKG_ORANE] = "images\\MenuItems\\ICONS\\BkGROUND\\ORANGE.jpg";
-		MenuItemImages[ITM_BCKG_PURPLE] = "images\\MenuItems\\ICONS\\BkGROUND\\PURPLE.jpg";
-		MenuItemImages[ITM_BCKG_RED] = "images\\MenuItems\\ICONS\\BkGROUND\\RED.jpg";
-
+		if (UI.male) {
+			MenuItemImages[ITM_BCKG_WHITE] = "images\\MenuItems\\ICONS\\BkGROUND\\WHITE.jpg";
+			MenuItemImages[ITM_BCKG_YELLOW] = "images\\MenuItems\\ICONS\\BkGROUND\\YELLOW.jpg";
+			MenuItemImages[ITM_BCKG_BLUE] = "images\\MenuItems\\ICONS\\BkGROUND\\BLUE.jpg";
+			MenuItemImages[ITM_BCKG_BROWN] = "images\\MenuItems\\ICONS\\BkGROUND\\BROWN.jpg";
+			MenuItemImages[ITM_BCKG_PINK] = "images\\MenuItems\\ICONS\\BkGROUND\\PINK.jpg";
+			MenuItemImages[ITM_BCKG_GREEN] = "images\\MenuItems\\ICONS\\BkGROUND\\GREEN.jpg";
+			MenuItemImages[ITM_BCKG_NILE] = "images\\MenuItems\\ICONS\\BkGROUND\\NILE.jpg";
+			MenuItemImages[ITM_BCKG_ORANE] = "images\\MenuItems\\ICONS\\BkGROUND\\ORANGE.jpg";
+			MenuItemImages[ITM_BCKG_PURPLE] = "images\\MenuItems\\ICONS\\BkGROUND\\PURPLE.jpg";
+			MenuItemImages[ITM_BCKG_RED] = "images\\MenuItems\\ICONS\\BkGROUND\\RED.jpg";
+		}
+		else {
+			MenuItemImages[ITM_BCKG_WHITE] = "images\\MenuItems\\ICONS\\NewIcons\\Bkground Color\\WHITE.jpg";
+			MenuItemImages[ITM_BCKG_YELLOW] = "images\\MenuItems\\ICONS\\NewIcons\\Bkground Color\\YELLOW.jpg";
+			MenuItemImages[ITM_BCKG_BLUE] = "images\\MenuItems\\ICONS\\NewIcons\\Bkground Color\\BLUE.jpg";
+			MenuItemImages[ITM_BCKG_BROWN] = "images\\MenuItems\\ICONS\\NewIcons\\Bkground Color\\BROWN.jpg";
+			MenuItemImages[ITM_BCKG_PINK] = "images\\MenuItems\\ICONS\\NewIcons\\Bkground Color\\PINK.jpg";
+			MenuItemImages[ITM_BCKG_GREEN] = "images\\MenuItems\\ICONS\\NewIcons\\Bkground Color\\GREEN.jpg";
+			MenuItemImages[ITM_BCKG_NILE] = "images\\MenuItems\\ICONS\\NewIcons\\Bkground Color\\NILE.jpg";
+			MenuItemImages[ITM_BCKG_ORANE] = "images\\MenuItems\\ICONS\\NewIcons\\Bkground Color\\ORANGE.jpg";
+			MenuItemImages[ITM_BCKG_PURPLE] = "images\\MenuItems\\ICONS\\NewIcons\\Bkground Color\\PURPLE.jpg";
+			MenuItemImages[ITM_BCKG_RED] = "images\\MenuItems\\ICONS\\NewIcons\\Bkground Color\\RED.jpg";
+		}
 		int sign, start;
 		if (!collapse) {   //not collapse means moving into the screen
 			UI.InterfaceMode = MODE_DRAW_SUB_MENU4;
@@ -406,11 +533,18 @@ void Output::CreateDrawToolBarUp(int action, bool collapse,bool show) const
 
 		//Loading icons for the fifth sub menu (border width options)
 		string MenuItemImages[BORDER_WIDTH_COUNT];
-		MenuItemImages[ITM_BORDERWIDTH1] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\1.jpg";
-		MenuItemImages[ITM_BORDERWIDTH2] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\2.jpg";
-		MenuItemImages[ITM_BORDERWIDTH3] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\3.jpg";
-		MenuItemImages[ITM_BORDERWIDTH4] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\4.jpg";
-
+		if (UI.male) {
+			MenuItemImages[ITM_BORDERWIDTH1] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\1.jpg";
+			MenuItemImages[ITM_BORDERWIDTH2] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\2.jpg";
+			MenuItemImages[ITM_BORDERWIDTH3] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\3.jpg";
+			MenuItemImages[ITM_BORDERWIDTH4] = "images\\MenuItems\\ICONS\\BORDERWIDTH\\4.jpg";
+		}
+		else {
+			MenuItemImages[ITM_BORDERWIDTH1] = "images\\MenuItems\\ICONS\\NewIcons\\BorderWidth\\1.jpg";
+			MenuItemImages[ITM_BORDERWIDTH2] = "images\\MenuItems\\ICONS\\NewIcons\\BorderWidth\\2.jpg";
+			MenuItemImages[ITM_BORDERWIDTH3] = "images\\MenuItems\\ICONS\\NewIcons\\BorderWidth\\3.jpg";
+			MenuItemImages[ITM_BORDERWIDTH4] = "images\\MenuItems\\ICONS\\NewIcons\\BorderWidth\\4.jpg";
+		}
 		int sign, start;
 		if (!collapse) {   //not collapse means moving into the screen
 			UI.InterfaceMode = MODE_DRAW_SUB_MENU5;
@@ -443,11 +577,18 @@ void Output::CreateDrawToolBarUp(int action, bool collapse,bool show) const
 	else {
 		//Loading icons for the fifth sub menu (border width options)
 		string MenuItemImages[RESIZE_CONTROLS_COUNT];
-		MenuItemImages[ITM_RESIZE25] = "images\\MenuItems\\ICONS\\RESIZE\\25.jpg";
-		MenuItemImages[ITM_RESIZE50] = "images\\MenuItems\\ICONS\\RESIZE\\50.jpg";
-		MenuItemImages[ITM_RESIZE200] = "images\\MenuItems\\ICONS\\RESIZE\\200.jpg";
-		MenuItemImages[ITM_RESIZE400] = "images\\MenuItems\\ICONS\\RESIZE\\400.jpg";
-
+		if (UI.male) {
+			MenuItemImages[ITM_RESIZE25] = "images\\MenuItems\\ICONS\\RESIZE\\25.jpg";
+			MenuItemImages[ITM_RESIZE50] = "images\\MenuItems\\ICONS\\RESIZE\\50.jpg";
+			MenuItemImages[ITM_RESIZE200] = "images\\MenuItems\\ICONS\\RESIZE\\200.jpg";
+			MenuItemImages[ITM_RESIZE400] = "images\\MenuItems\\ICONS\\RESIZE\\400.jpg";
+		}
+		else {
+			MenuItemImages[ITM_RESIZE25] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\25.jpg";
+			MenuItemImages[ITM_RESIZE50] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\50.jpg";
+			MenuItemImages[ITM_RESIZE200] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\200.jpg";
+			MenuItemImages[ITM_RESIZE400] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\400.jpg";
+		}
 		int sign, start;
 		if (!collapse) {   //not collapse means moving into the screen
 			UI.InterfaceMode = MODE_DRAW_SUB_MENU6;
@@ -489,10 +630,16 @@ void Output::CreatePlayToolBar(int action, bool collapse, bool stat) const
 		}
 
 		string MenuItemImages[PLAY_ITM_COUNT];
-		MenuItemImages[ITM_SCRAMBLEAndFind] = "images\\MenuItems\\ICONS\\TOOLS\\SCRAMBLE.jpg";
-		MenuItemImages[ITM_PickAndHide] = "images\\MenuItems\\ICONS\\TOOLS\\PickAndHide.jpg";
-		MenuItemImages[ITEM_TODRAW] = "images\\MenuItems\\ICONS\\TOOLS\\TODRAW1.jpg";
-
+		if (UI.male) {
+			MenuItemImages[ITM_SCRAMBLEAndFind] = "images\\MenuItems\\ICONS\\TOOLS\\SCRAMBLE.jpg";
+			MenuItemImages[ITM_PickAndHide] = "images\\MenuItems\\ICONS\\TOOLS\\PickAndHide.jpg";
+			MenuItemImages[ITEM_TODRAW] = "images\\MenuItems\\ICONS\\TOOLS\\TODRAW1.jpg";
+		}
+		else {
+			MenuItemImages[ITM_SCRAMBLEAndFind] = "images\\MenuItems\\ICONS\\TOOLS\\SCRAMBLE.jpg";
+			MenuItemImages[ITM_PickAndHide] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\PickAndHide.jpg";
+			MenuItemImages[ITEM_TODRAW] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\TODRAW2.jpg";
+		}
 		int sign, start;
 		if (!collapse) {
 			sign = 1;
@@ -520,11 +667,18 @@ void Output::CreatePlayToolBar(int action, bool collapse, bool stat) const
 	}
 	else {
 		string MenuItemImages[Pick_And_Hide_Menu_Count];
-		MenuItemImages[ITM_BY_TYPE] = "images\\MenuItems\\ICONS\\TOOLS\\ByShape.jpg";       //add the icons you created!!
-		MenuItemImages[ITM_BY_FILLCOL] = "images\\MenuItems\\ICONS\\TOOLS\\ByColor.jpg";
-		MenuItemImages[ITM_BY_TYPE_AND_FILLCOL] = "images\\MenuItems\\ICONS\\TOOLS\\ByColorShpae.jpg";
-		MenuItemImages[ITM_BY_AREA] = "images\\MenuItems\\ICONS\\TOOLS\\BySize.jpg";
-
+		if (UI.male) {
+			MenuItemImages[ITM_BY_TYPE] = "images\\MenuItems\\ICONS\\TOOLS\\ByShape.jpg";       //add the icons you created!!
+			MenuItemImages[ITM_BY_FILLCOL] = "images\\MenuItems\\ICONS\\TOOLS\\ByColor.jpg";
+			MenuItemImages[ITM_BY_TYPE_AND_FILLCOL] = "images\\MenuItems\\ICONS\\TOOLS\\ByColorShpae.jpg";
+			MenuItemImages[ITM_BY_AREA] = "images\\MenuItems\\ICONS\\TOOLS\\BySize.jpg";
+		}
+		else {
+			MenuItemImages[ITM_BY_TYPE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\ByFigure.jpg";       //add the icons you created!!
+			MenuItemImages[ITM_BY_FILLCOL] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\ByColor.jpg";
+			MenuItemImages[ITM_BY_TYPE_AND_FILLCOL] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\ByColoredFigure.jpg";
+			MenuItemImages[ITM_BY_AREA] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\ByArea.jpg";
+		}
 		int sign, start;
 		if (!collapse) {
 			UI.InterfaceMode = MODE_PLAY_SUB_MENU2;
@@ -584,6 +738,14 @@ color Output::getCrntFillColor() const	//get current filling color
 int Output::getCrntPenWidth() const		//get current pen width
 {
 	return UI.PenWidth;
+}
+
+void Output::CleanTheScreen()
+{
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->DrawRectangle(0, 0, 1500, 800);
+	//I changed the clear function to only clear the area enclosed by all 4 toolbars
 }
 
 //======================================================================================//

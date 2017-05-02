@@ -23,33 +23,8 @@ bool CopyAction::ReadActionParameters()
 
 CFigure* CopyAction::CopyFigure(CFigure* ptr)
 {
-	CTriangle* T = dynamic_cast<CTriangle*>(ptr);
-	if (T) {
-		CTriangle* NewTriangle = new CTriangle(T->GetVertex1(), T->GetVertex2(), T->GetVertex3(), T->GetGfxInfo());
-		NewTriangle->SetID(T->GetID());
-		return NewTriangle;
-	}
-
-	CCircle* C = dynamic_cast<CCircle*>(ptr);
-	if (C) {
-		CCircle* NewCircle = new CCircle(C->GetCenter(), C->GetRadius(), C->GetGfxInfo());
-		NewCircle->SetID(C->GetID());
-		return NewCircle;
-	}
-
-	CLine* L = dynamic_cast<CLine*>(ptr);
-	if (L) {
-		CLine* NewLine = new CLine(L->GetEndPoint1(), L->GetEndPoint2(), L->GetGfxInfo());
-		NewLine->SetID(L->GetID());
-		return NewLine;
-	}
-
-	CRectangle* R = dynamic_cast<CRectangle*>(ptr);
-	if (R) {
-		CRectangle* NewRectangle = new CRectangle(R->GetCorner1(), R->GetCorner2(), R->GetGfxInfo());
-		NewRectangle->SetID(R->GetID());
-		return NewRectangle;
-	}
+	CFigure* NewFigure = ptr->Clone();
+	return NewFigure;
 }
 
 void CopyAction::Execute()

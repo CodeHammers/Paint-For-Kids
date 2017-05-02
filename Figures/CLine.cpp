@@ -186,6 +186,12 @@ Point CLine::GetTopCorner()
 	return EndPoint2;
 }
 
+CFigure* CLine::Clone()
+{
+	CFigure* Temp = new CLine(EndPoint1, EndPoint2, FigGfxInfo);
+	return Temp;
+}
+
 bool CLine::TransferFigure(Point To, bool Check)
 {
 	if (!Check) {
@@ -197,4 +203,9 @@ bool CLine::TransferFigure(Point To, bool Check)
 	V1.x += To.x;   V1.y += To.y;
 	V2.x += To.x;	V2.y += To.y;
 	return ValidToDraw(V1, V2);
+}
+
+string CLine::GetName()
+{
+	return "Line";
 }

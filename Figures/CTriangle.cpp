@@ -205,6 +205,11 @@ Point CTriangle::GetTopCorner()
 		return Vertex2;
 	return Vertex3;
 }
+CFigure* CTriangle::Clone()
+{
+	CFigure* Temp = new CTriangle(Vertex1, Vertex2, Vertex3, FigGfxInfo);
+	return Temp;
+}
 bool CTriangle::TransferFigure(Point To, bool Check)
 {
 	if (!Check) {
@@ -218,4 +223,9 @@ bool CTriangle::TransferFigure(Point To, bool Check)
 	V2.x += To.x;	V2.y += To.y;
 	V3.x += To.x;	V3.y += To.y;
 	return ValidToDraw(V1, V2, V3);
+}
+
+string CTriangle::GetName()
+{
+	return "Triangle";
 }

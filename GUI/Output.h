@@ -8,6 +8,7 @@ private:
 	window* pWind;	//Pointer to the Graphics Window
 public:
 	Output();
+	Output(int x);
 	void ChangeZoomLevel(double z);
 	void EditWindowSettings(color drawcolor, color fillcolor, color backgroundcolor);
 	void ChangeBackgroundColor(color BackgroundColor);
@@ -35,7 +36,7 @@ public:
 	color getCrntDrawColor() const;	//get current drwawing color
 	color getCrntFillColor() const;	//get current filling color
 	int getCrntPenWidth() const;		//get current pen width
-
+	void CleanTheScreen();
 	~Output();
 };
 

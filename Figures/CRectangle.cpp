@@ -210,6 +210,12 @@ bool CRectangle::ValidToDraw(Point P1, Point P2)
 	return InDrawingArea(P1) && InDrawingArea(P2);
 }
 
+CFigure* CRectangle::Clone()
+{
+	CFigure* Temp = new CRectangle(Corner1, Corner2, FigGfxInfo);
+	return Temp;
+}
+
 Point CRectangle::GetTopCorner()
 {
 	if (Corner1.x <= Corner2.x&&Corner1.y <= Corner2.y)
@@ -227,4 +233,9 @@ bool CRectangle::TransferFigure(Point To, bool Check)
 	V1.x += To.x;   V1.y += To.y;
 	V2.x += To.x;	V2.y += To.y;
 	return ValidToDraw(V1, V2);
+}
+
+string CRectangle::GetName()
+{
+	return "Rectangle";
 }

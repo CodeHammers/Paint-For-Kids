@@ -51,5 +51,7 @@ public:
 	//A function to decide whether a triangle is valid to draw or not
 	static bool ValidToDraw(Point P1, Point P2, Point P3);
 	virtual Point GetTopCorner();
+	virtual CFigure* Clone();
 	virtual bool TransferFigure(Point To, bool Check = false);
+	virtual string GetName();
 };

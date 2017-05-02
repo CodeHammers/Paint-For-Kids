@@ -324,22 +324,8 @@ int PlayAction::GetNumOfColorfulFigures()
 
 bool PlayAction::CheckFigureType(CFigure* ptr)
 {
-	CTriangle* T = dynamic_cast<CTriangle*>(ptr);
-	if (T)
-		return FigureType == "Triangle";
-
-	CCircle* C = dynamic_cast<CCircle*>(ptr);
-	if (C)
-		return FigureType == "Circule";
-
-	CLine* L = dynamic_cast<CLine*>(ptr);
-	if (L)
-		return FigureType == "Line";
-
-	CRectangle* R = dynamic_cast<CRectangle*>(ptr);
-	if (R)
-		return FigureType == "Rectangle";
-	return false;
+	string MyName = ptr->GetName();
+	return (FigureType == MyName);
 }
 
 

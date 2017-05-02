@@ -56,10 +56,11 @@ public:
 	virtual Point GetTopCorner() = 0;
 	virtual bool TransferFigure(Point To, bool Check = false) = 0;
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
-	
+	virtual CFigure* Clone() = 0;
 	static bool InDrawingArea(Point P);
 	virtual GfxInfo& GetGfxInfo() = 0;
 	int GetID();
+	virtual string GetName() = 0;
 };
 
 #endif
