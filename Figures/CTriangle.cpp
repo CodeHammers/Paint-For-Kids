@@ -39,7 +39,20 @@ bool CTriangle::ValidAfterZoom() {
 	return true;
 }
 void CTriangle::Resize(double r) {
+	pair<int,int> dist = make_pair(Vertex3.y- Vertex3.y*r,Vertex3.x- Vertex3.x*r);
+	Vertex1.x *= r;
+	Vertex1.y *= r;
+	Vertex2.x *= r;
+	Vertex2.y *= r;
+	Vertex3.x *= r;
+	Vertex3.y *= r;
 
+	Vertex1.x += dist.second;
+	Vertex1.y += dist.first;
+	Vertex2.x += dist.second;
+	Vertex2.y += dist.first;
+	Vertex3.x += dist.second;
+	Vertex3.y += dist.first;
 }
 bool CTriangle::Encloses(Point P) 
 {
