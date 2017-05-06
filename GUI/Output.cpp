@@ -798,11 +798,8 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	else {
 		P2.x += increment / 2; P1.x -= increment / 2;
 	}
-	
 	ZoomPoint(P1);
 	ZoomPoint(P2);
-	P2.x = UI.ZoomCenter.x - UI.Zoom*UI.ZoomCenter.x + UI.Zoom*P2.x;
-	P2.y = UI.ZoomCenter.y - UI.Zoom*UI.ZoomCenter.y + UI.Zoom*P2.y;
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 	P1 = P1s; P2 = P2s;

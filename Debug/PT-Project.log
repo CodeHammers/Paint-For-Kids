@@ -1,12 +1,36 @@
 ﻿  Output.cpp
 c:\paint-for-kids\gui\output.cpp(785): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 c:\paint-for-kids\gui\output.cpp(793): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\gui\output.cpp(804): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\gui\output.cpp(805): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\gui\output.cpp(816): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\gui\output.cpp(817): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\gui\output.cpp(832): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\gui\output.cpp(840): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\gui\output.cpp(899): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(813): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(814): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(829): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(837): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(896): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+  ApplicationManager.cpp
+c:\paint-for-kids\applicationmanager.cpp(101): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(437): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(443): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(452): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(462): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(472): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(481): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(492): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(503): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(517): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(521): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(527): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(531): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(548): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(559): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(568): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(577): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(586): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(594): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(603): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(642): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(656): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(670): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(685): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

@@ -634,6 +634,10 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
+	
+	pOut->CreateDrawToolBarUp(0, false, true);
+	pOut->CreateDrawToolBarRight(false, true);
+	pOut->CreateStatusBar();
 	GetOutput()->ClearDrawArea();
 	for (int i = 0; i < FigList.size(); i++) {
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
