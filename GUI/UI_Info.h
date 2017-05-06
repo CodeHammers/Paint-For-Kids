@@ -187,7 +187,10 @@ struct UI_Info	//User Interface Info.
 	color StatusBarColor;	//Status bar color
 	int PenWidth;			//width of the pen that draws shapes
 	double Ratio;
-	bool isFilled;						/// Add more members if needed
+	bool isFilled;
+	double Zoom;
+	Point ZoomCenter;
+	/// Add more members if needed
 
 }UI;	//create a global object UI
 

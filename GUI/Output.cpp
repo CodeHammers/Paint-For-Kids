@@ -4,8 +4,11 @@
 Output::Output()
 {
 	/*Initialize user interface parameters*/
+	UI.ZoomCenter.x = UI.width / 2;
+	UI.ZoomCenter.y = UI.height / 2;
 	UI.InterfaceMode = MODE_DRAW;
 	UI.isFilled = false;
+	UI.Zoom = 1;
 	/*Setting the dimensions of the application window*/
 	UI.width = 1500; //Setting the width of the window.
 	UI.height = 800; //Setting the height of the window.
@@ -86,7 +89,12 @@ Output::Output(int x)
 	pWind->DrawImage(Mickey, 200+500, 100, 500, 500);
 }
 void Output::ChangeZoomLevel(double z) {
-	UI.Ratio *= z;
+	if (z > 1)
+		UI.Zoom += 0.25;
+	else
+		UI.Zoom -= 0.25;
+	if (UI.Zoom <= 0)
+		UI.Zoom = 1;
 }
 
 void Output::EditWindowSettings(color drawcolor, color fillcolor, color backgroundcolor)
@@ -773,6 +781,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	
 	int Dist = abs(P1.y -P2.y);
 	Point P1s = P1; Point P2s = P2;
+	
 	int increment = Dist * UI.Ratio -Dist;
 	if (P1.y > P2.y) {
 		P1.y += increment / 2; P2.y -= increment / 2;
@@ -789,10 +798,23 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	else {
 		P2.x += increment / 2; P1.x -= increment / 2;
 	}
+	
+	ZoomPoint(P1);
+	ZoomPoint(P2);
+	P2.x = UI.ZoomCenter.x - UI.Zoom*UI.ZoomCenter.x + UI.Zoom*P2.x;
+	P2.y = UI.ZoomCenter.y - UI.Zoom*UI.ZoomCenter.y + UI.Zoom*P2.y;
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 	P1 = P1s; P2 = P2s;
 
+}
+void Output::ZoomPoint(Point &P1) const{
+	if (UI.Zoom == 0)
+		UI.Zoom = 1;
+	UI.ZoomCenter.x = UI.width / 2;
+	UI.ZoomCenter.y = UI.height / 2;
+	P1.x = UI.ZoomCenter.x - UI.Zoom*UI.ZoomCenter.x + UI.Zoom*P1.x;
+	P1.y = UI.ZoomCenter.y - UI.Zoom*UI.ZoomCenter.y + UI.Zoom*P1.y;
 }
 
 void Output::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected) const
@@ -823,7 +845,8 @@ void Output::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected) co
 	else {
 		P2.x += increment / 2; P1.x -= increment / 2;
 	}
-
+	ZoomPoint(P1);
+	ZoomPoint(P2);
 	pWind->DrawLine(P1.x, P1.y, P2.x, P2.y, FRAME);
 	P1 = P1s; P2 = P2s;
 
@@ -847,8 +870,10 @@ void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriangleGfxInfo,
 	}
 	else
 		style = FRAME;
-
+	Point P1s = P1; Point P2s = P2; Point P3s = P3;
+	ZoomPoint(P1); ZoomPoint(P2); ZoomPoint(P3);
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
+	P1 = P1s; P2 = P2s; P3 = P3s;
 }
 
 void Output::DrawCircle(Point center, int radius, GfxInfo CircleGfxInfo, bool selected) const
@@ -869,8 +894,10 @@ void Output::DrawCircle(Point center, int radius, GfxInfo CircleGfxInfo, bool se
 	}
 	else
 		style = FRAME;
-
-	pWind->DrawCircle(center.x, center.y, radius*UI.Ratio, style);
+	Point c = center;
+	ZoomPoint(center);
+	pWind->DrawCircle(center.x, center.y, radius*UI.Ratio *UI.Zoom, style);
+	center = c;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
