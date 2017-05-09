@@ -18,6 +18,8 @@ public:
 
 	void BundleData();
 
+	void ChangeCord(Point p);
+
 	void ChangeQuandrant(int Qx, int Qy);
 
 	//Draw function

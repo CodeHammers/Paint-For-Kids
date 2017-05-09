@@ -35,11 +35,19 @@ float CTriangle::Getarea(int x1, int y1, int x2, int y2, int x3, int y3) const
 {
 	return abs((x1*(y2 - y3) + x2*(y3 - y1) + x3*(y1 - y2)) / 2.0);
 }
+void CTriangle::ChangeCord(Point p) {
+	int difX = Vertex1.x - p.x; int difY = Vertex1.y - p.y;
+	Vertex1 = p;
+	Vertex2.x -= difX; Vertex2.y -= difY;
+	Vertex3.x -= difX; Vertex3.y -= difY;
+}
 bool CTriangle::ValidAfterZoom() {
 	return true;
 }
 void CTriangle::Resize(double r) {
 	pair<int,int> dist = make_pair(Vertex3.y- Vertex3.y*r,Vertex3.x- Vertex3.x*r);
+	if (Scrambled)
+		r = .85;
 	Vertex1.x *= r;
 	Vertex1.y *= r;
 	Vertex2.x *= r;

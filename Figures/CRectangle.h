@@ -14,6 +14,8 @@ public:
 	void retrieveData();
 	virtual void Draw(Output* pOut) const;
 
+	void ChangeCord(Point p);
+
 	//A function to determine whether a point is inside a rectangle
 	virtual bool Encloses(Point P) ;
 	virtual void ChopCoordniates();

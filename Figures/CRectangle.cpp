@@ -29,7 +29,11 @@ void CRectangle::Draw(Output* pOut) const
 	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
 }
 
-
+void CRectangle::ChangeCord(Point p) {
+	int difX = Corner1.x - p.x; int difY = Corner1.y - p.y;
+	Corner1 = p;
+	Corner2.x -= difX; Corner2.y -= difY;
+}
 bool CRectangle::Encloses(Point P) 
 {
 	Point ed1 = Corner1;

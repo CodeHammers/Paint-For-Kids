@@ -1,5 +1,24 @@
-﻿  SelectAction.cpp
-c:\paint-for-kids\actions\selectaction.cpp(29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\actions\selectaction.cpp(30): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+﻿  CTriangle.cpp
+c:\paint-for-kids\figures\ctriangle.cpp(22): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(24): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(26): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(36): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(51): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(52): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(53): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(54): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(55): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(56): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(73): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(74): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(75): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(99): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(100): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(101): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(110): warning C4002: too many actual parameters for macro 'min'
+c:\paint-for-kids\figures\ctriangle.cpp(111): warning C4002: too many actual parameters for macro 'min'
+c:\program files\microsoft visual studio 14.0\vc\include\utility(200): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  c:\paint-for-kids\figures\ctriangle.cpp(48): note: see reference to function template instantiation 'std::pair<int,int>::pair<double,double,void,0>(std::pair<double,double> &&) noexcept' being compiled
+  c:\paint-for-kids\figures\ctriangle.cpp(48): note: see reference to function template instantiation 'std::pair<int,int>::pair<double,double,void,0>(std::pair<double,double> &&) noexcept' being compiled
   PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

@@ -41,6 +41,11 @@ void CLine::BundleData() {
 	Bundle.push_back(EndPoint2);
 
 }
+void CLine::ChangeCord(Point p) {
+	int difX = EndPoint1.x - p.x; int difY = EndPoint1.y - p.y;
+	EndPoint1 = p;
+	EndPoint2.x -= difX; EndPoint2.y -= difY;
+}
 
 void CLine::ChangeQuandrant(int Qx, int Qy) {
 	int minY = min(EndPoint1.x, EndPoint2.y);
