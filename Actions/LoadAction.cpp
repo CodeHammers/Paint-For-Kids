@@ -6,6 +6,7 @@
 #include "..\Figures\CTriangle.h"
 #include "..\Figures\CCircle.h"
 #include "..\Figures\CLine.h"
+#include "SaveAction.h"
 #include <fstream>
 #include <iostream>
 LoadAction::LoadAction(ApplicationManager * pApp) : Action(pApp)
@@ -14,6 +15,14 @@ LoadAction::LoadAction(ApplicationManager * pApp) : Action(pApp)
 
 bool LoadAction::ReadActionParameters()
 {
+	if (pManager->GetFigCount()) {
+		pManager->GetOutput()->PrintMessage("Your Current Graph will be lost if you proceed , click save icon to save or click anywhere else to proceed");
+		ActionType ac = pManager->GetUserAction();
+		if (ac == ITM_SAVE_Clicked) {
+			Action* action = new SaveAction(pManager);
+			action->Execute();
+		}
+	}
 	Input* pIn = pManager->GetInput();
 	pManager->GetOutput()->PrintMessage("specify the name of the file you want to load from ");
 	filename = pIn->GetSrting(pManager->GetOutput());
