@@ -24,6 +24,8 @@ public:
 
 	void ChangeQuandrant(int Qx, int Qy);
 
+	void ChangeCord(Point p);
+
 	void BundleData();
 
 	//Save the figure parameters to the file

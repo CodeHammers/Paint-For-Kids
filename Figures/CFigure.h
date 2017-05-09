@@ -36,6 +36,7 @@ public:
 	virtual void ChopCoordniates()=0;
 	virtual void ChangeQuandrant(int Qx,int Qy)=0;
 	virtual void BundleData()=0;
+	virtual void ChangeCord(Point p) {};
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 

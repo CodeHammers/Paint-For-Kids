@@ -18,6 +18,8 @@
 #include "Actions\PlayAction.h"
 #include "Actions\ResizeAction.h"
 #include "Actions\ScrambleAction.h"
+#include <time.h>       /* time */
+
 //Constructor
 
 ApplicationManager::ApplicationManager()
@@ -123,18 +125,24 @@ void ApplicationManager::RearrangeFigures() {
 	areaQuadrantsX[2] = 70; areaQuadrantsY[2] = UI.height/2;
 	areaQuadrantsX[3] = UI.width/4; areaQuadrantsY[3] = UI.height/2;
 	int index = 0;
+	srand(time(NULL));
 	for (unsigned int i = 0; i < FigList.size(); i++) {
-		FigList[i]->ChangeQuandrant(areaQuadrantsX[index], areaQuadrantsY[index]);
+	/*	FigList[i]->ChangeQuandrant(areaQuadrantsX[index], areaQuadrantsY[index]);
 		index++;
 		index = index % 4;
-		int maxAttemps=0;
-		while (!FigList[i]->ValidAfterZoom()) {
-			FigList[i]->ChangeQuandrant(areaQuadrantsX[index], areaQuadrantsY[index]);
-			index++;
-			index = index % 4;
-			if (++maxAttemps == 3)
-				break;
+		int maxAttemps=0;*/
+		Point p; p.x = rand() % (UI.width / 2 - 70) + 70; p.y = rand() % (UI.height / 2 - 70) + 70;p.x += UI.width / 2;
+		FigList[i]->ChangeCord(p);
+		while (!FigList[i] ->ValidAfterZoom()) {
+			p; p.x = rand() % (UI.width / 2 - 70) + 70; p.y = rand() % (UI.height / 2 - 70) + 70; p.x += UI.width / 2;
+			FigList[i]->ChangeCord(p);
+			//FigList[i]->ChangeQuandrant(areaQuadrantsX[index], areaQuadrantsY[index]);
+			//index++;
+			//index = index % 4;
+			
 		}
+		p.x -= UI.width/2;
+		FigList[i]->ChangeCord(p);
 	}
 }
 
@@ -633,11 +641,13 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
-{	
-	
-	pOut->CreateDrawToolBarUp(0, false, true);
-	pOut->CreateDrawToolBarRight(false, true);
-	pOut->CreateStatusBar();
+{
+	if (UI.Zoom != 1) {
+		pOut->CleanTheScreen();
+		pOut->CreateDrawToolBarUp(0, false, true);
+		pOut->CreateDrawToolBarRight(false, true);
+		pOut->CreateStatusBar();
+	}
 	GetOutput()->ClearDrawArea();
 	for (int i = 0; i < FigList.size(); i++) {
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)

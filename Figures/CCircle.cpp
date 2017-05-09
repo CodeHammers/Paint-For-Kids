@@ -36,6 +36,9 @@ void CCircle::ChangeQuandrant(int Qx, int Qy) {
 	Center.x = Qx + Radius;
 	Center.y = Qy + Radius;
 }
+void CCircle::ChangeCord(Point p) {
+	Center = p;
+}
 void CCircle::BundleData() {
 	Bundle = make_pair(Center,Radius);
 }
