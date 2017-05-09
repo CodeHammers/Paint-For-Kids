@@ -1,3 +1,5 @@
-﻿  LoadAction.cpp
+﻿  SelectAction.cpp
+c:\paint-for-kids\actions\selectaction.cpp(29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\actions\selectaction.cpp(30): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

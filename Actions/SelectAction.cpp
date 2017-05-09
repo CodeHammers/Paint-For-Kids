@@ -20,7 +20,15 @@ bool SelectAction::ReadActionParameters()
 	while (true) {
 		
 		pIn->GetPointClicked(P.x, P.y);
-
+		if (UI.Zoom == 0)
+			UI.Zoom = 1;
+		UI.ZoomCenter.x = UI.width / 2;
+		UI.ZoomCenter.y = UI.height / 2;
+		double z = UI.Zoom;
+		UI.Zoom = 1 / UI.Zoom;
+		P.x = UI.ZoomCenter.x - UI.Zoom*UI.ZoomCenter.x + UI.Zoom*P.x;
+		P.y = UI.ZoomCenter.y - UI.Zoom*UI.ZoomCenter.y + UI.Zoom*P.y;
+		UI.Zoom = z;
 		/*If the user clicked the select button again, means he wants to
 		terminate the selection process, so keep all the selected figures*/
 		if (TerminateSelection(P)) {
