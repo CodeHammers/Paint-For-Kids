@@ -42,7 +42,8 @@ void CTriangle::ChangeCord(Point p) {
 	Vertex3.x -= difX; Vertex3.y -= difY;
 }
 bool CTriangle::ValidAfterZoom() {
-	return true;
+
+	return ValidToDraw(Vertex1,Vertex2,Vertex3);
 }
 void CTriangle::Resize(double r) {
 	pair<int,int> dist = make_pair(Vertex3.y- Vertex3.y*r,Vertex3.x- Vertex3.x*r);

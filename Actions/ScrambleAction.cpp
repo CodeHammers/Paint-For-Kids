@@ -36,6 +36,7 @@ void ScrambleAction::StartGame() {
 			}
 	
 			if (restart(p)) {
+				pManager->RearrangeFigures();
 				pManager->GetOutput()->PrintMessage("Restarting  The Game .. Success");
 				pManager->GetOutput()->ClearDrawArea();
 				RightAnswers = 0; WrongAnswers = 0;

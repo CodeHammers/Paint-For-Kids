@@ -3,22 +3,49 @@ c:\paint-for-kids\figures\ctriangle.cpp(22): warning C4244: '*=': conversion fro
 c:\paint-for-kids\figures\ctriangle.cpp(24): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
 c:\paint-for-kids\figures\ctriangle.cpp(26): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
 c:\paint-for-kids\figures\ctriangle.cpp(36): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\paint-for-kids\figures\ctriangle.cpp(51): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
 c:\paint-for-kids\figures\ctriangle.cpp(52): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
 c:\paint-for-kids\figures\ctriangle.cpp(53): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
 c:\paint-for-kids\figures\ctriangle.cpp(54): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
 c:\paint-for-kids\figures\ctriangle.cpp(55): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
 c:\paint-for-kids\figures\ctriangle.cpp(56): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\ctriangle.cpp(73): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(57): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
 c:\paint-for-kids\figures\ctriangle.cpp(74): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
 c:\paint-for-kids\figures\ctriangle.cpp(75): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\ctriangle.cpp(99): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\figures\ctriangle.cpp(76): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
 c:\paint-for-kids\figures\ctriangle.cpp(100): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
 c:\paint-for-kids\figures\ctriangle.cpp(101): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\ctriangle.cpp(110): warning C4002: too many actual parameters for macro 'min'
+c:\paint-for-kids\figures\ctriangle.cpp(102): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
 c:\paint-for-kids\figures\ctriangle.cpp(111): warning C4002: too many actual parameters for macro 'min'
+c:\paint-for-kids\figures\ctriangle.cpp(112): warning C4002: too many actual parameters for macro 'min'
 c:\program files\microsoft visual studio 14.0\vc\include\utility(200): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  c:\paint-for-kids\figures\ctriangle.cpp(48): note: see reference to function template instantiation 'std::pair<int,int>::pair<double,double,void,0>(std::pair<double,double> &&) noexcept' being compiled
-  c:\paint-for-kids\figures\ctriangle.cpp(48): note: see reference to function template instantiation 'std::pair<int,int>::pair<double,double,void,0>(std::pair<double,double> &&) noexcept' being compiled
+  c:\paint-for-kids\figures\ctriangle.cpp(49): note: see reference to function template instantiation 'std::pair<int,int>::pair<double,double,void,0>(std::pair<double,double> &&) noexcept' being compiled
+  c:\paint-for-kids\figures\ctriangle.cpp(49): note: see reference to function template instantiation 'std::pair<int,int>::pair<double,double,void,0>(std::pair<double,double> &&) noexcept' being compiled
+  ApplicationManager.cpp
+c:\paint-for-kids\applicationmanager.cpp(103): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(129): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\paint-for-kids\applicationmanager.cpp(446): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(452): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(461): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(471): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(481): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(490): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(501): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(512): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(526): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(530): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(536): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(540): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(557): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(568): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(577): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(586): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(595): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(603): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(612): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(653): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(667): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(681): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\applicationmanager.cpp(696): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)
