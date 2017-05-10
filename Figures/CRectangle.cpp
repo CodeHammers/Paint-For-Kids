@@ -91,10 +91,10 @@ void CRectangle::Save(ofstream & OutFile)
 	OutFile << (int)FigGfxInfo.DrawClr.ucRed << " " << (int)FigGfxInfo.DrawClr.ucGreen << " "
 		<< (int)FigGfxInfo.DrawClr.ucBlue <<"\t";	
 	if (FigGfxInfo.isFilled != true)
-		OutFile << "-1 -1 -1";
+		OutFile << "-1 -1 -1" << "\t" << FigGfxInfo.BorderWdth;
 	else
 		OutFile << (int)FigGfxInfo.FillClr.ucRed << " " << (int)FigGfxInfo.FillClr.ucGreen << " "
-		<< (int)FigGfxInfo.FillClr.ucBlue;
+		<< (int)FigGfxInfo.FillClr.ucBlue <<"\t"<<FigGfxInfo.BorderWdth;
 	OutFile << endl;
 }
 
@@ -117,7 +117,7 @@ void CRectangle::Load(ifstream & Infile)
 		info.isFilled = true;
 		info.FillClr = color(FillColor[0], FillColor[1], FillColor[2]);
 	}
-	info.BorderWdth = 3;
+	Infile>>info.BorderWdth ;
 	CFigure::ID = id;
 	CFigure::FigGfxInfo = info;
 }

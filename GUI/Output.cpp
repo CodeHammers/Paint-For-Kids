@@ -632,7 +632,9 @@ void Output::CreateDrawToolBarUp(int action, bool collapse,bool show) const
 void Output::CreatePlayToolBar(int action, bool collapse, bool stat) const
 {
 	if (action == 0) {
-		if (stat) {
+		if (stat) 
+		{
+			UI.Zoom = 1;
 			CreateDrawToolBarUp(0, true, false);
 			CreateDrawToolBarRight(true, false);
 		}
@@ -716,7 +718,7 @@ void Output::ClearDrawArea() const
 {
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
-	pWind->DrawRectangle(50, 50, UI.width - 65, UI.height - UI.StatusBarHeight);
+	pWind->DrawRectangle(0, 50, UI.width - 65, UI.height - UI.StatusBarHeight);
 	//I changed the clear function to only clear the area enclosed by all 4 toolbars
 }
 //////////////////////////////////////////////////////////////////////////////////////////

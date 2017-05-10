@@ -135,7 +135,7 @@ void ApplicationManager::RearrangeFigures() {
 		Point p; p.x = rand() % (UI.width / 2 - 70) + 70; p.y = rand() % (UI.height / 2 - 70) + 70;p.x += UI.width / 2;
 		FigList[i]->ChangeCord(p);
 		while (!FigList[i] ->ValidAfterZoom()) {
-			p.x = rand() % (UI.width / 2 - 140) + 70; p.y = rand() % (UI.height / 2 - 70) + 70; p.x += UI.width / 2;
+			p.x = rand() % (UI.width / 2 - 140) + 140; p.y = rand() % (UI.height / 2 - 70) + 70; p.x += UI.width / 2;
 			FigList[i]->ChangeCord(p);
 			//FigList[i]->ChangeQuandrant(areaQuadrantsX[index], areaQuadrantsY[index]);
 			//index++;
@@ -143,6 +143,8 @@ void ApplicationManager::RearrangeFigures() {
 			
 		}
 		p.x -= UI.width/2;
+		if (p.x < 80)
+			p.x += 80;
 		FigList[i]->ChangeCord(p);
 	}
 }
@@ -643,7 +645,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {
-	if (UI.Zoom != 1) {
+	if (UI.Zoom != 1&&UI.Zoom !=0 ) {
 		pOut->CleanTheScreen();
 		pOut->CreateDrawToolBarUp(0, false, true);
 		pOut->CreateDrawToolBarRight(false, true);

@@ -117,9 +117,9 @@ bool CLine::Encloses(Point P)
 
 void CLine::Save(ofstream & OutFile)
 {
-	OutFile << "LINE" << "\t" <<ID << "\t" << EndPoint1.x << "\t" << EndPoint1.y << "\t"
-		<< EndPoint2.x << "\t" << EndPoint2.y << "\t"<< (int)FigGfxInfo.DrawClr.ucRed
-		<< "\t" << (int)FigGfxInfo.DrawClr.ucGreen << "\t" << (int)FigGfxInfo.DrawClr.ucBlue
+	OutFile << "LINE" << "\t" << ID << "\t" << EndPoint1.x << "\t" << EndPoint1.y << "\t"
+		<< EndPoint2.x << "\t" << EndPoint2.y << "\t" << (int)FigGfxInfo.DrawClr.ucRed
+		<< "\t" << (int)FigGfxInfo.DrawClr.ucGreen << "\t" << (int)FigGfxInfo.DrawClr.ucBlue << "\t" << FigGfxInfo.BorderWdth
 		<< "\n";
 }
 
@@ -133,7 +133,7 @@ void CLine::Load(ifstream &Infile)
 	int DrawColor[3];
 	Infile >> DrawColor[0] >> DrawColor[1] >> DrawColor[2];
 	info.DrawClr = color(DrawColor[0], DrawColor[1], DrawColor[2]);
-	info.BorderWdth = 3;
+	Infile>> info.BorderWdth;
 	CFigure::ID = id;
 	CFigure::FigGfxInfo = info;
 }
