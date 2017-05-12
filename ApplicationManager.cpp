@@ -18,6 +18,7 @@
 #include "Actions\PlayAction.h"
 #include "Actions\ResizeAction.h"
 #include "Actions\ScrambleAction.h"
+#include "Actions\SendToAction.h"
 #include <time.h>       /* time */
 
 //Constructor
@@ -397,6 +398,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new PasteAction(this);
 			break;
 
+		case ITM_UNDO_Clicked:
+			pAct = new SendToAction(1,this);
+			break;
+
+		case ITM_REDO_Clicked:
+			pAct = new SendToAction(2, this);
+			break;
+
 		case TO_DRAW:
 			pOut->CreatePlayToolBar(0, true,false);
 			pOut->CreateDrawToolBarUp(0, false, false);
@@ -563,6 +572,33 @@ void ApplicationManager::ResizeSelectedFigures(double ratio) {
 		}
 	}
 	UI.Ratio = temp;
+}
+
+
+void ApplicationManager::SendSelectedTo(int mode)
+{
+	//mode = 1 ==> send to front
+	//mode = 2 ==> send to back
+	vector<CFigure*> tmp;
+	for (int i = 0; i < FigList.size(); i++) {
+		if (FigList[i]->IsSelected()) {
+			FigList[i]->SetSelected(false);
+			tmp.push_back(FigList[i]);
+			FigList.erase(FigList.begin() + i);
+			i--;
+		}
+	}
+	if (mode == 1) {
+		for (int i = tmp.size()-1; i>=0; i--) {
+			FigList.insert(FigList.begin(), tmp[i]);
+		}
+	}
+	else {
+		for (int i = 0; i < tmp.size(); i++) {
+			FigList.push_back(tmp[i]);
+		}
+	}
+	tmp.clear();
 }
 
 priority_queue<int> ApplicationManager::GetFigureAreas()

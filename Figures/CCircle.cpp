@@ -1,4 +1,5 @@
 #include "CCircle.h"
+
 #include <sstream>
 #include <fstream>
 
@@ -7,6 +8,8 @@ CCircle::CCircle(Point P1, int r,GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 	Center = P1;
 	Radius = r;
 }
+
+
 void CCircle::retrieveData() {
 	Radius = Bundle.second;
 	Center = Bundle.first;
@@ -106,11 +109,6 @@ Point CCircle::GetCenter()
 {
 	return Center;
 }
-
-//GfxInfo CCircle::GetGfxInfo()
-//{
-//	return FigGfxInfo;
-//}
 
 int CCircle::GetArea()
 {
