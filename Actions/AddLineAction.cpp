@@ -19,12 +19,18 @@ bool AddLineAction::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	pOut->PrintMessage("New Line: click the first end point");
+
+	//loop until a valid end point 1 is entered 
 	while (true) {
 		pIn->GetPointClicked(P1.x, P1.y);
+
+		//check if the user wants to abort the action
 		if (Abort(P1)) {
 			pOut->ClearStatusBar();
 			return false;
 		}
+
+		//check whether the point clicked is outside the drawing area
 		if (!CLine::InDrawingArea(P1))
 			pOut->PrintMessage("New Line: first end point is out of the drawing area, click again");
 		else
@@ -32,12 +38,18 @@ bool AddLineAction::ReadActionParameters()
 	}
 
 	pOut->PrintMessage("New Line: click the second end point");
+
+	//loop until a valid end point 2 is entered 
 	while (true) {
 		pIn->GetPointClicked(P2.x, P2.y);
+
+		//check if the user wants to abort the action
 		if (Abort(P2)) {
 			pOut->ClearStatusBar();
 			return false;
 		}
+
+		//check whether the point clicked is outside the drawing area
 		if (!CLine::InDrawingArea(P2))
 			pOut->PrintMessage("New Line: second end point is out of the drawing area, click again");
 		else

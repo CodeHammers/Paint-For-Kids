@@ -491,6 +491,7 @@ void ApplicationManager::DeleteSelected(bool flag)
 {
 	for (int i = 0; i < FigList.size(); i++) {
 		if (FigList[i]->IsSelected()) {
+			FigList[i]->SetSelected(false); //new addition
 			if(flag) delete FigList[i];
 			FigList.erase(FigList.begin() + i);
 			i--;

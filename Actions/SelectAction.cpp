@@ -12,23 +12,32 @@ SelectAction::SelectAction(ApplicationManager* pApp) :Action(pApp)
 
 bool SelectAction::ReadActionParameters()
 {
-
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+
 	pOut->PrintMessage("Click inside or on the border of a shape to select");
+
+	//loop until selection was terminated
 	while (true) {
-		
+		//get a click from the user
 		pIn->GetPointClicked(P.x, P.y);
+
+		//zoom state handler
 		if (UI.Zoom == 0)
 			UI.Zoom = 1;
+
 		UI.ZoomCenter.x = UI.width / 2;
 		UI.ZoomCenter.y = UI.height / 2;
+
 		double z = UI.Zoom;
 		UI.Zoom = 1 / UI.Zoom;
+
 		P.x = UI.ZoomCenter.x - UI.Zoom*UI.ZoomCenter.x + UI.Zoom*P.x;
 		P.y = UI.ZoomCenter.y - UI.Zoom*UI.ZoomCenter.y + UI.Zoom*P.y;
+
 		UI.Zoom = z;
+
 		/*If the user clicked the select button again, means he wants to
 		terminate the selection process, so keep all the selected figures*/
 		if (TerminateSelection(P)) {
@@ -100,11 +109,9 @@ bool SelectAction::TerminateSelection(Point P) const
 void SelectAction::Select(CFigure* ptr)
 {
 	if (!ptr->IsSelected()) {
-		//ptr->ChngDrawClr(UI.HighlightColor);
 		ptr->SetSelected(true);
 	}
 	else {
-		//ptr->ChngDrawClr(UI.DrawColor);
 		ptr->SetSelected(false);
 		SelectedSoFar.erase(ptr);
 	}
@@ -115,7 +122,6 @@ void SelectAction::Unselect()
 	set<CFigure*>::iterator it = SelectedSoFar.begin();
 	for (it; it != SelectedSoFar.end(); it++) {
 		(*it)->SetSelected(false);
-		//(*it)->ChngDrawClr(UI.DrawColor);
 	}
 	SelectedSoFar.clear();
 }

@@ -6,7 +6,7 @@ class AddLineAction : public Action
 {
 private:
 	Point P1, P2;  //line's end points
-	GfxInfo LineGfxInfo;
+	GfxInfo LineGfxInfo;  //contains info about colors, borderwidth and similar info
 public:
 	//constructor
 	AddLineAction(ApplicationManager* pApp);

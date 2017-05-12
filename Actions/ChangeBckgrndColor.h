@@ -1,12 +1,13 @@
 #pragma once
 #include "Action.h"
-class ChangeBckgrndColor :
-	public Action
+
+
+class ChangeBckgrndColor : public Action
 {
 private:
-	ActionType ActType;
-	color BackgroundColor;
-	ApplicationManager* appManager;
+	ActionType ActType;  //represents the action type
+	color BackgroundColor;  //to store the background color
+	ApplicationManager* appManager;  
 	virtual bool ReadActionParameters();
 public:
 	ChangeBckgrndColor(ApplicationManager* appManager,ActionType actType);

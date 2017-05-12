@@ -6,9 +6,10 @@
 class AddRectAction: public Action
 {
 private:
-	Point P1, P2; //Rectangle Corners
-	GfxInfo RectGfxInfo;
+	Point P1, P2;  //Rectangle Corners
+	GfxInfo RectGfxInfo;  //contains info about colors, borderwidth and similar info
 public:
+	//constructor
 	AddRectAction(ApplicationManager *pApp);
 
 	//Reads rectangle parameters

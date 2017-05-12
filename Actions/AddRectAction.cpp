@@ -9,6 +9,7 @@
 AddRectAction::AddRectAction(ApplicationManager * pApp):Action(pApp)
 {}
 
+
 bool AddRectAction::ReadActionParameters()
 {	
 	//Get a Pointer to the Input / Output Interfaces
@@ -16,12 +17,18 @@ bool AddRectAction::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	pOut->PrintMessage("New Rectangle: Click at first corner");
+
+	//loop until a valid point for corner 1 is entered
 	while (true) {
 		pIn->GetPointClicked(P1.x, P1.y);
+
+		//check if the user wants to abort the action
 		if (Abort(P1)) {
 			pOut->ClearStatusBar();
 			return false;
 		}
+
+		//check whether the entered point is outside the drawing area
 		if (!CRectangle::InDrawingArea(P1))
 			pOut->PrintMessage("New Rectangle: first corner point is out of the drawing area, click again");
 		else
@@ -29,12 +36,18 @@ bool AddRectAction::ReadActionParameters()
 	}
 
 	pOut->PrintMessage("New Rectangle: Click at second corner");
+
+	//loop until a valid point for corner 1 is entered
 	while (true) {
 		pIn->GetPointClicked(P2.x, P2.y);
+
+		//check if the user wants to abort the action
 		if (Abort(P2)) {
 			pOut->ClearStatusBar();
 			return false;
 		}
+
+		//check whether the entered point is outside the drawing area
 		if (!CRectangle::InDrawingArea(P2))
 			pOut->PrintMessage("New Rectangle: second corner point is out of the drawing area, click again");
 		else
@@ -42,6 +55,7 @@ bool AddRectAction::ReadActionParameters()
 	}
 
 	RectGfxInfo.isFilled = UI.isFilled;	//default is not filled
+
 	//get drawing, filling colors and pen width from the interface
 	RectGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	RectGfxInfo.FillClr = pOut->getCrntFillColor();
@@ -51,19 +65,13 @@ bool AddRectAction::ReadActionParameters()
 	return true;
 }
 
-//Execute the action
+
 void AddRectAction::Execute() 
 {
 	//This action needs to read some parameters first
 	if (ReadActionParameters()) {
-
-		//temp
-		//RectGfxInfo.isFilled = true;
-		//RectGfxInfo.FillClr = GREEN;
-
 		//Create a rectangle with the parameters read from the user
 		CRectangle *R = new CRectangle(P1, P2, RectGfxInfo);
-
 
 		//Set the ID for the figure
 		R->SetID(pManager->GetFigCount() + 1);

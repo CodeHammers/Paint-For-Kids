@@ -20,12 +20,18 @@ bool AddTriangleAction::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	pOut->PrintMessage("New Triangle: click to position vertex #1");
+
+	//loop until a valid point is entered for vertex #1
 	while (true) {
 		pIn->GetPointClicked(P1.x, P1.y);
+
+		//check if the user wants to abort the action
 		if (Abort(P1)) {
 			pOut->ClearStatusBar();
 			return false;
 		}
+
+		//check whether the entered point is outside the drawing area
 		if (!CTriangle::InDrawingArea(P1))
 			pOut->PrintMessage("New Triangle: first vertex is out of the drawing area, click again");
 		else
@@ -33,12 +39,18 @@ bool AddTriangleAction::ReadActionParameters()
 	}
 
 	pOut->PrintMessage("New Triangle: click to position vertex #2");
+
+	//loop until a valid point is entered for vertex #2
 	while (true) {
 		pIn->GetPointClicked(P2.x, P2.y);
+
+		//check if the user wants to abort the action
 		if (Abort(P2)) {
 			pOut->ClearStatusBar();
 			return false;
 		}
+
+		//check whether the entered point is outside the drawing area
 		if (!CTriangle::InDrawingArea(P2))
 			pOut->PrintMessage("New Triangle: second vertex is out of the drawing area, click again");
 		else
@@ -46,12 +58,18 @@ bool AddTriangleAction::ReadActionParameters()
 	}
 
 	pOut->PrintMessage("New Triangle: click to position vertex #3");
+
+	//loop until a valid point is entered for vertex #3
 	while (true) {
 		pIn->GetPointClicked(P3.x, P3.y);
+
+		//check if the user wants to abort the action
 		if (Abort(P3)) {
 			pOut->ClearStatusBar();
 			return false;
 		}
+
+		//check whether the entered point is outside the drawing area
 		if (!CTriangle::InDrawingArea(P3))
 			pOut->PrintMessage("New Triangle: third vertex is out of the drawing area, click again");
 		else

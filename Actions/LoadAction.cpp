@@ -1,14 +1,21 @@
 #include "LoadAction.h"
+
 #include "..\ApplicationManager.h"
+
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
+
 #include "..\Figures\CRectangle.h"
 #include "..\Figures\CTriangle.h"
 #include "..\Figures\CCircle.h"
 #include "..\Figures\CLine.h"
+
 #include "SaveAction.h"
+
 #include <fstream>
 #include <iostream>
+
+
 LoadAction::LoadAction(ApplicationManager * pApp) : Action(pApp)
 {
 }
