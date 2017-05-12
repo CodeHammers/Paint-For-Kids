@@ -647,14 +647,19 @@ void ApplicationManager::UpdateInterface() const
 {
 	if (UI.Zoom != 1&&UI.Zoom !=0 ) {
 		pOut->CleanTheScreen();
+		for (int i = 0; i < FigList.size(); i++) {
+			FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+		}
 		pOut->CreateDrawToolBarUp(0, false, true);
 		pOut->CreateDrawToolBarRight(false, true);
 		pOut->CreateStatusBar();
 	}
-	GetOutput()->ClearDrawArea();
-	for (int i = 0; i < FigList.size(); i++) {
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
-	
+	else {
+		GetOutput()->ClearDrawArea();
+		for (int i = 0; i < FigList.size(); i++) {
+			FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+
+		}
 	}
 }
 

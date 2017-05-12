@@ -1,21 +1,14 @@
-﻿  CLine.cpp
-c:\paint-for-kids\figures\cline.cpp(15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\cline.cpp(23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\cline.cpp(35): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\cline.cpp(36): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\cline.cpp(64): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\cline.cpp(66): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\cline.cpp(75): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\cline.cpp(83): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\cline.cpp(101): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\cline.cpp(102): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-  CCircle.cpp
-c:\paint-for-kids\figures\ccircle.cpp(20): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\ccircle.cpp(29): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\ccircle.cpp(33): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\figures\ccircle.cpp(65): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\paint-for-kids\figures\ccircle.cpp(68): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\paint-for-kids\figures\ccircle.cpp(137): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
+﻿  Output.cpp
+c:\paint-for-kids\gui\output.cpp(773): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(790): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(798): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(818): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(819): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(829): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(836): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(844): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(867): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(893): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\paint-for-kids\gui\output.cpp(909): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
   PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)

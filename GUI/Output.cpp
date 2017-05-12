@@ -61,6 +61,7 @@ Output::Output(int x)
 	UI.wx = 5;  //Setting the starting position of the window.
 	UI.wy = 5;   //Setting the ending position on the window.
 	UI.Ratio = 1;
+	UI.Zoom = 1;
 	/*Setting the dimensions of the toolbars right,up,left*/
 	UI.StatusBarHeight = 80;      //Settting the height of the status bar.
 	UI.MenuItemWidthLeft = 50;    //Setting the width of icons in the left menu.
@@ -769,8 +770,10 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
 	else
 		DrawingClr = RectGfxInfo.DrawClr;
-
-	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);	//Set Drawing color & width
+	int bw = RectGfxInfo.BorderWdth + (UI.Zoom - 1) / 0.25;
+	if (bw <= 0)
+		bw = 1;
+	pWind->SetPen(DrawingClr, bw);	//Set Drawing color & width
 	
 	drawstyle style;
 	if (RectGfxInfo.isFilled)  
@@ -802,8 +805,8 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	}
 	ZoomPoint(P1);
 	ZoomPoint(P2);
-
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
+
 	P1 = P1s; P2 = P2s;
 
 }
@@ -823,8 +826,10 @@ void Output::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected) co
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
 	else
 		DrawingClr = LineGfxInfo.DrawClr;
-
-	pWind->SetPen(DrawingClr, LineGfxInfo.BorderWdth);	//Set Drawing color & width
+	int bw = LineGfxInfo.BorderWdth + (UI.Zoom - 1 )/ 0.25;
+	if (bw <= 0)
+		bw = 1;
+	pWind->SetPen(DrawingClr, bw);	//Set Drawing color & width
 	Point P1s = P1; Point P2s = P2;
 
 	int Dist = abs(P1.y - P2.y);
@@ -846,6 +851,7 @@ void Output::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected) co
 	}
 	ZoomPoint(P1);
 	ZoomPoint(P2);
+
 	pWind->DrawLine(P1.x, P1.y, P2.x, P2.y, FRAME);
 	P1 = P1s; P2 = P2s;
 
@@ -858,8 +864,10 @@ void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriangleGfxInfo,
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
 	else
 		DrawingClr = TriangleGfxInfo.DrawClr;
-
-	pWind->SetPen(DrawingClr, TriangleGfxInfo.BorderWdth);
+	int bw = TriangleGfxInfo.BorderWdth + (UI.Zoom - 1) / 0.25;
+	if (bw <= 0)
+		bw = 1;
+	pWind->SetPen(DrawingClr, bw);
 
 	drawstyle style;
 	if (TriangleGfxInfo.isFilled)
@@ -882,8 +890,11 @@ void Output::DrawCircle(Point center, int radius, GfxInfo CircleGfxInfo, bool se
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
 	else
 		DrawingClr = CircleGfxInfo.DrawClr;
-
-	pWind->SetPen(DrawingClr, CircleGfxInfo.BorderWdth);
+	int bw = CircleGfxInfo.BorderWdth + (UI.Zoom - 1) / 0.25;
+	
+	if (bw <= 0)
+		bw = 1;
+	pWind->SetPen(DrawingClr, bw);
 
 	drawstyle style;
 	if (CircleGfxInfo.isFilled)
