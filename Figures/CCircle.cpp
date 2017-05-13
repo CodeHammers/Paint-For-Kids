@@ -11,12 +11,16 @@ CCircle::CCircle(Point P1, int r,GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 
 
 void CCircle::retrieveData() {
+	//creates a bundle for figure's data to be used for retrieving original info
 	Radius = Bundle.second;
 	Center = Bundle.first;
 }
 
+
 void CCircle::Draw(Output* pOut) const
 {
+	//checks of we are drawing the circle at a random position "scramble and find game" or
+	//just drawing it as a draw action
 	if (Scrambled) {
 
 		Point C = Bundle.first;
@@ -24,31 +28,43 @@ void CCircle::Draw(Output* pOut) const
 		C.x += UI.width/2;
 		pOut->DrawCircle(C ,Radius,FigGfxInfo,false);
 	}
+
 	pOut->DrawCircle(Center, Radius, FigGfxInfo, Selected);
 }
 
+
 void CCircle::ChopCoordniates()
 {
-	Center.x *= 0.5;
+	Center.x *= 0.5;   //resize the circle to fit in the left side of the screen
 }
 
+
 bool CCircle::ValidAfterZoom() {
+	//checks for validty after zooming
 	return ValidToDraw(Center, Radius*UI.Ratio);
 }
 
+
 void CCircle::ChangeQuandrant(int Qx, int Qy) {
+	//changes the current quadrant the circle is located at
 	Center.x = Qx + Radius;
 	Center.y = Qy + Radius;
 }
+
+
 void CCircle::ChangeCord(Point p) {
 	Center = p;
 }
+
+
 void CCircle::BundleData() {
-	Bundle = make_pair(Center,Radius);
+	Bundle = make_pair(Center,Radius);  //creates a pair of the bundled data
 }
+
 
 void CCircle::Save(ofstream & OutFile)
 {
+	//saves the figure according to the format specified in the doc.
 	OutFile << "CIRCLE" << "\t"  << ID << "\t";
 	OutFile << Center.x << "\t" << Center.y << "\t";
 	OutFile<< Radius << "\t"<< (int)FigGfxInfo.DrawClr.ucRed << " " 
@@ -64,6 +80,7 @@ void CCircle::Save(ofstream & OutFile)
 
 bool CCircle::Encloses(Point P) 
 {
+	//function to whether a point is enclosed within the circle
 	if (Scrambled) {
 		float dist = pow(Bundle.first.x *0.5 +UI.width/2- P.x, 2) + pow(Bundle.first.y - P.y, 2);
 		return dist <= Radius*Radius;
@@ -72,9 +89,10 @@ bool CCircle::Encloses(Point P)
 	return dist <= Radius*Radius;
 }
 
+
 void CCircle::Load(ifstream &Infile)
 {
-	///Your code goes here.
+	//function to load circle from a .txt file
 	int id;
 	Infile >> id ;
 	Infile >> Center.x >> Center.y >> Radius;
@@ -97,23 +115,28 @@ void CCircle::Load(ifstream &Infile)
 	CFigure::FigGfxInfo = info; ;
 }
 
+
 void CCircle::PrintInfo(Output* pOut) 
 {
+	//prints the circle's info
 	string rs = to_string(Radius);
 	string c = "(" + to_string(Center.x) + "," + to_string(Center.y) + ")";
 	string A = to_string(GetArea());
 	pOut->PrintMessage("Circle: radius = " + rs + ", Center = " + c+ ", Area = "+A);
 }
 
+
 Point CCircle::GetCenter()
 {
 	return Center;
 }
 
+
 int CCircle::GetArea()
 {
 	return (int)3.14*Radius*Radius;
 }
+
 
 void CCircle::SetPoints(Point s)
 {
@@ -121,32 +144,43 @@ void CCircle::SetPoints(Point s)
 	Center.y += s.y;
 }
 
+
 int CCircle::GetRadius()
 {
 	return Radius;
 }
 
+
 bool CCircle::ValidToDraw(Point C, int R)
 {
+	//checks if the circle is valid to be drawn
 	return (InDrawingArea({ C.x + R,C.y }) && InDrawingArea({ C.x - R,C.y }) && 
 		   InDrawingArea({ C.x,C.y + R }) && InDrawingArea({ C.x,C.y - R }));
 }
+
+
 void CCircle::Resize(double r) {
-	Radius = r*Radius;
+	Radius = r*Radius;  //resize circle by specified ratio
 }
+
+
 Point CCircle::GetTopCorner()
 {
 	return Center;
 }
 
+
 CFigure* CCircle::Clone()
 {
+	//creates an exact copy of the current object
 	CFigure* Temp = new CCircle(Center, Radius, FigGfxInfo);
 	return Temp;
 }
 
+
 bool CCircle::TransferFigure(Point To, bool Check)
 {
+	//transfers the figure's coordinates to translate to a new destination
 	if (!Check) {
 		Center.x += To.x; Center.y += To.y;
 		return true;
@@ -156,10 +190,12 @@ bool CCircle::TransferFigure(Point To, bool Check)
 	return ValidToDraw(V, Radius);
 }
 
+
 GfxInfo& CCircle::GetGfxInfo()
 {
 	return FigGfxInfo;
 }
+
 
 string CCircle::GetName()
 {

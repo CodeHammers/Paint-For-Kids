@@ -4,14 +4,16 @@
 class CLine : public CFigure
 {
 private:
-	Point EndPoint1;    //line's end points
-	Point EndPoint2;
-	vector<Point> Bundle;
+	Point EndPoint1;         //line's end point 1
+	Point EndPoint2;         //line's end point 1
+	vector<Point> Bundle;    //line's original, positional data bundle
 public:
-	//Constrcutor
+	/*Constrcutor*/
 	CLine(Point P1, Point P2, GfxInfo FigureGfxInfo);
 
+	/*A function to restore figure's original positional data*/
 	void retrieveData();
+
 
 	bool ValidAfterZoom();
 	virtual void ChopCoordniates();

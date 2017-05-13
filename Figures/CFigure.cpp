@@ -1,5 +1,6 @@
 #include "CFigure.h"
 
+
 color CFigure::GetColor(string DrawColor)
 {
 	if (DrawColor == "RED") {
@@ -32,26 +33,18 @@ color CFigure::GetColor(string DrawColor)
 	return NULL;
 }
 
-void CFigure::SetPriority(bool s)
-{
-	HighPriority = s;
-}
-
 
 int CFigure::GetID()
 {
 	return ID;
 }
 
-bool CFigure::IsPriority() const
-{
-	return HighPriority;
-}
 
 void CFigure::SetID(int id)
 {
 	ID = id;
 }
+
 
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
@@ -59,35 +52,43 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	Selected = false;
 }
 
+
 void CFigure::ScrambleFigure()
 {
 	Scrambled = true;
 }
+
 
 bool CFigure::ScrambledFigure()
 {
 	return Scrambled;
 }
 
+
 void CFigure::disableScramble()
 {
 	Scrambled = false;
 }
 
+
 void CFigure::SetSelected(bool s)
 {	Selected = s; }
+
 
 bool CFigure::IsSelected() const
 {	return Selected; }
 
+
 void CFigure::ChngDrawClr(color Dclr)
 {	FigGfxInfo.DrawClr = Dclr; }
+
 
 void CFigure::ChngFillClr(color Fclr)
 {	
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
 }
+
 
 bool CFigure::InDrawingArea(Point P) 
 {
