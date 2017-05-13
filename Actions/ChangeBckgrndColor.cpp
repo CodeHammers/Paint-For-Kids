@@ -53,7 +53,6 @@ bool ChangeBckgrndColor::ReadActionParameters()
 
 ChangeBckgrndColor::ChangeBckgrndColor(ApplicationManager* appManager,ActionType actType) : Action(appManager)
 {
-	this->appManager = appManager;
 	this->ActType = actType;
 	ReadActionParameters();
 }
@@ -62,7 +61,7 @@ ChangeBckgrndColor::ChangeBckgrndColor(ApplicationManager* appManager,ActionType
 void ChangeBckgrndColor::Execute()
 {
 	
-	appManager->GetOutput()->ChangeBackgroundColor(BackgroundColor);
+	pManager->GetOutput()->ChangeBackgroundColor(BackgroundColor);
 
 }
 

@@ -53,7 +53,6 @@ bool ChangeFillColor::ReadActionParameters()
 
 ChangeFillColor::ChangeFillColor(ApplicationManager* appManager, ActionType actType) : Action(appManager)
 {
-	this->appManager = appManager;
 	this->ActType = actType;
 	ReadActionParameters();
 }
@@ -62,7 +61,7 @@ ChangeFillColor::ChangeFillColor(ApplicationManager* appManager, ActionType actT
 void ChangeFillColor::Execute()
 {
 	pManager->ChangeFillClrForSelected(DrawColor);
-	appManager->GetOutput()->ChangeFillColor(DrawColor);
+	pManager->GetOutput()->ChangeFillColor(DrawColor);
 }
 
 

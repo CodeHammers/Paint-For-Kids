@@ -54,7 +54,6 @@ bool ChangeDrawColorAction::ReadActionParameters()
 
 ChangeDrawColorAction::ChangeDrawColorAction(ApplicationManager* appManager, ActionType actType) : Action(appManager)
 {
-	this->appManager = appManager;
 	this->ActType = actType;
 	ReadActionParameters();
 }
@@ -63,7 +62,7 @@ ChangeDrawColorAction::ChangeDrawColorAction(ApplicationManager* appManager, Act
 void ChangeDrawColorAction::Execute()
 {
 	pManager->ChangeDrwClrForSelected(DrawColor);
-	appManager->GetOutput()->ChangeDrawColor(DrawColor);
+	pManager->GetOutput()->ChangeDrawColor(DrawColor);
 }
 
 ChangeDrawColorAction::~ChangeDrawColorAction()

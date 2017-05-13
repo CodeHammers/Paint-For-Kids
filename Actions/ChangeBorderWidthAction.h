@@ -7,7 +7,6 @@ class ChangeBorderWidthAction :
 private:
 	ActionType ActType;
 	int BorderWidth;
-	ApplicationManager* appManager;
 	virtual bool ReadActionParameters();
 public:
 	ChangeBorderWidthAction(ApplicationManager* appManager, ActionType actType);
