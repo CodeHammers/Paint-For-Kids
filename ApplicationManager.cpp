@@ -373,15 +373,26 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new SelectAction(this);
 			break;
 
-		case ITM_SAVEAS_Clicked:
-			pAct = new SaveAction(this);
-			break;
+		
 
 		case EXIT:
 			///create ExitAction here
-			
+			if (GetFigCount())
+				pOut->PrintMessage("if you exit now ,your graph will be lost  , click on save icon to save changes or press anywhere to continue;");
+			ActType = GetUserAction();
+			if (ActType == ITM_SAVEAS_Clicked){
+				pAct = new SaveAction(this);
+				break;
+			}
+			delete pIn;
+			delete pOut;
+			pIn = NULL; pOut = NULL;
+			nullifyFigList();
 			break;
 
+		case ITM_SAVEAS_Clicked:
+			pAct = new SaveAction(this);
+			break;
 		case ITM_DELETE_Clicked:
 			pAct = new DeleteAction(this);
 			break;
@@ -689,6 +700,8 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {
+	if (pOut == NULL)
+		return;
 	if (UI.Zoom != 1&&UI.Zoom !=0 ) {
 		pOut->CleanTheScreen();
 		for (int i = 0; i < FigList.size(); i++) {
