@@ -6,7 +6,6 @@ class ChangeFillColor :
 private:
 	ActionType ActType;
 	color DrawColor;
-	ApplicationManager* appManager;
 	virtual bool ReadActionParameters();
 public:
 	ChangeFillColor(ApplicationManager* appManager, ActionType actType);

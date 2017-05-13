@@ -3,7 +3,6 @@ class ZoomAction : public Action
 {
 private:
 	ActionType actType;
-	ApplicationManager * appManager;
 public:
 	ZoomAction(ApplicationManager* pApp,ActionType ActType);
 

@@ -27,7 +27,6 @@ bool ChangeBorderWidthAction::ReadActionParameters()
 
 ChangeBorderWidthAction::ChangeBorderWidthAction(ApplicationManager* appManager, ActionType actType) : Action(appManager)
 {
-	this->appManager = appManager;
 	this->ActType = actType;
 	ReadActionParameters();
 }
@@ -36,7 +35,7 @@ ChangeBorderWidthAction::ChangeBorderWidthAction(ApplicationManager* appManager,
 void ChangeBorderWidthAction::Execute()
 {
 	pManager->ChangeBorderWidthForSelected(BorderWidth);
-	appManager->GetOutput()->ChangeBorderWidth(BorderWidth);
+	pManager->GetOutput()->ChangeBorderWidth(BorderWidth);
 }
 
 ChangeBorderWidthAction::~ChangeBorderWidthAction()

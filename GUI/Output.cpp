@@ -786,23 +786,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	
 	int Dist = abs(P1.y -P2.y);
 	Point P1s = P1; Point P2s = P2;
-	
-	int increment = Dist * UI.Ratio -Dist;
-	if (P1.y > P2.y) {
-		P1.y += increment / 2; P2.y -= increment / 2;
-	}
-	else {
-		P2.y += increment / 2; P1.y -= increment / 2;
-	}
-	Dist = abs(P1.x - P2.x);
-	increment = Dist * UI.Ratio - Dist;
-	if (P1.x > P2.x) {
-		P1.x += increment / 2; P2.x -= increment / 2;
 
-	}
-	else {
-		P2.x += increment / 2; P1.x -= increment / 2;
-	}
 	ZoomPoint(P1);
 	ZoomPoint(P2);
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
@@ -832,23 +816,7 @@ void Output::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected) co
 	pWind->SetPen(DrawingClr, bw);	//Set Drawing color & width
 	Point P1s = P1; Point P2s = P2;
 
-	int Dist = abs(P1.y - P2.y);
-	int increment = Dist * UI.Ratio - Dist;
-	if (P1.y > P2.y) {
-		P1.y += increment / 2; P2.y -= increment / 2;
-	}
-	else {
-		P2.y += increment / 2; P1.y -= increment / 2;
-	}
-	Dist = abs(P1.x - P2.x);
-	increment = Dist * UI.Ratio - Dist;
-	if (P1.x > P2.x) {
-		P1.x += increment / 2; P2.x -= increment / 2;
-
-	}
-	else {
-		P2.x += increment / 2; P1.x -= increment / 2;
-	}
+	
 	ZoomPoint(P1);
 	ZoomPoint(P2);
 
@@ -906,7 +874,7 @@ void Output::DrawCircle(Point center, int radius, GfxInfo CircleGfxInfo, bool se
 		style = FRAME;
 	Point c = center;
 	ZoomPoint(center);
-	pWind->DrawCircle(center.x, center.y, radius*UI.Ratio *UI.Zoom, style);
+	pWind->DrawCircle(center.x, center.y, radius*UI.Zoom, style);
 	center = c;
 }
 

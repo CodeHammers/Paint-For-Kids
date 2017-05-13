@@ -566,9 +566,16 @@ void ApplicationManager::ResizeSelectedFigures(double ratio) {
 	UI.Ratio = ratio;
 	if (FigList.empty())
 		return;
+	int num = 0;
+
 	for (int i = 0; i < FigList.size(); i++) {
 		if (FigList[i]->IsSelected()) {
-			FigList[i]->Resize(ratio);
+			if (FigList[i]->ValidAfterZoom())
+				FigList[i]->Resize(ratio);
+			else {
+				string s = "Cannot Resize " + num;
+				pOut->PrintMessage(s+" Figures");
+			}
 		}
 	}
 	UI.Ratio = temp;

@@ -8,7 +8,6 @@ bool ZoomAction::ReadActionParameters()
 
 ZoomAction::ZoomAction(ApplicationManager* appManager, ActionType actType) : Action(appManager)
 {
-	this->appManager = appManager;
 	this->actType = actType;
 }
 /*	// ZOOM ITEMS // 
@@ -18,9 +17,9 @@ ZoomAction::ZoomAction(ApplicationManager* appManager, ActionType actType) : Act
 void ZoomAction::Execute()
 {
 	if (actType == ITM_ZOOM_IN_Clicked) {
-		appManager->GetOutput()->ChangeZoomLevel(2);
+		pManager->GetOutput()->ChangeZoomLevel(2);
 	}
 	if (actType == ITM_ZOOM_OUT_Clicked) {
-		appManager->GetOutput()->ChangeZoomLevel(0.5);
+		pManager->GetOutput()->ChangeZoomLevel(0.5);
 	}
 }
