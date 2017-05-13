@@ -19,6 +19,7 @@
 #include "Actions\ResizeAction.h"
 #include "Actions\ScrambleAction.h"
 #include "Actions\SendToAction.h"
+#include "Actions\ExitAction.h"
 #include <time.h>       /* time */
 
 //Constructor
@@ -81,14 +82,8 @@ void ApplicationManager::RollBackChanges() {
 
 void ApplicationManager::nullifyFigList() {
 	FigList.clear();
-	/*
-	while (FigCount--) {
-		delete FigList[FigCount];
-		FigList[FigCount] = NULL;
-	}
-	++FigCount;
-	*/
 }
+
 bool ApplicationManager::SelectFigureToScramble(int idx) {
 	CFigure* fig = FigList[idx];
 	fig->SetSelected(true);
@@ -376,18 +371,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		
 
 		case EXIT:
-			///create ExitAction here
-			if (GetFigCount())
-				pOut->PrintMessage("if you exit now ,your graph will be lost  , click on save icon to save changes or press anywhere to continue;");
-			ActType = GetUserAction();
-			if (ActType == ITM_SAVEAS_Clicked){
-				pAct = new SaveAction(this);
-				break;
-			}
-			delete pIn;
-			delete pOut;
-			pIn = NULL; pOut = NULL;
-			nullifyFigList();
+			pAct = new ExitAction(this);
 			break;
 
 		case ITM_SAVEAS_Clicked:
@@ -453,6 +437,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 //==================================================================================//
 //						Figures Management Functions								//
 //==================================================================================//
+
+void ApplicationManager::Exit()
+{
+	for (int i = 0; i < FigList.size(); i++)
+		delete FigList[i];
+	delete pOut; delete pIn;
+	pIn = NULL; pOut = NULL;
+	FigList.clear();
+}
 
 //Add a figure to the list of figures
 void ApplicationManager::AddFigure(CFigure* pFig)

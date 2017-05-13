@@ -82,6 +82,7 @@ public:
 	void ChangeFillClrForSelected(const color& Color);
 	void ChangeBorderWidthForSelected(const int& BorderWidth);
 	void SendSelectedTo(int mode);
+	void Exit();
 };
 
 #endif

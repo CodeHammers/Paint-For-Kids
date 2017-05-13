@@ -8,7 +8,6 @@ class PlayAction : public Action
 {
 private:
 	
-	color FigureDrawClr; ///malosh lazma 
 	static color FigureFillClr; //stores the pick figure fill color
 	priority_queue<int>FigureAreas;  //queue and store areas of all figures
 	Input* pIn; Output* pOut;  //pointers to input/output classes
