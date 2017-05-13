@@ -17,9 +17,11 @@
  
  Language:
  ----------
- We will be using object oriented C++ to core of this application, we will be using CMU graphics library to create the user interface
- and application-user interaction.
+ We will be using object oriented C++ as the core of this application, we will be using CMU graphics library built in C to create the user  interface and application-user interaction.
  
+ Tools:
+ ------
+ We will be using Visual Studio 2015 community as our IDE.
  
  Creators:
  ----------
