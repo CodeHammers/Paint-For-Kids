@@ -36,6 +36,7 @@ private:
 	bool IsPenMenu(ActionType ActType) const;
 
 public:	
+
 	ApplicationManager();
 	void ScaleAll();
 	void RollBackChanges();

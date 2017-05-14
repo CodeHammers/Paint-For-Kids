@@ -7,11 +7,15 @@ CTriangle::CTriangle(Point V1, Point V2, Point V3, GfxInfo FigureGfxInfo) :CFigu
 	Vertex2 = V2;
 	Vertex3 = V3;
 }
+
+
 void CTriangle::retrieveData() {
 	Vertex1 = Bundle[0];
 	Vertex2 = Bundle[1];
 	Vertex3 = Bundle[2];
 }
+
+
 void CTriangle::Draw(Output* pOut) const
 {
 	if (Scrambled) {
@@ -27,6 +31,7 @@ void CTriangle::Draw(Output* pOut) const
 		p3.x += UI.width / 2;
 		pOut->DrawTriangle(p1, p2,p3, FigGfxInfo, false);
 	}
+
 	pOut->DrawTriangle(Vertex1, Vertex2, Vertex3, FigGfxInfo, Selected);
 }
 
@@ -35,18 +40,26 @@ float CTriangle::Getarea(int x1, int y1, int x2, int y2, int x3, int y3) const
 {
 	return abs((x1*(y2 - y3) + x2*(y3 - y1) + x3*(y1 - y2)) / 2.0);
 }
+
+
 void CTriangle::ChangeCord(Point p) {
-	int difX = Vertex1.x - p.x; int difY = Vertex1.y - p.y;
+	int difX = Vertex1.x - p.x; 
+	int difY = Vertex1.y - p.y;
 	Vertex1 = p;
 	Vertex2.x -= difX; Vertex2.y -= difY;
 	Vertex3.x -= difX; Vertex3.y -= difY;
 }
+
+
 bool CTriangle::ValidAfterZoom() {
 
 	return ValidToDraw(Vertex1,Vertex2,Vertex3);
 }
+
+
 void CTriangle::Resize(double r) {
 	pair<int,int> dist = make_pair(Vertex3.y- Vertex3.y*r,Vertex3.x- Vertex3.x*r);
+	
 	if (Scrambled)
 		r = .85;
 	Vertex1.x *= r;
@@ -63,10 +76,13 @@ void CTriangle::Resize(double r) {
 	Vertex3.x += dist.second;
 	Vertex3.y += dist.first;
 }
+
+
 bool CTriangle::Encloses(Point P) 
 {
 	Point v1, v2, v3;
 	v1 = Vertex1; v2 = Vertex2; v3 = Vertex3;
+	
 	if (Scrambled) {
 		Vertex1 = Bundle[0];
 		Vertex2 = Bundle[1];
@@ -78,6 +94,7 @@ bool CTriangle::Encloses(Point P)
 		Vertex2.x += UI.width/2;
 		Vertex2.x += UI.width/2;
 	}
+
 	/* Calculate the area of V1V2V3 */
 	float tot = Getarea(Vertex1.x, Vertex1.y, Vertex2.x, Vertex2.y, Vertex3.x, Vertex3.y);
 
@@ -92,6 +109,7 @@ bool CTriangle::Encloses(Point P)
 	
 	/* Check if sum of A1, A2 and A3 is same as A */
 	Vertex1 = v1; Vertex2 = v2; Vertex3 = v3;
+	
 	return (tot == A1 + A2 + A3);
 }
 
@@ -101,12 +119,16 @@ void CTriangle::ChopCoordniates()
 	Vertex2.x *= 0.5;
 	Vertex3.x *= 0.5;
 }
+
+
 void CTriangle::BundleData() {
 	Bundle.push_back(Vertex1);
 	Bundle.push_back(Vertex2);
 	Bundle.push_back(Vertex3);
 
 }
+
+
 void CTriangle::ChangeQuandrant(int Qx,int Qy) {
 	int minY = min(Vertex1.y, Vertex2.y, Vetex3.y);
 	int minX = min(Vertex1.x, Vertex2.x, Vertext3.x);
@@ -118,9 +140,8 @@ void CTriangle::ChangeQuandrant(int Qx,int Qy) {
 	Vertex1.y += -minY + Qy;
 	Vertex2.y += -minY + Qy;
 	Vertex3.y += -minY + Qy;
-
-
 }
+
 
 void CTriangle::Save(ofstream & OutFile)
 {
@@ -138,9 +159,9 @@ void CTriangle::Save(ofstream & OutFile)
 	OutFile << endl;
 }
 
+
 void CTriangle::Load(ifstream &Infile)
 {
-	///Your code goes here.
 	int id;
 	Infile >> id;
 	Infile >> Vertex1.x >> Vertex1.y >> Vertex2.x >> Vertex2.y >> Vertex3.x >> Vertex3.y;
@@ -163,6 +184,7 @@ void CTriangle::Load(ifstream &Infile)
 	CFigure::FigGfxInfo = info;
 }
 
+
 void CTriangle::PrintInfo(Output* pOut)
 {
 	string x = "(" + to_string(Vertex1.x) + "," + to_string(Vertex1.y) + ")";
@@ -173,25 +195,24 @@ void CTriangle::PrintInfo(Output* pOut)
 	pOut->PrintMessage("Triangle: Vertex1 = " + x + " , Vertex2 = " + y + " , Vertex3 = "+z+ " , Area = "+A);
 }
 
+
 Point CTriangle::GetVertex1()
 {
 	return Vertex1;
 }
+
 
 Point CTriangle::GetVertex2()
 {
 	return Vertex2;
 }
 
+
 Point CTriangle::GetVertex3()
 {
 	return Vertex3;
 }
 
-//GfxInfo CTriangle::GetGfxInfo()
-//{
-//	return FigGfxInfo;
-//}
 
 void CTriangle::SetPoints(Point s)
 {
@@ -203,15 +224,18 @@ void CTriangle::SetPoints(Point s)
 	Vertex3.y += s.y;
 }
 
+
 GfxInfo& CTriangle::GetGfxInfo()
 {
 	return FigGfxInfo;
 }
 
+
 int CTriangle::GetArea()
 {
 	return (int)Getarea(Vertex1.x, Vertex1.y, Vertex2.x, Vertex2.y, Vertex3.x, Vertex3.y);
 }
+
 
 bool CTriangle::ValidToDraw(Point P1, Point P2, Point P3)
 {
@@ -227,11 +251,15 @@ Point CTriangle::GetTopCorner()
 		return Vertex2;
 	return Vertex3;
 }
+
+
 CFigure* CTriangle::Clone()
 {
 	CFigure* Temp = new CTriangle(Vertex1, Vertex2, Vertex3, FigGfxInfo);
 	return Temp;
 }
+
+
 bool CTriangle::TransferFigure(Point To, bool Check)
 {
 	if (!Check) {
@@ -240,10 +268,12 @@ bool CTriangle::TransferFigure(Point To, bool Check)
 		Vertex3.x += To.x;	Vertex3.y += To.y;
 		return true;
 	}
+
 	Point V1 = Vertex1, V2 = Vertex2, V3 = Vertex3;
 	V1.x += To.x;   V1.y += To.y;
 	V2.x += To.x;	V2.y += To.y;
 	V3.x += To.x;	V3.y += To.y;
+
 	return ValidToDraw(V1, V2, V3);
 }
 

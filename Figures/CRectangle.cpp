@@ -8,10 +8,12 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(Figure
 	Corner2 = P2;
 }
 
+
 void CRectangle::retrieveData() {
 	Corner1 = Bundle[0];
 	Corner2 = Bundle[1];
 }
+
 
 void CRectangle::Draw(Output* pOut) const
 {
@@ -29,15 +31,19 @@ void CRectangle::Draw(Output* pOut) const
 	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
 }
 
+
 void CRectangle::ChangeCord(Point p) {
 	int difX = Corner1.x - p.x; int difY = Corner1.y - p.y;
 	Corner1 = p;
 	Corner2.x -= difX; Corner2.y -= difY;
 }
+
+
 bool CRectangle::Encloses(Point P) 
 {
 	Point ed1 = Corner1;
 	Point ed2 = Corner2;
+
 	if (Scrambled) {
 		ed1 = Bundle[0];
 		ed2 = Bundle[1];
@@ -46,20 +52,16 @@ bool CRectangle::Encloses(Point P)
 		ed1.x += UI.width / 2;
 		ed2.x += UI.width / 2;
 	}
-	/*	int minx, maxx, miny, maxy;
-	minx = min(Corner1.x, Corner2.x);
-	maxx = max(Corner1.x, Corner2.x);
-	miny = min(Corner1.y, Corner2.y);
-	maxy = max(Corner1.y, Corner2.y);
-
-	return (P.x >= minx && P.x <= maxx && P.y >= miny && P.y <= maxy);*/
+	
 	int minx, maxx, miny, maxy;
 	minx = min(ed1.x, ed2.x);
 	maxx = max(ed1.x, ed2.x);
 	miny = min(ed1.y, ed2.y);
 	maxy = max(ed1.y, ed2.y);
+
 	return (P.x >= minx && P.x <= maxx && P.y >= miny && P.y <= maxy); 
 }
+
 
 void CRectangle::ChopCoordniates()
 {
@@ -67,10 +69,12 @@ void CRectangle::ChopCoordniates()
 	Corner2.x *= 0.5;
 }
 
+
 void CRectangle::BundleData() {
 	Bundle.push_back(Corner1);
 	Bundle.push_back(Corner2);
 }
+
 
 void CRectangle::ChangeQuandrant(int Qx, int Qy) {
 	int minY = min(Corner1.y, Corner2.y);
@@ -83,6 +87,8 @@ void CRectangle::ChangeQuandrant(int Qx, int Qy) {
 	Corner2.y += -minY + Qy;
 
 }
+
+
 void CRectangle::Save(ofstream & OutFile)
 {
 	OutFile << "RECT" << "\t"<< ID << "\t";
@@ -97,6 +103,7 @@ void CRectangle::Save(ofstream & OutFile)
 		<< (int)FigGfxInfo.FillClr.ucBlue <<"\t"<<FigGfxInfo.BorderWdth;
 	OutFile << endl;
 }
+
 
 void CRectangle::Load(ifstream & Infile)
 {
@@ -132,20 +139,18 @@ void CRectangle::PrintInfo(Output* pOut)
 	pOut->PrintMessage("Rectangle: Corner1= " + x + " , Corner2= " + y+ " , Area= "+A);
 }
 
+
 Point CRectangle::GetCorner1()
 {
 	return Corner1;
 }
+
 
 Point CRectangle::GetCorner2()
 {
 	return Corner2;
 }
 
-//GfxInfo CRectangle::GetGfxInfo()
-//{
-//	return FigGfxInfo;
-//}
 
 int CRectangle::GetArea()
 {
@@ -155,6 +160,7 @@ int CRectangle::GetArea()
 		sqrt(pow(Corner2.x - Aux.x, 2) + pow(Corner2.y - Aux.y, 2)));
 }
 
+
 void CRectangle::SetPoints(Point s)
 {
 	Corner1.x += s.x;
@@ -163,18 +169,22 @@ void CRectangle::SetPoints(Point s)
 	Corner2.y += s.y;
 }
 
+
 void CRectangle::Resize(double r) {
 	Point P1 = Corner1; Point P2 = Corner2;
 	int Dist = abs(P1.y - P2.y);
 	int increment = Dist * UI.Ratio - Dist;
+
 	if (P1.y > P2.y) {
 		P1.y += increment / 2; P2.y -= increment / 2;
 	}
 	else {
 		P2.y += increment / 2; P1.y -= increment / 2;
 	}
+
 	Dist = abs(P1.x - P2.x);
 	increment = Dist * UI.Ratio - Dist;
+	
 	if (P1.x > P2.x) {
 		P1.x += increment / 2; P2.x -= increment / 2;
 
@@ -182,20 +192,26 @@ void CRectangle::Resize(double r) {
 	else {
 		P2.x += increment / 2; P1.x -= increment / 2;
 	}
+
 	Corner1 = P1; Corner2 = P2;
 }
+
+
 bool CRectangle::ValidAfterZoom() {
 	Point P1 = Corner1; Point P2 = Corner2;
 	int Dist = abs(P1.y - P2.y);
 	int increment = Dist * UI.Ratio - Dist;
+	
 	if (P1.y > P2.y) {
 		P1.y += increment / 2; P2.y -= increment / 2;
 	}
 	else {
 		P2.y += increment / 2; P1.y -= increment / 2;
 	}
+
 	Dist = abs(P1.x - P2.x);
 	increment = Dist * UI.Ratio - Dist;
+	
 	if (P1.x > P2.x) {
 		P1.x += increment / 2; P2.x -= increment / 2;
 
@@ -203,16 +219,22 @@ bool CRectangle::ValidAfterZoom() {
 	else {
 		P2.x += increment / 2; P1.x -= increment / 2;
 	}
+
 	return ValidToDraw(P1, P2);
 }
+
+
 GfxInfo& CRectangle::GetGfxInfo()
 {
 	return FigGfxInfo;
 }
+
+
 bool CRectangle::ValidToDraw(Point P1, Point P2)
 {
 	return InDrawingArea(P1) && InDrawingArea(P2);
 }
+
 
 CFigure* CRectangle::Clone()
 {
@@ -220,12 +242,15 @@ CFigure* CRectangle::Clone()
 	return Temp;
 }
 
+
 Point CRectangle::GetTopCorner()
 {
 	if (Corner1.x <= Corner2.x&&Corner1.y <= Corner2.y)
 		return Corner1;
 	return Corner2;
 }
+
+
 bool CRectangle::TransferFigure(Point To, bool Check)
 {
 	if (!Check) {
@@ -238,6 +263,7 @@ bool CRectangle::TransferFigure(Point To, bool Check)
 	V2.x += To.x;	V2.y += To.y;
 	return ValidToDraw(V1, V2);
 }
+
 
 string CRectangle::GetName()
 {

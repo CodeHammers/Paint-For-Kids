@@ -7,37 +7,85 @@ class Output	//The application manager should have a pointer to this class
 private:
 	window* pWind;	//Pointer to the Graphics Window
 public:
+	/*A default constructor function*/
 	Output();
+
+	/*A non constructor function*/
 	Output(int x);
+
+	/*A function to chnage the zooming level*/
 	void ChangeZoomLevel(double z);
+
+	/*A function to edit the window settings*/
 	void EditWindowSettings(color drawcolor, color fillcolor, color backgroundcolor);
+
+	/*A function to change the application background*/
 	void ChangeBackgroundColor(color BackgroundColor);
+
+	/*A fcuntion to change the drawing color*/
 	void ChangeDrawColor(color DrawColor);
+
+	/*A function to change the fill color*/
 	void ChangeFillColor(color FillColor);
+
+	/*A function to change the border width*/
 	void ChangeBorderWidth(int BW);
-	window* CreateWind(int, int, int, int) const; //creates the application window
-	void CreateDrawToolBarUp(int action, bool sub, bool show) const;	//creates Draw mode upper toolbar 
-	void CreateDrawToolBarRight(bool collapse,bool show) const;//creates Draw mode right toolbar 
-	void CreatePlayToolBar(int action, bool collapse, bool stat) const;	//creates Play mode toolbar & menu
-	void CreateStatusBar() const;	//create the status bar
 
-	Input* CreateInput() const; //creates a pointer to the Input object	
-	void ClearStatusBar() const;	//Clears the status bar
-	void ClearDrawArea() const;	//Clears the drawing area
+	/*A function to create a window*/
+	window* CreateWind(int, int, int, int) const; 
 
-								// -- Figures Drawing functions
-	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a rectangle
-	void ZoomPoint(Point & p) const;
-	void DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected = false) const;  //Draw a Line
-	void DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriangleGfxInfo, bool selected = false) const; //Draw a triangle
+	/*A fucntion to draw the upper toolbar*/
+	void CreateDrawToolBarUp(int action, bool sub, bool show) const;	
+
+	/*A function to draw the right toolbar*/
+	void CreateDrawToolBarRight(bool collapse,bool show) const; 
+
+	/*A function to create the play mode upper toolbar*/
+	void CreatePlayToolBar(int action, bool collapse, bool stat) const; 
+
+	/*A function to create the application status bar*/
+	void CreateStatusBar() const;	
+
+	/*A function to initiate the input class*/
+	Input* CreateInput() const; 
+
+	/*A function to clear the status bar*/
+	void ClearStatusBar() const;
+
+	/*A function to clear the drawing area*/
+	void ClearDrawArea() const;	
+								
+	/*A function to draw a rectangle*/
+	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const;  
+
+	/*A function to draw a line*/
+	void DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected = false) const;
+	
+	/*A function to draw a triangle*/
+	void DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriangleGfxInfo, bool selected = false) const; 
+
+	/*A function to draw a circle*/
 	void DrawCircle(Point center, int radius, GfxInfo CircleGfxInfo, bool selected = false) const; //Draw a circle.
 
-	void PrintMessage(string msg) const;	//Print a message on Status bar
+	/*A function to zoom taking reference to a point*/
+	void ZoomPoint(Point & p) const;
 
-	color getCrntDrawColor() const;	//get current drwawing color
-	color getCrntFillColor() const;	//get current filling color
-	int getCrntPenWidth() const;		//get current pen width
+	/*A function to print a message on the status bar*/
+	void PrintMessage(string msg) const;	
+
+	/*A function to get the current drawing color*/
+	color getCrntDrawColor() const;	
+
+	/*A function to get the current fill color*/
+	color getCrntFillColor() const;	
+
+	/*A function to get the current pen width*/
+	int getCrntPenWidth() const;	
+
+	/*A function to clean the screen*/
 	void CleanTheScreen();
+
+	/*Destructor function*/
 	~Output();
 };
 

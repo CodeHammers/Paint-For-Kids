@@ -54,6 +54,11 @@ void LoadAction::Execute()
 	Infile >> DrawColor[0] >> DrawColor[1] >> DrawColor[2];
 	Infile >> FillColor[0] >> FillColor[1] >> FillColor[2];
 	Infile >> bckgrndColor[0] >> bckgrndColor[1] >> bckgrndColor[2];
+	if (bckgrndColor[0] == 255 && bckgrndColor[1] == 255 && bckgrndColor[2] == 255)
+		UI.male = true;
+
+	if (bckgrndColor[0] == 255 && bckgrndColor[1] == 182 && bckgrndColor[2] == 193)
+		UI.male = false;
 
 	string  FigType;
 	color drawcolor = color(DrawColor[0],DrawColor[1],DrawColor[2]);

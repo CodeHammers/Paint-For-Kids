@@ -9,18 +9,21 @@ Output::Output()
 	UI.InterfaceMode = MODE_DRAW;
 	UI.isFilled = false;
 	UI.Zoom = 1;
+
 	/*Setting the dimensions of the application window*/
 	UI.width = 1500; //Setting the width of the window.
 	UI.height = 800; //Setting the height of the window.
 	UI.wx = 5;  //Setting the starting position of the window.
 	UI.wy = 5;   //Setting the ending position on the window.
-	UI.Ratio = 1;
+	UI.Ratio = 1;  //intially no zoom
+
 	/*Setting the dimensions of the toolbars right,up,left*/
 	UI.StatusBarHeight = 80;      //Settting the height of the status bar.
 	UI.MenuItemWidthLeft = 50;    //Setting the width of icons in the left menu.
 	UI.MenuItemWidthUp = 50;     //Setting the width of icons in the upper menu.
 	UI.MenuItemWidthRight = 50;   //Setting the width of icons in the right menu.
-	UI.MenuItemHeight = 60;      
+	UI.MenuItemHeight = 60; 
+
 	//Drawing area dimensions 1380*660 with 5 pixels empty on all for sides
 	//from x=55 ==> x=1435 , y=55 ==> y=715
 
@@ -28,6 +31,7 @@ Output::Output()
 	UI.DrawColor = BLUE;	//Setting the drawing color of figures.
 	UI.FillColor = GREEN;	//Setting the filling color of the figures.
 	UI.MsgColor = RED;		//Setting the color of the messages displayed on the status bar.
+
 	if (UI.male) {
 		UI.BkGrndColor = WHITE;	//Setting the background color.
 		UI.HighlightColor = MAGENTA;	//Setting the highlighting color.
@@ -38,6 +42,7 @@ Output::Output()
 		UI.HighlightColor = LIGHTBLUE;	//Setting the highlighting color.
 		UI.StatusBarColor = LIGHTBLUE;  //Setting the color of the status bar.
 	}
+
 	UI.PenWidth = 3;	//Setting the width of figures frames.
 
 	/*Ceating the output window and setting the new name for the app*/
@@ -51,23 +56,28 @@ Output::Output()
 	/*Drawing the status bar in the application window*/
 	CreateStatusBar();
 }
+
+
 Output::Output(int x)
 {
 	UI.InterfaceMode = MODE_DRAW;
 	UI.isFilled = false;
+
 	/*Setting the dimensions of the application window*/
 	UI.width = 1500; //Setting the width of the window.
 	UI.height = 800; //Setting the height of the window.
 	UI.wx = 5;  //Setting the starting position of the window.
 	UI.wy = 5;   //Setting the ending position on the window.
-	UI.Ratio = 1;
-	UI.Zoom = 1;
+	UI.Ratio = 1;  //no resizing initially
+	UI.Zoom = 1;   //no zooming initially
+
 	/*Setting the dimensions of the toolbars right,up,left*/
 	UI.StatusBarHeight = 80;      //Settting the height of the status bar.
 	UI.MenuItemWidthLeft = 50;    //Setting the width of icons in the left menu.
 	UI.MenuItemWidthUp = 50;     //Setting the width of icons in the upper menu.
 	UI.MenuItemWidthRight = 50;   //Setting the width of icons in the right menu.
-	UI.MenuItemHeight = 60;
+	UI.MenuItemHeight = 60;       //setting the height of a menu item
+
 	//Drawing area dimensions 1380*660 with 5 pixels empty on all for sides
 	//from x=55 ==> x=1435 , y=55 ==> y=715
 
@@ -80,7 +90,7 @@ Output::Output(int x)
 	UI.StatusBarColor = TURQUOISE;  //Setting the color of the status bar.
 	UI.PenWidth = 3;	//Setting the width of figures frames.
 
-						/*Ceating the output window and setting the new name for the app*/
+	/*Ceating the output window and setting the new name for the app*/
 	pWind = CreateWind(UI.width, UI.height, UI.wx, UI.wy);
 	pWind->ChangeTitle("Paint for Kids - Drawing Mode");  //default mode, changes to play in the play mode
 
@@ -89,6 +99,8 @@ Output::Output(int x)
 	pWind->DrawImage(Miniee,200,100,500,500);
 	pWind->DrawImage(Mickey, 200+500, 100, 500, 500);
 }
+
+
 void Output::ChangeZoomLevel(double z) {
 	if (z > 1)
 		UI.Zoom += 0.25;
@@ -97,6 +109,7 @@ void Output::ChangeZoomLevel(double z) {
 	if (UI.Zoom <= 0)
 		UI.Zoom = 1;
 }
+
 
 void Output::EditWindowSettings(color drawcolor, color fillcolor, color backgroundcolor)
 {
@@ -118,14 +131,19 @@ void Output::EditWindowSettings(color drawcolor, color fillcolor, color backgrou
 
 }
 
+
 void Output::ChangeBackgroundColor(color BackgroundColor)
 {
 	EditWindowSettings(UI.DrawColor, UI.FillColor, BackgroundColor);
 }
+
+
 void Output::ChangeDrawColor(color DrawColor)
 {
 	EditWindowSettings(DrawColor, UI.FillColor, UI.BkGrndColor);
 }
+
+
 void Output::ChangeFillColor(color FillColor)
 {
 	//EditWindowSettings(UI.DrawColor, FillColor, UI.BkGrndColor);
@@ -133,11 +151,15 @@ void Output::ChangeFillColor(color FillColor)
 	UI.isFilled = true;
 	pWind->SetBrush(UI.FillColor);
 }
+
+
 void Output::ChangeBorderWidth(int bw)
 {
 	UI.PenWidth = bw;
 	pWind->SetPen(UI.DrawColor,UI.PenWidth);
 }
+
+
 Input* Output::CreateInput() const
 {
 	Input* pIn = new Input(pWind);
@@ -766,10 +788,12 @@ void Output::CleanTheScreen()
 void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
 {
 	color DrawingClr; //RectGfxInfo.isFilled = true;
+
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
 	else
 		DrawingClr = RectGfxInfo.DrawClr;
+
 	int bw = RectGfxInfo.BorderWdth + (UI.Zoom - 1) / 0.25;
 	if (bw <= 0)
 		bw = 1;
@@ -794,14 +818,19 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	P1 = P1s; P2 = P2s;
 
 }
+
+
 void Output::ZoomPoint(Point &P1) const{
 	if (UI.Zoom == 0)
 		UI.Zoom = 1;
+
 	UI.ZoomCenter.x = UI.width / 2;
 	UI.ZoomCenter.y = UI.height / 2;
+
 	P1.x = UI.ZoomCenter.x - UI.Zoom*UI.ZoomCenter.x + UI.Zoom*P1.x;
 	P1.y = UI.ZoomCenter.y - UI.Zoom*UI.ZoomCenter.y + UI.Zoom*P1.y;
 }
+
 
 void Output::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected) const
 {
@@ -824,6 +853,7 @@ void Output::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected) co
 	P1 = P1s; P2 = P2s;
 
 }
+
 
 void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriangleGfxInfo, bool selected) const
 {
@@ -850,6 +880,7 @@ void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriangleGfxInfo,
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
 	P1 = P1s; P2 = P2s; P3 = P3s;
 }
+
 
 void Output::DrawCircle(Point center, int radius, GfxInfo CircleGfxInfo, bool selected) const
 {

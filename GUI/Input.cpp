@@ -6,10 +6,12 @@ Input::Input(window* pW)
 	pWind = pW; //point to the passed window
 }
 
+
 void Input::GetPointClicked(int &x, int &y) const
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
+
 
 string Input::GetSrting(Output *pO) const
 {
@@ -30,6 +32,7 @@ string Input::GetSrting(Output *pO) const
 			pO->PrintMessage(Label);
 	}
 }
+
 
 //This function reads the position where the user clicks to determine the desired action
 ActionType Input::GetUserAction() const

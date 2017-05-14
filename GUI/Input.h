@@ -18,13 +18,21 @@ private:
 	int ScreenEndY = 800;
 	int playModeItemHeight = 100;
 	window *pWind;	//Pointer to the Graphics Window
+
 public:
-	Input(window *pW);		//Consturctor
-	void GetPointClicked(int &x, int &y) const;//Get coordinate where user clicks
-	string GetSrting(Output* pO) const;	 //Returns a string entered by the user
+	/*Constructor function*/
+	Input(window *pW);
 
-	ActionType GetUserAction() const; //Read the user click and map to an action
+	/*A function to get the coordinates of a point clicked by the user*/
+	void GetPointClicked(int &x, int &y) const;
 
+	/*A function to get string from the user through keyboard*/
+	string GetSrting(Output* pO) const;	 
+
+	/*A function to get a click from the user and map it an on-screen icon*/
+	ActionType GetUserAction() const; 
+
+	/*A destructor function*/
 	~Input();
 };
 
