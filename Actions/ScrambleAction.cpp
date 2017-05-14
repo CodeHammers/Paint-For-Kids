@@ -22,6 +22,10 @@ void ScrambleAction::Execute()
 
 void ScrambleAction::StartGame() {
 	int size = pManager->GetFigCount();
+	if (!size) {
+		pManager->GetOutput()->PrintMessage("nothing to scramble");
+		return;
+	}
 	while (size--) {
 		pManager->SelectFigureToScramble(size);
 		pManager->UpdateInterface();
@@ -50,11 +54,11 @@ void ScrambleAction::StartGame() {
 				continue;
 			if (!fig->IsSelected()) {
 				WrongAnswers++;
-				pManager->GetOutput()->PrintMessage("You MADE IT ! ....... to the wrong answer :V");
+				pManager->GetOutput()->PrintMessage("wrong one ,Kid");
 			}
 			else {
 				RightAnswers++;
-				pManager->GetOutput()->PrintMessage("And That one was .... ...  .. .      Right! ;)");
+				pManager->GetOutput()->PrintMessage("Correct");
 				pManager->CutToClipboard(false);
 				pManager->DeleteSelected(false);
 				pManager->UpdateInterface();

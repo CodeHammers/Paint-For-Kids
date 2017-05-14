@@ -34,7 +34,8 @@ bool ResizeAction::ReadActionParameters()
 void ResizeAction::Execute()
 {
 	ReadActionParameters();
-	pManager->ResizeSelectedFigures(ratio);
+	if (!pManager->ResizeSelectedFigures(ratio))
+		pManager->GetOutput()->PrintMessage("Cannot find any selected figure to resize ");
 }
 
 

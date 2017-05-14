@@ -67,6 +67,8 @@ public:
 	/*A function to draw a circle*/
 	void DrawCircle(Point center, int radius, GfxInfo CircleGfxInfo, bool selected = false) const; //Draw a circle.
 
+	buttonstate getButtonState(int & iX, int & iY);
+
 	/*A function to zoom taking reference to a point*/
 	void ZoomPoint(Point & p) const;
 
@@ -84,6 +86,16 @@ public:
 
 	/*A function to clean the screen*/
 	void CleanTheScreen();
+
+	void setBuffering(bool state);
+
+	void FlushMouse();
+
+	bool EscapeClicked();
+
+	bool UpdateBuffer();
+
+	void DragObj();
 
 	/*Destructor function*/
 	~Output();

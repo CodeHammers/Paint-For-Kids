@@ -565,11 +565,10 @@ void ApplicationManager::AddPastedFigures(Point P)
 		}
 	}
 }
-void ApplicationManager::ResizeSelectedFigures(double ratio) {
+bool ApplicationManager::ResizeSelectedFigures(double ratio) {
 	double temp = UI.Ratio;
 	UI.Ratio = ratio;
-	if (FigList.empty())
-		return;
+
 	int num = 0;
 
 	for (int i = 0; i < FigList.size(); i++) {
@@ -583,6 +582,7 @@ void ApplicationManager::ResizeSelectedFigures(double ratio) {
 		}
 	}
 	UI.Ratio = temp;
+	return FigList.size();
 }
 
 

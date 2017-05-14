@@ -71,7 +71,7 @@ public:
 	void CutToClipboard(bool unselect);
 	void CopyToClipboard();
 	void AddPastedFigures(Point P);
-	void ResizeSelectedFigures(double ratio);
+	bool ResizeSelectedFigures(double ratio);
 	Point GetTheTopFigure();
 	priority_queue<int>GetFigureAreas();
 	int GetNumOfFigType();

@@ -909,6 +909,83 @@ void Output::DrawCircle(Point center, int radius, GfxInfo CircleGfxInfo, bool se
 	center = c;
 }
 
+buttonstate Output::getButtonState(int &iX, int &iY) {
+	return  pWind->GetButtonState(LEFT_BUTTON, iX, iY);
+}
+void Output::setBuffering(bool state) {
+	pWind->SetBuffering(state);
+}
+void Output::FlushMouse() {
+	pWind->FlushMouseQueue();
+	pWind->FlushKeyQueue();
+}
+bool Output::EscapeClicked() {
+	char cKeyData;
+	return pWind->GetKeyPress(cKeyData) == ESCAPE;
+}
+bool Output::UpdateBuffer() {
+	pWind->UpdateBuffer();
+	return true;
+}
+void  Output::DragObj() {
+	int iX, iY;
+	window *testWindow = pWind;
+	setBuffering(false);
+	char cKeyData;
+	// Flush out the input queues before beginning
+	FlushMouse();
+	setBuffering(true);
+	int RectULX = 100;
+	int RectULY = 100;
+	int RectWidth = 20;
+	bool bDragging = false;
+	iX = iY = 0;
+	int iXOld = 0;
+	int iYOld = 0;
+	// Loop until there escape is pressed
+	while (!EscapeClicked())
+	{
+		testWindow->SetPen(WHITE);
+		testWindow->SetBrush(WHITE);
+		testWindow->DrawRectangle(0, 0, testWindow->GetWidth() - 1, testWindow->GetHeight() - 1);
+		// Dragging voodoo
+		if (bDragging == false) {
+			if (getButtonState(iX, iY) == BUTTON_DOWN) {
+				if (((iX > RectULX) && (iX < (RectULX + RectWidth))) && ((iY > RectULY) && (iY < (RectULY + RectWidth)))) {
+					bDragging = true;
+					iXOld = iX; iYOld = iY;
+				}
+			}
+		}
+		else {
+			if (getButtonState(iX, iY) == BUTTON_UP) {
+				bDragging = false;
+			}
+			else {
+				if (iX != iXOld) {
+					RectULX = RectULX + (iX - iXOld);
+					iXOld = iX;
+				}
+				if (iY != iYOld) {
+					RectULY = RectULY + (iY - iYOld);
+					iYOld = iY;
+				}
+			}
+		}
+		// Draw rectangle
+		testWindow->SetPen(ORANGE);
+		testWindow->SetBrush(ORANGE);
+		//testWindow->DrawCircle(RectULX, RectULY, 50);
+		testWindow->DrawRectangle(RectULX, RectULY, RectULX + RectWidth, RectULY + RectWidth);
+		//testWindow.DrawRectangle(RectULX, RectULY, RectULX + RectWidth, RectULY + RectWidth);
+		testWindow->SetPen(BLACK);
+		testWindow->DrawString(5, 5, "MouseState Demo. Drag the orange box around. Press \"Escape\" to quit");
+		UpdateBuffer();
+	}
+	setBuffering(false);
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 Output::~Output()
 {
