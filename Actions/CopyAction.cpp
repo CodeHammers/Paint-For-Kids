@@ -8,6 +8,9 @@
 #include"..\GUI\Input.h"
 #include"..\GUI\Output.h"
 
+#include <Windows.h>
+#include <Mmsystem.h>
+
 CopyAction::CopyAction(ApplicationManager * pApp):Action(pApp)
 {
 }
@@ -48,6 +51,7 @@ void CopyAction::Execute()
 	else {
 		//the user attempt to copy figures, but he hasn't selected any
 		pOut->PrintMessage("Copy: No figures were selected, select figures and then click copy");
+		PlaySound(TEXT("Sounds/Error.wav"), NULL, SND_FILENAME);
 		return;
 	}
 }

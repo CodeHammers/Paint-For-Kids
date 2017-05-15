@@ -1,6 +1,8 @@
 #include "ResizeAction.h"
 #include "..\ApplicationManager.h"
 
+#include <Windows.h>
+#include <Mmsystem.h>
 
 /*	ITM_RESIZE25_Clicked,
 	ITM_RESIZE50_Clicked,
@@ -34,8 +36,11 @@ bool ResizeAction::ReadActionParameters()
 void ResizeAction::Execute()
 {
 	ReadActionParameters();
-	if (!pManager->ResizeSelectedFigures(ratio))
-		pManager->GetOutput()->PrintMessage("Cannot find any selected figure to resize ");
+	if (!pManager->ResizeSelectedFigures(ratio)) {
+		pManager->GetOutput()->PrintMessage("Resize Action: No figures were selected to resize");
+		PlaySound(TEXT("Sounds/Error.wav"), NULL, SND_FILENAME);
+	}
+
 }
 
 

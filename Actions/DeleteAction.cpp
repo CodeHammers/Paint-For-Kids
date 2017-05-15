@@ -5,6 +5,8 @@
 
 #include"..\ApplicationManager.h"
 
+#include <Windows.h>
+#include <Mmsystem.h>
 
 DeleteAction::DeleteAction(ApplicationManager *pApp):Action(pApp)
 {
@@ -34,7 +36,8 @@ void DeleteAction::Execute()
 	}
 	else {
 		//the user attempt to delete figures, but he hasn't selected any
-		pOut->PrintMessage("Delete: No figures was selected, select figures before clicking delete, kiddo!");
+		pOut->PrintMessage("Delete: No figures was selected, select figures before clicking delete");
+		PlaySound(TEXT("Sounds/Error.wav"), NULL, SND_FILENAME);
 		return;
 	}
 }

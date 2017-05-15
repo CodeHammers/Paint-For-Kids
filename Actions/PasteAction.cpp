@@ -12,6 +12,8 @@
 
 #include "SelectAction.h"
 
+#include <Windows.h>
+#include <Mmsystem.h>
 
 PasteAction::PasteAction(ApplicationManager * pApp):Action(pApp)
 {
@@ -30,6 +32,7 @@ bool PasteAction::ReadActionParameters()
 	//if the clipboard is empty, do nothing
 	if (ToBePasted == 0) {
 		pOut->PrintMessage("Paste: The clipboard is empty, copy or cut some figures and then click paste");
+		PlaySound(TEXT("Sounds/Error.wav"), NULL, SND_FILENAME);
 		return false;
 	}
 

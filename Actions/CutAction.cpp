@@ -8,6 +8,9 @@
 #include"..\GUI\Output.h"
 #include "CutAction.h"
 
+#include <Windows.h>
+#include <Mmsystem.h>
+
 CutAction::CutAction(ApplicationManager * pApp) : Action(pApp)
 {
 }
@@ -43,6 +46,7 @@ void CutAction::Execute()
 	else {
 		//the user attempt to cut figures, but he hasn't selected any
 		pOut->PrintMessage("Cut: No selceted figures, select some figures then click cut");
+		PlaySound(TEXT("Sounds/Error.wav"), NULL, SND_FILENAME);
 		return;
 	}
 }

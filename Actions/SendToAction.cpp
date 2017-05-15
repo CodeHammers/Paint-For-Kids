@@ -5,6 +5,9 @@
 #include"..\GUI\Input.h"
 #include"..\GUI\Output.h"
 
+#include <Windows.h>
+#include <Mmsystem.h>
+
 SendToAction::SendToAction(int mode, ApplicationManager* pApp):Action(pApp)
 {
 	SendToMode = mode;
@@ -28,6 +31,7 @@ void SendToAction::Execute()
 	else {
 		//the user attempt to send figures, but he hasn't selected any
 		pOut->PrintMessage("Send To: No selceted figures, select some figures then click again");
+		PlaySound(TEXT("Sounds/Error.wav"), NULL, SND_FILENAME);
 		return;
 	}
 }
