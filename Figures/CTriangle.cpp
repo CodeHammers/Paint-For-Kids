@@ -23,10 +23,10 @@ void CTriangle::SetStartingDragPoint(Point &p)
 void CTriangle::CheckPosAfterDrag(Point p)
 {
 	Point p2, p3;
-	p2.x = (Vertex1.x - Vertex2.x) + p.x;
-	p2.y = (Vertex1.y - Vertex2.y) + p.y;
-	p3.x = (Vertex1.x - Vertex3.x) + p.x;
-	p3.y = (Vertex1.y - Vertex3.y) + p.y;
+	p2.x = -(Vertex1.x - Vertex2.x) + p.x;
+	p2.y = -(Vertex1.y - Vertex2.y) + p.y;
+	p3.x = -(Vertex1.x - Vertex3.x) + p.x;
+	p3.y = -(Vertex1.y - Vertex3.y) + p.y;
 	BundleData();
 	Vertex1 = p; Vertex2 = p2; Vertex3 = p3;
 	if (!ValidToDraw(Vertex1, Vertex2, Vertex3))
@@ -58,10 +58,10 @@ void CTriangle::Draw(Output* pOut) const
 void CTriangle::DrawDragged(Output * pOut, Point p) const
 {
 	Point p2,p3;
-	p2.x = (Vertex1.x - Vertex2.x) + p.x;
-	p2.y = (Vertex1.y - Vertex2.y) + p.y;
-	p3.x = (Vertex1.x - Vertex3.x) + p.x;
-	p3.y = (Vertex1.y - Vertex3.y) + p.y;
+	p2.x = -(Vertex1.x - Vertex2.x) + p.x;
+	p2.y = -(Vertex1.y - Vertex2.y) + p.y;
+	p3.x = -(Vertex1.x - Vertex3.x) + p.x;
+	p3.y = -(Vertex1.y - Vertex3.y) + p.y;
 	pOut->DrawTriangle(p,p2,p3, FigGfxInfo,Selected);
 }
 

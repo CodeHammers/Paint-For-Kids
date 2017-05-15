@@ -23,8 +23,8 @@ void CRectangle::CheckPosAfterDrag(Point p)
 {
 	BundleData();
 	Point p2;
-	p2.x = (Corner1.x - Corner2.x) + p.x;
-	p2.y = (Corner1.y - Corner2.y) + p.y;
+	p2.x = -(Corner1.x - Corner2.x) + p.x;
+	p2.y = -(Corner1.y - Corner2.y) + p.y;
 	Corner1 = p; Corner2 = p2;
 	if (!ValidToDraw(Corner1, Corner2))
 		retrieveData();
@@ -52,9 +52,9 @@ void CRectangle::Draw(Output* pOut) const
 void CRectangle::DrawDragged(Output * pOut, Point p) const
 {
 	Point p2;
-	p2.x = (Corner1.x - Corner2.x) + p.x;
-	p2.y = (Corner1.y - Corner2.y) + p.y;
-	pOut->DrawRect(p, p2, FigGfxInfo, Selected);
+	p2.x = -(Corner1.x - Corner2.x) + p.x;
+	p2.y = -(Corner1.y - Corner2.y) + p.y;
+	pOut->DrawRect( p,p2, FigGfxInfo, Selected);
 }
 
 

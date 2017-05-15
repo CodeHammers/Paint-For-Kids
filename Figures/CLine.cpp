@@ -23,8 +23,8 @@ void CLine::CheckPosAfterDrag(Point p)
 {
 	BundleData();
 	Point p2;
-	p2.x = (EndPoint1.x - EndPoint2.x) + p.x;
-	p2.y = (EndPoint1.y - EndPoint2.y) + p.y;
+	p2.x = -(EndPoint1.x - EndPoint2.x) + p.x;
+	p2.y = -(EndPoint1.y - EndPoint2.y) + p.y;
 	EndPoint1 = p; EndPoint2 = p2;
 	if (!ValidToDraw(EndPoint1, EndPoint2))
 		retrieveData();
@@ -108,8 +108,8 @@ void CLine::Draw(Output* pOut) const
 void CLine::DrawDragged(Output * pOut, Point p) const
 {
 	Point p2;
-	p2.x = (EndPoint1.x - EndPoint2.x) + p.x;
-	p2.y = (EndPoint1.y - EndPoint2.y) + p.y;
+	p2.x = -(EndPoint1.x - EndPoint2.x) + p.x;
+	p2.y = -(EndPoint1.y - EndPoint2.y) + p.y;
 	pOut->DrawLine(p, p2, FigGfxInfo, Selected);
 }
 
