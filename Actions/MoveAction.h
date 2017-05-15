@@ -9,7 +9,7 @@ private:
 public:
 	MoveAction(ApplicationManager* appmngr);
 	virtual void Execute();
-	Point Drag(CFigure*fig);
+	pair<Point,Point> Drag(vector<CFigure*> figs);
 	~MoveAction();
 };
 

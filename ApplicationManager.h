@@ -53,7 +53,9 @@ public:
 	void ExecuteAction(ActionType) ; //Creates an action and executes it
 	//void AddClipboard(CFigure* pFig);
 	// -- Figures Management Functions
-	void AddFigure(CFigure* pFig); //Adds a new figure to the FigList
+	void AddFigure(CFigure* pFig);
+	Point GetTheTopFigureOfSelected();
+	//Adds a new figure to the FigList
 	CFigure* GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 	void DeleteSelected(bool flag);
 	//vector<CFigure*> GetSelected();
@@ -73,6 +75,7 @@ public:
 	void AddPastedFigures(Point P);
 	bool ResizeSelectedFigures(double ratio);
 	Point GetTheTopFigure();
+	vector<CFigure*> QuerySelectedForDrag();
 	priority_queue<int>GetFigureAreas();
 	int GetNumOfFigType();
 	int GetNumOfColorfulFig();

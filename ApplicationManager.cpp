@@ -668,7 +668,22 @@ Point ApplicationManager::GetTheTopFigure()
 			P = Clipboard[i]->GetTopCorner();
 	return P;
 }
-
+vector<CFigure*> ApplicationManager::QuerySelectedForDrag() {
+	vector<CFigure*> SelectedFigs;
+	for (unsigned int i = 0; i < FigList.size(); ++i) {
+		if (FigList[i]->IsSelected())
+			SelectedFigs.push_back(FigList[i]);
+	}
+	return SelectedFigs;
+}
+Point ApplicationManager::GetTheTopFigureOfSelected()
+{
+	Point P = { 2000,2000 };
+	for (unsigned int i = 0; i < FigList.size(); ++i)
+		if (FigList[i]->GetTopCorner().x <= P.x && FigList[i]->GetTopCorner().y <= P.y&&FigList[i]->IsSelected())
+			P = FigList[i]->GetTopCorner();
+	return P;
+}
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
 {
