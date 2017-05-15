@@ -13,6 +13,9 @@
 #include"../GUI/Input.h"
 #include"../GUI/Output.h"
 
+#include <Windows.h>
+#include <Mmsystem.h>
+
 PlayAction::PlayAction(ApplicationManager* pApp) : Action(pApp)
 {
 	//gets pointer to input/output classes for frequent use
@@ -125,7 +128,7 @@ bool PlayAction::ReadActionParameters()
 }
 
 
-void PlayAction:: PlayFigTypeGame() { 
+void PlayAction::PlayFigTypeGame() { 
 	int NumOfFigures = GetNumOfFigure();   //gets the number of desired figures 
 	Point P; int Cnt = 0; int FailCnt = 0;  //variables to keep track of the user progress
 
@@ -167,11 +170,13 @@ void PlayAction:: PlayFigTypeGame() {
 
 			//show the user his progress
 			pOut->PrintMessage("Bravo.. Now you selected : " + to_string(++Cnt) + " out of :" + to_string(NumOfFigures));
+			PlaySound(TEXT("Sounds/CorrectAnswer.wav"), NULL, SND_FILENAME);
 		}
 
 		else {
 			//if the figure clicked the wrong figure
 			pOut->PrintMessage("Pick And Hide: Wrong figure clicked");
+			PlaySound(TEXT("Sounds/WrongAnswer.wav"), NULL, SND_FILENAME);
 			FailCnt++;
 		}
 
@@ -180,6 +185,7 @@ void PlayAction:: PlayFigTypeGame() {
 
 	//game ended, show user statistics
 	pOut->PrintMessage("Pick And Hide: Good Job, Correct clicks: " + to_string(Cnt) + " , Wrong clicks: " + to_string(FailCnt));
+	PlaySound(TEXT("Sounds/GameFinished.wav"), NULL, SND_FILENAME);
 }
 
 
@@ -226,11 +232,13 @@ void PlayAction::PlayColorTypeGame()
 
 			//show the user his progress
 			pOut->PrintMessage("Bravo.. Now you selected : " + to_string(++Cnt) + " From :" + to_string(NumOfFigures));
+			PlaySound(TEXT("Sounds/CorrectAnswer.wav"), NULL, SND_FILENAME);
 		}
 
 		else {
 			//if the figure clicked the wrong figure
 			pOut->PrintMessage("Pick And Hide: Wrong figure clicked");
+			PlaySound(TEXT("Sounds/WrongAnswer.wav"), NULL, SND_FILENAME);
 			FailCnt++;
 		}
 
@@ -239,6 +247,7 @@ void PlayAction::PlayColorTypeGame()
 
 	//game ended, show user statistics
 	pOut->PrintMessage("Pick And Hide: Good Job, Correct clicks: " + to_string(Cnt) + " , Wrong clicks: " + to_string(FailCnt));
+	PlaySound(TEXT("Sounds/GameFinished.wav"), NULL, SND_FILENAME);
 }
 
 
@@ -285,11 +294,13 @@ void PlayAction::PlayColoredFigureGame()
 
 			//show the user his progress
 			pOut->PrintMessage("Bravo.. Now you selected : " + to_string(++Cnt) + " Out of :" + to_string(NumOfColoredFigures));
+			PlaySound(TEXT("Sounds/CorrectAnswer.wav"), NULL, SND_FILENAME);
 		}
 
 		else {
 			//if the figure clicked the wrong figure
 			pOut->PrintMessage("Pick And Hide: Wrong figure clicked");
+			PlaySound(TEXT("Sounds/WrongAnswer.wav"), NULL, SND_FILENAME);
 			FailCnt++;
 		}
 
@@ -297,6 +308,7 @@ void PlayAction::PlayColoredFigureGame()
 	}
 	//game ended, show user statistics
 	pOut->PrintMessage("Pick And Hide: Good Job, Correct clicks: "+to_string(Cnt)+" , Wrong clicks: "+to_string(FailCnt));
+	PlaySound(TEXT("Sounds/GameFinished.wav"), NULL, SND_FILENAME);
 }
 
 void PlayAction::PlayPickByArea()
@@ -346,16 +358,19 @@ void PlayAction::PlayPickByArea()
 
 			//show the user his progress
 			pOut->PrintMessage("Bravo.. Now you selected : " + to_string(++Cnt) + " Out of :" + to_string(NumOfFigures));
+			PlaySound(TEXT("Sounds/CorrectAnswer.wav"), NULL, SND_FILENAME);
 		}
 
 		else {
 			//if the figure clicked the wrong figure
 			pOut->PrintMessage("Pick And Hide: Wrong figure clicked");
+			PlaySound(TEXT("Sounds/WrongAnswer.wav"), NULL, SND_FILENAME);
 			FailCnt++;
 		}
 	}
 	//game ended, show user statistics
 	pOut->PrintMessage("Pick And Hide: Good Job, Correct clicks: " + to_string(Cnt) + " , Wrong clicks: " + to_string(FailCnt));
+	PlaySound(TEXT("Sounds/GameFinished.wav"), NULL, SND_FILENAME);
 }
 
 

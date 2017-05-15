@@ -1,6 +1,8 @@
 #include "ScrambleAction.h"
 #include"..\ApplicationManager.h"
 
+#include <Windows.h>
+#include <Mmsystem.h>
 
 ScrambleAction::ScrambleAction(ApplicationManager * appmanager) : Action(appmanager)
 {
@@ -54,21 +56,23 @@ void ScrambleAction::StartGame() {
 				continue;
 			if (!fig->IsSelected()) {
 				WrongAnswers++;
-				pManager->GetOutput()->PrintMessage("wrong one ,Kid");
+				PlaySound(TEXT("Sounds/WrongAnswer.wav"), NULL, SND_FILENAME);
+				pManager->GetOutput()->PrintMessage("Scramble and find: Wrong figure clicked");
 			}
 			else {
 				RightAnswers++;
-				pManager->GetOutput()->PrintMessage("Correct");
+				pManager->GetOutput()->PrintMessage("Scramble and find: Correct!");
 				pManager->CutToClipboard(false);
 				pManager->DeleteSelected(false);
 				pManager->UpdateInterface();
-
+				PlaySound(TEXT("Sounds/CorrectAnswer.wav"), NULL, SND_FILENAME);
 				break;
 			}
 		}
 	}
-	int total = RightAnswers + WrongAnswers;
-	pManager->GetOutput()->PrintMessage( "YOu got "+to_string( RightAnswers) + " out of " + to_string(total)+" Attemps" );
+	int total = RightAnswers + WrongAnswers; 
+	pManager->GetOutput()->PrintMessage("Sracmle and find: Good Job! Correct clicks: "+to_string(RightAnswers)+" Wrong clicks: "+to_string(WrongAnswers));
+	PlaySound(TEXT("Sounds/GameFinished.wav"), NULL, SND_FILENAME);
 	pManager->ReturnFromClipboard();
 	pManager->GetOutput()->ClearDrawArea();
 	pManager->RollBackChanges();
