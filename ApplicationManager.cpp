@@ -20,6 +20,8 @@
 #include "Actions\ScrambleAction.h"
 #include "Actions\SendToAction.h"
 #include "Actions\ExitAction.h"
+#include "Actions\MoveAction.h"
+
 #include <time.h>       /* time */
 //Constructor
 
@@ -309,7 +311,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	switch (ActType)
 	{
 		case ITM_MOVE_Clicked:
-			//pAct = new MoveAction(this);
+			pAct = new MoveAction(this);
 			break;
 		case ITM_RESIZE25_Clicked:
 			pAct = new ResizeAction(this, ITM_RESIZE25_Clicked);

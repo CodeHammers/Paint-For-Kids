@@ -1,5 +1,6 @@
 #pragma once
-#include "C:\Paint-For-Kids\Actions\Action.h"
+#include "Action.h"
+#include "../ApplicationManager.h"
 class MoveAction :
 	public Action
 {
