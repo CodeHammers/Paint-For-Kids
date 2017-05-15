@@ -54,6 +54,8 @@ public:
 	//void AddClipboard(CFigure* pFig);
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);
+	pair<Point, Point> Drag();
+	void CheckValidityOfDrag(vector<CFigure*> figs, pair<Point, Point> Pr);
 	Point GetTheTopFigureOfSelected();
 	//Adds a new figure to the FigList
 	CFigure* GetFigure(int x, int y) const; //Search for a figure given a point inside the figure

@@ -20,7 +20,7 @@ void CTriangle::SetStartingDragPoint(Point &p)
 	p = Vertex1;
 }
 
-void CTriangle::CheckPosAfterDrag(Point p)
+bool CTriangle::CheckPosAfterDrag(Point p)
 {
 	Point p2, p3;
 	p2.x = -(Vertex1.x - Vertex2.x) + p.x;
@@ -29,8 +29,12 @@ void CTriangle::CheckPosAfterDrag(Point p)
 	p3.y = -(Vertex1.y - Vertex3.y) + p.y;
 	BundleData();
 	Vertex1 = p; Vertex2 = p2; Vertex3 = p3;
-	if (!ValidToDraw(Vertex1, Vertex2, Vertex3))
+	if (!ValidToDraw(Vertex1, Vertex2, Vertex3)) {
 		retrieveData();
+		return false;
+	}
+	
+	return true;
 }
 
 

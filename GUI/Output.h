@@ -93,6 +93,8 @@ public:
 
 	bool EscapeClicked();
 
+	bool EnterClicked();
+
 	bool UpdateBuffer();
 
 

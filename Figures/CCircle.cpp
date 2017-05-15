@@ -44,13 +44,16 @@ void CCircle::DrawDragged(Output * pOut, Point p) const
 	pOut->DrawCircle(p, Radius, FigGfxInfo, Selected);
 }
 
-void CCircle::CheckPosAfterDrag(Point p)
+bool CCircle::CheckPosAfterDrag(Point p)
 {
 	BundleData();
 	Center = p;
 	if (!ValidToDraw(p, Radius)) {
 		retrieveData();
+		return false;
 	}
+
+	return true;
 }
 
 

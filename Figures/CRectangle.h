@@ -18,7 +18,7 @@ public:
 	void retrieveData();
 
 	virtual void SetStartingDragPoint(Point&);
-	virtual void CheckPosAfterDrag(Point p);
+	virtual bool CheckPosAfterDrag(Point p);
 
 
 	/*A function to draw a figure*/

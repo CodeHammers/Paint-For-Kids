@@ -917,12 +917,16 @@ void Output::setBuffering(bool state) {
 }
 void Output::FlushMouse() {
 	pWind->FlushMouseQueue();
-	pWind->FlushKeyQueue();
+	//pWind->FlushKeyQueue();
 }
 bool Output::EscapeClicked() {
 	char cKeyData;
 	return pWind->GetKeyPress(cKeyData) == ESCAPE;
 }
+bool Output::EnterClicked() {
+	char cKeyData;
+	return pWind->GetKeyPress(cKeyData) == FUNCTION;
+}
 bool Output::UpdateBuffer() {
 	pWind->UpdateBuffer();
 	return true;

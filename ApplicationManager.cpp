@@ -676,13 +676,87 @@ vector<CFigure*> ApplicationManager::QuerySelectedForDrag() {
 	}
 	return SelectedFigs;
 }
-Point ApplicationManager::GetTheTopFigureOfSelected()
-{
-	Point P = { 2000,2000 };
-	for (unsigned int i = 0; i < FigList.size(); ++i)
-		if (FigList[i]->GetTopCorner().x <= P.x && FigList[i]->GetTopCorner().y <= P.y&&FigList[i]->IsSelected())
-			P = FigList[i]->GetTopCorner();
-	return P;
+pair<Point, Point> ApplicationManager::Drag()
+{	vector<CFigure*>figs = QuerySelectedForDrag();
+	Point ref = GetTheTopFigureOfSelected();
+	Output* pOut = GetOutput();
+	for (int i = 0; i < figs.size(); i++) 	figs[i]->Drag(true);
+	int iX, iY;
+	UI.DragState = true;
+	pOut->setBuffering(false);
+	// Flush out the input queues before beginning
+	pOut->FlushMouse();
+	pOut->setBuffering(true);
+	int RectULX = ref.x;
+	int RectULY = ref.y;
+	int RectWidth = 20;
+	bool bDragging = false;
+	iX = iY = 0;
+	int iXOld = 0;
+	int iYOld = 0;	Point d;
+	// Loop until there escape is pressed
+	while (!pOut->EscapeClicked())
+	{
+		UpdateInterface();
+		// Dragging voodoo
+		if (bDragging == false) {
+			if (pOut->getButtonState(iX, iY) == BUTTON_DOWN) {
+				if (((iX > RectULX) && (iX < (RectULX + RectWidth))) && ((iY > RectULY) && (iY < (RectULY + RectWidth)))) {
+					bDragging = true;
+					iXOld = iX; iYOld = iY;
+				}
+			}
+		}
+		else {
+			if (pOut->getButtonState(iX, iY) == BUTTON_UP) {
+				bDragging = false;
+			}
+			else {
+				if (iX != iXOld) {
+					RectULX = RectULX + (iX - iXOld);
+					iXOld = iX;
+				}
+				if (iY != iYOld) {
+					RectULY = RectULY + (iY - iYOld);
+					iYOld = iY;
+				}
+			}
+		}
+		Point p1;
+		p1.x = RectULX;
+		p1.y = RectULY;
+		d = { ref.x - p1.x,ref.y - p1.y };
+		d.x = -d.x; d.y = -d.y;
+		for (int i = 0; i < figs.size(); i++) {
+			Point po;
+			figs[i]->SetStartingDragPoint(po);
+			po = { po.x + d.x ,po.y + d.y };
+			figs[i]->DrawDragged(pOut, po);
+		}
+		pOut->UpdateBuffer();
+	}
+	pOut->setBuffering(false);
+	UpdateInterface();
+	UI.DragState = false;
+	for (int i = 0; i < figs.size(); i++) 	figs[i]->Drag(false);
+	CheckValidityOfDrag(figs, make_pair(ref, d));
+	return make_pair(ref, d);
+}
+void ApplicationManager::CheckValidityOfDrag(vector<CFigure*> figs,pair<Point,Point> Pr) {	Point ref = Pr.first;
+	Point d = Pr.second;
+	for (int i = 0; i < figs.size(); i++) {
+		Point po;
+		figs[i]->SetStartingDragPoint(po);
+		po = { po.x + d.x ,po.y + d.y };		if (!figs[i]->CheckPosAfterDrag(po)) {			for (int j = i; j >= 0; j--)				figs[j]->retrieveData();			break;		}
+	}
+}
+Point ApplicationManager::GetTheTopFigureOfSelected()
+{
+	Point P = { 2000,2000 };
+	for (unsigned int i = 0; i < FigList.size(); ++i)
+		if (FigList[i]->GetTopCorner().x <= P.x && FigList[i]->GetTopCorner().y <= P.y&&FigList[i]->IsSelected())
+			P = FigList[i]->GetTopCorner();
+	return P;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const

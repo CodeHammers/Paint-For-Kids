@@ -19,15 +19,19 @@ void CRectangle::SetStartingDragPoint(Point &p)
 	p = Corner1;
 }
 
-void CRectangle::CheckPosAfterDrag(Point p)
+bool CRectangle::CheckPosAfterDrag(Point p)
 {
 	BundleData();
 	Point p2;
 	p2.x = -(Corner1.x - Corner2.x) + p.x;
 	p2.y = -(Corner1.y - Corner2.y) + p.y;
 	Corner1 = p; Corner2 = p2;
-	if (!ValidToDraw(Corner1, Corner2))
+	if (!ValidToDraw(Corner1, Corner2)) {
 		retrieveData();
+		return false;
+	}
+	
+	return true;
 }
 
 

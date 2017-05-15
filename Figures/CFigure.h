@@ -107,7 +107,7 @@ public:
 	int GetID();
 	void Drag(bool);
 	virtual void SetStartingDragPoint(Point&)=0;
-	virtual void CheckPosAfterDrag(Point p) = 0;
+	virtual bool CheckPosAfterDrag(Point p) = 0;
 	/*A function to return a figure's name*/
 	virtual string GetName() = 0;
 

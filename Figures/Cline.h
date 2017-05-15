@@ -17,7 +17,7 @@ public:
 
 	virtual void SetStartingDragPoint(Point&);
 
-	virtual void CheckPosAfterDrag(Point p);
+	virtual bool CheckPosAfterDrag(Point p);
 
 	/*A function to check the validity of a figure after zooming*/
 	bool ValidAfterZoom();

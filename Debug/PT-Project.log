@@ -1,8 +1,6 @@
 ﻿  MoveAction.cpp
-c:\paint-for-kids\actions\moveaction.cpp(22): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\actions\moveaction.cpp(16): warning C4101: 'p': unreferenced local variable
-c:\paint-for-kids\actions\moveaction.cpp(35): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\actions\moveaction.cpp(86): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\actions\moveaction.cpp(97): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\actions\moveaction.cpp(25): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\actions\moveaction.cpp(72): warning C4018: '<': signed/unsigned mismatch
+c:\paint-for-kids\actions\moveaction.cpp(83): warning C4018: '<': signed/unsigned mismatch
   PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)
