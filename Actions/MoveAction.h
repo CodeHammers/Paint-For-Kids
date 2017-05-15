@@ -9,6 +9,7 @@ private:
 public:
 	MoveAction(ApplicationManager* appmngr);
 	virtual void Execute();
+	Point Drag(CFigure*fig);
 	~MoveAction();
 };
 
