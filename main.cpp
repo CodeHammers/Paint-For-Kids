@@ -8,7 +8,7 @@ int main()
 
 	ActionType ActType;
 	ApplicationManager AppManager;
-	
+	int count = 0;
 	do
 	{		
 		//Read user action
@@ -19,6 +19,11 @@ int main()
 
 		//Update the interface
 		AppManager.UpdateInterface();	
+		if (!count) {
+			AppManager.DragObj();
+			count++;
+		}
+
 
 	}while(ActType != EXIT);
 

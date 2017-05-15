@@ -190,6 +190,7 @@ struct UI_Info	//User Interface Info.
 	bool isFilled;
 	double Zoom;
 	Point ZoomCenter;
+	bool DragState;
 	/// Add more members if needed
 
 }UI;	//create a global object UI

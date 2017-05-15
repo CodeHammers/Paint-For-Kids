@@ -66,6 +66,7 @@ public:
 	void UpdateInterface() const;	//Redraws all the drawing window
 	// -- where in the hell does this go functions
 	void SaveAll(ofstream &OutFile); // location for 
+	void DragObj();
 	int GetFigCount();
 	int GetSelectedFigCount();
 	void CutToClipboard(bool unselect);

@@ -95,7 +95,6 @@ public:
 
 	bool UpdateBuffer();
 
-	void DragObj();
 
 	/*Destructor function*/
 	~Output();

@@ -695,7 +695,7 @@ void ApplicationManager::UpdateInterface() const
 {
 	if (pOut == NULL)
 		return;
-	if (UI.Zoom != 1&&UI.Zoom !=0 ) {
+	if (UI.Zoom != 1&&UI.Zoom !=0||UI.DragState ) {
 		pOut->CleanTheScreen();
 		for (int i = 0; i < FigList.size(); i++) {
 			FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
@@ -737,6 +737,70 @@ void ApplicationManager::SaveAll(ofstream &OutFile)
 	OutFile << FigList.size() << endl;
 	for (int i = 0; i < FigList.size(); i++)
 		FigList[i]->Save(OutFile);
+}
+void  ApplicationManager::DragObj() {
+	int iX, iY;
+	UI.DragState = true;
+	pOut->setBuffering(false);
+	char cKeyData;
+	// Flush out the input queues before beginning
+	pOut->FlushMouse();
+	pOut->setBuffering(true);
+	int RectULX = 100;
+	int RectULY = 100;
+	int RectWidth = 20;
+	bool bDragging = false;
+	iX = iY = 0;
+	int iXOld = 0;
+	int iYOld = 0;
+	// Loop until there escape is pressed
+	while (!pOut->EscapeClicked())
+	{
+		//testWindow->SetPen(WHITE);
+		//testWindow->SetBrush(WHITE);
+		//testWindow->DrawRectangle(0, 0, testWindow->GetWidth() - 1, testWindow->GetHeight() - 1);
+		UpdateInterface();
+		// Dragging voodoo
+		if (bDragging == false) {
+			if (pOut->getButtonState(iX, iY) == BUTTON_DOWN) {
+				if (((iX > RectULX) && (iX < (RectULX + RectWidth))) && ((iY > RectULY) && (iY < (RectULY + RectWidth)))) {
+					bDragging = true;
+					iXOld = iX; iYOld = iY;
+				}
+			}
+		}
+		else {
+			if (pOut->getButtonState(iX, iY) == BUTTON_UP) {
+				bDragging = false;
+			}
+			else {
+				if (iX != iXOld) {
+					RectULX = RectULX + (iX - iXOld);
+					iXOld = iX;
+				}
+				if (iY != iYOld) {
+					RectULY = RectULY + (iY - iYOld);
+					iYOld = iY;
+				}
+			}
+		}
+		
+		//testWindow->DrawCircle(RectULX, RectULY, 50);
+		Point p1,p2;
+		p1.x = RectULX;
+		p1.y = RectULY;
+		p2.x = RectULX + RectWidth;
+		p2.y = RectULY + RectWidth;
+		GfxInfo gf; gf.isFilled = false; gf.BorderWdth = 3; gf.DrawClr = BLACK;
+		pOut->DrawRect(p1,p2,gf);
+
+		//testWindow.DrawRectangle(RectULX, RectULY, RectULX + RectWidth, RectULY + RectWidth);
+		//testWindow->SetPen(BLACK);
+		//testWindow->DrawString(5, 5, "MouseState Demo. Drag the orange box around. Press \"Escape\" to quit");
+		pOut->UpdateBuffer();
+	}
+	pOut->setBuffering(false);
+	UI.DragState = false;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
