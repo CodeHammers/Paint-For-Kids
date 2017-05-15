@@ -17,6 +17,10 @@ public:
 	/*A function to restore the original positional data*/
 	void retrieveData();
 
+	virtual void SetStartingDragPoint(Point&);
+	virtual void CheckPosAfterDrag(Point p);
+
+
 	/*A function to draw a figure*/
 	virtual void Draw(Output* pOut) const;
 	virtual void DrawDragged(Output* pOut, Point p) const;

@@ -14,6 +14,10 @@ public:
 	/*A fucntion to restore figure's original data*/
 	void retrieveData();
 
+	virtual void SetStartingDragPoint(Point&);
+	virtual void CheckPosAfterDrag(Point p);
+
+
 	/*A function to draw a triangle*/
 	virtual void Draw(Output* pOut) const;
 	virtual void DrawDragged(Output* pOut, Point p) const;

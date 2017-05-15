@@ -15,6 +15,10 @@ public:
 	/*A function to restore figure's original positional data*/
 	void retrieveData();
 
+	virtual void SetStartingDragPoint(Point&);
+
+	virtual void CheckPosAfterDrag(Point p);
+
 	/*A function to check the validity of a figure after zooming*/
 	bool ValidAfterZoom();
 

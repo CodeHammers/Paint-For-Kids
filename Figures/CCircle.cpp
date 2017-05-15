@@ -9,6 +9,11 @@ CCircle::CCircle(Point P1, int r,GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 	Radius = r;
 }
 
+void CCircle::SetStartingDragPoint(Point &p)
+{
+	p = Center;
+}
+
 
 void CCircle::retrieveData() {
 	//creates a bundle for figure's data to be used for retrieving original info
@@ -37,6 +42,15 @@ void CCircle::Draw(Output* pOut) const
 void CCircle::DrawDragged(Output * pOut, Point p) const
 {
 	pOut->DrawCircle(p, Radius, FigGfxInfo, Selected);
+}
+
+void CCircle::CheckPosAfterDrag(Point p)
+{
+	BundleData();
+	Center = p;
+	if (!ValidToDraw(p, Radius)) {
+		retrieveData();
+	}
 }
 
 

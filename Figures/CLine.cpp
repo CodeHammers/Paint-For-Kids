@@ -14,6 +14,22 @@ void CLine::retrieveData() {
 	EndPoint2 = Bundle[1];
 }
 
+void CLine::SetStartingDragPoint(Point &p)
+{
+	p = EndPoint1;
+}
+
+void CLine::CheckPosAfterDrag(Point p)
+{
+	BundleData();
+	Point p2;
+	p2.x = (EndPoint1.x - EndPoint2.x) + p.x;
+	p2.y = (EndPoint1.y - EndPoint2.y) + p.y;
+	EndPoint1 = p; EndPoint2 = p2;
+	if (!ValidToDraw(EndPoint1, EndPoint2))
+		retrieveData();
+}
+
 
 bool CLine::ValidAfterZoom() {
 	Point P1 = EndPoint1; Point P2 = EndPoint2;

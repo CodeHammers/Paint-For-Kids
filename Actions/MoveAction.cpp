@@ -19,7 +19,9 @@ void MoveAction::Execute()
 	CFigure *fig= pManager->GetFigure(p.x,p.y);
 	if (fig == NULL)
 		return;
-	pManager->DragObj(fig);
+	Point P= pManager->DragObj(fig);
+	fig->CheckPosAfterDrag(P);
+
 }
 
 

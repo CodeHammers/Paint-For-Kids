@@ -742,7 +742,7 @@ void ApplicationManager::SaveAll(ofstream &OutFile)
 	for (int i = 0; i < FigList.size(); i++)
 		FigList[i]->Save(OutFile);
 }
-void  ApplicationManager::DragObj(CFigure*fig) {
+Point  ApplicationManager::DragObj(CFigure*fig) {
 	fig->Drag(true);
 	int iX, iY;
 	UI.DragState = true;
@@ -751,8 +751,10 @@ void  ApplicationManager::DragObj(CFigure*fig) {
 	// Flush out the input queues before beginning
 	pOut->FlushMouse();
 	pOut->setBuffering(true);
-	int RectULX = 100;
-	int RectULY = 100;
+	Point pp;
+	fig->SetStartingDragPoint(pp);
+	int RectULX = pp.x;
+	int RectULY = pp.y;
 	int RectWidth = 20;
 	bool bDragging = false;
 	iX = iY = 0;
@@ -761,9 +763,6 @@ void  ApplicationManager::DragObj(CFigure*fig) {
 	// Loop until there escape is pressed
 	while (!pOut->EscapeClicked())
 	{
-		//testWindow->SetPen(WHITE);
-		//testWindow->SetBrush(WHITE);
-		//testWindow->DrawRectangle(0, 0, testWindow->GetWidth() - 1, testWindow->GetHeight() - 1);
 		UpdateInterface();
 		// Dragging voodoo
 		if (bDragging == false) {
@@ -789,24 +788,20 @@ void  ApplicationManager::DragObj(CFigure*fig) {
 				}
 			}
 		}
-		
-		//testWindow->DrawCircle(RectULX, RectULY, 50);
 		Point p1,p2;
 		p1.x = RectULX;
 		p1.y = RectULY;
 		p2.x = RectULX + RectWidth;
 		p2.y = RectULY + RectWidth;
 		GfxInfo gf; gf.isFilled = false; gf.BorderWdth = 3; gf.DrawClr = BLACK;
-		//pOut->DrawRect(p1,p2,gf);
+		pp = p1;
 		fig->DrawDragged(pOut,p1);
-		//testWindow.DrawRectangle(RectULX, RectULY, RectULX + RectWidth, RectULY + RectWidth);
-		//testWindow->SetPen(BLACK);
-		//testWindow->DrawString(5, 5, "MouseState Demo. Drag the orange box around. Press \"Escape\" to quit");
 		pOut->UpdateBuffer();
 	}
 	pOut->setBuffering(false);
 	UI.DragState = false;
 	fig->Drag(false);
+	return pp;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input

@@ -14,7 +14,7 @@ protected:
 	GfxInfo FigGfxInfo;	           //Figure graphis info
 	bool Scrambled = false;        //determines if the figure is randomly drawn, intially false
 	bool Dragged = false;
-
+	
 public:
 	/*Contructor function*/
 	CFigure(GfxInfo FigureGfxInfo);
@@ -106,6 +106,8 @@ public:
 	/*A function to return a figure's ID*/
 	int GetID();
 	void Drag(bool);
+	virtual void SetStartingDragPoint(Point&)=0;
+	virtual void CheckPosAfterDrag(Point p) = 0;
 	/*A function to return a figure's name*/
 	virtual string GetName() = 0;
 

@@ -12,13 +12,14 @@ private:
 public:
 	//Constructor
 	CCircle(Point P1, int r,GfxInfo FigureGfxInfo);
-
+	virtual void SetStartingDragPoint(Point&) ;
 	//A function to retrieve figure's original data
 	void retrieveData();
 
 	//A function to draw a figure
 	virtual void Draw(Output* pOut) const;
 	virtual void DrawDragged(Output* pOut, Point p) const;
+	virtual void CheckPosAfterDrag(Point p) ;
 	//A function to chage figure's coordinates
 	virtual void ChopCoordniates();
 
