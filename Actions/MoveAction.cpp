@@ -1,19 +1,21 @@
-#include"MoveAction.h"
+#include "MoveAction.h"
 
-#include"../ApplicationManager.h"
 
-MoveAction::MoveAction(ApplicationManager* pApp):Action(pApp)
-{
-}
 
 bool MoveAction::ReadActionParameters()
 {
-	int Selected = pManager->GetSelectedFigCount();
-	return (Selected > 0 ? true : false);
+	return false;
 }
+
+MoveAction::MoveAction(ApplicationManager * appmngr) : Action(appmngr)
+{
+}
+
 void MoveAction::Execute()
 {
-	if (ReadActionParameters()) {
+}
 
-	}
+
+MoveAction::~MoveAction()
+{
 }

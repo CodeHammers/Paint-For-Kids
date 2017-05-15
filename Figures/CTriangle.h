@@ -16,7 +16,7 @@ public:
 
 	/*A function to draw a triangle*/
 	virtual void Draw(Output* pOut) const;
-
+	virtual void DrawDragged(Output* pOut, Point p) const;
 	/*A function to check whether a point is enclosed by a figure*/
 	virtual bool Encloses(Point P) ;
 

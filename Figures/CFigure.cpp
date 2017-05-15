@@ -39,6 +39,11 @@ int CFigure::GetID()
 	return ID;
 }
 
+void CFigure::Drag(bool b)
+{
+	Dragged = b;
+}
+
 
 void CFigure::SetID(int id)
 {

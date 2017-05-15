@@ -13,7 +13,7 @@ protected:
 	bool Selected;	               //true if the figure is selected.
 	GfxInfo FigGfxInfo;	           //Figure graphis info
 	bool Scrambled = false;        //determines if the figure is randomly drawn, intially false
-	
+	bool Dragged = false;
 
 public:
 	/*Contructor function*/
@@ -45,7 +45,7 @@ public:
 
 	/*A pure virtual function to draw a figure*/
 	virtual void Draw(Output* pOut) const  = 0 ;		
-
+	virtual void DrawDragged(Output* pOut,Point p) const = 0;
 	/*A function to change figure's drawing color*/
 	void ChngDrawClr(color Dclr);	
 
@@ -105,7 +105,7 @@ public:
 
 	/*A function to return a figure's ID*/
 	int GetID();
-
+	void Drag(bool);
 	/*A function to return a figure's name*/
 	virtual string GetName() = 0;
 

@@ -74,6 +74,8 @@ void CLine::ChangeQuandrant(int Qx, int Qy) {
 
 void CLine::Draw(Output* pOut) const
 {
+	if (Dragged)
+		return;
 	if (Scrambled) {
 		Point p1, p2;
 		p1 = Bundle[0];
@@ -85,6 +87,14 @@ void CLine::Draw(Output* pOut) const
 		pOut->DrawLine(p1, p2, FigGfxInfo, false);
 	}
 	pOut->DrawLine(EndPoint1, EndPoint2, FigGfxInfo, Selected);
+}
+
+void CLine::DrawDragged(Output * pOut, Point p) const
+{
+	Point p2;
+	p2.x = (EndPoint1.x - EndPoint2.x) + p.x;
+	p2.y = (EndPoint1.y - EndPoint2.y) + p.y;
+	pOut->DrawLine(p, p2, FigGfxInfo, Selected);
 }
 
 

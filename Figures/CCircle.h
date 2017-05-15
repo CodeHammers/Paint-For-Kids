@@ -18,7 +18,7 @@ public:
 
 	//A function to draw a figure
 	virtual void Draw(Output* pOut) const;
-
+	virtual void DrawDragged(Output* pOut, Point p) const;
 	//A function to chage figure's coordinates
 	virtual void ChopCoordniates();
 

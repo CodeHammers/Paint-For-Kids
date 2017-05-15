@@ -140,6 +140,7 @@
     <ClCompile Include="Actions\DeleteAction.cpp" />
     <ClCompile Include="Actions\ExitAction.cpp" />
     <ClCompile Include="Actions\LoadAction.cpp" />
+    <ClCompile Include="Actions\MoveAction.cpp" />
     <ClCompile Include="Actions\PasteAction.cpp" />
     <ClCompile Include="Actions\PlayAction.cpp" />
     <ClCompile Include="Actions\ResizeAction.cpp" />
@@ -209,6 +210,7 @@
     <ClInclude Include="Actions\DeleteAction.h" />
     <ClInclude Include="Actions\ExitAction.h" />
     <ClInclude Include="Actions\LoadAction.h" />
+    <ClInclude Include="Actions\MoveAction.h" />
     <ClInclude Include="Actions\PasteAction.h" />
     <ClInclude Include="Actions\PlayAction.h" />
     <ClInclude Include="Actions\ResizeAction.h" />

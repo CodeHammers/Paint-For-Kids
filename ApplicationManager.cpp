@@ -21,7 +21,6 @@
 #include "Actions\SendToAction.h"
 #include "Actions\ExitAction.h"
 #include <time.h>       /* time */
-
 //Constructor
 
 ApplicationManager::ApplicationManager()
@@ -309,6 +308,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	ITM_RESIZE400_Clicked,*/
 	switch (ActType)
 	{
+		case ITM_MOVE_Clicked:
+			//pAct = new MoveAction(this);
+			break;
 		case ITM_RESIZE25_Clicked:
 			pAct = new ResizeAction(this, ITM_RESIZE25_Clicked);
 			break;
@@ -738,7 +740,8 @@ void ApplicationManager::SaveAll(ofstream &OutFile)
 	for (int i = 0; i < FigList.size(); i++)
 		FigList[i]->Save(OutFile);
 }
-void  ApplicationManager::DragObj() {
+void  ApplicationManager::DragObj(CFigure*fig) {
+	fig->Drag(true);
 	int iX, iY;
 	UI.DragState = true;
 	pOut->setBuffering(false);
@@ -792,8 +795,8 @@ void  ApplicationManager::DragObj() {
 		p2.x = RectULX + RectWidth;
 		p2.y = RectULY + RectWidth;
 		GfxInfo gf; gf.isFilled = false; gf.BorderWdth = 3; gf.DrawClr = BLACK;
-		pOut->DrawRect(p1,p2,gf);
-
+		//pOut->DrawRect(p1,p2,gf);
+		fig->DrawDragged(pOut,p1);
 		//testWindow.DrawRectangle(RectULX, RectULY, RectULX + RectWidth, RectULY + RectWidth);
 		//testWindow->SetPen(BLACK);
 		//testWindow->DrawString(5, 5, "MouseState Demo. Drag the orange box around. Press \"Escape\" to quit");
@@ -801,6 +804,7 @@ void  ApplicationManager::DragObj() {
 	}
 	pOut->setBuffering(false);
 	UI.DragState = false;
+	fig->Drag(false);
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input

@@ -19,7 +19,7 @@ public:
 
 	/*A function to draw a figure*/
 	virtual void Draw(Output* pOut) const;
-
+	virtual void DrawDragged(Output* pOut, Point p) const;
 	/*A function to change coordinates of a figure*/
 	void ChangeCord(Point p);
 

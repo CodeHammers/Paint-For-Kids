@@ -18,6 +18,8 @@ void CTriangle::retrieveData() {
 
 void CTriangle::Draw(Output* pOut) const
 {
+	if (Dragged)
+		return;
 	if (Scrambled) {
 		Point p1, p2,p3;
 		p1 = Bundle[0];
@@ -33,6 +35,16 @@ void CTriangle::Draw(Output* pOut) const
 	}
 
 	pOut->DrawTriangle(Vertex1, Vertex2, Vertex3, FigGfxInfo, Selected);
+}
+
+void CTriangle::DrawDragged(Output * pOut, Point p) const
+{
+	Point p2,p3;
+	p2.x = (Vertex1.x - Vertex2.x) + p.x;
+	p2.y = (Vertex1.y - Vertex2.y) + p.y;
+	p3.x = (Vertex1.x - Vertex3.x) + p.x;
+	p3.y = (Vertex1.y - Vertex3.y) + p.y;
+	pOut->DrawTriangle(p,p2,p3, FigGfxInfo,Selected);
 }
 
 

@@ -19,6 +19,8 @@ void CCircle::retrieveData() {
 
 void CCircle::Draw(Output* pOut) const
 {
+	if (Dragged)
+		return;
 	//checks of we are drawing the circle at a random position "scramble and find game" or
 	//just drawing it as a draw action
 	if (Scrambled) {
@@ -30,6 +32,11 @@ void CCircle::Draw(Output* pOut) const
 	}
 
 	pOut->DrawCircle(Center, Radius, FigGfxInfo, Selected);
+}
+
+void CCircle::DrawDragged(Output * pOut, Point p) const
+{
+	pOut->DrawCircle(p, Radius, FigGfxInfo, Selected);
 }
 
 

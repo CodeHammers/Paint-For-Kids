@@ -7,7 +7,7 @@
 
 #include "GUI\input.h"
 #include "GUI\output.h"
-
+#include "Figures\CFigure.h"
 #include<fstream>
 #include<vector>
 #include<queue>
@@ -66,7 +66,7 @@ public:
 	void UpdateInterface() const;	//Redraws all the drawing window
 	// -- where in the hell does this go functions
 	void SaveAll(ofstream &OutFile); // location for 
-	void DragObj();
+	void DragObj(CFigure* Fig);
 	int GetFigCount();
 	int GetSelectedFigCount();
 	void CutToClipboard(bool unselect);

@@ -17,6 +17,8 @@ void CRectangle::retrieveData() {
 
 void CRectangle::Draw(Output* pOut) const
 {
+	if (Dragged)
+		return;
 	if (Scrambled) {
 		Point p1, p2;
 		p1 = Bundle[0];
@@ -29,6 +31,14 @@ void CRectangle::Draw(Output* pOut) const
 	}
 	//Call Output::DrawRect to draw a rectangle on the screen	
 	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
+}
+
+void CRectangle::DrawDragged(Output * pOut, Point p) const
+{
+	Point p2;
+	p2.x = (Corner1.x - Corner2.x) + p.x;
+	p2.y = (Corner1.y - Corner2.y) + p.y;
+	pOut->DrawRect(p, p2, FigGfxInfo, Selected);
 }
 
 
