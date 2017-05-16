@@ -21,11 +21,15 @@
  
  Tools:
  ------
- We will be using Visual Studio 2015 community as our IDE.
+ We will be using Visual Studio 2015 community as our IDE
+ 
+ FrameWork:
+ ----------
+ We are using a simple graphics library called CMUgraphics ,the library itself is very limited in usage , but it let you unlesh your skills as a core c++ programmer to implement functionalities from scratch , or maybe use a base code to built upon , we recommend this library if you intend to practice c++ ,but we really don't recommend using it in production .
  
  Creators:
  ----------
- -Sayed Kotb 
+ -Sayed Kotb
  -Kareem Emad
  -Kareem Omar
  -Moamen Atya
