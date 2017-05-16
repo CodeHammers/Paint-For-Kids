@@ -22,6 +22,7 @@
 #include "Actions\SendToAction.h"
 #include "Actions\ExitAction.h"
 #include "Actions\MoveAction.h"
+#include "Actions\StoryAction.h"
 
 #include <time.h> /* time */
 
@@ -353,6 +354,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case MODE_PLAY_SUB_MENU2_Clicked:
 			pAct = new PlayAction(this);
+			break;
+
+		case ITM_SAVE_Clicked:
+			pAct = new StoryAction(this);
 			break;
 
 		case STATUS:	//a click on the status bar ==> no action

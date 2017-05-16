@@ -148,6 +148,7 @@
     <ClCompile Include="Actions\ScrambleAction.cpp" />
     <ClCompile Include="Actions\SelectAction.cpp" />
     <ClCompile Include="Actions\SendToAction.cpp" />
+    <ClCompile Include="Actions\StoryAction.cpp" />
     <ClCompile Include="Actions\UndoAction.cpp" />
     <ClCompile Include="Actions\ZoomAction.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -218,6 +219,7 @@
     <ClInclude Include="Actions\ScrambleAction.h" />
     <ClInclude Include="Actions\SelectAction.h" />
     <ClInclude Include="Actions\SendToAction.h" />
+    <ClInclude Include="Actions\StoryAction.h" />
     <ClInclude Include="Actions\UndoAction.h" />
     <ClInclude Include="Actions\ZoomAction.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
