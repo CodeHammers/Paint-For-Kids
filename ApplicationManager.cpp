@@ -790,15 +790,10 @@ void ApplicationManager::UpdateInterface() const
 		GetOutput()->ClearDrawArea();
 		for (int i = 0; i < FigList.size(); i++) {
 			FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
-
 		}
 	}
 }
 
-//void ApplicationManager::UpdateFigCount(int Selected_Deleted)
-//{
-//	FigCount -= Selected_Deleted;
-//}
 
 void ApplicationManager::ClearClipboard()
 {

@@ -1,3 +1,67 @@
-﻿  SaveAction.cpp
-  PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
+﻿  ApplicationManager.cpp
+e:\paint-for-kids\applicationmanager.cpp(100): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(120): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+e:\paint-for-kids\applicationmanager.cpp(434): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(452): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(458): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(467): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(477): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(487): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(496): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(508): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(519): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(533): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(537): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(543): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(547): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(565): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(576): warning C4800: 'unsigned int': forcing value to bool 'true' or 'false' (performance warning)
+e:\paint-for-kids\applicationmanager.cpp(585): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(599): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(609): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(618): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(627): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(636): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(644): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(653): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(670): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(719): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(730): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(736): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(782): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(791): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(801): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(815): warning C4018: '<': signed/unsigned mismatch
+e:\paint-for-kids\applicationmanager.cpp(831): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  main.cpp
+  ZoomAction.cpp
+  SendToAction.cpp
+  SelectAction.cpp
+e:\paint-for-kids\actions\selectaction.cpp(36): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\actions\selectaction.cpp(37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  ScrambleAction.cpp
+  SaveAction.cpp
+  ResizeAction.cpp
+  PlayAction.cpp
+  PasteAction.cpp
+  MoveAction.cpp
+  LoadAction.cpp
+  ExitAction.cpp
+  DeleteAction.cpp
+  CutAction.cpp
+  CopyAction.cpp
+  ChangeFillColorAction.cpp
+  ChangeDrawColorAction.cpp
+  ChangeBorderWidthAction.cpp
+  ChangeBckgrndColor.cpp
+  AddTriangleAction.cpp
+  Generating Code...
+  Compiling...
+  AddRectAction.cpp
+  AddLineAction.cpp
+  AddCircleAction.cpp
+  Generating Code...
+  PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)
