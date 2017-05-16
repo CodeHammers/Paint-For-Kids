@@ -115,29 +115,16 @@ void ApplicationManager::BundleFiguresData() {
 }
 
 void ApplicationManager::RearrangeFigures() {
-	//int areaQuadrantsX[4];
-	//int areaQuadrantsY[4];
-	//areaQuadrantsX[0] = 70; areaQuadrantsY[0] = 70;
-	//areaQuadrantsX[1] = UI.width/4; areaQuadrantsY[1] = 70;
-	//areaQuadrantsX[2] = 70; areaQuadrantsY[2] = UI.height/2;
-	//areaQuadrantsX[3] = UI.width/4; areaQuadrantsY[3] = UI.height/2;
-	//int index = 0;
+
 	random_shuffle(FigList.begin(), FigList.end());
 	srand(time(NULL));
 	for (unsigned int i = 0; i < FigList.size(); i++) {
-	/*	FigList[i]->ChangeQuandrant(areaQuadrantsX[index], areaQuadrantsY[index]);
-		index++;
-		index = index % 4;
-		int maxAttemps=0;*/
+
 		Point p; p.x = rand() % (UI.width / 2 - 70) + 70; p.y = rand() % (UI.height / 2 - 70) + 70;p.x += UI.width / 2;
 		FigList[i]->ChangeCord(p);
 		while (!FigList[i] ->ValidAfterZoom()) {
 			p.x = rand() % (UI.width / 2 - 140) + 140; p.y = rand() % (UI.height / 2 - 70) + 70; p.x += UI.width / 2;
 			FigList[i]->ChangeCord(p);
-			//FigList[i]->ChangeQuandrant(areaQuadrantsX[index], areaQuadrantsY[index]);
-			//index++;
-			//index = index % 4;
-			
 		}
 		p.x -= UI.width/2;
 		if (p.x < 80)
@@ -698,6 +685,8 @@ pair<Point, Point> ApplicationManager::Drag()
 	while (!pOut->EscapeClicked())
 	{
 		UpdateInterface();
+		GfxInfo gf; gf.isFilled = true; gf.FillClr = YELLOW; gf.DrawClr = YELLOW; gf.BorderWdth = 5;
+		pOut->DrawCircle({ RectULX ,RectULY }, 30, gf, false);
 		// Dragging voodoo
 		if (bDragging == false) {
 			if (pOut->getButtonState(iX, iY) == BUTTON_DOWN) {
