@@ -19,6 +19,8 @@ bool SaveAction::ReadActionParameters()
 
 	pOut->PrintMessage("Save: Enter file name");
 	FileName = pIn->GetSrting(pOut);
+
+
 	pOut->ClearStatusBar();
 
 	return true;
@@ -27,6 +29,11 @@ bool SaveAction::ReadActionParameters()
 void SaveAction::Execute()
 {
 	ReadActionParameters();
+	if (FileName.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890_") != std::string::npos)
+	{
+		pManager->GetOutput()->PrintMessage("File Name contain invalid characters");
+		return;
+	}
 	ofstream OutFile;
 	OutFile.open("Saved//" + FileName + ".txt", ios::out);
 	OutFile << (int)UI.DrawColor.ucBlue << " " << (int)UI.DrawColor.ucGreen << " " << (int)UI.DrawColor.ucRed

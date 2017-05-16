@@ -44,11 +44,12 @@ void LoadAction::Execute()
 	ifstream Infile;
 	Infile.open("Saved//"+filename+".txt", ios::in);
 	//Infile.open("input.txt", ios::in);
-	/*
+	
 	if (!Infile) {
-		std::cout << "leh ba2a";
+		pManager->GetOutput()->PrintMessage("File Not Found");
+		return;
 	}
-	*/
+	
 	int DrawColor[3], FillColor[3] ,bckgrndColor[3];
 
 	Infile >> DrawColor[0] >> DrawColor[1] >> DrawColor[2];
@@ -93,6 +94,7 @@ void LoadAction::Execute()
 			pManager->AddFigure(line);
 		}
 	}
+	Infile.close();
 }
 
 LoadAction::~LoadAction()
