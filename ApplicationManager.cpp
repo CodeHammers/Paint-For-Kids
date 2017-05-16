@@ -1,4 +1,5 @@
 #include "ApplicationManager.h"
+
 #include "Actions\AddRectAction.h"
 #include "Actions\AddLineAction.h"
 #include "Actions\AddCircleAction.h"
@@ -22,8 +23,8 @@
 #include "Actions\ExitAction.h"
 #include "Actions\MoveAction.h"
 
-#include <time.h>       /* time */
-//Constructor
+#include <time.h> /* time */
+
 
 ApplicationManager::ApplicationManager()
 {
@@ -34,6 +35,7 @@ ApplicationManager::ApplicationManager()
 	pOut = new Output(5);
 	pIn = pOut->CreateInput();
 	Point P;
+
 	while (true) {
 		pIn->GetPointClicked(P.x, P.y);
 		if (P.x >= 200 && P.x <= 700) {
@@ -45,6 +47,7 @@ ApplicationManager::ApplicationManager()
 			break;
 		}
 	}
+
 	UI.InterfaceMode = MODE_DRAW;
 	if (UI.male) {
 		UI.BkGrndColor = WHITE;	//Setting the background color.
@@ -56,7 +59,9 @@ ApplicationManager::ApplicationManager()
 		UI.HighlightColor = WHITE;	//Setting the highlighting color.
 		UI.StatusBarColor = LIGHTBLUE;  //Setting the color of the status bar.
 	}
+
 	UI.PenWidth = 3;	//Setting the width of figures frames.
+
 	pOut->CleanTheScreen();
 	pOut->CreateDrawToolBarUp(0, false, true);
 	pOut->CreateDrawToolBarRight(false, true);
@@ -66,72 +71,10 @@ ApplicationManager::ApplicationManager()
 	ClipboardMode = 1;
 }
 
-void ApplicationManager::ScaleAll() {
-	for (unsigned int i = 0; i < FigList.size(); i++) {
-		FigList[i]->Resize(0.5);
-		FigList[i]->ChopCoordniates();
-	}
-}
-void ApplicationManager::RollBackChanges() {
-	for (unsigned int i = 0; i < FigList.size(); i++) {
-		FigList[i]->Resize(2);
-		FigList[i]->disableScramble();
-		FigList[i]->retrieveData();
-		FigList[i]->SetSelected(false);
-	}
-}
 
-void ApplicationManager::nullifyFigList() {
-	FigList.clear();
-}
-
-bool ApplicationManager::SelectFigureToScramble(int idx) {
-	CFigure* fig = FigList[idx];
-	fig->SetSelected(true);
-	return true;
-}
-void ApplicationManager::ClearSelections() {
-	for (unsigned int i = 0; i < FigList.size(); i++) {
-		FigList[i]->SetSelected(false);
-	}
-}
-bool ApplicationManager::CheckValidityOfZoom(double r) {
-	UI.Ratio *= r;
-	for (int i = 0; i < FigList.size(); i++) {
-		if (!FigList[i]->ValidAfterZoom()) {
-			UI.Ratio /= r;
-			return false;
-		}
-	}
-	UI.Ratio /= r;
-	return true;
-}
-
-void ApplicationManager::BundleFiguresData() {
-	for (unsigned int i = 0; i < FigList.size(); i++) {
-		FigList[i]->ScrambleFigure();
-		FigList[i]->BundleData();
-	}
-}
-
-void ApplicationManager::RearrangeFigures() {
-
-	random_shuffle(FigList.begin(), FigList.end());
-	srand(time(NULL));
-	for (unsigned int i = 0; i < FigList.size(); i++) {
-
-		Point p; p.x = rand() % (UI.width / 2 - 70) + 70; p.y = rand() % (UI.height / 2 - 70) + 70;p.x += UI.width / 2;
-		FigList[i]->ChangeCord(p);
-		while (!FigList[i] ->ValidAfterZoom()) {
-			p.x = rand() % (UI.width / 2 - 140) + 140; p.y = rand() % (UI.height / 2 - 70) + 70; p.x += UI.width / 2;
-			FigList[i]->ChangeCord(p);
-		}
-		p.x -= UI.width/2;
-		if (p.x < 80)
-			p.x += 80;
-		FigList[i]->ChangeCord(p);
-	}
-}
+//==================================================================================//
+//								Actions Related Functions							//
+//==================================================================================//
 
 bool ApplicationManager::IsFillMenu(ActionType ActType) const
 {
@@ -160,6 +103,8 @@ bool ApplicationManager::IsFillMenu(ActionType ActType) const
 	}
 	return false;
 }
+
+
 bool ApplicationManager::IsBackgroundMenu(ActionType ActType) const
 {
 	switch (ActType)
@@ -188,6 +133,7 @@ bool ApplicationManager::IsBackgroundMenu(ActionType ActType) const
 	return false;
 }
 
+
 bool ApplicationManager::IsPenMenu(ActionType ActType) const
 {
 	switch (ActType)
@@ -215,9 +161,8 @@ bool ApplicationManager::IsPenMenu(ActionType ActType) const
 	}
 	return false;
 }
-//==================================================================================//
-//								Actions Related Functions							//
-//==================================================================================//
+
+
 ActionType ApplicationManager::GetUserAction() const
 {
 	/*We get the user actions, we define two main types of actions,
@@ -274,8 +219,8 @@ ActionType ApplicationManager::GetUserAction() const
 
 	return Type;  //if not a sub menu action, return it directly.
 }
-////////////////////////////////////////////////////////////////////////////////////
-//Creates an action and executes it
+
+
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	Action* pAct = NULL;
@@ -291,54 +236,60 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new ChangeFillColor(this,ActType);
 	}
 
-	/*	ITM_RESIZE25_Clicked,
-	ITM_RESIZE50_Clicked,
-	ITM_RESIZE200_Clicked,
-	ITM_RESIZE400_Clicked,*/
 	switch (ActType)
 	{
 		case ITM_MOVE_Clicked:
 			pAct = new MoveAction(this);
 			break;
+
 		case ITM_RESIZE25_Clicked:
 			pAct = new ResizeAction(this, ITM_RESIZE25_Clicked);
 			break;
+
 		case ITM_RESIZE50_Clicked:
 			pAct = new ResizeAction(this, ITM_RESIZE50_Clicked);
 			break;
+
 		case ITM_RESIZE200_Clicked:
 			pAct = new ResizeAction(this, ITM_RESIZE200_Clicked);
 			break;
+
 		case ITM_RESIZE400_Clicked:
 			pAct = new ResizeAction(this, ITM_RESIZE400_Clicked);
 			break;
+
 		case ITM_ZOOM_IN_Clicked:
 			pAct = new ZoomAction(this, ActType);
 			break;
+
 		case ITM_ZOOM_OUT_Clicked:
 			pAct = new ZoomAction(this, ActType);
 			break;
-		// Border Action Start
+
 		case ITM_BORDERWIDTH1_Clicked :
 			pAct = new ChangeBorderWidthAction(this,ActType);
 			break;
+
 		case ITM_BORDERWIDTH2_Clicked:
 			pAct = new ChangeBorderWidthAction(this, ActType);
 			break;
+
 		case ITM_BORDERWIDTH3_Clicked:
 			pAct = new ChangeBorderWidthAction(this, ActType);
 			break;
+
 		case ITM_BORDERWIDTH4_Clicked:
 			pAct = new ChangeBorderWidthAction(this, ActType);
 			break;
-		//Border Action End
+
 		case ITM_LOAD_Clicked:
 			pAct = new LoadAction(this);
 			break;
-		//ironically ,this is the Scramble action :C
+		
 		case MODE_PLAY_SUB_MENU1_Clicked:
 			pAct = new ScrambleAction(this);
 			break;
+
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			break;
@@ -359,15 +310,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new SelectAction(this);
 			break;
 
-		
-
-		case EXIT:
-			pAct = new ExitAction(this);
-			break;
-
 		case ITM_SAVEAS_Clicked:
 			pAct = new SaveAction(this);
 			break;
+
 		case ITM_DELETE_Clicked:
 			pAct = new DeleteAction(this);
 			break;
@@ -411,6 +357,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case STATUS:	//a click on the status bar ==> no action
 			return;
+
+		case EXIT:
+			pAct = new ExitAction(this);
+			break;
 	}
 	
 	//Execute the created action
@@ -421,15 +371,94 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = NULL;
 	}
 }
-//void ApplicationManager::AddClipboard(CFigure * pFig)
-//{
-//	Clipboard.push_back(pFig);
-//}
+
 //==================================================================================//
 //						Figures Management Functions								//
 //==================================================================================//
 
-void ApplicationManager::Exit()
+void ApplicationManager::ScaleAll() {
+	for (unsigned int i = 0; i < FigList.size(); i++) {
+		FigList[i]->Resize(0.5);
+		FigList[i]->ChopCoordniates();
+	}
+}
+
+
+void ApplicationManager::RollBackChanges() {
+	for (unsigned int i = 0; i < FigList.size(); i++) {
+		FigList[i]->Resize(2);
+		FigList[i]->disableScramble();
+		FigList[i]->retrieveData();
+		FigList[i]->SetSelected(false);
+	}
+}
+
+
+void ApplicationManager::nullifyFigList() {      
+	FigList.clear();
+}
+
+
+bool ApplicationManager::SelectFigureToScramble(int idx) {
+	CFigure* fig = FigList[idx];
+	fig->SetSelected(true);
+	return true;
+}
+
+
+void ApplicationManager::ClearSelections() {
+	for (unsigned int i = 0; i < FigList.size(); i++) {
+		FigList[i]->SetSelected(false);
+	}
+}
+
+
+bool ApplicationManager::CheckValidityOfZoom(double r) {
+	UI.Ratio *= r;
+
+	for (int i = 0; i < FigList.size(); i++) {
+		if (!FigList[i]->ValidAfterZoom()) {
+			UI.Ratio /= r;
+			return false;
+		}
+	}
+
+	UI.Ratio /= r;
+	return true;
+}
+
+
+void ApplicationManager::BundleFiguresData() {
+	for (unsigned int i = 0; i < FigList.size(); i++) {
+		FigList[i]->ScrambleFigure();
+		FigList[i]->BundleData();
+	}
+}
+
+
+void ApplicationManager::RearrangeFigures() {
+
+	random_shuffle(FigList.begin(), FigList.end());
+	srand(time(NULL));
+
+	for (unsigned int i = 0; i < FigList.size(); i++) {
+
+		Point p; p.x = rand() % (UI.width / 2 - 70) + 70; p.y = rand() % (UI.height / 2 - 70) + 70; p.x += UI.width / 2;
+		FigList[i]->ChangeCord(p);
+		while (!FigList[i]->ValidAfterZoom()) {
+			p.x = rand() % (UI.width / 2 - 140) + 140; p.y = rand() % (UI.height / 2 - 70) + 70; p.x += UI.width / 2;
+			FigList[i]->ChangeCord(p);
+		}
+
+		p.x -= UI.width / 2;
+		if (p.x < 80)
+			p.x += 80;
+		FigList[i]->ChangeCord(p);
+
+	}
+}
+
+void ApplicationManager::Exit()     
 {
 	for (int i = 0; i < FigList.size(); i++)
 		delete FigList[i];
@@ -438,20 +467,22 @@ void ApplicationManager::Exit()
 	FigList.clear();
 }
 
-//Add a figure to the list of figures
+
 void ApplicationManager::AddFigure(CFigure* pFig)
 {
-	if(FigCount < MaxFigCount )
-		FigList.push_back(pFig);	
+	FigList.push_back(pFig);	
 }
 
+
 int ApplicationManager::GetFigCount() { return FigList.size(); }
+
 
 void ApplicationManager::ManageSelection(bool s)
 {
 	for (int i = 0; i < FigList.size(); i++)
 		FigList[i]->SetSelected(s);
 }
+
 
 void ApplicationManager::ChangeDrwClrForSelected(const color& Color)
 {
@@ -461,6 +492,7 @@ void ApplicationManager::ChangeDrwClrForSelected(const color& Color)
 			FigList[i]->SetSelected(false);
 		}
 }
+
 
 void ApplicationManager::ChangeFillClrForSelected(const color & Color)
 {
@@ -472,6 +504,7 @@ void ApplicationManager::ChangeFillClrForSelected(const color & Color)
 		}
 }
 
+
 void ApplicationManager::ChangeBorderWidthForSelected(const int & BorderWidth)
 {
 	for (int i = 0; i < FigList.size(); ++i)
@@ -480,6 +513,7 @@ void ApplicationManager::ChangeBorderWidthForSelected(const int & BorderWidth)
 			FigList[i]->SetSelected(false);
 		}
 }
+
 
 int ApplicationManager::GetSelectedFigCount()
 {
@@ -491,71 +525,20 @@ int ApplicationManager::GetSelectedFigCount()
 	return cnt;
 }
 
+
 void ApplicationManager::DeleteSelected(bool flag)
 {
 	for (int i = 0; i < FigList.size(); i++) {
 		if (FigList[i]->IsSelected()) {
 			FigList[i]->SetSelected(false); //new addition
-			if(flag) delete FigList[i];
+			if (flag) delete FigList[i];
 			FigList.erase(FigList.begin() + i);
 			i--;
 		}
 	}
 }
 
-void ApplicationManager::CutToClipboard(bool unselect)
-{
-	for (int i = 0; i < FigList.size(); i++) {
-		if (FigList[i]->IsSelected()) {
-			if (unselect) 
-				FigList[i]->SetSelected(false);
-			Clipboard.push_back(FigList[i]);
-		}
-	}
-}
 
-void ApplicationManager::CopyToClipboard()
-{
-	for (int i = 0; i < FigList.size(); i++) {
-		if (FigList[i]->IsSelected()) {
-			FigList[i]->SetSelected(false);
-			CFigure* ptr = CopyAction::CopyFigure(FigList[i]);
-			Clipboard.push_back(ptr);
-		}
-	}
-}
-
-void ApplicationManager::AddPastedFigures(Point P)
-{
-	if (ClipboardMode > 1) {
-
-		vector<CFigure*>temp(Clipboard.size());
-		for (int i = 0; i < Clipboard.size(); i++)
-			temp[i] = Clipboard[i];
-
-		Clipboard.clear();
-		for (int i = 0; i < temp.size(); i++) {
-			CFigure* ptr = CopyAction::CopyFigure(temp[i]);
-			Clipboard.push_back(ptr);
-		}
-	}
-	bool found = true;
-	for (int i = 0; i < Clipboard.size(); ++i)
-		if (!Clipboard[i]->TransferFigure(P, true)) {
-			found = false;	break;
-		}
-	for (int i = 0; i < Clipboard.size(); i++) {
-		if (found) {
-			Clipboard[i]->TransferFigure(P);
-			AddFigure(Clipboard[i]);
-			ClipboardMode++;
-		}
-		else {
-			pOut->PrintMessage("Paste: Can't paste all/some figures taking reference to the Clicker point");
-			break;
-		}
-	}
-}
 bool ApplicationManager::ResizeSelectedFigures(double ratio) {
 	double temp = UI.Ratio;
 	UI.Ratio = ratio;
@@ -568,7 +551,7 @@ bool ApplicationManager::ResizeSelectedFigures(double ratio) {
 				FigList[i]->Resize(ratio);
 			else {
 				string s = "Cannot Resize " + num;
-				pOut->PrintMessage(s+" Figures");
+				pOut->PrintMessage(s + " Figures");
 			}
 		}
 	}
@@ -591,7 +574,7 @@ void ApplicationManager::SendSelectedTo(int mode)
 		}
 	}
 	if (mode == 1) {
-		for (int i = tmp.size()-1; i>=0; i--) {
+		for (int i = tmp.size() - 1; i >= 0; i--) {
 			FigList.insert(FigList.begin(), tmp[i]);
 		}
 	}
@@ -603,6 +586,7 @@ void ApplicationManager::SendSelectedTo(int mode)
 	tmp.clear();
 }
 
+
 priority_queue<int> ApplicationManager::GetFigureAreas()
 {
 	priority_queue<int>Areas;
@@ -611,6 +595,7 @@ priority_queue<int> ApplicationManager::GetFigureAreas()
 	}
 	return Areas;
 }
+
 
 int ApplicationManager::GetNumOfFigType()
 {
@@ -621,6 +606,7 @@ int ApplicationManager::GetNumOfFigType()
 	return cnt;
 }
 
+
 int ApplicationManager::GetNumOfColorfulFig()
 {
 	int cnt = 0;
@@ -629,6 +615,7 @@ int ApplicationManager::GetNumOfColorfulFig()
 			cnt++;
 	return cnt;
 }
+
 
 int ApplicationManager::GetNumOfColoredFigures()
 {
@@ -639,13 +626,6 @@ int ApplicationManager::GetNumOfColoredFigures()
 	return cnt;
 }
 
-void ApplicationManager::ReturnFromClipboard()
-{
-	for (int i = 0; i < Clipboard.size(); ++i) {
-		Clipboard[i]->SetSelected(false); FigList.push_back(Clipboard[i]);
-	}
-	ClipboardMode = 0;	ClearClipboard();
-}
 
 Point ApplicationManager::GetTheTopFigure()
 {
@@ -655,22 +635,28 @@ Point ApplicationManager::GetTheTopFigure()
 			P = Clipboard[i]->GetTopCorner();
 	return P;
 }
+
+
 vector<CFigure*> ApplicationManager::QuerySelectedForDrag() {
 	vector<CFigure*> SelectedFigs;
-	for (unsigned int i = 0; i < FigList.size(); ++i) {
-		if (FigList[i]->IsSelected())
-			SelectedFigs.push_back(FigList[i]);
+	for (unsigned int i = 0; i < FigList.size(); ++i) {
+		if (FigList[i]->IsSelected())
+			SelectedFigs.push_back(FigList[i]);
 	}
-	return SelectedFigs;
+	return SelectedFigs;
 }
+
 pair<Point, Point> ApplicationManager::Drag()
 {	vector<CFigure*>figs = QuerySelectedForDrag();
 	Point ref = GetTheTopFigureOfSelected();
 	Output* pOut = GetOutput();
+
 	for (int i = 0; i < figs.size(); i++) 	figs[i]->Drag(true);
+
 	int iX, iY;
 	UI.DragState = true;
 	pOut->setBuffering(false);
+
 	// Flush out the input queues before beginning
 	pOut->FlushMouse();
 	pOut->setBuffering(true);
@@ -681,6 +667,7 @@ pair<Point, Point> ApplicationManager::Drag()
 	iX = iY = 0;
 	int iXOld = 0;
 	int iYOld = 0;	Point d;
+
 	// Loop until there escape is pressed
 	while (!pOut->EscapeClicked())
 	{
@@ -711,61 +698,154 @@ pair<Point, Point> ApplicationManager::Drag()
 				}
 			}
 		}
+
 		Point p1;
 		p1.x = RectULX;
 		p1.y = RectULY;
 		d = { ref.x - p1.x,ref.y - p1.y };
 		d.x = -d.x; d.y = -d.y;
+
 		for (int i = 0; i < figs.size(); i++) {
 			Point po;
 			figs[i]->SetStartingDragPoint(po);
 			po = { po.x + d.x ,po.y + d.y };
 			figs[i]->DrawDragged(pOut, po);
 		}
+
 		pOut->UpdateBuffer();
 	}
+
 	pOut->setBuffering(false);
 	UpdateInterface();
 	UI.DragState = false;
+
 	for (int i = 0; i < figs.size(); i++) 	figs[i]->Drag(false);
+
 	CheckValidityOfDrag(figs, make_pair(ref, d));
+
 	return make_pair(ref, d);
 }
-void ApplicationManager::CheckValidityOfDrag(vector<CFigure*> figs,pair<Point,Point> Pr) {	Point ref = Pr.first;
+
+
+void ApplicationManager::CheckValidityOfDrag(vector<CFigure*> figs, pair<Point, Point> Pr) {	Point ref = Pr.first;
 	Point d = Pr.second;
+
 	for (int i = 0; i < figs.size(); i++) {
 		Point po;
 		figs[i]->SetStartingDragPoint(po);
-		po = { po.x + d.x ,po.y + d.y };		if (!figs[i]->CheckPosAfterDrag(po)) {			for (int j = i; j >= 0; j--)				figs[j]->retrieveData();			break;		}
+		po = { po.x + d.x ,po.y + d.y };		if (!figs[i]->CheckPosAfterDrag(po)) {			for (int j = i; j >= 0; j--)				figs[j]->retrieveData();			break;		}
 	}
 }
+
+
 Point ApplicationManager::GetTheTopFigureOfSelected()
 {
 	Point P = { 2000,2000 };
+
 	for (unsigned int i = 0; i < FigList.size(); ++i)
 		if (FigList[i]->GetTopCorner().x <= P.x && FigList[i]->GetTopCorner().y <= P.y&&FigList[i]->IsSelected())
 			P = FigList[i]->GetTopCorner();
+	
 	return P;
-}
-////////////////////////////////////////////////////////////////////////////////////
+}
+
+
 CFigure* ApplicationManager::GetFigure(int x, int y) const
 {
-	for (int i = FigList.size() -1; i>=0; i--) {
+	for (int i = FigList.size() - 1; i >= 0; i--) {
 		if (FigList[i]->Encloses({ x,y }))  //if the point is in the figure
 			return FigList[i];
 	}
 	return NULL;
 }
 
-//vector<CFigure*> ApplicationManager::GetSelected()
-//{
-//	vector<CFigure*> selected;
-//	for (int i = 0; i < FigList.size(); i++) {
-//		if (FigList[i]->IsSelected())
-//			selected.push_back(FigList[i]);
-//	}
-//	return selected;
-//}
+
+//==================================================================================//
+//						Clipboard Management Functions								//
+//==================================================================================//
+
+
+void ApplicationManager::CutToClipboard(bool unselect)
+{
+	for (int i = 0; i < FigList.size(); i++) {
+		if (FigList[i]->IsSelected()) {
+			if (unselect) 
+				FigList[i]->SetSelected(false);
+			Clipboard.push_back(FigList[i]);
+		}
+	}
+}
+
+
+void ApplicationManager::CopyToClipboard()
+{
+	for (int i = 0; i < FigList.size(); i++) {
+		if (FigList[i]->IsSelected()) {
+			FigList[i]->SetSelected(false);
+			CFigure* ptr = CopyAction::CopyFigure(FigList[i]);
+			Clipboard.push_back(ptr);
+		}
+	}
+}
+
+
+void ApplicationManager::AddPastedFigures(Point P)
+{
+	if (ClipboardMode > 1) {
+
+		vector<CFigure*>temp(Clipboard.size());
+		for (int i = 0; i < Clipboard.size(); i++)
+			temp[i] = Clipboard[i];
+
+		Clipboard.clear();
+		for (int i = 0; i < temp.size(); i++) {
+			CFigure* ptr = CopyAction::CopyFigure(temp[i]);
+			Clipboard.push_back(ptr);
+		}
+	}
+
+	bool found = true;
+	for (int i = 0; i < Clipboard.size(); ++i)
+		if (!Clipboard[i]->TransferFigure(P, true)) {
+			found = false;	break;
+		}
+	for (int i = 0; i < Clipboard.size(); i++) {
+		if (found) {
+			Clipboard[i]->TransferFigure(P);
+			AddFigure(Clipboard[i]);
+			ClipboardMode++;
+		}
+		else {
+			pOut->PrintMessage("Paste: Can't paste all/some figures taking reference to the Clicker point");
+			break;
+		}
+	}
+}
+
+
+void ApplicationManager::ReturnFromClipboard()
+{
+	for (int i = 0; i < Clipboard.size(); ++i) {
+		Clipboard[i]->SetSelected(false); FigList.push_back(Clipboard[i]);
+	}
+	ClipboardMode = 0;	ClearClipboard();
+}
+
+
+void ApplicationManager::ClearClipboard()
+{
+	if (ClipboardMode == 1) {
+		for (int i = 0; i < Clipboard.size(); i++)
+			delete Clipboard[i];
+	}
+	Clipboard.clear();
+}
+
+
+int ApplicationManager::GetClipboardSize()
+{
+	return Clipboard.size();
+}
 
 
 //==================================================================================//
@@ -795,20 +875,6 @@ void ApplicationManager::UpdateInterface() const
 }
 
 
-void ApplicationManager::ClearClipboard()
-{
-	if (ClipboardMode == 1) {
-		for (int i = 0; i < Clipboard.size(); i++)
-			delete Clipboard[i];
-	}
-	Clipboard.clear();
-}
-
-int ApplicationManager::GetClipboardSize()
-{
-	return Clipboard.size();
-}
-
 void ApplicationManager::SaveAll(ofstream &OutFile)
 {
 	OutFile << FigList.size() << endl;
@@ -824,6 +890,7 @@ Input *ApplicationManager::GetInput() const
 //Return a pointer to the output
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
+
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor
 ApplicationManager::~ApplicationManager()

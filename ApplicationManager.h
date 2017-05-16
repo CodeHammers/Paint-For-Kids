@@ -17,11 +17,8 @@
 //Main class that manages everything in the application.
 class ApplicationManager
 {
-	enum { MaxFigCount = 200 };	//Max no of figures
-
 private:
 
-	int FigCount;		//Actual number of figures
 	vector<CFigure*>FigList;  //vector that holds the figure list
 	
 	//Pointers to Input and Output classes
@@ -31,8 +28,7 @@ private:
 	int ClipboardMode;            //status of the clipboard
 	vector<CFigure*>Clipboard;    //clipboard
 	vector<CFigure**>List;        ///eh dah?
-	int ClipboardCount;           ///why?
-
+	
 	/*A private function to tell whether an action is a fill menu action*/
 	bool IsFillMenu(ActionType ActType) const;
 
