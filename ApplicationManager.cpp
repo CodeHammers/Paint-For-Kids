@@ -450,9 +450,14 @@ void ApplicationManager::RearrangeFigures() {
 
 		Point p; p.x = rand() % (UI.width / 2 - 70) + 70; p.y = rand() % (UI.height / 2 - 70) + 70; p.x += UI.width / 2;
 		FigList[i]->ChangeCord(p);
+		int tries = 0;
 		while (!FigList[i]->ValidAfterZoom()) {
 			p.x = rand() % (UI.width / 2 - 140) + 140; p.y = rand() % (UI.height / 2 - 70) + 70; p.x += UI.width / 2;
 			FigList[i]->ChangeCord(p);
+			tries++;
+			if (tries > 30) {
+				FigList[i]->Resize(0.75);
+			}
 		}
 
 		p.x -= UI.width / 2;
@@ -682,10 +687,16 @@ pair<Point, Point> ApplicationManager::Drag()
 		// Dragging voodoo
 		if (bDragging == false) {
 			if (pOut->getButtonState(iX, iY) == BUTTON_DOWN) {
-				if (((iX > RectULX) && (iX < (RectULX + RectWidth))) && ((iY > RectULY) && (iY < (RectULY + RectWidth)))) {
+				int dist = (iX - RectULX)*(iX - RectULX) + (iY - RectULY)*(iY - RectULY);
+				dist = sqrt(dist);
+				if (dist <= 30) {
 					bDragging = true;
 					iXOld = iX; iYOld = iY;
 				}
+		/*		if (((iX > RectULX) && (iX < (RectULX + RectWidth))) && ((iY > RectULY) && (iY < (RectULY + RectWidth)))) {
+					bDragging = true;
+					iXOld = iX; iYOld = iY;
+				}*/
 			}
 		}
 		else {
