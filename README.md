@@ -23,13 +23,30 @@
  ------
  We will be using Visual Studio 2015 community as our IDE
  
- FrameWork:
+ Framework:
  ----------
  We are using a simple graphics library called CMUgraphics ,the library itself is very limited in usage , but it let you unlesh your skills as a core c++ programmer to implement functionalities from scratch , or maybe use a base code to built upon , we recommend this library if you intend to practice c++ ,but we really don't recommend using it in production .
- 
+
  Creators:
  ----------
  -Sayed Kotb
  -Kareem Emad
  -Kareem Omar
- -Moamen Atya
+ -Moamen Attia
+
+ Screenshots:
+ ---------
+![Alt text](/Demo/1.png?raw=true "Demo")
+
+ ![Alt text](/Demo/2.png?raw=true "Demo")
+ 
+![Alt text](/Demo/3.png?raw=true "Demo")
+
+![Alt text](/Demo/4.png?raw=true "Demo")
+
+![Alt text](/Demo/6.png?raw=true "Demo")
+
+![Alt text](/Demo/9.png?raw=true "Demo")
+
+ 
+
