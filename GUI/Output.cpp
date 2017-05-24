@@ -223,10 +223,10 @@ void Output::CreateDrawToolBarRight(bool collapse, bool show) const
 		MenuItemImages[ITM_COPY] = "images\\MenuItems\\ICONS\\TOOLS\\COPY.jpg";
 		MenuItemImages[ITM_CUT] = "images\\MenuItems\\ICONS\\TOOLS\\CUT.jpg";
 		MenuItemImages[ITM_PASTE] = "images\\MenuItems\\ICONS\\TOOLS\\PASTE.jpg";
-		MenuItemImages[ITM_REDO] = "images\\MenuItems\\ICONS\\TOOLS\\REDO11.jpg";
-		MenuItemImages[ITM_UNDO] = "images\\MenuItems\\ICONS\\TOOLS\\UNDO11.jpg";
+		MenuItemImages[ITM_REDO] = "images\\MenuItems\\ICONS\\TOOLS\\SendFront_White.jpg";
+		MenuItemImages[ITM_UNDO] = "images\\MenuItems\\ICONS\\TOOLS\\SendBack_White.jpg";
 		MenuItemImages[ITM_DELETE] = "images\\MenuItems\\ICONS\\TOOLS\\DELETE.jpg";
-		MenuItemImages[ITM_SAVE] = "images\\MenuItems\\ICONS\\TOOLS\\SAVE.jpg";
+		MenuItemImages[ITM_SAVE] = "images\\MenuItems\\ICONS\\TOOLS\\Story_Mode_White.jpg";
 		MenuItemImages[ITM_SAVEAS] = "images\\MenuItems\\ICONS\\TOOLS\\SAVEAS.jpg";
 		MenuItemImages[ITM_EXIT] = "images\\MenuItems\\ICONS\\TOOLS\\EXIT.jpg";
 	}
@@ -239,10 +239,10 @@ void Output::CreateDrawToolBarRight(bool collapse, bool show) const
 		MenuItemImages[ITM_COPY] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\COPY.jpg";
 		MenuItemImages[ITM_CUT] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\CUT.jpg";
 		MenuItemImages[ITM_PASTE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\PASTE.jpg";
-		MenuItemImages[ITM_REDO] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\REDO.jpg";
-		MenuItemImages[ITM_UNDO] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\UNDO.jpg";
+		MenuItemImages[ITM_REDO] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\SendFront.jpg";
+		MenuItemImages[ITM_UNDO] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\SendBack.jpg";
 		MenuItemImages[ITM_DELETE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\DELETE.jpg";
-		MenuItemImages[ITM_SAVE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\SAVE.jpg";
+		MenuItemImages[ITM_SAVE] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\StoryMode.jpg";
 		MenuItemImages[ITM_SAVEAS] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\SAVEAS.jpg";
 		MenuItemImages[ITM_EXIT] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\EXIT.jpg";
 	}
@@ -664,12 +664,12 @@ void Output::CreatePlayToolBar(int action, bool collapse, bool stat) const
 
 		string MenuItemImages[PLAY_ITM_COUNT];
 		if (UI.male) {
-			MenuItemImages[ITM_SCRAMBLEAndFind] = "images\\MenuItems\\ICONS\\TOOLS\\SCRAMBLE.jpg";
+			MenuItemImages[ITM_SCRAMBLEAndFind] = "images\\MenuItems\\ICONS\\TOOLS\\SCRAMBLE1.jpg";
 			MenuItemImages[ITM_PickAndHide] = "images\\MenuItems\\ICONS\\TOOLS\\PickAndHide.jpg";
 			MenuItemImages[ITEM_TODRAW] = "images\\MenuItems\\ICONS\\TOOLS\\TODRAW1.jpg";
 		}
 		else {
-			MenuItemImages[ITM_SCRAMBLEAndFind] = "images\\MenuItems\\ICONS\\TOOLS\\SCRAMBLE.jpg";
+			MenuItemImages[ITM_SCRAMBLEAndFind] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\Scramble_Red.jpg";
 			MenuItemImages[ITM_PickAndHide] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\PickAndHide.jpg";
 			MenuItemImages[ITEM_TODRAW] = "images\\MenuItems\\ICONS\\NewIcons\\Tools\\TODRAW2.jpg";
 		}
@@ -911,18 +911,22 @@ void Output::DrawCircle(Point center, int radius, GfxInfo CircleGfxInfo, bool se
 
 buttonstate Output::getButtonState(int &iX, int &iY) {
 	return  pWind->GetButtonState(LEFT_BUTTON, iX, iY);
-}
+}
+
 void Output::setBuffering(bool state) {
 	pWind->SetBuffering(state);
-}
+}
+
 void Output::FlushMouse() {
 	pWind->FlushMouseQueue();
 	//pWind->FlushKeyQueue();
-}
+}
+
 bool Output::EscapeClicked() {
 	char cKeyData;
 	return pWind->GetKeyPress(cKeyData) == ESCAPE;
-}
+}
+
 bool Output::EnterClicked() {
 	char cKeyData;
 	return pWind->GetKeyPress(cKeyData) == FUNCTION;
@@ -930,7 +934,8 @@ bool Output::EnterClicked() {
 bool Output::UpdateBuffer() {
 	pWind->UpdateBuffer();
 	return true;
-}
+}
+
 
 
 

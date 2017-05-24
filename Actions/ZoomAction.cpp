@@ -10,9 +10,7 @@ ZoomAction::ZoomAction(ApplicationManager* appManager, ActionType actType) : Act
 {
 	this->actType = actType;
 }
-/*	// ZOOM ITEMS // 
-	ITM_ZOOM_IN_Clicked,
-	ITM_ZOOM_OUT_Clicked,*/
+
 
 void ZoomAction::Execute()
 {

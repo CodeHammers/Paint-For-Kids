@@ -1,38 +1,39 @@
-﻿  ApplicationManager.cpp
-c:\paint-for-kids\applicationmanager.cpp(424): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(447): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\paint-for-kids\applicationmanager.cpp(473): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(492): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(499): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(509): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(520): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(531): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(541): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(558): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(569): warning C4800: 'unsigned int': forcing value to bool 'true' or 'false' (performance warning)
-c:\paint-for-kids\applicationmanager.cpp(578): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(592): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(603): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(613): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(623): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(633): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(643): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(664): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(691): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\paint-for-kids\applicationmanager.cpp(724): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(738): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(749): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(786): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(798): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(813): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(817): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(824): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(828): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(844): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(854): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(878): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(887): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(897): warning C4018: '<': signed/unsigned mismatch
-c:\paint-for-kids\applicationmanager.cpp(914): warning C4018: '<': signed/unsigned mismatch
-  PT-Project.vcxproj -> C:\Paint-For-Kids\.\Debug\PT Project.exe
+﻿cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+  AddRectAction.cpp
+  CopyAction.cpp
+  LoadAction.cpp
+  PasteAction.cpp
+  PlayAction.cpp
+  CLine.cpp
+e:\paint-for-kids\figures\cline.cpp(41): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\cline.cpp(51): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\cline.cpp(66): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\cline.cpp(67): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\cline.cpp(103): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\cline.cpp(105): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\cline.cpp(125): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\cline.cpp(135): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\cline.cpp(157): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\cline.cpp(158): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+  CRectangle.cpp
+e:\paint-for-kids\figures\crectangle.cpp(46): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\crectangle.cpp(48): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\crectangle.cpp(80): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\crectangle.cpp(81): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\crectangle.cpp(98): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\crectangle.cpp(99): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\crectangle.cpp(206): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\crectangle.cpp(216): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\crectangle.cpp(233): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\figures\crectangle.cpp(243): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Output.cpp
+e:\paint-for-kids\gui\output.cpp(797): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\gui\output.cpp(830): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\gui\output.cpp(831): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\gui\output.cpp(842): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\gui\output.cpp(865): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\gui\output.cpp(892): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+e:\paint-for-kids\gui\output.cpp(908): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+  Generating Code...
+  PT-Project.vcxproj -> E:\Paint-For-Kids\.\Debug\PT Project.exe
   PT-Project.vcxproj -> .\Debug/PT Project.pdb (Full PDB)
